@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 BASEDIR=$(dirname $0)
+source ${BASEDIR}/ShellBot.sh
 
 _how() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*$(echo -e '*hello from _how*')"
@@ -28,7 +29,5 @@ start.sendGreetings() {
   else
     message+=${message_from_id}
   fi
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*Pois não ${message_from_first_name} ...*" \
-							--reply_markup "$keyboard1"
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*$(echo -e "${message}")*" --reply_markup "$keyboard1"
+  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*$(echo -e "${message}")*" --reply_markup "$keyboard1" --parse_mode markdown
 }
