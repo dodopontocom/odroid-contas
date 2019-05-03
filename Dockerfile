@@ -13,5 +13,6 @@ RUN apt-get update && \
 RUN mkdir -p /home/odroid
 ADD . /home/odroid
 WORKDIR /home/odroid
+RUN chmod +x bot.sh
 
-ENTRYPOINT "bot.sh" && /bin/bash
+ENTRYPOINT "./bot.sh" && /bin/bash
