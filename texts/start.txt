@@ -1,4 +1,4 @@
-*Eu sou o 🤖 odroidbrBot, eu posso gerenciar suas contas 💣...* \n 
+*Eu sou o 🤖 `odroidbrBot`. Eu posso gerenciar suas* 💣 `(contas)` \n 
 Para conhecer os meus comandos, simplesmente clique neles abaixo...👇 \n
 ✔️👌 \n
 *->* /batecartao `help` \n\n
@@ -9,5 +9,4 @@ Para conhecer os meus comandos, simplesmente clique neles abaixo...👇 \n
 *->* /netspeed \n\n
 *->* /voice `help` \n\n
 *->* /linux `help` \n\n
-*->* /procurarmusica `help` \n\n
 *->* /ping
