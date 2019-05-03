@@ -8,7 +8,7 @@ start.btn_how() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 					--text "TEST_HOW"
 }
-btn_hints() {
+start.btn_hints() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*$(echo -e '*hello from _hints*')"
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 					--text "TEST_HINTS"
