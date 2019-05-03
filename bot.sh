@@ -45,7 +45,7 @@ do
 				start.sendGreetings
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/speedtest" )" ]]; then
-				speedtest.check
+				speedtest.check "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/voice" )" ]]; then
 				voice.convert

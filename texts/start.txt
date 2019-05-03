@@ -6,7 +6,7 @@ Para conhecer os meus comandos, simplesmente clique neles abaixo...👇 \n
 *->* /alarmon `help` \n\n
 *->* /alarmoff `help` \n\n
 *->* /selfie `help` \n\n
-*->* /netspeed \n\n
+*->* /speedtest \n\n
 *->* /voice `help` \n\n
 *->* /linux `help` \n\n
 *->* /ping

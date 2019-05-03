@@ -4,12 +4,18 @@ BASEDIR=$(dirname $0)
 txt=${BASEDIR}/texts/start.txt
 
 start.sendGreetings() {
-  message="*olá *"
-  if [[ ! -z $message_from_first_name ]]; then
-    message+=${message_from_first_name}
+  message=$1
+  file_path=/home/ubuntu
+  file_name=voice.wav
+
+  if [[ ! -z ${message}]]; then
+    docker run \
+    -i \
+    --rm \
+    -v ${file_pat}:/data \
+    ozzyjohnson/tts \
+    bash -c 'espeak "${message}" --stdout > ${file_name.wav}'
   else
-    message+=${message_from_id}
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*Please, envie um texto `/speedtest <texto qualquer>`*" --parse_mode markdown
   fi
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e $(cat ${txt}))" --parse_mode markdown
 }
