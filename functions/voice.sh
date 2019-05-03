@@ -8,12 +8,13 @@ voice.convert() {
   array=(${message})
   array[0]="/linux"
   message=${array[@]:1}
-  
+
   file_path=/home/ubuntu
   file_name=${file_path}/voice.wav
 
   if [[ ! -z ${message} ]]; then
-    docker run -i --rm -v ${file_path}:/data ozzyjohnson/tts bash -c 'espeak "${message}" --stdout > voice.wav'
+    #espeak -vpt+f5 --stdout "${voice_command}" > /tmp/voice.ogg
+    docker run -i --rm -v ${file_path}:/data -w /data ozzyjohnson/tts bash -c 'espeak -vpt+f5 --stdout "${message}" > voice.wav'
     ShellBot.sendVoice --chat_id ${message_chat_id[$id]} --voice @${file_name}
   else
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Please, envie um texto" --parse_mode markdown
