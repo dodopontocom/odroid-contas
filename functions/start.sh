@@ -2,7 +2,7 @@
 #
 
 BASEDIR=$(dirname $0)
-source ${BASEDIR}/buttons.sh
+source ${BASEDIR}/functions/buttons.sh
 
 start.sendGreetings() {
 
