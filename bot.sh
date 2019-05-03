@@ -9,9 +9,20 @@ BASEDIR=$(dirname $0)
 echo ${BASEDIR}
 source ${BASEDIR}/ShellBot.sh
 source ${BASEDIR}/functions/start.sh
+source ${BASEDIR}/functions/netspeed.sh
+source ${BASEDIR}/functions/voice.sh
+source ${BASEDIR}/functions/alarm.sh
+source ${BASEDIR}/functions/batercartao.sh
+source ${BASEDIR}/functions/linux.sh
+source ${BASEDIR}/functions/selfie.sh
 source ${BASEDIR}/functions/ping.sh
+source ${BASEDIR}/functions/contas.sh
+source ${BASEDIR}/functions/chat.sh
+
+######################################################################################
 #source <(cat ${BASEDIR}/functions/start.sh)
 #for f in ${BASEDIR}/functions/*.sh; do source $f; done
+######################################################################################
 
 logs=${BASEDIR}/logs
 
@@ -33,11 +44,32 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
 			fi
-		fi	
-		if [[ ${message_entities_type[$id]} == bot_command ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/netspeed" )" ]]; then
+				netspeed.check
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/voice" )" ]]; then
+				voice.convert
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/alarm" )" ]]; then
+				alarm.set
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/batercartao" )" ]]; then
+				batercartao.apply
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/linux" )" ]]; then
+				linux.cmd
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/selfie" )" ]]; then
+				selfie.send
+			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/ping" )" ]]; then
 				ping.pong
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/contas" )" ]]; then
+				contas.cmd
+			fi
+		else
+			chat.hi
 		fi
 	) & 
 	done
