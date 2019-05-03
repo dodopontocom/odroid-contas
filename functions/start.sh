@@ -2,9 +2,9 @@
 #
 start.sendGreetings() {
 
-  message="olá "
+  message="*olá *"
   if [[ ! -z $message_from_first_name ]]; then
-    message+=${message_from_first_name}
+    message+="*${message_from_first_name}*"
   else
     message+=${message_from_id}
   fi
