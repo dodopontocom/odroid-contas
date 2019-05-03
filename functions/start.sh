@@ -5,8 +5,6 @@ BASEDIR=$(dirname $0)
 source ${BASEDIR}/functions/buttons.sh
 
 start.sendGreetings() {
-  keyboard1=$(eval buttons.inLine.keyboard1)
-  echo "---- ${keyboard1}"
   echo "---- ${keyboard1}"
   message="olá "
   if [[ ! -z $message_from_first_name ]]; then
