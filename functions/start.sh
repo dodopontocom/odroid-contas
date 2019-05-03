@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-start() {
+start.sendGreetings() {
 
   message="ola "
   if [[ ! -z $message_from_first_name ]]; then
