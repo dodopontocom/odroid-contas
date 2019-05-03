@@ -8,7 +8,7 @@ sleep 10
 BASEDIR=$(dirname $0)
 echo ${BASEDIR}
 source ${BASEDIR}/ShellBot.sh
-source ${BASEDIR}/start.sh
+source ${BASEDIR}/functions/start.sh
 logs=${BASEDIR}/logs
 
 # Token do bot
