@@ -5,6 +5,7 @@ txt=${BASEDIR}/texts/start.txt
 
 voice.convert() {
   message=$1
+  echo "${message}"
   file_path=/home/ubuntu
   file_name=${file_path}/voice.ogg
 
