@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 BASEDIR=$(dirname $0)
-ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
 
 _how() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -13,6 +12,7 @@ _hints() {
 }
 
 start.sendGreetings() {
+  ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
   botao=''
   ShellBot.InlineKeyboardButton --button 'botao' --line 1 --text 'Como funciono...' --callback_data 'btn_how'
   ShellBot.InlineKeyboardButton --button 'botao' --line 2 --text 'Dicas...' --callback_data 'btn_hints'
