@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 BASEDIR=$(dirname $0)
-txt=${BASEDIR}/texts/start.txt
+txt=${BASEDIR}/texts/start.md
 
 start.sendGreetings() {
   message="*olá *"
