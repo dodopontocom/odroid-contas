@@ -3,7 +3,7 @@
 
 BASEDIR=$(dirname $0)
 source ${BASEDIR}/functions/buttons.sh
-
+echo "---- ${keyboard1}"
 start.sendGreetings() {
   echo "---- ${keyboard1}"
   message="olá "
