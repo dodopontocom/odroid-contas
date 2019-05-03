@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASEDIR=$(dirname $0)
-source ${BASEDIR}/../ShellBot.sh
+source ${BASEDIR}/ShellBot.sh
 
 buttons.inLine() {
   botao=''
