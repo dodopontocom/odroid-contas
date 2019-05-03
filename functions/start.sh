@@ -1,5 +1,9 @@
 #!/bin/bash
 #
+
+BASEDIR=$(dirname $0)
+source ${BASEDIR}/buttons.sh
+
 start.sendGreetings() {
 
   message="olá "
