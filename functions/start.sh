@@ -4,11 +4,13 @@ BASEDIR=$(dirname $0)
 source ${BASEDIR}/ShellBot.sh
 
 start.btn_how() {
+	echo -e '*hello from _how*'
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*$(echo -e '*hello from _how*')"
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 					--text "TEST_HOW"
 }
 start.btn_hints() {
+	echo -e '*hello from _hints*'
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "*$(echo -e '*hello from _hints*')"
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 					--text "TEST_HINTS"
