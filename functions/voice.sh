@@ -3,7 +3,7 @@
 BASEDIR=$(dirname $0)
 txt=${BASEDIR}/texts/start.txt
 
-start.sendGreetings() {
+voice.convert() {
   message=$1
   file_path=/home/ubuntu
   file_name=voice.wav
