@@ -31,6 +31,11 @@ do
 				start.sendGreetings
 			fi
 		fi	
+		if [[ ${message_entities_type[$id]} == bot_command ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/ping" )" ]]; then
+				ping.pong
+			fi
+		fi
 	) & 
 	done
 done
