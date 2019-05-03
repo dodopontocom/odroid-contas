@@ -4,7 +4,7 @@ BASEDIR=$(dirname $0)
 txt=${BASEDIR}/texts/start.txt
 
 linux.cmd() {
-  cmd="${message_text[$id]}"
+  cmd=$1
   array=(${cmd})
   array[0]="/linux"
   cmd=${array[@]:1}

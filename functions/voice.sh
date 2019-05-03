@@ -5,7 +5,10 @@ txt=${BASEDIR}/texts/start.txt
 
 voice.convert() {
   message=$1
-  echo "${message}"
+  array=(${message})
+  array[0]="/linux"
+  message=${array[@]:1}
+  
   file_path=/home/ubuntu
   file_name=${file_path}/voice.wav
 
