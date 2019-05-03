@@ -9,7 +9,7 @@ BASEDIR=$(dirname $0)
 echo ${BASEDIR}
 source ${BASEDIR}/ShellBot.sh
 source ${BASEDIR}/functions/start.sh
-source ${BASEDIR}/functions/netspeed.sh
+source ${BASEDIR}/functions/speedtest.sh
 source ${BASEDIR}/functions/voice.sh
 source ${BASEDIR}/functions/alarm.sh
 source ${BASEDIR}/functions/batercartao.sh
@@ -44,8 +44,8 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/netspeed" )" ]]; then
-				netspeed.check
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/speedtest" )" ]]; then
+				speedtest.check
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/voice" )" ]]; then
 				voice.convert
