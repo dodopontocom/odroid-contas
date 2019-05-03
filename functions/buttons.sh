@@ -12,5 +12,5 @@ buttons.inLine() {
   ShellBot.regHandleFunction --function servo_function --callback_data btn_how
   ShellBot.regHandleFunction --function motion_function --callback_data btn_hints
 
-  keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao')"
+  export keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao')"
 }
