@@ -57,7 +57,7 @@ do
 				batercartao.apply
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/linux" )" ]]; then
-				linux.cmd
+				linux.cmd "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/selfie" )" ]]; then
 				selfie.send

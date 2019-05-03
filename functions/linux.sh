@@ -3,13 +3,14 @@
 BASEDIR=$(dirname $0)
 txt=${BASEDIR}/texts/start.txt
 
-start.sendGreetings() {
-  message="*olá *"
-  if [[ ! -z $message_from_first_name ]]; then
-    message+=${message_from_first_name}
-  else
-    message+=${message_from_id}
-  fi
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e $(cat ${txt}))" --parse_mode markdown
+linux.cmd() {
+  cmd="${message_text[$id]}"
+  array=(${cmd})
+  array[0]="/linux"
+  cmd=${array[@]:1}
+  if [[ ! -z ${cmd} ]]; then
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(${cmd})" --parse_mode markdown
+	else
+		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Usage: ${array[0]} <command>"
+	fi
 }
