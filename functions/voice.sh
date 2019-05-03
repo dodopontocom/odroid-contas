@@ -15,9 +15,9 @@ voice.convert() {
     -v ${file_path}:/data \
     ozzyjohnson/tts \
     bash -c 'espeak "${message}" --stdout > ${file_name}'
-    ShellBot.sendVoice --chat_id ${message_chat_id[$id]} --voice @/tmp/${file_name}
+    ShellBot.sendVoice --chat_id ${message_chat_id[$id]} --voice @${file_name}
   else
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Please, envie um texto" --parse_mode markdown
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text '`/speedtest <texto qualquer>`' --parse_mode markdown
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text '`/voice <texto qualquer>`' --parse_mode markdown
   fi
 }
