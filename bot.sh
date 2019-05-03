@@ -69,7 +69,7 @@ do
 				contas.cmd
 			fi
 		else
-			chat.hi
+			chat.hi "${message_text[$id]}"
 		fi
 	) & 
 	done
