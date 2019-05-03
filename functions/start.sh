@@ -2,7 +2,7 @@
 #
 start.sendGreetings() {
 
-  message="ola "
+  message="olá "
   if [[ ! -z $message_from_first_name ]]; then
     message+=${message_from_first_name}
   else
