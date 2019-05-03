@@ -1,7 +1,6 @@
-*Olá ${message_from_first_name}! Eu sou o 🤖 odroidbrBot, eu posso gerenciar suas contas 💣...*
-🆕 👇 
-Para conhecer os meus comandos, simplesmente clique neles abaixo...
-✔️👌
+*Eu sou o 🤖 odroidbrBot, eu posso gerenciar suas contas 💣...*   
+Para conhecer os meus comandos, simplesmente clique neles abaixo...👇  
+✔️👌  
 *->* /batecartao `help` \n\n
 
 *->* /contas `help` \n\n
