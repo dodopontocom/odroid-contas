@@ -8,7 +8,7 @@ start.sendGreetings() {
   file_path=/home/ubuntu
   file_name=voice.wav
 
-  if [[ ! -z ${message}]]; then
+  if [[ ! -z ${message} ]]; then
     docker run \
     -i \
     --rm \
