@@ -26,7 +26,7 @@ do
 	(
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
-				start
+				start.sendGreetings
 			fi
 		fi	
 	) & 
