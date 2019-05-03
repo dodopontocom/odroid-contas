@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 BASEDIR=$(dirname $0)
-source ${BASEDIR}/functions/buttons.sh
+ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
 
 _how() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
