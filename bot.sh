@@ -25,7 +25,7 @@ do
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
-		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
+		#ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
