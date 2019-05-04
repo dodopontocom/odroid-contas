@@ -6,7 +6,6 @@
 
 # Importando API
 BASEDIR=$(dirname $0)
-echo ${BASEDIR}
 source ${BASEDIR}/ShellBot.sh
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
@@ -20,7 +19,7 @@ source ${BASEDIR}/functions/contas.sh
 source ${BASEDIR}/functions/chat.sh
 
 ######################################################################################
-#source <(cat ${BASEDIR}/functions/start.sh)
+#source <(cat ${BASEDIR}/functions/*.sh)
 #for f in ${BASEDIR}/functions/*.sh; do source $f; done
 ######################################################################################
 
