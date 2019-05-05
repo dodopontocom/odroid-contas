@@ -2,7 +2,7 @@
 #
 
 #sleep para funcionar melhor no startup do sistema
-#sleep 10
+sleep 10
 
 # Importando API
 BASEDIR=$(dirname $0)
@@ -17,6 +17,7 @@ source ${BASEDIR}/functions/selfie.sh
 source ${BASEDIR}/functions/ping.sh
 source ${BASEDIR}/functions/contas.sh
 source ${BASEDIR}/functions/chat.sh
+source ${BASEDIR}/functions/europe_todo.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -33,8 +34,16 @@ ShellBot.init --token "$bot_token" --monitor --flush
 
 while :
 do
+	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
+	r1=$(head -c 500 /dev/urandom | tr -dc "0-9" | fold -w 1 | head -n 1)
+	r2=$(head -c 500 /dev/urandom | tr -dc "0-9" | fold -w 1 | head -n 1)
+	if [[ ${r1} -eq ${r2} ]]; then
+		#ShellBot.sendMessage --chat_id "11504381" --text "ola, random message" --parse_mode markdown
+		europe_todo_random.message
+	fi
+
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
@@ -66,6 +75,9 @@ do
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/contas" )" ]]; then
 				contas.cmd
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/reminder" )" ]]; then
+				europe_todo.message
 			fi
 		else
 			chat.hi "${message_text[$id]}"
