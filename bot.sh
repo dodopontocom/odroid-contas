@@ -37,12 +37,12 @@ do
 	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
-	r1=$(head -c 500 /dev/urandom | tr -dc "0-9" | fold -w 1 | head -n 1)
-	r2=$(head -c 500 /dev/urandom | tr -dc "0-9" | fold -w 1 | head -n 1)
-	if [[ ${r1} -eq ${r2} ]]; then
+	#r1=$(head -c 500 /dev/urandom | tr -dc "A-Z0-9" | fold -w 1 | head -n 1)
+	#r2=$(head -c 500 /dev/urandom | tr -dc "A-Z0-9" | fold -w 1 | head -n 1)
+	#if [[ "${r1}" == "${r2}" ]]; then
 		#ShellBot.sendMessage --chat_id "11504381" --text "ola, random message" --parse_mode markdown
-		europe_todo_random.message
-	fi
+	#	europe_todo_random.message "-263066376 11504381"
+	#fi
 
 	for id in $(ShellBot.ListUpdates)
 	do
@@ -80,7 +80,7 @@ do
 				europe_todo.message
 			fi
 		else
-			chat.hi "${message_text[$id]}"
+			chat.hi
 		fi
 	) & 
 	done

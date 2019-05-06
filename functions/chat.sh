@@ -1,18 +1,13 @@
 #!/bin/bash
 #
 BASEDIR=$(dirname $0)
-txt=${BASEDIR}/texts/start.txt
+words=${BASEDIR}/texts/words.txt
 
 chat.hi() {
-  message=$1
-  array=(${message})
-  array[0]="/linux"
-  message=${array[@]:1}
-
-  if [[ ! -z $message_from_first_name ]]; then
-    message+=${message_from_first_name}
-  else
-    message+=${message_from_id}
-  fi
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "safado(a)..." --parse_mode markdown
+	echo ${words}
+	echo ${txt}
+	amount=$(cat ${words} | wc -l)
+	r_amount=$(head -c 500 /dev/urandom | tr -dc "1-${amount}" | fold -w 1 | head -n 1)
+	message=$(sed -n "${r_amount}p" < ${words})
+  	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 }
