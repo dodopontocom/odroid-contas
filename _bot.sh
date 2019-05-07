@@ -16,7 +16,6 @@ source ${BASEDIR}/functions/contas.sh
 source ${BASEDIR}/functions/chat.sh
 source ${BASEDIR}/functions/europe_todo.sh
 source ${BASEDIR}/functions/test.sh
-source ${BASEDIR}/BUTTONS.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -31,6 +30,17 @@ bot_token=$(cat ${BASEDIR}/.token)
 # Inicializando o bot
 ShellBot.init --token "$bot_token" --monitor --flush
 
+############### keyboard para o comando contas #######################################
+botao1=''
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'Listar' --callback_data 'btn_list'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'Adicionar' --callback_data 'btn_add'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'Remover' --callback_data 'btn_rm'
+ShellBot.regHandleFunction --function contas.list --callback_data 'btn_list'
+ShellBot.regHandleFunction --function contas.add --callback_data btn_add
+ShellBot.regHandleFunction --function contas.rm --callback_data btn_rm
+keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
+#######################################################################################
+
 while :
 do
 	
@@ -39,7 +49,7 @@ do
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
-		#ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
+		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
