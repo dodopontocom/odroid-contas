@@ -1,2 +1,4 @@
 .token
 ShellBot.sh
+db/
+logs/

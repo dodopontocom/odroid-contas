@@ -35,7 +35,7 @@ botao1=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'Listar' --callback_data 'btn_list'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'Adicionar' --callback_data 'btn_add'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'Remover' --callback_data 'btn_rm'
-ShellBot.regHandleFunction --function contas.list --callback_data 'btn_list'
+ShellBot.regHandleFunction --function contas.list --callback_data btn_list
 ShellBot.regHandleFunction --function contas.add --callback_data btn_add
 ShellBot.regHandleFunction --function contas.rm --callback_data btn_rm
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
@@ -70,7 +70,7 @@ do
 				linux.cmd "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/selfie" )" ]]; then
-				selfie.send
+				selfie.shot
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/ping" )" ]]; then
 				ping.pong

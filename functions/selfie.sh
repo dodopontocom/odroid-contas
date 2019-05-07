@@ -2,7 +2,7 @@
 #
 source ${BASEDIR}/functions/random.sh
 
-start.sendGreetings() {
+selfie.shot() {
   local message random_file_name
   random_file_name=$(random.helper)
   message="*tirando uma foto 🤳*"
