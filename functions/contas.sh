@@ -15,6 +15,7 @@ contas.cmd() {
 			;;
       '')
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Escolha uma opção" --reply_markup "$keyboard1"
+        
       ;;
   esac
 }
