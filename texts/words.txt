@@ -9,4 +9,8 @@ mi mi mi
 ai ai
 ó 👌
 prazer eu sou o OdroidBot
-
+sobre o que gostaria de conversar?
+https://emojipedia.org/cross-mark/
+meu código está aqui: https://github.com/dodopontocom/odroid-contas
+Hi!
+/linux `ls`
