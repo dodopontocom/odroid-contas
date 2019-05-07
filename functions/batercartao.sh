@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-BASEDIR=$(dirname $0)
-txt=${BASEDIR}/texts/start.txt
 
 start.sendGreetings() {
+  local message
   message="*olá *"
+  
   if [[ ! -z $message_from_first_name ]]; then
     message+=${message_from_first_name}
   else

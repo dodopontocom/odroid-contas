@@ -16,8 +16,8 @@ source ${BASEDIR}/functions/contas.sh
 source ${BASEDIR}/functions/chat.sh
 source ${BASEDIR}/functions/europe_todo.sh
 source ${BASEDIR}/functions/test.sh
-test.test
-exit 0
+source ${BASEDIR}/BUTTONS.sh
+
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
 #for f in ${BASEDIR}/functions/*.sh; do source $f; done

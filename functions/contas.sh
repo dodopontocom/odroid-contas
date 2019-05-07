@@ -1,15 +1,8 @@
 #!/bin/bash
 #
-BASEDIR=$(dirname $0)
-txt=${BASEDIR}/texts/start.txt
+source ${BASEDIR}/functions/random.sh
+source ${BASEDIR}/BUTTONS.sh
 
-start.sendGreetings() {
-  message="*olá *"
-  if [[ ! -z $message_from_first_name ]]; then
-    message+=${message_from_first_name}
-  else
-    message+=${message_from_id}
-  fi
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e $(cat ${txt}))" --parse_mode markdown
+contas.cmd() {
+  bills.list
 }
