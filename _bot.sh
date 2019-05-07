@@ -76,7 +76,7 @@ do
 				ping.pong
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/contas" )" ]]; then
-				contas.cmd
+				contas.cmd "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/reminder" )" ]]; then
 				europe_todo_random.message
