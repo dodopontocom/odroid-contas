@@ -1,6 +1,7 @@
 *Eu sou o 🤖 `odroidbrBot`. Eu posso gerenciar suas* 💣 `(contas)` \n 
 Para conhecer os meus comandos, simplesmente clique neles abaixo...👇 \n
 ✔️👌 \n
+*->* /trip `help` \n\n
 *->* /batecartao `help` \n\n
 *->* /contas `help` \n\n
 *->* /alarmon `help` \n\n
