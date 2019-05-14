@@ -8,12 +8,7 @@ selfie.shot() {
   message="*tirando uma foto 🤳*"
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-  
-  #start motion
-  #save the photo in tmp folder with the random name
-  # https://www.raspberrypi.org/documentation/usage/webcams/
-  # fswebcam -r 1280x720 /tmp/${random_file_name}.jpg
-  #stop motion
-  
+  fswebcam -r 1280x720 /tmp/${random_file_name}.jpg
+  sleep 2
   ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --photo @/tmp/${random_file_name}.jpg
 }
