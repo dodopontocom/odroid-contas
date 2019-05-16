@@ -15,5 +15,6 @@ selfie.shot() {
     ShellBot.sendPhoto --chat_id ${message_chat_id[$id]} --photo @/tmp/${random_file_name}.jpg
   else
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${error_message})" --parse_mode markdown
+  fi
     
 }
