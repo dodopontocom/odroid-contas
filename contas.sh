@@ -9,7 +9,7 @@ source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
 source ${BASEDIR}/functions/voice.sh
 source ${BASEDIR}/functions/alarm.sh
-source ${BASEDIR}/functions/batercartao.sh
+source ${BASEDIR}/functions/baterponto.sh
 source ${BASEDIR}/functions/linux.sh
 source ${BASEDIR}/functions/selfie.sh
 source ${BASEDIR}/functions/ping.sh
@@ -93,8 +93,8 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/alarm" )" ]]; then
 				alarm.set
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/batercartao" )" ]]; then
-				batercartao.apply
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/baterponto" )" ]]; then
+				baterponto.apply "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/linux" )" ]]; then
 				linux.cmd "${message_text[$id]}"
