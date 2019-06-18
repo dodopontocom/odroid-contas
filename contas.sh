@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#sleep 10
+sleep 10
 
 # Importando API
 BASEDIR=$(dirname $0)
@@ -77,6 +77,7 @@ do
 	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
+	#verifica se há arquivos avi do software motion e envia para mim
 	motion.get
 
 	for id in $(ShellBot.ListUpdates)
