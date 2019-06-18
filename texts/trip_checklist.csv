@@ -1,8 +1,8 @@
 Passaportes,Polícia Federal,28/jun,15:45,❌
 Passagens Madrid - Dublin,edestinos,16/jan,10:35,❌
-Passagens Dublin - Liverpool,omio,18/jan,07:05,❌
-Carro Liverpool - Londres,,18/jan,08:30,❌
-Passagens Londres - Berlim,momondo,21/jan,08:00,❌
+Passagens Dublin - Liverpool,omio,18/jan,07:05,✅
+Trem Liverpool - Londres,,18/jan,08:30,❌
+Passagens Londres - Berlim,momondo,21/jan,08:00,✅
 Trem Berlim - Amsterdã,eurostar,22/out,,❌
 Trem Amsterdã - Duvel,eurostar,23/out,,❌
 Trem Duvel - Bruges,eurostar,24/out,,❌
@@ -16,3 +16,6 @@ Comprar euros (2000 reais),CEF,14/out,,❌
 Comprar euros (2000 reais),CEF,14/nov,,❌
 Comprar euros (2000 reais),CEF,14/dez,,❌
 Comprar euros (2000 reais),CEF,14/jan,,❌
+Comprar Seguro Viagem,Banco,15/Jul,,❌
+Ingresso Anne Frank,Amsterdam,15/Jul,,❌
+Comprar libras,CEF,15/Jul,,❌

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-sleep 10
+#sleep 10
 
 # Importando API
 BASEDIR=$(dirname $0)
@@ -18,6 +18,7 @@ source ${BASEDIR}/functions/chat.sh
 source ${BASEDIR}/functions/europe_todo.sh
 source ${BASEDIR}/functions/trip.sh
 source ${BASEDIR}/functions/test.sh
+source ${BASEDIR}/functions/motion.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -76,6 +77,8 @@ do
 	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
+	motion.get
+
 	for id in $(ShellBot.ListUpdates)
 	do
 	(

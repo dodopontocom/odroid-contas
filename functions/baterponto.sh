@@ -15,9 +15,11 @@ baterponto.apply() {
 		'lunch')
         		message="Bom almoço"
         		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+			;;
     'back')
         		message="Bom trabalho"
         		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+			;;
     'bye')
         		message="Bom retorno"
         		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
