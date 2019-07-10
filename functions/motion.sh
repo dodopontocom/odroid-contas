@@ -10,7 +10,10 @@ motion.get() {
   detect_folder=/mnt/sdcard/motion/detect/$day
   
   #has_video=($(find $detect_folder -name "*.avi"))
-  has_jpg=($(find $detect_folder -name "*.jpg")) > /dev/null 2>&1
+  find $detect_folder -name "*.jpg" > /dev/null 2>&1
+  if [[ $? -eq 0 ]]; then
+    has_jpg=($(find $detect_folder -name "*.jpg"))
+  fi
   
   if [[ ! -z $has_jpg ]]; then
 
