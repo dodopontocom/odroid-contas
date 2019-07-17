@@ -3,11 +3,15 @@
 source ${BASEDIR}/functions/random.sh
 
 selfie.shot() {
-  local message random_file_name error_message
+  local messages_file message random_file_name error_message user_language
+  
+  user_language=${message_from_language_code}
+  messages_file=${BASEDIR}/texts/central_of_messages.txt
+  
   random_file_name=$(random.helper)
-  message="*tirando uma foto 🤳*"
-  error_message="*ops... agora não posso*\n"
-  error_message+="...estou transmitindo ao vivo!"
+  
+  message="$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f4)"
+  error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4)"
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fswebcam -r 1280x720 /tmp/${random_file_name}.jpg
