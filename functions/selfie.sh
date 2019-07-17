@@ -7,14 +7,20 @@ selfie.shot() {
   
   user_language=${message_from_language_code}
   messages_file=${BASEDIR}/texts/central_of_messages.txt
+  message=''
   
   random_file_name=$(random.helper)
+  
   if [[ ${user_language} = "en" ]]; then
-    message="$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f4)"
-    error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4)"
+    for i in "$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f3)"; do
+      message+="$(cat $messages_file | grep selfie | grep :${i}: | grep $user_language | cut -d':' -f4)"
+      error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4)"
+    done
   else
-    message="$(cat $messages_file | grep selfie | grep :0: | grep -i pt-br | cut -d':' -f4)"
-    error_message="$(cat $messages_file | grep selfie | grep :err: | grep -i pt-br | cut -d':' -f4)"
+    for i in "$(cat $messages_file | grep selfie | grep :0: | grep pt-br | cut -d':' -f3)"; do
+      message+="$(cat $messages_file | grep selfie | grep :0: | grep -i pt-br | cut -d':' -f4)"
+      error_message="$(cat $messages_file | grep selfie | grep :err: | grep -i pt-br | cut -d':' -f4)"
+    done
   fi
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
