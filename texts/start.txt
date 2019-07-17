@@ -1,13 +1,9 @@
-*Eu sou o 🤖 `odroidbrBot`. Eu posso gerenciar suas* 💣 `(contas)` \n 
-Para conhecer os meus comandos, simplesmente clique neles abaixo...👇 \n
+*I am The 🤖 `odroidbrBot`. I can do several things \n 
+I am hosted in a odroid-c2 mini computer at Votorantim - Brazil \n
+I am in development mode, and so far I can do a few things such as...👇 \n
 ✔️👌 \n
-*->* /trip `help` \n\n
-*->* /batecartao `help` \n\n
-*->* /contas `help` \n\n
-*->* /alarmon `help` \n\n
-*->* /alarmoff `help` \n\n
-*->* /selfie `help` \n\n
-*->* /speedtest \n\n
-*->* /voice `help` \n\n
-*->* /linux `help` \n\n
+*->* /selfie `send my webcam current photo`\n\n
+*->* /speedtest `check my home internet speed`\n\n
+*->* /voice `<text>` \n\n
+*->* /linux `<command>` \n\n
 *->* /ping
