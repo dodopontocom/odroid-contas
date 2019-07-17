@@ -10,3 +10,11 @@ start:en:4:*->* /selfie `send my webcam current photo`\n\n
 start:en:5:*->* /speedtest `check my home internet speed`\n\n
 start:en:6:*->* /voice `<text>`\n\n
 start:en:7:*->* /ping
+start:pt-br:0:*Olá, Eu sou o 🤖 `odroidbrBot`.* Posso fazer algumas coisas legais\n
+start:pt-br:1:Eu estou rodando direto da placa odroid-c2 hospedado em Votorantim - Brasil\n
+start:pt-br:2:Estou ainda em desenvolvimento, posso fazer algumas coisas do tipo...👇\n
+start:pt-br:3:✔️👌\n
+start:pt-br:4:*->* /selfie `enviar uma foto atual`\n\n
+start:pt-br:5:*->* /speedtest `verificar internet da minha casa`\n\n
+start:pt-br:6:*->* /voice `<texto>`\n\n
+start:pt-br:7:*->* /ping
