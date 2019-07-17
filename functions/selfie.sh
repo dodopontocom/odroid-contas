@@ -9,9 +9,13 @@ selfie.shot() {
   messages_file=${BASEDIR}/texts/central_of_messages.txt
   
   random_file_name=$(random.helper)
-  
-  message="$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f4)"
-  error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4)"
+  if [[ ${user_language} = "en" ]]; then
+    message="$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f4)"
+    error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4)"
+  else
+    message="$(cat $messages_file | grep selfie | grep :0: | grep -i pt-br | cut -d':' -f4)"
+    error_message="$(cat $messages_file | grep selfie | grep :err: | grep -i pt-br | cut -d':' -f4)"
+  fi
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fswebcam -r 1280x720 /tmp/${random_file_name}.jpg
