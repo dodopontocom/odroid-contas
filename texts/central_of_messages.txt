@@ -1,4 +1,12 @@
-selfie:ptbr:0:*Tirando uma foto 🤳*\n
+selfie:pt-br:0:*Tirando uma foto 🤳*\n
 selfie:en:0:*Taking a picture 🤳*\n
-selfie:ptbr:err:*Ops... agora não posso, tente mais tarde*\n
+selfie:pt-br:err:*Ops... agora não posso, tente mais tarde*\n
 selfie:en:err:*Ups... I can't now, try later*\n
+start:en:0:*I am The 🤖 `odroidbrBot`.* I can do several things\n 
+start:en:1:I am hosted in a odroid-c2 mini computer at Votorantim - Brazil\n
+start:en:2:I am in development mode, and so far I can do a few things such as...👇\n
+start:en:3:✔️👌\n
+start:en:4:*->* /selfie `send my webcam current photo`\n\n
+start:en:5:*->* /speedtest `check my home internet speed`\n\n
+start:en:6:*->* /voice `<text>`\n\n
+start:en:7:*->* /ping
