@@ -13,13 +13,13 @@ selfie.shot() {
   
   if [[ ${user_language} = "en" ]]; then
     for i in "$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep selfie | grep :${i}: | grep $user_language | cut -d':' -f4)"
-      error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4)"
+      message+="$(cat $messages_file | grep selfie | grep :${i}: | grep $user_language | cut -d':' -f4-)"
+      error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4-)"
     done
   else
     for i in "$(cat $messages_file | grep selfie | grep :0: | grep pt-br | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep selfie | grep :0: | grep -i pt-br | cut -d':' -f4)"
-      error_message="$(cat $messages_file | grep selfie | grep :err: | grep -i pt-br | cut -d':' -f4)"
+      message+="$(cat $messages_file | grep selfie | grep :0: | grep -i pt-br | cut -d':' -f4-)"
+      error_message="$(cat $messages_file | grep selfie | grep :err: | grep -i pt-br | cut -d':' -f4-)"
     done
   fi
   
