@@ -1,11 +1,11 @@
 #!/bin/bash
 #
 start.sendGreetings() {
-  local message txt user_language system
+  local message txt user_language system messages_file
   
   system=start
   user_language=${message_from_language_code}
-  txt=${BASEDIR}/texts/start.txt
+  messages_file=${BASEDIR}/texts/start.txt
   message=''
   
   if [[ ! -z $message_from_first_name ]]; then
@@ -27,5 +27,4 @@ start.sendGreetings() {
   fi
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e $(cat ${txt}))" --parse_mode markdown
 }
