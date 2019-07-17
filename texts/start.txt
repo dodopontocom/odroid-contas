@@ -1,4 +1,4 @@
-*I am The 🤖 `odroidbrBot`. I can do several things \n 
+*I am The 🤖 `odroidbrBot`.* I can do several things \n 
 I am hosted in a odroid-c2 mini computer at Votorantim - Brazil \n
 I am in development mode, and so far I can do a few things such as...👇 \n
 ✔️👌 \n
