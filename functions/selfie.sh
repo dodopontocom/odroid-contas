@@ -1,10 +1,12 @@
 #!/bin/bash
 #
 source ${BASEDIR}/functions/random.sh
+source ${BASEDIR}/functions/apply_text_to_message.sh
 
 selfie.shot() {
-  local messages_file message random_file_name error_message user_language
+  local messages_file message random_file_name error_message user_language system
   
+  system=selfie
   user_language=${message_from_language_code}
   messages_file=${BASEDIR}/texts/central_of_messages.txt
   message=''
@@ -12,16 +14,19 @@ selfie.shot() {
   random_file_name=$(random.helper)
   
   if [[ ${user_language} = "en" ]]; then
-    for i in "$(cat $messages_file | grep selfie | grep :0: | grep $user_language | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep selfie | grep :${i}: | grep $user_language | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep selfie | grep :err: | grep $user_language | cut -d':' -f4-)"
+    for i in "$(cat $messages_file | grep ${system} | grep :0: | grep $user_language | cut -d':' -f3)"; do
+      message+="$(cat $messages_file | grep ${system} | grep :${i}: | grep $user_language | cut -d':' -f4-)"
+      error_message="$(cat $messages_file | grep ${system} | grep :err: | grep $user_language | cut -d':' -f4-)"
     done
   else
-    for i in "$(cat $messages_file | grep selfie | grep :0: | grep pt-br | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep selfie | grep :0: | grep -i pt-br | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep selfie | grep :err: | grep -i pt-br | cut -d':' -f4-)"
+    for i in "$(cat $messages_file | grep ${system} | grep :0: | grep pt-br | cut -d':' -f3)"; do
+      message+="$(cat $messages_file | grep ${system} | grep :0: | grep -i pt-br | cut -d':' -f4-)"
+      error_message="$(cat $messages_file | grep ${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
     done
   fi
+  
+  #message=$(apply.message ${user_language} ${system})
+  #error_message=$(apply.message ${user_language} ${system} 1)
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fswebcam -r 1280x720 /tmp/${random_file_name}.jpg
