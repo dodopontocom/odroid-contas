@@ -5,5 +5,4 @@ I am in development mode, and so far I can do a few things such as...👇 \n
 *->* /selfie `send my webcam current photo`\n\n
 *->* /speedtest `check my home internet speed`\n\n
 *->* /voice `<text>` \n\n
-*->* /linux `<command>` \n\n
 *->* /ping
