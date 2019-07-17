@@ -5,7 +5,7 @@ start.sendGreetings() {
   
   system=start
   user_language=${message_from_language_code}
-  messages_file=${BASEDIR}/texts/start.txt
+  messages_file=${BASEDIR}/texts/central_of_messages.txt
   message=''
   
   if [[ ! -z $message_from_first_name ]]; then
