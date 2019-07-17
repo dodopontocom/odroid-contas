@@ -1,0 +1,4 @@
+selfie:ptbr:0:*Tirando uma foto 🤳*\n
+selfie:en:0:*Taking a picture 🤳*\n
+selfie:ptbr:err:*Ops... agora não posso, tente mais tarde*\n
+selfie:en:err:*Ups... I can't now, try later*\n
