@@ -8,8 +8,6 @@ source ${BASEDIR}/ShellBot.sh
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
 source ${BASEDIR}/functions/voice.sh
-source ${BASEDIR}/functions/alarm.sh
-source ${BASEDIR}/functions/baterponto.sh
 source ${BASEDIR}/functions/linux.sh
 source ${BASEDIR}/functions/selfie.sh
 source ${BASEDIR}/functions/ping.sh
@@ -17,8 +15,8 @@ source ${BASEDIR}/functions/contas.sh
 source ${BASEDIR}/functions/chat.sh
 source ${BASEDIR}/functions/europe_todo.sh
 source ${BASEDIR}/functions/trip.sh
-source ${BASEDIR}/functions/test.sh
 source ${BASEDIR}/functions/motion.sh
+source ${BASEDIR}/functions/welcome.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -84,6 +82,9 @@ do
 	do
 	(
 		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
+
+		[[ ${message_new_chat_member_id[$id]} ]] && welcome.msg
+
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
@@ -118,8 +119,8 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/trip" )" ]]; then
 				trip.checklist "${message_text[$id]}"
 			fi
-		else
-			chat.hi
+		#else
+		#	chat.hi
 		fi
 	) & 
 	done
