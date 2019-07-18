@@ -4,7 +4,7 @@ source ${BASEDIR}/functions/random.sh
 source ${BASEDIR}/functions/apply_text_to_message.sh
 
 selfie.shot() {
-  local messages_file message random_file_name error_message user_language system
+  local messages_file message random_file_name error_message user_language system arr1 arr2
   
   system=selfie
   user_language=${message_from_language_code}
@@ -14,14 +14,19 @@ selfie.shot() {
   random_file_name=$(random.helper)
   
   if [[ ${user_language} = "en" ]]; then
-    for i in "$(cat $messages_file | grep ${system} | grep :0: | grep $user_language | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep ${system} | grep :${i}: | grep $user_language | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep ${system} | grep :err: | grep $user_language | cut -d':' -f4-)"
+    arr1=("$(cat $messages_file | grep ^${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")
+    echo "---+++${arr1[@]}"
+    for i in ${arr1[@]}; do
+      echo $i
+      message+="$(cat $messages_file | grep ^${system} | grep :$user_language: | grep :${i}: | cut -d':' -f4-)"
+      echo "+++++++++++++++${message}"
+      error_message="$(cat $messages_file | grep ^${system} | grep :err: | cut -d':' -f4-)"
     done
   else
-    for i in "$(cat $messages_file | grep ${system} | grep :0: | grep pt-br | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep ${system} | grep :0: | grep -i pt-br | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep ${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
+    arr2=("$(cat $messages_file | grep ^${system} | grep -v :err: grep pt-br | cut -d':' -f3)")
+    for i in ${arr2[@]}; do
+      message+="$(cat $messages_file | grep ^${system} | grep :${i}: | grep -i pt-br | cut -d':' -f4-)"
+      error_message="$(cat $messages_file | grep ^${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
     done
   fi
   

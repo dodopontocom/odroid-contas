@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 start.sendGreetings() {
-  local message txt user_language system messages_file
+  local message txt user_language system messages_file arr1 arr2
   
   system=start
   user_language=${message_from_language_code}
@@ -9,19 +9,22 @@ start.sendGreetings() {
   message=''
   
   if [[ ! -z $message_from_first_name ]]; then
-    message+=${message_from_first_name}
+    message+="Hi ${message_from_first_name}\n"
   else
-    message+=${message_from_id}
+    message+="Hi \`${message_from_id}\`\n"
   fi
-  
+
   if [[ ${user_language} = "en" ]]; then
-    for i in "$(cat $messages_file | grep ${system} | grep :0: | grep $user_language | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep ${system} | grep :${i}: | grep $user_language | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep ${system} | grep :err: | grep $user_language | cut -d':' -f4-)"
+    arr1=("$(cat $messages_file | grep ${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")
+    for i in ${arr1[@]}; do
+      echo $i
+      message+="$(cat $messages_file | grep ${system} | grep :$user_language: | grep :${i}: | cut -d':' -f4-)"
+      error_message="$(cat $messages_file | grep ${system} | grep :err: | cut -d':' -f4-)"
     done
   else
-    for i in "$(cat $messages_file | grep ${system} | grep :0: | grep pt-br | cut -d':' -f3)"; do
-      message+="$(cat $messages_file | grep ${system} | grep :0: | grep -i pt-br | cut -d':' -f4-)"
+    arr2=("$(cat $messages_file | grep ${system} | grep -v :err: | grep pt-br | cut -d':' -f3)")
+    for i in ${arr2[@]}; do
+      message+="$(cat $messages_file | grep ${system} | grep :${i}: | grep -i pt-br | cut -d':' -f4-)"
       error_message="$(cat $messages_file | grep ${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
     done
   fi
