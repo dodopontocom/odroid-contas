@@ -9,9 +9,9 @@ start.sendGreetings() {
   message=''
   
   if [[ ! -z $message_from_first_name ]] && [[ ${user_language} = "en" ]]; then
-    message+="Hi ${message_from_first_name} (\`${message_from_id}\`)\n"
+    message+="Hi ${message_from_first_name} (\`id:${message_from_id}\`)\n"
   else
-    message+="Oi ${message_from_first_name} (\`${message_from_id}\`)\n"
+    message+="Oi ${message_from_first_name} (\`id:${message_from_id}\`)\n"
   fi
 
   if [[ ${user_language} = "en" ]]; then
