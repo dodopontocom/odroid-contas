@@ -8,10 +8,10 @@ start.sendGreetings() {
   messages_file=${BASEDIR}/texts/central_of_messages.txt
   message=''
   
-  if [[ ! -z $message_from_first_name ]]; then
-    message+="Hi ${message_from_first_name}\n"
+  if [[ ! -z $message_from_first_name ]] && [[ ${user_language} = "en" ]]; then
+    message+="Hi ${message_from_first_name} (\`${message_from_id}\`)\n"
   else
-    message+="Hi \`${message_from_id}\`\n"
+    message+="Oi ${message_from_first_name} (\`${message_from_id}\`)\n"
   fi
 
   if [[ ${user_language} = "en" ]]; then
