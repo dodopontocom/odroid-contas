@@ -1,7 +1,0 @@
-*Gerencie suas Contas* 💣 \n 
-...👇 \n
-*->* /contas `help` \n\n
-*->* /contas `list` \n\n
-*->* /contas `add` \n\n
-*->* /contas `remove` \n\n
-*->* /contas `pay` \n\n
