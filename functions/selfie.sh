@@ -23,7 +23,7 @@ selfie.shot() {
       error_message="$(cat $messages_file | grep ^${system} | grep :err: | cut -d':' -f4-)"
     done
   else
-    arr2=("$(cat $messages_file | grep ^${system} | grep -v :err: grep pt-br | cut -d':' -f3)")
+    arr2=("$(cat $messages_file | grep ^${system} | grep -v :err: | grep pt-br | cut -d':' -f3)")
     for i in ${arr2[@]}; do
       message+="$(cat $messages_file | grep ^${system} | grep :${i}: | grep -i pt-br | cut -d':' -f4-)"
       error_message="$(cat $messages_file | grep ^${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
