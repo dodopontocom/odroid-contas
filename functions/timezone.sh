@@ -19,16 +19,10 @@ timezone.place() {
 	region=$(curl -s http://worldtimeapi.org/api/timezone | grep -Eo "[A-Z][a-z]*\/${capital}" | cut -d'/' -f1)
 	apiUrl="http://worldtimeapi.org/api/timezone/${region}/${capital}.txt"
 	
-	message="${region} / ${capital} ✅ "
+	message="${region} - ${place^} ✅ "
 	message+="\`$(curl -s ${apiUrl} | grep ^datetime | cut -d'T' -f2 | cut -d'.' -f1)\`"
-	if [[ $? -eq 0 ]]; then
-		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-	else
-		message="${capital} ❌ "
-		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-	fi
-	
-}
 
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+}
 
 
