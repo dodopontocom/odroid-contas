@@ -66,6 +66,15 @@ do
 	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
+	day=$(date +"%Y%m%d")
+	[[ ! -f ${logs}/${day}_onOFF.check ]] && { touch ${logs}/${day}_onOFF.check ; } > /dev/null 2>&1
+	echo "$(date +'%s')" >> ${logs}/${day}_onOFF.check
+	tempo_fora=$(echo $(($(tail -1 ${logs}/${day}_onOFF.check) - $(tail -2 ${logs}/${day}_onOFF.check | head -1))))
+	if [[ ${tempo_fora} -gt 60 ]]; then
+		onOFFMessage="fiquei ${tempo_fora} segundos offline"
+		ShellBot.sendMessage --chat_id $my_id --text "$(echo -e ${onOFFMessage})"
+	fi
+	
 	#verifica se há arquivos avi do software motion e envia para mim
 	motion.get
 
