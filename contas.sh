@@ -73,7 +73,7 @@ do
 	
 	tempo_fora=$(echo $(($(tail -1 ${logs}/${day}_onOFF.check) - $(tail -2 ${logs}/${day}_onOFF.check | head -1))))
 	if [[ ${tempo_fora} -gt 60 ]]; then
-		onOFFMessage="📉 `Internet Status`\n"
+		onOFFMessage="📉 \`Internet Status\`\n"
 		onOFFMessage+="Fiquei ${tempo_fora} segundos offline"
 		ShellBot.sendMessage --chat_id $my_id --text "$(echo -e ${onOFFMessage})"
 	fi
