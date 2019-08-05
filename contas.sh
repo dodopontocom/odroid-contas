@@ -17,6 +17,7 @@ source ${BASEDIR}/functions/trip.sh
 source ${BASEDIR}/functions/motion.sh
 source ${BASEDIR}/functions/welcome.sh
 source ${BASEDIR}/functions/timezone.sh
+source ${BASEDIR}/functions/date_arithmetic.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -112,6 +113,9 @@ do
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/timezone" )" ]]; then
 				timezone.place "${message_text[$id]}"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/days" )" ]]; then
+				days_from_today "2020-01-14"
 			fi
 		#else
 		#	chat.hi
