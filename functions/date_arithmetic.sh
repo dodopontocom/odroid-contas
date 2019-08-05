@@ -9,12 +9,12 @@ secs()
 
 date_diff()
 {
-    expr \( `secs "$1"` - `secs "$2"` \) / 86400
+    expr \( `secs "$1"` - "$2" \) / 86400
 }
 
 days_from_today()
 {
-    date_diff $1 ""
+    date_diff $1 "$(date +'%s')"
 }
 
 date_plus_days()
