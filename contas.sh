@@ -35,7 +35,7 @@ bot_token=$(cat ${BASEDIR}/.token)
 ShellBot.init --token "$bot_token" --monitor --flush
 message="Fui reiniciado"
 for i in ${notification_ids[@]}; do
-	ShellBot.sendMessage --chat_id $my_id --text "$(echo -e ${message})"
+	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
 
 ############### keyboard para o comando trip #######################################
