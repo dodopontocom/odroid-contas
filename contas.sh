@@ -18,6 +18,7 @@ source ${BASEDIR}/functions/motion.sh
 source ${BASEDIR}/functions/welcome.sh
 source ${BASEDIR}/functions/timezone.sh
 source ${BASEDIR}/functions/date_arithmetic.sh
+source ${BASEDIR}/functions/offline.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -25,15 +26,17 @@ source ${BASEDIR}/functions/date_arithmetic.sh
 ######################################################################################
 
 logs=${BASEDIR}/logs
+notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 
 # Token do bot
 bot_token=$(cat ${BASEDIR}/.token)
 
 # Inicializando o bot
 ShellBot.init --token "$bot_token" --monitor --flush
-my_id=11504381
 message="Fui reiniciado"
-ShellBot.sendMessage --chat_id $my_id --text "$(echo -e ${message})"
+for i in ${notification_ids[@]}; do
+	ShellBot.sendMessage --chat_id $my_id --text "$(echo -e ${message})"
+done
 
 ############### keyboard para o comando trip #######################################
 botao2=''
@@ -68,16 +71,7 @@ do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
 	############### verifica se ficou offline ########################################################################
-	day=$(date +"%Y%m%d")
-	[[ ! -f ${logs}/${day}_onOFF.check ]] && { touch ${logs}/${day}_onOFF.check ; } > /dev/null 2>&1
-	
-	tempo_fora=$(echo $(($(tail -1 ${logs}/${day}_onOFF.check) - $(tail -2 ${logs}/${day}_onOFF.check | head -1))))
-	if [[ ${tempo_fora} -gt 60 ]]; then
-		onOFFMessage="📉 \`Internet Status\`\n"
-		onOFFMessage+="Fiquei ${tempo_fora} segundos offline"
-		ShellBot.sendMessage --chat_id $my_id --text "$(echo -e ${onOFFMessage})"
-	fi
-	echo "$(date +'%s')" >> ${logs}/${day}_onOFF.check
+	offline.checker "${notification_ids[@]}" "90"
 	##################################################################################################################
 	
 	#verifica se há arquivos avi do software motion e envia para mim
