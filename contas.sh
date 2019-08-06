@@ -71,7 +71,7 @@ do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
 	############### verifica se ficou offline ########################################################################
-	offline.checker "${notification_ids[@]}" "90"
+	offline.checker "$(echo ${notification_ids[@]})" "90"
 	##################################################################################################################
 	
 	#verifica se há arquivos avi do software motion e envia para mim
