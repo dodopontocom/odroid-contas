@@ -4,14 +4,16 @@
 ###### Funciona para bots desenvolvidos com o ShellBot ->
 ########### https://github.com/shellscriptx/ShellBot/wiki
 
+BASEDIR=$(dirname $0)
+
 offline.checker() {
   local id_monitor limit_seconds timestamp log_file logs message
   
   id_monitor=(${1})
   limit_seconds=${2}
   timestamp="$(date +"%Y%m%d")"
-  log_file="${timestamp}_timeOFF.log"
-  logs=/tmp/${log_file}
+  log_file="${timestamp}_onOFF.check"
+  logs=${BASEDIR}/logs/${log_file}
 	
   [[ ! -f ${logs} ]] && { touch ${logs} ; } > /dev/null 2>&1
 	
