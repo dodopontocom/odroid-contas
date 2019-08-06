@@ -12,7 +12,7 @@ source ${BASEDIR}/functions/linux.sh
 source ${BASEDIR}/functions/selfie.sh
 source ${BASEDIR}/functions/ping.sh
 source ${BASEDIR}/functions/chat.sh
-source ${BASEDIR}/functions/europe_todo.sh
+#source ${BASEDIR}/functions/europe_todo.sh
 source ${BASEDIR}/functions/trip.sh
 source ${BASEDIR}/functions/motion.sh
 source ${BASEDIR}/functions/welcome.sh

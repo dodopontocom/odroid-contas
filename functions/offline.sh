@@ -6,13 +6,17 @@
 
 BASEDIR=$(dirname $0)
 
+calc_min() {
+	awk "BEGIN { print "$*" }"
+}
+
 offline.checker() {
-  local id_monitor limit_seconds timestamp log_file logs message
+  local id_monitor limit_seconds tempo_fora tempo_min timestamp log_file logs message message_seg message_min
   
   id_monitor=(${1})
   limit_seconds=${2}
   timestamp="$(date +"%Y%m%d")"
-  log_file="${timestamp}_onOFF.check"
+  log_file="${timestamp}_OFF.log"
   logs=${BASEDIR}/logs/${log_file}
 	
   [[ ! -f ${logs} ]] && { touch ${logs} ; } > /dev/null 2>&1
@@ -23,10 +27,17 @@ offline.checker() {
   tempo_fora=$(echo $(($(tail -1 ${logs}) - $(tail -2 ${logs} | head -1))))
   
   if [[ ${tempo_fora} -gt ${limit_seconds} ]]; then
-    message="📉 \`Internet Status\`\n"
-    message+="Fiquei *${tempo_fora}* segundos offline"
+    
+    tempo_min=$(calc_min ${tempo_fora}/60)
+    
+    message="📉 \`Internet Status\`"
+    message_seg="Fiquei aproximadamente *${tempo_fora}* segundos offline"
+    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos offline"
+    
     for i in ${id_monitor[@]}; do
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})" --parse_mode markdown
+      ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_seg})" --parse_mode markdown
+      ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_min})" --parse_mode markdown
     done
   fi
 }
