@@ -35,11 +35,15 @@ bot_token=$(cat ${BASEDIR}/.token)
 
 # Inicializando o bot
 ShellBot.init --token "$bot_token" --monitor --flush
+
 message="Fui reiniciado"
 for i in ${notification_ids[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
+
+#######################Checar recorde de tempo 'vivo'
 record.check "$(echo ${notification_ids[@]})"
+####################################################
 
 ############### keyboard para o comando trip #######################################
 botao2=''

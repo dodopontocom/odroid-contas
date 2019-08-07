@@ -41,18 +41,20 @@ record.check() {
     
     tempo_min=$(calc_min ${record_time}/60)
     
-    message="🤖 \`Record System Alive Time Status\`"
+    message="🤖 \`'NEW RECORD' of time ALIVE\`"
     message_seg="Meu recorde de tempo \`online\` foi de *${record_time}* segundos!!!"
-    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos SEM DESLIGAR!!! DIA & NOITE"
+    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos SEM DESLIGAR!!! DIA E NOITE"
     
     for i in ${id_monitor[@]}; do
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})" --parse_mode markdown
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_seg})" --parse_mode markdown
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_min})" --parse_mode markdown
     done
+
+    echo "${record_time}" >> ${time_history}
+
   fi
   
-  echo "${record_time}" >> ${time_history}
 }
 
 # Função deve ser chamada com 2 parâmetros, sendo:
