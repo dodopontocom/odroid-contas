@@ -1,3 +1,4 @@
 .token
+.send_notification_ids
 ShellBot.sh
 logs/
