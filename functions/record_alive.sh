@@ -42,8 +42,8 @@ record.check() {
     tempo_min=$(calc_min ${record_time}/60)
     
     message="🤖 \`Record System Alive Time Status\`"
-    message_seg="Fiquei aproximadamente *${record_time}* segundos offline"
-    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos"
+    message_seg="Meu recorde de tempo \`online\` foi de *${record_time}* segundos!!!"
+    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos SEM DESLIGAR!!! DIA & NOITE"
     
     for i in ${id_monitor[@]}; do
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})" --parse_mode markdown
