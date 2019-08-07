@@ -19,6 +19,7 @@ source ${BASEDIR}/functions/welcome.sh
 source ${BASEDIR}/functions/timezone.sh
 source ${BASEDIR}/functions/date_arithmetic.sh
 source ${BASEDIR}/functions/offline.sh
+source ${BASEDIR}/functions/lotomania.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -112,6 +113,9 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/days" )" ]]; then
 				daysRemain="✅ $(days_from_today "2020-01-14") dias"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${daysRemain})"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/megasena" )" ]]; then
+				lotomania.sena				
 			fi
 		#else
 		#	chat.hi
