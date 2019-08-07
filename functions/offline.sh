@@ -32,7 +32,7 @@ offline.checker() {
     
     message="📉 \`Internet Status\`"
     message_seg="Fiquei aproximadamente *${tempo_fora}* segundos offline"
-    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos offline"
+    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos"
     
     for i in ${id_monitor[@]}; do
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})" --parse_mode markdown
