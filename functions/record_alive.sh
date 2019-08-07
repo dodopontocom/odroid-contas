@@ -10,7 +10,7 @@ calc_min() {
 	awk "BEGIN { print "$*" }"
 }
 
-record() {
+record.check() {
   local id_monitor tempo_min timestamp log_file logs message message_seg message_min time_history record_history record_time
   
   id_monitor=(${1})
