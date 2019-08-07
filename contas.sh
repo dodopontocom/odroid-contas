@@ -20,6 +20,7 @@ source ${BASEDIR}/functions/timezone.sh
 source ${BASEDIR}/functions/date_arithmetic.sh
 source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
+source ${BASEDIR}/functions/record_alive.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -38,6 +39,7 @@ message="Fui reiniciado"
 for i in ${notification_ids[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
+record.check "$(echo ${notification_ids[@]})"
 
 ############### keyboard para o comando trip #######################################
 botao2=''
