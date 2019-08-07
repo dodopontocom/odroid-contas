@@ -44,7 +44,10 @@ list.pending() {
 	while read line; do
 		if [[ $(echo $line | grep -E '❌') ]]; then
 			ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-	  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+	  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${line})" --parse_mode markdown
+		else
+			message="Good News!!! Não há item pendente da opção selecionada"
+			ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 		fi
 	done < ${_checklist}
 }
