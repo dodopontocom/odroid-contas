@@ -40,15 +40,25 @@ record.check() {
   if [[ ${record_time} -gt ${last_record} ]]; then
     
     tempo_min=$(calc_min ${record_time}/60)
+    ### 2880 min = 48 horas
+    if [[ ${tempo_min} -gt 2880 ]]; then
+      tempo_dias=$(calc_min ${tempo_min}/60)
+    fi
     
     message="🤖 \`'NEW RECORD' of time ALIVE\`"
     message_seg="Meu recorde de tempo \`online\` foi de *${record_time}* segundos!!!"
-    message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos SEM DESLIGAR!!! DIA E NOITE"
+    #message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos SEM DESLIGAR!!! DIA E NOITE"
     
     for i in ${id_monitor[@]}; do
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})" --parse_mode markdown
       ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_seg})" --parse_mode markdown
-      ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_min})" --parse_mode markdown
+      if [[ -n ${tempo_dias} ]]; then
+        message_dias="Equivale aproximadamente *${tempo_dias%%.*}* dias SEM DESLIGAR!!! DIA E NOITE"
+        ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_dias})" --parse_mode markdown
+      else
+        message_min="Equivale aproximadamente *${tempo_min%%.*}* minutos SEM DESLIGAR!!! DIA E NOITE"
+        ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message_min})" --parse_mode markdown
+      fi
     done
 
     echo "${record_time}" >> ${time_history}
