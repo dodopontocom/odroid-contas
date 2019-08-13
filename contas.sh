@@ -127,6 +127,11 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/megasena" )" ]]; then
 				lotomania.sena				
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
+				#arrumar, pois desse jeito o stats vai sempre só para meu usuário
+				#segundo parâmetro deve ser melhor tratado
+				stat.verify "/home/odroid/telegram_bots_logs/contas_20190813-142401-qtlqdyekhfwtwsob.log" "$(echo ${notification_ids[@]})"			
+			fi
 		#else
 		#	chat.hi
 		fi
