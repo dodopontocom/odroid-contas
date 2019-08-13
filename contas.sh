@@ -21,6 +21,7 @@ source ${BASEDIR}/functions/date_arithmetic.sh
 source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
 source ${BASEDIR}/functions/record_alive.sh
+source ${BASEDIR}/functions/statistics.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
@@ -40,7 +41,9 @@ message="Fui reiniciado"
 for i in ${notification_ids[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
-
+#######################Enviar estatísticas de comandos
+stat.verify "/home/odroid/telegram_bots_logs/contas_20190812-154001-0wkuj4u806y5ud1f.log" "$(echo ${notification_ids[@]})"
+####################################################
 #######################Checar recorde de tempo 'vivo'
 record.check "$(echo ${notification_ids[@]})"
 ####################################################
