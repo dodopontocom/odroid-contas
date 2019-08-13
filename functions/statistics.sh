@@ -6,7 +6,7 @@ stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor
   
   commands=(selfie linux megasena days trip start timezone speedtest voice ping)
-  file=$1
+  file="${1}*.log"
   id_monitor=($2)
   message=''
   
