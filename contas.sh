@@ -43,7 +43,7 @@ for i in ${notification_ids[@]}; do
 done
 #######################Enviar estatísticas de comandos
 #stat.verify "/home/odroid/telegram_bots_logs/contas_20190812-154001-0wkuj4u806y5ud1f.log" "$(echo ${notification_ids[@]})"
-stat.verify "/home/odroid/telegram_bots_logs/contas_*.log" "$(echo ${notification_ids[@]})"
+stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"
 ####################################################
 #######################Checar recorde de tempo 'vivo'
 record.check "$(echo ${notification_ids[@]})"
