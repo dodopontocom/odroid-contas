@@ -5,11 +5,11 @@ BASEEDIR=$(dirname $0)
 stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor
   
-  commands=(selfie linux megasena days trip start timezone speedtest voice ping)
+  commands=(selfie linux megasena days trip start timezone speedtest voice ping stats)
   #file="${1}*.log"
   file=${1}
   id_monitor=($2)
-  message=''
+  message="Estatísticas geral dos \`bot_commands\` executados"
   
   #quantidade de bot_commands (todos)
   cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
@@ -19,6 +19,9 @@ stat.verify() {
 
   #quantas vezes foram executados (por comando)
   for i in ${id_monitor[@]}; do
+    ShellBot.sendMessage --chat_id ${i} \
+                --text "$(echo -e ${message})" \
+                --parse_mode markdown
     for s in ${commands[@]} ; do
       ShellBot.sendMessage --chat_id ${i} \
                 --text "$(echo "${s} -> $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l) vezes")" \
