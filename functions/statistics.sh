@@ -9,7 +9,7 @@ stat.verify() {
   #file="${1}*.log"
   file=${1}
   id_monitor=($2)
-  message="Estatísticas geral dos \`bot_commands\` executados"
+  message="Estatística geral dos \`bot_commands\` executados"
   
   #quantidade de bot_commands (todos)
   cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
