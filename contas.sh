@@ -42,8 +42,8 @@ for i in ${notification_ids[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
 #######################Enviar estatísticas de comandos
-stat.verify "/home/odroid/telegram_bots_logs/contas_20190813-142401-qtlqdyekhfwtwsob.log" "$(echo ${notification_ids[@]})"
-#stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"
+#stat.verify "/home/odroid/telegram_bots_logs/contas_20190813-142401-qtlqdyekhfwtwsob.log" "$(echo ${notification_ids[@]})"
+stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"
 ####################################################
 #######################Checar recorde de tempo 'vivo'
 record.check "$(echo ${notification_ids[@]})"
