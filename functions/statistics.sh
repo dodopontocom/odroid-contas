@@ -12,11 +12,13 @@ stat.verify() {
   message="Estatística geral dos \`bot_commands\` executados"
   
   #quantidade de bot_commands (todos)
-  cmd_total=$(set +f;cat ${file};set -f; | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
+  set +f
+  cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
 
   #quais foram os bot_commands executados
-  cmd_executed=$(set +f;cat ${file};set -f; | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g")
-
+  cmd_executed=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g")
+  set -f
+  
   #quantas vezes foram executados (por comando)
   for i in ${id_monitor[@]}; do
     ShellBot.sendMessage --chat_id ${i} \
