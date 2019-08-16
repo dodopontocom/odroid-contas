@@ -41,8 +41,9 @@ record.check() {
     
     tempo_min=$(calc_min ${record_time}/60)
     ### 2880 min = 48 horas
+    ### 1440 min = 24 horas
     if [[ ${tempo_min} -gt 2880 ]]; then
-      tempo_dias=$(calc_min ${tempo_min}/60)
+      tempo_dias=$(calc_min ${tempo_min}/1440)
     fi
     
     message="🤖 \`'NEW RECORD' of time ALIVE\`"
