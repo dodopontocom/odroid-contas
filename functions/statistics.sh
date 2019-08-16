@@ -6,16 +6,16 @@ stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor
   
   commands=(selfie linux megasena days trip start timezone speedtest voice ping stats)
-  #file="${1}*.log"
-  file=${1}
+  file="${1}*.log"
+  #file=${1}
   id_monitor=($2)
   message="Estatística geral dos \`bot_commands\` executados"
   
   #quantidade de bot_commands (todos)
-  cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
+  cmd_total=$(set +f;cat ${file};set -f; | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
 
   #quais foram os bot_commands executados
-  cmd_executed=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g")
+  cmd_executed=$(set +f;cat ${file};set -f; | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g")
 
   #quantas vezes foram executados (por comando)
   for i in ${id_monitor[@]}; do
