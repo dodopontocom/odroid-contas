@@ -7,12 +7,8 @@ BASEEDIR=$(dirname $0)
 
 bkp_folder=/mnt/sdcard/telegram_bots_bkp
 
-set +f
-bkp_cmd=($(tar xvf ${bkp_folder}/*.tar.gz -O | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
-set -f
-
 stat.verify() {
-  local commands file message cmd_total cmd_executed id_monitor
+  local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
   commands=(selfie linux megasena days trip start timezone speedtest voice ping stats)
   file="${1}*.log"
@@ -23,6 +19,9 @@ stat.verify() {
   #quantidade de bot_commands (todos)
   set +f
   cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
+  
+  #para o bkp
+  bkp_cmd=($(tar xvf ${bkp_folder}/*.tar.gz -O | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
 
   #quais foram os bot_commands executados
   cmd_executed=($(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
