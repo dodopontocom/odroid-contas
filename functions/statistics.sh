@@ -41,7 +41,7 @@ stat.verify() {
   
   #quantas vezes foram executados (por comando)
   for i in ${id_monitor[@]}; do
-    ShellBot.sendMessage --chat_id ${i} \
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                 --text "$(echo -e ${message})" \
                 --parse_mode markdown
     for s in ${commands[@]} ; do
