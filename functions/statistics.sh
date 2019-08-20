@@ -21,7 +21,14 @@ stat.verify() {
   
   commands=(selfie linux megasena days trip start timezone speedtest voice ping stats)
   file="${1}*.log"
-  id_monitor=($2)
+  
+  #id_monitor=($2:=${message_chat_id})
+  if [[ -n ${message_chat_id} ]]; then
+    id_monitor=(${message_chat_id})
+  else
+    id_monitor=($2)
+  fi
+  
   message="1 - Estatística semanal dos \`bot_commands\` executados"
   
   #quantidade de bot_commands (todos)
@@ -41,7 +48,7 @@ stat.verify() {
   
   #quantas vezes foram executados (por comando)
   for i in ${id_monitor[@]}; do
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+    ShellBot.sendMessage --chat_id ${i} \
                 --text "$(echo -e ${message})" \
                 --parse_mode markdown
     for s in ${commands[@]} ; do
@@ -49,31 +56,13 @@ stat.verify() {
 	    echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${BASEDIR}/functions/test.dat
 	    #
     done
-  done
   
-  gnuplot ${BASEDIR}/functions/plot.gp
-  if [[ $? -eq 0 ]]; then
-    ShellBot.sendPhoto --chat_id ${i} --photo @/tmp/003.png
-  else
-    ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
-  fi
-  rm -vfr ${BASEDIR}/functions/test.dat
-
-  message="2 - Estatística geral dos \`bot_commands\` executados que já estão em backup"
-  for i in ${id_monitor[@]}; do
-    ShellBot.sendMessage --chat_id ${i} \
-                --text "$(echo -e ${message})" \
-                --parse_mode markdown
-    for s in ${commands[@]} ; do
-                echo "${s} $(echo ${bkp_cmd[@]} | grep ${s} -o | wc -l)" >> ${BASEDIR}/functions/test.dat
-    done
+    gnuplot ${BASEDIR}/functions/plot.gp
+    if [[ $? -eq 0 ]]; then
+      ShellBot.sendPhoto --chat_id ${i} --photo @/tmp/003.png
+    else
+      ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
+    fi
+    rm -vfr ${BASEDIR}/functions/test.dat
   done
-  
-  gnuplot ${BASEDIR}/functions/plot.gp
-  if [[ $? -eq 0 ]]; then
-    ShellBot.sendPhoto --chat_id ${i} --photo @/tmp/003.png
-  else
-    ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
-  fi
-  rm -vfr ${BASEDIR}/functions/test.dat
 }
