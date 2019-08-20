@@ -28,7 +28,7 @@ stat.verify() {
   set -f
   
   #quantas vezes foram executados (por comando)
-  ## for i in ${id_monitor[@]}; do
+  for i in ${id_monitor[@]}; do
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                 --text "$(echo -e ${message})" \
                 --parse_mode markdown
@@ -38,16 +38,16 @@ stat.verify() {
                 --parse_mode markdown
       #"$(echo "${s} -> $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l) vezes")"
     done
-  ## done
-  #message="2 - Estatística geral dos \`bot_commands\` executados que já estão em backup"
-  #for i in ${id_monitor[@]}; do
-  #  ShellBot.sendMessage --chat_id ${i} \
-  #              --text "$(echo -e ${message})" \
-  #              --parse_mode markdown
-  #  for s in ${commands[@]} ; do
-  #    ShellBot.sendMessage --chat_id ${i} \
-  #              --text "$(echo "${s} ---> $(echo ${bkp_cmd[@]} | grep ${s} -o | wc -l)")" \
-  #              --parse_mode markdown
-  #  done
-  #done
+  done
+  message="2 - Estatística geral dos \`bot_commands\` executados que já estão em backup"
+  for i in ${id_monitor[@]}; do
+    ShellBot.sendMessage --chat_id ${i} \
+                --text "$(echo -e ${message})" \
+                --parse_mode markdown
+    for s in ${commands[@]} ; do
+      ShellBot.sendMessage --chat_id ${i} \
+                --text "$(echo "${s} ---> $(echo ${bkp_cmd[@]} | grep ${s} -o | wc -l)")" \
+                --parse_mode markdown
+    done
+  done
 }
