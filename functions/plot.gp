@@ -10,4 +10,5 @@ set border 2
 
 set xlabel "Comandos Executados"
 set ylabel "Número de Vezes Executados"
+unset label
 plot "/home/odroid/odroid-contas/functions/test.dat" using 2: xtic(1) with histogram
