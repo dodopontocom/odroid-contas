@@ -6,4 +6,4 @@ set boxwidth 0.5
 
 set xlabel "Comandos Executados"
 set ylabel "Frequência"
-plot "/home/odroid/odroid-contas/functions/test.dat" using 2: xtic(1) with box
+plot "/home/odroid/odroid-contas/functions/test.dat" using 2: xtic(1) with boxes
