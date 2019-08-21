@@ -1,8 +1,12 @@
-set output "/tmp/003.png"
+set title "OdroidBOT Estatísticas dos Comandos"
+
 set terminal png
+set output "/tmp/003.png"
 
 set style fill solid
-set boxwidth 0.75
+set boxwidth 0.75 border -1
+
+set border 2
 
 set xlabel "Comandos Executados"
 set ylabel "Número de Vezes Executados"
