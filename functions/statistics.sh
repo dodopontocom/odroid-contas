@@ -19,7 +19,7 @@ gp_script=${BASEDIR}/functions/plot.gp
 stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
-  commands=(selfie linux megasena days trip start timezone speedtest voice ping stats)
+  commands=(selfie linux megasena days trip start timezone speedtest voice ping stats autokill)
   file="${1}*.log"
   
   #id_monitor=($2:=${message_chat_id})
