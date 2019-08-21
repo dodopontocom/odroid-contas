@@ -10,5 +10,6 @@ set border 10
 
 set xlabel "Comandos Executados"
 set ylabel "Número de Vezes Executados"
-unset label
+set xtics rotate by -45
+
 plot "/home/odroid/odroid-contas/functions/test.dat" using 2: xtic(1) with histogram
