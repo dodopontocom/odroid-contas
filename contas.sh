@@ -132,6 +132,11 @@ do
 				#segundo parâmetro deve ser melhor tratado
 				stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"			
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/autokill" )" ]]; then
+				set +f
+				killall contas.sh			
+				set -f
+			fi
 		#else
 		#	chat.hi
 		fi
