@@ -6,7 +6,7 @@ set output "/tmp/003.png"
 set style fill solid
 set boxwidth 0.5
 
-set border 10
+set linetype 52 lc "dark-red"
 
 set xlabel "Comandos Executados"
 set ylabel "Número de Vezes Executados"
