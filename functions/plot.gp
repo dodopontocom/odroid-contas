@@ -4,7 +4,7 @@ set terminal png
 set output "/tmp/003.png"
 
 set style fill solid
-set boxwidth 0.75 border -1
+set boxwidth 0.5
 
 set border 2
 
