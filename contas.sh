@@ -134,6 +134,8 @@ do
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/autokill" )" ]]; then
 				set +f
+				git --work-tree=/home/odroid/odroid-contas/ \
+					--git-dir=/home/odroid/odroid-contas/.git pull origin develop
 				killall contas.sh			
 				set -f
 			fi
