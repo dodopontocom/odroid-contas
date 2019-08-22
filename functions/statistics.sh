@@ -41,9 +41,7 @@ stat.verify() {
                 --text "$(echo -e ${message})" \
                 --parse_mode markdown
     for s in ${commands[@]} ; do
-	    #
-	    echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${BASEDIR}/functions/test.dat
-	    #
+      echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${BASEDIR}/functions/test.dat
     done
   
     gnuplot ${BASEDIR}/functions/plot.gp
