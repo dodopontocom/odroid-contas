@@ -2,17 +2,6 @@
 
 BASEDIR=$(dirname $0)
 
-# set output "001.png"
-# set terminal png
-
-# set style fill solid
-# set boxwidth 0.5
-# plot "te.dat" using 2: xtic(1) with histogram
-
-#tar: para procurar também dentro do backup
-#tar xvf  test.tar.gz -O | grep "start\|selfie"
-#for i in $(find -name "*.tar.gz"); do tar xzvf ${i} -O | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"; done
-
 bkp_folder=/mnt/sdcard/telegram_bots_bkp
 gp_script=${BASEDIR}/functions/plot.gp
 
@@ -21,7 +10,6 @@ stat.verify() {
   
   commands=(selfie linux megasena days trip start timezone speedtest voice ping stats autokill)
   
-  
   #id_monitor=($2:=${message_chat_id})
   if [[ -n ${message_chat_id} ]]; then
     id_monitor=(${message_chat_id})
@@ -29,11 +17,9 @@ stat.verify() {
     id_monitor=($2)
   fi
   
-  message="1 - Estatística semanal dos \`bot_commands\` executados"
+  message="📊 Estatística semanal dos \`bot_commands\` executados"
   
-  #quantidade de bot_commands (todos)
   set +f
-  #cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
   
   #para o bkp
   #cd ${bkp_folder}
@@ -43,9 +29,9 @@ stat.verify() {
   #cd -
 
   #quais foram os bot_commands executados
-  file=''
-  file="${1}*.log"
-  cmd_executed=($(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
+  #file=''
+  file=$1
+  cmd_executed=($(cat ${file}*.log | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
   set -f
   
   #quantas vezes foram executados (por comando)
