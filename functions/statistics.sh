@@ -20,7 +20,7 @@ stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
   commands=(selfie linux megasena days trip start timezone speedtest voice ping stats autokill)
-  file="${1}*.log"
+  
   
   #id_monitor=($2:=${message_chat_id})
   if [[ -n ${message_chat_id} ]]; then
@@ -33,16 +33,18 @@ stat.verify() {
   
   #quantidade de bot_commands (todos)
   set +f
-  cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
+  #cmd_total=$(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/ | wc -l)
   
   #para o bkp
-  cd ${bkp_folder}
-  for i in $(find -name "*.tar.gz"); do
-	bkp_cmd=($(tar xzvf ${i} -O | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
-  done
-  cd -
+  #cd ${bkp_folder}
+  #for i in $(find -name "*.tar.gz"); do
+	#bkp_cmd=($(tar xzvf ${i} -O | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
+  #done
+  #cd -
 
   #quais foram os bot_commands executados
+  file=''
+  file="${1}*.log"
   cmd_executed=($(cat ${file} | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
   set -f
   
