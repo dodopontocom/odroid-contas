@@ -4,6 +4,10 @@ sleep 7
 
 # Importando API
 BASEDIR=$(dirname $0)
+
+# Validando variáveis necessárias
+source ${BASEDIR}/functions/utils.sh
+
 source ${BASEDIR}/ShellBot.sh
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
