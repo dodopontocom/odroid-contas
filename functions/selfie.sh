@@ -1,7 +1,5 @@
 #!/bin/bash
 #
-source ${BASEDIR}/functions/random.sh
-source ${BASEDIR}/functions/apply_text_to_message.sh
 
 selfie.shot() {
   local messages_file message random_file_name error_message user_language system arr1 arr2

@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+
 start.sendGreetings() {
   local message txt user_language system messages_file arr1 arr2
   

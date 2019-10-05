@@ -4,8 +4,6 @@
 ###### Funciona para bots desenvolvidos com o ShellBot ->
 ########### https://github.com/shellscriptx/ShellBot/wiki
 
-BASEDIR=$(dirname $0)
-
 calc_min() {
 	awk "BEGIN { print "$*" }"
 }

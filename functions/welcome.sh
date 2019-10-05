@@ -1,4 +1,7 @@
+#!/bin/bash
+
 # boas vindas
+
 welcome.msg()
 {
 	local msg

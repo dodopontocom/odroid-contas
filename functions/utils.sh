@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ${BASEDIR}/definitions.sh
+source ${BASEDIR}/.definitions.sh
 
 validateVars() {
 	vars_list=($@)

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $0)
-
 lotomania.sena() {
   local apiUrl cmd_api jogo message numeros data_hoje data
   

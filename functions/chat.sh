@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-source ${BASEDIR}/functions/random.sh
 
 chat.hi() {
 	local words random_number

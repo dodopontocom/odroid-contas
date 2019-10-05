@@ -1,0 +1,12 @@
+selfie
+linux
+megasena
+days
+trip
+start
+timezone
+speedtest
+voice
+ping
+stats
+autokill

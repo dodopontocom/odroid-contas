@@ -1,7 +1,5 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $0)
-
 bkp_folder=/mnt/sdcard/telegram_bots_bkp
 gp_script=${BASEDIR}/functions/plot.gp
 notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
@@ -9,7 +7,7 @@ notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
-  commands=(selfie linux megasena days trip start timezone speedtest voice ping stats autokill)
+  commands=($(cat ${BASEDIR}/texts/commands_list.txt))
   
   #id_monitor=($2:=${message_chat_id})
   if [[ -n ${message_chat_id} ]]; then

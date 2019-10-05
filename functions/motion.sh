@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-source ${BASEDIR}/functions/random.sh
+
 myId=11504381
 
 motion.get() {
