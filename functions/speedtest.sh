@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-source ${BASEDIR}/functions/random.sh
 
 speedtest.check() {
   local message random_file_name

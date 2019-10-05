@@ -26,6 +26,7 @@ source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
 source ${BASEDIR}/functions/record_alive.sh
 source ${BASEDIR}/functions/statistics.sh
+source ${BASEDIR}/functions/random.sh
 
 ######################################################################################
 #source <(cat ${BASEDIR}/functions/*.sh)
