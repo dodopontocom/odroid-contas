@@ -36,7 +36,7 @@ logs=${BASEDIR}/logs
 notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 
 # Token do bot
-bot_token=${TELEGRAM_BOT}
+bot_token=${TELEGRAM_TOKEN}
 
 # Inicializando o bot
 ShellBot.init --token "$bot_token" --monitor --flush
