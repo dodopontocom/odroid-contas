@@ -15,4 +15,4 @@ validateVars() {
 	done
 }
 
-validateVars TELEGRAM_BOT
+validateVars TELEGRAM_TOKEN
