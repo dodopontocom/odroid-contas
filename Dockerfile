@@ -1,18 +1,22 @@
-#FROM alpine:latest
-FROM ubuntu
+FROM alpine
 
-RUN apt-get update && \
-		apt-get install -y jq curl pdfgrep curl
-# RUN apk add --update \
-#   jq \
-#   curl \
-# 	pdfgrep \
-# 	curl \
-# 	bash
+ENV BOT_HOME "/home/odroid-contas"
+
+RUN apk add --update && \
+	apk add curl \
+	pdfgrep \
+ 	curl \
+ 	bash \
+	util-linux
 	
-RUN mkdir -p /home/odroid
-ADD . /home/odroid
-WORKDIR /home/odroid
-RUN chmod +x bot.sh
+ 
+#RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
+#	chmod +x /usr/bin/jq
+
+RUN mkdir $BOT_HOME
+ADD . $BOT_HOME
+
+WORKDIR $BOT_HOME
+RUN chmod +x $BOT_HOME/contas.sh
 
 ENTRYPOINT "./bot.sh" && /bin/bash
