@@ -20,15 +20,6 @@ stat.verify() {
   
   set +f
   
-  #para o bkp
-  #cd ${bkp_folder}
-  #for i in $(find -name "*.tar.gz"); do
-	#bkp_cmd=($(tar xzvf ${i} -O | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
-  #done
-  #cd -
-
-  #quais foram os bot_commands executados
-  #file=''
   file=$1
   cmd_executed=($(cat ${file}*.log | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
   set -f
