@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-sleep 7
 
 BASEDIR=$(dirname $0)
 

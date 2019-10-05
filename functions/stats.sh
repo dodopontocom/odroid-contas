@@ -1,7 +1,8 @@
 #!/bin/bash
 
 bkp_folder=/mnt/sdcard/telegram_bots_bkp
-gp_script=${BASEDIR}/functions/plot.gp
+gp_script=${BASEDIR}/configurations/plot.gp
+test_dat_path=${BASEDIR}/configurations/test.dat
 
 stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
@@ -29,15 +30,15 @@ stat.verify() {
                 --text "$(echo -e ${message})" \
                 --parse_mode markdown
     for s in ${commands[@]} ; do
-      echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${BASEDIR}/functions/test.dat
+      echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${test_dat_path}
     done
   
-    gnuplot ${BASEDIR}/functions/plot.gp
+    gnuplot ${gp_script}
     if [[ $? -eq 0 ]]; then
       ShellBot.sendPhoto --chat_id ${i} --photo @/tmp/003.png
     else
       ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
     fi
-    rm -vfr ${BASEDIR}/functions/test.dat
+    rm -vfr ${test_dat_path}
   done
 }
