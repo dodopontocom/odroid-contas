@@ -2,29 +2,26 @@
 #
 sleep 7
 
-# Importando API
 BASEDIR=$(dirname $0)
 
-# Validando variáveis necessárias
+# Importante utils, script que contem o setup de inicializacao do bot
 source ${BASEDIR}/functions/utils.sh
 
 logs=${BASEDIR}/logs
 notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 
-# Token do bot
-bot_token=${TELEGRAM_TOKEN}
-
 # Inicializando o bot
-ShellBot.init --token "$bot_token" --monitor --flush
+ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
 message="Fui reiniciado"
 for i in ${notification_ids[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
+
 #######################Enviar estatísticas de comandos
-#stat.verify "/home/odroid/telegram_bots_logs/contas_20190813-142401-qtlqdyekhfwtwsob.log" "$(echo ${notification_ids[@]})"
 stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"
 ####################################################
+
 #######################Checar recorde de tempo 'vivo'
 record.check "$(echo ${notification_ids[@]})"
 ####################################################

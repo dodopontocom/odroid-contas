@@ -29,4 +29,5 @@ source ${BASEDIR}/functions/shell_api.sh
 validateVars TELEGRAM_TOKEN
 
 # Sempre pegar a última versão do ShellBot API
+# <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
 api.dinamic
