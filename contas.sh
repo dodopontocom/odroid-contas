@@ -8,31 +8,6 @@ BASEDIR=$(dirname $0)
 # Validando variáveis necessárias
 source ${BASEDIR}/functions/utils.sh
 
-source ${BASEDIR}/ShellBot.sh
-source ${BASEDIR}/functions/start.sh
-source ${BASEDIR}/functions/speedtest.sh
-source ${BASEDIR}/functions/voice.sh
-source ${BASEDIR}/functions/linux.sh
-source ${BASEDIR}/functions/selfie.sh
-source ${BASEDIR}/functions/ping.sh
-source ${BASEDIR}/functions/chat.sh
-#source ${BASEDIR}/functions/europe_todo.sh
-source ${BASEDIR}/functions/trip.sh
-source ${BASEDIR}/functions/motion.sh
-source ${BASEDIR}/functions/welcome.sh
-source ${BASEDIR}/functions/timezone.sh
-source ${BASEDIR}/functions/date_arithmetic.sh
-source ${BASEDIR}/functions/offline.sh
-source ${BASEDIR}/functions/lotomania.sh
-source ${BASEDIR}/functions/record_alive.sh
-source ${BASEDIR}/functions/statistics.sh
-source ${BASEDIR}/functions/random.sh
-
-######################################################################################
-#source <(cat ${BASEDIR}/functions/*.sh)
-#for f in ${BASEDIR}/functions/*.sh; do source $f; done
-######################################################################################
-
 logs=${BASEDIR}/logs
 notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 
