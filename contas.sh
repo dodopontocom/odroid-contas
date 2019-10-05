@@ -8,22 +8,21 @@ BASEDIR=$(dirname $0)
 source ${BASEDIR}/functions/utils.sh
 
 logs=${BASEDIR}/logs
-notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 
 # Inicializando o bot
 ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
 message="Fui reiniciado"
-for i in ${notification_ids[@]}; do
+for i in ${NOTIFICATION_IDS[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
 
 #######################Enviar estatísticas de comandos
-stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"
+stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
 
 #######################Checar recorde de tempo 'vivo'
-record.check "$(echo ${notification_ids[@]})"
+record.check "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
 
 ############### keyboard para o comando trip #######################################
@@ -59,7 +58,7 @@ do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
 	############### verifica se ficou offline ########################################################################
-	offline.checker "$(echo ${notification_ids[@]})" "90"
+	offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
 	##################################################################################################################
 	
 	#verifica se há arquivos avi do software motion e envia para mim

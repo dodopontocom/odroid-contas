@@ -2,7 +2,6 @@
 
 bkp_folder=/mnt/sdcard/telegram_bots_bkp
 gp_script=${BASEDIR}/functions/plot.gp
-notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
 
 stat.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
@@ -11,9 +10,9 @@ stat.verify() {
   
   #id_monitor=($2:=${message_chat_id})
   if [[ -n ${message_chat_id} ]]; then
-    id_monitor=(${message_chat_id})
+	id_monitor=(${message_chat_id})
   else
-    id_monitor=(${notification_ids[@]})
+	id_monitor=(${NOTIFICATION_IDS[@]})
   fi
   
   message="📊 Estatística semanal dos \`bot_commands\` executados"
