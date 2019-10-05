@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # Exit utils.sh on any error
-set -e
+#set -e
 
 source ${BASEDIR}/.definitions.sh
-
-source ${BASEDIR}/ShellBot.sh
 
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
@@ -30,9 +28,12 @@ source ${BASEDIR}/functions/var_utils.sh
 # Primeira verificação de todas é saber se tem o token exportado variável de ambiente do sistema
 validate.vars TELEGRAM_TOKEN
 
+# Export array of ids
+export.ids "${BASEDIR}/.send_notification_ids"
+
 # Sempre pegar a última versão do ShellBot API
 # <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
 dinamic.api
 
-# Export array of ids
-export.ids "${BASEDIR}/.send_notification_ids"
+# Fazer source da API só depois de baixá-la
+source ${BASEDIR}/ShellBot.sh
