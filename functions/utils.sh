@@ -21,19 +21,15 @@ source ${BASEDIR}/functions/lotomania.sh
 source ${BASEDIR}/functions/record_alive.sh
 source ${BASEDIR}/functions/statistics.sh
 source ${BASEDIR}/functions/random.sh
-source ${BASEDIR}/functions/validate_vars.sh
 source ${BASEDIR}/functions/shell_api.sh
+source ${BASEDIR}/functions/var_utils.sh
 
 # Primeira verificação de todas é saber se tem o token exportado variável de ambiente do sistema
-validateVars TELEGRAM_TOKEN
+validate.vars TELEGRAM_TOKEN
 
 # Sempre pegar a última versão do ShellBot API
 # <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
-api.dinamic
+dinamic.api
 
-ids.export() {
-	local ids_file
-	ids_file=$1
-	export NOTIFICATION_IDS=($(cat ${ids_file}))
-}
-ids.export "${BASEDIR}/.send_notification_ids"
+# Export array of ids
+export.ids "${BASEDIR}/.send_notification_ids"

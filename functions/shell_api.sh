@@ -1,6 +1,6 @@
 #!/bin/bash
 
-api.dinamic() {
+dinamic.api() {
 	
 	local api_git_url tmp_folder
 	api_git_url=https://github.com/shellscriptx/shellbot.git
