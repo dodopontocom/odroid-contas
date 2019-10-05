@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit utils.sh on any error
+set -e
+
 source ${BASEDIR}/.definitions.sh
 
 source ${BASEDIR}/ShellBot.sh
