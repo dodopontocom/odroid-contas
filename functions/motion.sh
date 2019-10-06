@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-myId=11504381
+myId=${NOTIFICATION_IDS[0]}
 
 motion.get() {
   local message tmp ziptmp has_video day detect_folder
