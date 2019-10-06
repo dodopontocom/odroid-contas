@@ -36,7 +36,8 @@ dodrones.check() {
       ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
       --reply_markup "$keyboard_backup" --parse_mode markdown
     else
-      message="Não há arquivos para transferência ❌"
+      message="Não há arquivos para transferência ❌\n"
+      message+="Lembre-se de adicionar os arquivos em ${host_path}"
       ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
         --parse_mode markdown  
     fi

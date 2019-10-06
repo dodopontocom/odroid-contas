@@ -10,3 +10,4 @@ voice
 ping
 stats
 restartbot
+dodrones
