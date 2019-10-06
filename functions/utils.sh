@@ -26,6 +26,7 @@ source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/var_utils.sh
 source ${BASEDIR}/functions/restart_bot.sh
 source ${BASEDIR}/functions/accept_linux.sh
+source ${BASEDIR}/functions/dodrones.sh
 
 # temp vars usadas no comando /linux
 tmp_pedido="/tmp/pedido_cadastro.log"

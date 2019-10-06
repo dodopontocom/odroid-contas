@@ -63,6 +63,18 @@ ShellBot.regHandleFunction --function list.search --callback_data btn_trip_outro
 keyboard_trip_checklist="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
 #######################################################################################
 
+############Botao para fazer backup dos arquivos dodrones###################
+botao3=''
+
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text 'SIM' --callback_data 'btn_dodrones_yes'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text 'NAO' --callback_data 'btn_dodrones_no'
+
+ShellBot.regHandleFunction --function dodrones.execute --callback_data btn_dodrones_yes
+ShellBot.regHandleFunction --function dodrones.cancel --callback_data btn_dodrones_no
+
+keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
+##############################################################################################
+
 while :
 do
 	
@@ -119,6 +131,9 @@ do
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/restartbot" )" ]]; then
 				restart.bot
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dodrones" )" ]]; then
+				dodrones.check "${message_chat_id[$id]}"
 			fi
 		else
 			chat.hi
