@@ -112,10 +112,9 @@ do
 				killall contas.sh			
 				set -f
 			fi
-		#else
-		#	chat.hi
+		else
+			chat.hi
 		fi
 	) & 
 	done
 done
-#FIM

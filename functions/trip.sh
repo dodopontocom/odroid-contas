@@ -11,19 +11,17 @@ trip.checklist() {
   	array[0]="/trip"
   	opt=${array[@]:1}
   	case ${opt} in
-		'list')
-        		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Checklist da Nossa Viagem:" --reply_markup "$keyboard_trip_checklist"
-		
+			'list')
+      	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Checklist da Nossa Viagem:" --reply_markup "$keyboard_trip_checklist"
 			;;
-		'edit')
-        		list.edit
-			#ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Checklist da Nossa Viagem:" --reply_markup "$keyboard_trip_checklist"
-		
+			'edit')
+      	list.edit
+				#ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Checklist da Nossa Viagem:" --reply_markup "$keyboard_trip_checklist"
 			;;
-		'')
-	        	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Checklist da Nossa Viagem:" --reply_markup "$keyboard_trip_checklist"
+			'')
+	     	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Checklist da Nossa Viagem:" --reply_markup "$keyboard_trip_checklist"
         
-      			;;
+      ;;
   	esac
 }
 	
@@ -55,7 +53,7 @@ list.done() {
 	while read line; do
 		if [[ $(echo $line | grep -E '✅') ]]; then
 			ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-	  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+	  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 		fi
 	done < ${_checklist}
 }
@@ -72,7 +70,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E -v '^Comprar' | grep -E -v '^Passagens' | grep -E -v '^Trem'| grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-		  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${_checklist}
 	fi
@@ -87,7 +85,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E '^Comprar' | grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-		  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${_checklist}
 	fi
@@ -102,7 +100,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E '^Passagens' | grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-		  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${_checklist}
 	fi
@@ -117,7 +115,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E '^Trem' | grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-			  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+			  ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${_checklist}
 	fi

@@ -3,6 +3,7 @@
 
 linux.cmd() {
   local cmd array
+  
   cmd=$1
   array=(${cmd})
   array[0]="/linux"
