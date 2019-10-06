@@ -11,6 +11,9 @@ ai ai
 prazer eu sou o OdroidBot
 sobre o que gostaria de conversar?
 https://emojipedia.org/cross-mark/
-meu código está aqui: https://github.com/dodopontocom/odroid-contas
+Meu código está aqui: https://github.com/dodopontocom/odroid-contas
 Hi!
 /linux `ls`
+Mensagem automática
+Opa
+Já conferiu os números da megasena? /megasena
