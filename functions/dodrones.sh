@@ -13,12 +13,19 @@ dodrones.check() {
   host_path="/home/rodolfo/Desktop/bot"
   dryrun_cmd="rsync -avn ${host}:${host_path}/ ${mnt_path}/DJI"
   scp_cmd="scp -r ${host}:${host_path}/ ${mnt_path}/DJI"
+  percentage_alert=$(df -k ${mnt_path} | awk '{print $5}' | egrep "[7-9][0-9]" | cut -c-2)
 
   df -h | grep "${mnt_path}"
   if [[ $? -eq 0 ]]; then
     message="Primeira verificação!\nHD de backup está ativo ✅"
     ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
         --parse_mode markdown
+    if [[ ${percentage_alert} -gt 75 ]]; then
+      message="Apenas um alerta, ${mnt_path} está com uso de ${percentage_alert}%"
+      ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
+        --parse_mode markdown
+    fi
+
     ${dryrun_cmd}
     if [[ $? -eq 0 ]]; then
       message="Segunda verificação!\nArquivos estão prontos para transferência ✅"
