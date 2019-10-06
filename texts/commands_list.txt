@@ -9,4 +9,4 @@ speedtest
 voice
 ping
 stats
-autokill
+restartbot

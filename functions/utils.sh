@@ -24,6 +24,7 @@ source ${BASEDIR}/functions/stats.sh
 source ${BASEDIR}/functions/random.sh
 source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/var_utils.sh
+source ${BASEDIR}/functions/restart_bot.sh
 
 # Export array of ids
 export.ids "${BASEDIR}/.send_notification_ids"

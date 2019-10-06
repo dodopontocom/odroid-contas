@@ -105,12 +105,8 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
 				stat.verify "/home/odroid/telegram_bots_logs/contas_"
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/autokill" )" ]]; then
-				set +f
-				git --work-tree=/home/odroid/odroid-contas/ \
-					--git-dir=/home/odroid/odroid-contas/.git pull origin develop
-				killall contas.sh			
-				set -f
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/restartbot" )" ]]; then
+				restart.bot
 			fi
 		else
 			chat.hi
