@@ -4,11 +4,11 @@
 linux.cmd() {
   local cmd array message
 
-  if [[ $(tail -1 ${tmp_pedido_temp} | grep ${message_chat_id[$id]}) ]]; then
+  if [[ $(tail -1 ${TMP_PEDIDO_TEMP} | grep ${message_chat_id[$id]}) ]]; then
     message="Pedido para usar este comando já foi enviado, por favor aguarde."
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
   
-  elif [[ $(cat ${tmp_pedido} | grep ${message_chat_id[$id]}) ]] || [[ $(echo ${NOTIFICATION_IDS[@]} | grep ${message_chat_id[$id]}) ]]; then
+  elif [[ $(cat ${TMP_PEDIDO} | grep ${message_chat_id[$id]}) ]] || [[ $(echo ${NOTIFICATION_IDS[@]} | grep ${message_chat_id[$id]}) ]]; then
     cmd=$1
     array=(${cmd})
     array[0]="/linux"

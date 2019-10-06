@@ -4,7 +4,7 @@ bkp_folder=/mnt/sdcard/telegram_bots_bkp
 gp_script=${BASEDIR}/configurations/plot.gp
 test_dat_path=${BASEDIR}/configurations/test.dat
 
-stat.verify() {
+stats.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
   commands=($(cat ${BASEDIR}/texts/commands_list.txt))

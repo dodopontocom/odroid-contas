@@ -29,8 +29,8 @@ source ${BASEDIR}/functions/accept_linux.sh
 source ${BASEDIR}/functions/dodrones.sh
 
 # temp vars usadas no comando /linux
-tmp_pedido="/tmp/pedido_cadastro.log"
-tmp_pedido_temp="/tmp/temp_pedido_cadastro.log"
+TMP_PEDIDO="/tmp/pedido_cadastro.log"
+TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
 
 # Primeira verificação de todas é saber se tem o token exportado variável de ambiente do sistema
 validate.vars TELEGRAM_TOKEN NOTIFICATION_IDS

@@ -9,7 +9,7 @@ user.register() {
   user_last_name=$3
   admins_id=(${NOTIFICATION_IDS})
   
-  echo "$user_id" > ${tmp_pedido_temp}
+  echo "$user_id" > ${TMP_PEDIDO_TEMP}
   
   message="*Pedido de acesso ao comando linux*\n"
   message+="Nome: ${user_name} ${user_last_name}\n"
@@ -30,18 +30,18 @@ user.register() {
 }
 
 user.add() {
-  local user_id tmp_pedido registrados admins_id message
+  local user_id TMP_PEDIDO registrados admins_id message
 
-  tmp_pedido="/tmp/pedido_cadastro.log"
-  tmp_pedido_temp="/tmp/temp_pedido_cadastro.log"
+  TMP_PEDIDO="/tmp/pedido_cadastro.log"
+  TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
 
-  if [[ ${tmp_pedido_temp} ]]; then
+  if [[ ${TMP_PEDIDO_TEMP} ]]; then
 
     admins_id=(${NOTIFICATION_IDS[@]})
-    user_id=$(tail -1 ${tmp_pedido_temp})
+    user_id=$(tail -1 ${TMP_PEDIDO_TEMP})
 
-    echo "$user_id" >> $tmp_pedido
-    rm -rfv ${tmp_pedido_temp}
+    echo "$user_id" >> $TMP_PEDIDO
+    rm -rfv ${TMP_PEDIDO_TEMP}
 
     if [[ $(echo ${admins_id} | grep -v $user_id) ]]; then
       for a in ${admins_id[@]}; do
@@ -79,8 +79,8 @@ user.add() {
 }
 
 user.donot() {
-  local user_id tmp_pedido registrados admins_id
+  local user_id TMP_PEDIDO registrados admins_id
 
-  tmp_pedido="/tmp/pedido_cadastro.log"
+  TMP_PEDIDO="/tmp/pedido_cadastro.log"
 
 }
