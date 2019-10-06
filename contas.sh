@@ -24,6 +24,18 @@ stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${NOTIFICATION_IDS
 record.check "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
 
+############Botao para admins aceitarem usuários executarem comandos linux###################
+botao1=''
+
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'SIM' --callback_data 'btn_s'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'NAO' --callback_data 'btn_n'
+
+ShellBot.regHandleFunction --function user.add --callback_data btn_s
+ShellBot.regHandleFunction --function user.donot --callback_data btn_n
+
+keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
+##############################################################################################
+
 ############### keyboard para o comando trip #######################################
 botao2=''
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'Listar Todos' --callback_data 'btn_trip_list'

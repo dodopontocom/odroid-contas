@@ -25,6 +25,11 @@ source ${BASEDIR}/functions/random.sh
 source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/var_utils.sh
 source ${BASEDIR}/functions/restart_bot.sh
+source ${BASEDIR}/functions/accept_linux.sh
+
+# temp vars usadas no comando /linux
+tmp_pedido="/tmp/pedido_cadastro.log"
+tmp_pedido_temp="/tmp/temp_pedido_cadastro.log"
 
 # Primeira verificação de todas é saber se tem o token exportado variável de ambiente do sistema
 validate.vars TELEGRAM_TOKEN NOTIFICATION_IDS
