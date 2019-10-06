@@ -26,9 +26,6 @@ source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/var_utils.sh
 source ${BASEDIR}/functions/restart_bot.sh
 
-# Export array of ids
-export.ids "${BASEDIR}/.send_notification_ids"
-
 # Primeira verificação de todas é saber se tem o token exportado variável de ambiente do sistema
 validate.vars TELEGRAM_TOKEN NOTIFICATION_IDS
 

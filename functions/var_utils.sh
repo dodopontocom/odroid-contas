@@ -1,15 +1,15 @@
 #!/bin/bash
 
-export.ids() {
-  local ids_file=$1
+# export.ids() {
+#   local ids_file=$1
 
-  if [[ -f ${ids_file} ]]; then
-    export NOTIFICATION_IDS=($(cat ${ids_file}))
-  else
-    echo "Id file not found"
-    exit -1
-  fi
-}
+#   if [[ -f ${ids_file} ]]; then
+#     export NOTIFICATION_IDS=($(cat ${ids_file}))
+#   else
+#     echo "Id file not found"
+#     exit -1
+#   fi
+# }
 
 validate.vars() {
   local vars_list=($@)
