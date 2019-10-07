@@ -135,9 +135,11 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dodrones" )" ]]; then
 				dodrones.check "${message_chat_id[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/chat" )" ]]; then
+				chat.switch "${message_chat_id[$id]}"
+			fi
 		else
-			ShellBot.sendMessage --chat_id ${NOTIFICATION_IDS[0]} --text "Falaram comigo sem usar comando"
-			#chat.hi
+			chat.hi
 		fi
 	) & 
 	done
