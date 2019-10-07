@@ -1,22 +1,22 @@
 #!/bin/bash
 
 ################################# START - VARIÁVEIS GLOBAIS #################################
-TMP_PEDIDO="/tmp/pedido_cadastro.log"
-TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
-API_GIT_URL="https://github.com/shellscriptx/shellbot.git"
-CHATTY_FILE="${BASEDIR}/texts/words.txt"
-CENTRAL_OF_MESSAGES_FILE="${BASEDIR}/texts/central_of_messages.txt"
+export TMP_PEDIDO="/tmp/pedido_cadastro.log"
+export TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
+export API_GIT_URL="https://github.com/shellscriptx/shellbot.git"
+export CHATTY_FILE="${BASEDIR}/texts/words.txt"
+export CENTRAL_OF_MESSAGES_FILE="${BASEDIR}/texts/central_of_messages.txt"
 
-DODRONES_MOUNT_PATH="/mnt/hd1"
-DODRONES_HOST="rodolfo@192.168.0.107"
-DODRONES_HOST_PATH="/home/rodolfo/Desktop/bot"
+export DODRONES_MOUNT_PATH="/mnt/hd1"
+export DODRONES_HOST="rodolfo@192.168.0.107"
+export DODRONES_HOST_PATH="/home/rodolfo/Desktop/bot"
 
-LOTOMANIA_API_URL="https://www.lotodicas.com.br/api"
-TIMEZONE_API_URL="http://worldtimeapi.org/api/timezone"
+export LOTOMANIA_API_URL="https://www.lotodicas.com.br/api"
+export TIMEZONE_API_URL="http://worldtimeapi.org/api/timezone"
 
-MOTION_DETECTED_PATH="/mnt/sdcard/motion/detect"
+export MOTION_DETECTED_PATH="/mnt/sdcard/motion/detect"
 
-TRIP_CHECKLIST_FILE="${BASEDIR}/texts/trip_checklist.csv"
+export TRIP_CHECKLIST_FILE="${BASEDIR}/texts/trip_checklist.csv"
 ################################# END - VARIÁVEIS GLOBAIS #################################
 
 ################################# START - Carregando todas as funções #################################
@@ -46,7 +46,8 @@ source ${BASEDIR}/functions/accept_linux.sh
 source ${BASEDIR}/functions/dodrones.sh
 ################################# END - Carregando todas as funções #################################
 
-# Primeira verificação de todas é saber se tem o token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+# Essas variáveis devem ser setadas no arquivo .definitions.sh
 helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
 # Sempre pegar a última versão do ShellBot API
