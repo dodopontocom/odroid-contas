@@ -136,7 +136,8 @@ do
 				dodrones.check "${message_chat_id[$id]}"
 			fi
 		else
-			chat.hi
+			ShellBot.sendMessage --chat_id ${NOTIFICATION_IDS[0]} --text "Falaram comigo sem usar comando"
+			#chat.hi
 		fi
 	) & 
 	done
