@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-chat_file="/tmp/chat.on"
+chat_file="/tmp/${message_chat_id[$id]}_chat.on"
 
 chat.switch
 	local status array message
@@ -32,13 +32,12 @@ chat.switch
 }
 
 chat.hi() {
-	local words random_number message
+	local random_number message
 	
-	words=${BASEDIR}/texts/words.txt
-	random_number=$(random.helper ${words})
+	random_number=$(random.helper ${CHAT_SIMPLE_REPLY})
 	
 	if [[ -f ${chat_file} ]]; then
-		message=$(sed -n "${random_number}p" < ${words})
+		message=$(sed -n "${random_number}p" < ${CHAT_SIMPLE_REPLY})
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	fi
 }

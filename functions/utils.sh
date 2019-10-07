@@ -5,7 +5,7 @@ export TMP_PEDIDO="/tmp/pedido_cadastro.log"
 export TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
 export BOT_BKP_PATH="/mnt/sdcard/telegram_bots_bkp"
 
-export CHATTY_FILE="${BASEDIR}/texts/words.txt"
+export CHAT_SIMPLE_REPLY="${BASEDIR}/texts/words.txt"
 export CENTRAL_OF_MESSAGES_FILE="${BASEDIR}/texts/central_of_messages.txt"
 
 export DODRONES_MOUNT_PATH="/mnt/hd1"
