@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-source ${BASEDIR}/functions/random.sh
 
 speedtest.check() {
   local message random_file_name
+  
   message="Aguarde alguns instantes, estou verificando a velocidade da minha internet..."
   random_file_name=$(random.helper)
   

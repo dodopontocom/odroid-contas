@@ -1,57 +1,40 @@
 #!/bin/bash
 #
-sleep 7
 
-# Importando API
 BASEDIR=$(dirname $0)
 
-# Validando variáveis necessárias
+# Importante utils, script que contem o setup de inicializacao do bot
 source ${BASEDIR}/functions/utils.sh
 
-source ${BASEDIR}/ShellBot.sh
-source ${BASEDIR}/functions/start.sh
-source ${BASEDIR}/functions/speedtest.sh
-source ${BASEDIR}/functions/voice.sh
-source ${BASEDIR}/functions/linux.sh
-source ${BASEDIR}/functions/selfie.sh
-source ${BASEDIR}/functions/ping.sh
-source ${BASEDIR}/functions/chat.sh
-#source ${BASEDIR}/functions/europe_todo.sh
-source ${BASEDIR}/functions/trip.sh
-source ${BASEDIR}/functions/motion.sh
-source ${BASEDIR}/functions/welcome.sh
-source ${BASEDIR}/functions/timezone.sh
-source ${BASEDIR}/functions/date_arithmetic.sh
-source ${BASEDIR}/functions/offline.sh
-source ${BASEDIR}/functions/lotomania.sh
-source ${BASEDIR}/functions/record_alive.sh
-source ${BASEDIR}/functions/statistics.sh
-
-######################################################################################
-#source <(cat ${BASEDIR}/functions/*.sh)
-#for f in ${BASEDIR}/functions/*.sh; do source $f; done
-######################################################################################
-
 logs=${BASEDIR}/logs
-notification_ids=($(cat ${BASEDIR}/.send_notification_ids))
-
-# Token do bot
-bot_token=${TELEGRAM_TOKEN}
 
 # Inicializando o bot
-ShellBot.init --token "$bot_token" --monitor --flush
+ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
 message="Fui reiniciado"
-for i in ${notification_ids[@]}; do
+for i in ${NOTIFICATION_IDS[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
 done
+
 #######################Enviar estatísticas de comandos
-#stat.verify "/home/odroid/telegram_bots_logs/contas_20190813-142401-qtlqdyekhfwtwsob.log" "$(echo ${notification_ids[@]})"
-stat.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${notification_ids[@]})"
+stats.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
+
 #######################Checar recorde de tempo 'vivo'
-record.check "$(echo ${notification_ids[@]})"
+record.check "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
+
+############Botao para admins aceitarem usuários executarem comandos linux###################
+botao1=''
+
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'SIM' --callback_data 'btn_s'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'NAO' --callback_data 'btn_n'
+
+ShellBot.regHandleFunction --function user.add --callback_data btn_s
+ShellBot.regHandleFunction --function user.donot --callback_data btn_n
+
+keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
+##############################################################################################
 
 ############### keyboard para o comando trip #######################################
 botao2=''
@@ -80,13 +63,25 @@ ShellBot.regHandleFunction --function list.search --callback_data btn_trip_outro
 keyboard_trip_checklist="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
 #######################################################################################
 
+############Botao para fazer backup dos arquivos dodrones###################
+botao3=''
+
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text 'SIM' --callback_data 'btn_dodrones_yes'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text 'NAO' --callback_data 'btn_dodrones_no'
+
+ShellBot.regHandleFunction --function dodrones.execute --callback_data btn_dodrones_yes
+ShellBot.regHandleFunction --function dodrones.cancel --callback_data btn_dodrones_no
+
+keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
+##############################################################################################
+
 while :
 do
 	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
 	############### verifica se ficou offline ########################################################################
-	offline.checker "$(echo ${notification_ids[@]})" "90"
+	offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
 	##################################################################################################################
 	
 	#verifica se há arquivos avi do software motion e envia para mim
@@ -132,19 +127,17 @@ do
 				lotomania.sena				
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
-				stat.verify "/home/odroid/telegram_bots_logs/contas_"
+				stats.verify "/home/odroid/telegram_bots_logs/contas_"
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/autokill" )" ]]; then
-				set +f
-				git --work-tree=/home/odroid/odroid-contas/ \
-					--git-dir=/home/odroid/odroid-contas/.git pull origin develop
-				killall contas.sh			
-				set -f
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/restartbot" )" ]]; then
+				restart.bot
 			fi
-		#else
-		#	chat.hi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dodrones" )" ]]; then
+				dodrones.check "${message_chat_id[$id]}"
+			fi
+		else
+			chat.hi
 		fi
 	) & 
 	done
 done
-#FIM

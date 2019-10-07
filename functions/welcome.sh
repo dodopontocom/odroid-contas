@@ -1,6 +1,8 @@
+#!/bin/bash
+
 # boas vindas
-welcome.msg()
-{
+
+welcome.msg() {
 	local msg
 
 	# Texto da mensagem

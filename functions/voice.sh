@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-source ${BASEDIR}/functions/random.sh
 
 voice.convert() {
   local message array random_file_name
+  
   message=$1
   array=(${message})
   array[0]="/linux"
