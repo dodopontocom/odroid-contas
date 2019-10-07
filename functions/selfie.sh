@@ -13,11 +13,9 @@ selfie.shot() {
   
   if [[ ${user_language} = "en" ]]; then
     arr1=("$(cat $messages_file | grep ^${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")
-    echo "---+++${arr1[@]}"
     for i in ${arr1[@]}; do
       echo $i
       message+="$(cat $messages_file | grep ^${system} | grep :$user_language: | grep :${i}: | cut -d':' -f4-)"
-      echo "+++++++++++++++${message}"
       error_message="$(cat $messages_file | grep ^${system} | grep :err: | cut -d':' -f4-)"
     done
   else
@@ -27,9 +25,6 @@ selfie.shot() {
       error_message="$(cat $messages_file | grep ^${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
     done
   fi
-  
-  #message=$(apply.message ${user_language} ${system})
-  #error_message=$(apply.message ${user_language} ${system} 1)
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fswebcam -r 1280x720 /tmp/${random_file_name}.jpg
