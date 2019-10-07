@@ -6,13 +6,13 @@ stats.verify() {
   commands=($(cat ${BASEDIR}/texts/commands_list.txt))
   
   #id_monitor=($2:=${message_chat_id})
-  if [[ -n ${message_chat_id} ]]; then
-	id_monitor=(${message_chat_id})
+  if [[ ${message_chat_id} ]]; then
+	  id_monitor=(${message_chat_id})
   else
-	id_monitor=(${NOTIFICATION_IDS[@]})
+	  id_monitor=(${NOTIFICATION_IDS[@]})
   fi
   
-  message="📊 Estatística semanal dos \`bot_commands\` executados"
+  message="📊 Estatística gerais dos \`comandos\` executados"
   
   set +f
   
