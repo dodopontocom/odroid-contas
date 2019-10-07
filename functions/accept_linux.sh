@@ -79,8 +79,8 @@ user.add() {
 }
 
 user.donot() {
-  local user_id TMP_PEDIDO registrados admins_id
+  local user_id registrados admins_id
 
-  TMP_PEDIDO="/tmp/pedido_cadastro.log"
+  #to be implemented
 
 }

@@ -1,9 +1,32 @@
 #!/bin/bash
 
-# Exit utils.sh on any error
-#set -e
+################################# START - VARIÁVEIS GLOBAIS #################################
+export TMP_PEDIDO="/tmp/pedido_cadastro.log"
+export TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
+export BOT_BKP_PATH="/mnt/sdcard/telegram_bots_bkp"
 
+export CHATTY_FILE="${BASEDIR}/texts/words.txt"
+export CENTRAL_OF_MESSAGES_FILE="${BASEDIR}/texts/central_of_messages.txt"
+
+export DODRONES_MOUNT_PATH="/mnt/hd1"
+export DODRONES_HOST="rodolfo@192.168.0.107"
+export DODRONES_HOST_PATH="/home/rodolfo/Desktop/bot"
+
+export API_GIT_URL="https://github.com/shellscriptx/shellbot.git"
+export LOTOMANIA_API_URL="https://www.lotodicas.com.br/api"
+export TIMEZONE_API_URL="http://worldtimeapi.org/api/timezone"
+
+export MOTION_DETECTED_PATH="/mnt/sdcard/motion/detect"
+
+export TRIP_CHECKLIST_FILE="${BASEDIR}/texts/trip_checklist.csv"
+
+export GNU_PLOT_SCRIPT="${BASEDIR}/configurations/plot.gp"
+export GNU_PLOT_DAT="${BASEDIR}/configurations/test.dat"
+################################# END - VARIÁVEIS GLOBAIS #################################
+
+################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
+source ${BASEDIR}/functions/helper.sh
 
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
@@ -23,21 +46,19 @@ source ${BASEDIR}/functions/record_alive.sh
 source ${BASEDIR}/functions/stats.sh
 source ${BASEDIR}/functions/random.sh
 source ${BASEDIR}/functions/shell_api.sh
-source ${BASEDIR}/functions/var_utils.sh
 source ${BASEDIR}/functions/restart_bot.sh
 source ${BASEDIR}/functions/accept_linux.sh
 source ${BASEDIR}/functions/dodrones.sh
+################################# END - Carregando todas as funções #################################
 
-# temp vars usadas no comando /linux
-TMP_PEDIDO="/tmp/pedido_cadastro.log"
-TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
-
-# Primeira verificação de todas é saber se tem o token exportado variável de ambiente do sistema
-validate.vars TELEGRAM_TOKEN NOTIFICATION_IDS
+# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+# Essas variáveis devem ser setadas no arquivo .definitions.sh
+helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
 # Sempre pegar a última versão do ShellBot API
 # <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
 dinamic.api
+exitOnError "Erro ao tentar baixar API ShellBot"
 
 # Fazer source da API só depois de baixá-la
 source ${BASEDIR}/ShellBot.sh
