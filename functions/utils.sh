@@ -3,7 +3,8 @@
 ################################# START - VARIÁVEIS GLOBAIS #################################
 export TMP_PEDIDO="/tmp/pedido_cadastro.log"
 export TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
-export API_GIT_URL="https://github.com/shellscriptx/shellbot.git"
+export BOT_BKP_PATH="/mnt/sdcard/telegram_bots_bkp"
+
 export CHATTY_FILE="${BASEDIR}/texts/words.txt"
 export CENTRAL_OF_MESSAGES_FILE="${BASEDIR}/texts/central_of_messages.txt"
 
@@ -11,12 +12,16 @@ export DODRONES_MOUNT_PATH="/mnt/hd1"
 export DODRONES_HOST="rodolfo@192.168.0.107"
 export DODRONES_HOST_PATH="/home/rodolfo/Desktop/bot"
 
+export API_GIT_URL="https://github.com/shellscriptx/shellbot.git"
 export LOTOMANIA_API_URL="https://www.lotodicas.com.br/api"
 export TIMEZONE_API_URL="http://worldtimeapi.org/api/timezone"
 
 export MOTION_DETECTED_PATH="/mnt/sdcard/motion/detect"
 
 export TRIP_CHECKLIST_FILE="${BASEDIR}/texts/trip_checklist.csv"
+
+export GNU_PLOT_SCRIPT="${BASEDIR}/configurations/plot.gp"
+export GNU_PLOT_DAT="${BASEDIR}/configurations/test.dat"
 ################################# END - VARIÁVEIS GLOBAIS #################################
 
 ################################# START - Carregando todas as funções #################################
