@@ -10,8 +10,8 @@ days.remaining() {
   
   if [[ ${days[@]} ]]; then
     message="✅ "
-    message+=$(helper.date_arithimetic "days_from_today" "${days[@]}")
-    message+=" dias"
+    #message+=$(helper.date_arithimetic "days_from_today" "${days[@]}")
+    message+=$(helper.date_arithimetic "days_from_today" "2019-12-25")
     if [[ $? -eq 0 ]]; then
     	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     else
