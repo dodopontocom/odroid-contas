@@ -9,30 +9,24 @@ user.register() {
   user_last_name=$3
   admins_id=(${NOTIFICATION_IDS})
   
-  if [[ $(echo ${TMP_PEDIDO_TEMP} | grep "${user_id}") ]]; then
-    message="Pedido já enviado, por favor aguarde."
-    ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
+  echo "${user_id}" > ${TMP_PEDIDO_TEMP}
+
+  message="*Pedido de acesso ao comando linux*\n"
+  message+="Nome: ${user_name} ${user_last_name}\n"
+  message+="Id: ${user_id}\n"
+  message+="*Aceitar?*"
+
+  for a in ${admins_id[@]}; do
+    ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
+        --reply_markup "$keyboard_accept" --parse_mode markdown
+  done
+
+  message="Um pedido para executar comandos linux foi enviado aos administrados do Bot"
+  ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
         --parse_mode markdown
-  else
-    echo "${user_id}" > ${TMP_PEDIDO_TEMP}
-
-    message="*Pedido de acesso ao comando linux*\n"
-    message+="Nome: ${user_name} ${user_last_name}\n"
-    message+="Id: ${user_id}\n"
-    message+="*Aceitar?*"
-
-    for a in ${admins_id[@]}; do
-      ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
-          --reply_markup "$keyboard_accept" --parse_mode markdown
-    done
-
-    message="Um pedido para executar comandos linux foi enviado aos administrados do Bot"
-    ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
-          --parse_mode markdown
-    message="Aguarde até que seu pedido seja aprovado"
-    ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
-          --parse_mode markdown
-  fi
+  message="Aguarde até que seu pedido seja aprovado"
+  ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
+        --parse_mode markdown
 }
 
 user.add() {
