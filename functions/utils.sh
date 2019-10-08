@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ################################# START - VARIÁVEIS GLOBAIS #################################
+export PENDING_PEDIDO="/tmp/pedido.pending"
 export TMP_PEDIDO="/tmp/pedido_cadastro.log"
 export BOT_BKP_PATH="/mnt/sdcard/telegram_bots_bkp"
 
