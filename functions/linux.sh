@@ -3,12 +3,12 @@
 
 linux.ask_register() {
   local user_name user_last_name user_id message admins_id
-  
+   
   user_id=$1
   user_name=$2
   user_last_name=$3
   admins_id=(${NOTIFICATION_IDS})
-  
+    
   echo "${user_id}" > ${PENDING_PEDIDO}
 
   message="*Pedido de acesso ao comando linux*\n"
@@ -31,11 +31,11 @@ linux.ask_register() {
 
 linux.add() {
   local user_id admins_id message
-
+  
   if [[ ${PENDING_PEDIDO} ]]; then
 
     admins_id=(${NOTIFICATION_IDS[@]})
-    user_id=$(tail -1 ${TMP_PEDIDO_TEMP})
+    user_id=$(tail -1 ${PENDING_PEDIDO})
 
     echo "${user_id}" > ${TMP_PEDIDO}
     rm -rfv ${PENDING_PEDIDO}
