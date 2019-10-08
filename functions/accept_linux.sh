@@ -30,10 +30,7 @@ user.register() {
 }
 
 user.add() {
-  local user_id TMP_PEDIDO registrados admins_id message
-
-  TMP_PEDIDO="/tmp/pedido_cadastro.log"
-  TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
+  local user_id registrados admins_id message
 
   if [[ ${TMP_PEDIDO_TEMP} ]]; then
 
@@ -45,7 +42,8 @@ user.add() {
 
     if [[ $(echo ${admins_id} | grep -v $user_id) ]]; then
       for a in ${admins_id[@]}; do
-        message="Permissao dada - id: ${user_id}"
+        message="Permissão concedida\n"
+        message+="id: ${user_id}"
         ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
             --parse_mode markdown
       done
@@ -81,6 +79,16 @@ user.add() {
 user.donot() {
   local user_id registrados admins_id
 
-  #to be implemented
+  rm -rfv ${TMP_PEDIDO_TEMP}
+  
+  for a in ${admins_id[@]}; do
+    message="Pedido rejeitado..."
+    ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
+      --parse_mode markdown
+  done
+  
+  message="*Sua permissão não foi aceita!*"
+  ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
+    --parse_mode markdown
 
 }
