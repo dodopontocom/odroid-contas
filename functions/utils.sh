@@ -52,6 +52,7 @@ source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/restart_bot.sh
 source ${BASEDIR}/functions/accept_linux.sh
 source ${BASEDIR}/functions/dodrones.sh
+source ${BASEDIR}/functions/days_remaining.sh
 ################################# END - Carregando todas as funções #################################
 
 # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
