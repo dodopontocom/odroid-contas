@@ -1,23 +1,22 @@
 #!/bin/bash
 
 lotomania.sena() {
-  local apiUrl cmd_api jogo message numeros data_hoje data
+  local cmd_api jogo message numeros data_hoje data
   
   data_hoje=$(date +'%Y-%m-%d')
-  apiUrl=https://www.lotodicas.com.br/api
   jogo=mega-sena
-  cmd_api=$(curl -s ${apiUrl}/${jogo} | jq '.data' | grep ${data_hoje})
+  cmd_api=$(curl -s ${LOTOMANIA_API_URL}/${jogo} | jq '.data' | grep ${data_hoje})
   
   if [[ -n ${cmd_api} ]]; then
     
     message="✅ Sorteio de hoje:"
-    numeros=$(curl -s ${apiUrl}/${jogo} | jq '.sorteio')
+    numeros=$(curl -s ${LOTOMANIA_API_URL}/${jogo} | jq '.sorteio')
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${numeros})" --parse_mode markdown
   else
     message="❌ Até o momento não houve sorteio de hoje\n\n"
-    data=$(curl -s ${apiUrl}/${jogo} | jq '.data')
-    numeros=$(curl -s ${apiUrl}/${jogo} | jq '.sorteio')
+    data=$(curl -s ${LOTOMANIA_API_URL}/${jogo} | jq '.data')
+    numeros=$(curl -s ${LOTOMANIA_API_URL}/${jogo} | jq '.sorteio')
     message+="Mostrando sorteio do dia *${data}*:"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${numeros})" --parse_mode markdown

@@ -7,7 +7,7 @@ motion.get() {
   local message tmp ziptmp has_video day detect_folder
   
   day="$(date +%Y%m%d)"
-  detect_folder=/mnt/sdcard/motion/detect/$day
+  detect_folder=${MOTION_DETECTED_PATH}/$day
   
   #has_video=($(find $detect_folder -name "*.avi"))
   find $detect_folder -name "*.jpg" > /dev/null 2>&1

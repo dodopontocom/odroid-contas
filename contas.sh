@@ -107,6 +107,9 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/linux" )" ]]; then
 				linux.cmd "${message_text[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/chat" )" ]]; then
+				chat.switch "${message_text[$id]}"
+			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/selfie" )" ]]; then
 				selfie.shot
 			fi

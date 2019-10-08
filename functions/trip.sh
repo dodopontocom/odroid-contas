@@ -26,7 +26,6 @@ trip.checklist() {
 }
 	
 _message="Listando..."
-_checklist=${BASEDIR}/texts/trip_checklist.csv
 
 list.edit() {
 	echo "to do function"
@@ -36,7 +35,7 @@ list.all() {
 	while read line; do
 		ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
  	 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
-	done < ${_checklist}
+	done < ${TRIP_CHECKLIST_FILE}
 }
 list.pending() {
 	while read line; do
@@ -47,7 +46,7 @@ list.pending() {
 			message="Good News!!! Não há item pendente da opção selecionada"
 			ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 		fi
-	done < ${_checklist}
+	done < ${TRIP_CHECKLIST_FILE}
 }
 list.done() {
 	while read line; do
@@ -55,7 +54,7 @@ list.done() {
 			ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
 	  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 		fi
-	done < ${_checklist}
+	done < ${TRIP_CHECKLIST_FILE}
 }
 list.search() {
 	local regex
@@ -72,7 +71,7 @@ list.search() {
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
 		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
-		done < ${_checklist}
+		done < ${TRIP_CHECKLIST_FILE}
 	fi
 	
 	if [[ "${callback_query_data}" == "btn_trip_comprarX" ]]; then
@@ -87,7 +86,7 @@ list.search() {
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
 		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
-		done < ${_checklist}
+		done < ${TRIP_CHECKLIST_FILE}
 	fi
 	
 	if [[ "${callback_query_data}" == "btn_trip_passagensX" ]]; then
@@ -102,7 +101,7 @@ list.search() {
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
 		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
-		done < ${_checklist}
+		done < ${TRIP_CHECKLIST_FILE}
 	fi
 	
 	if [[ "${callback_query_data}" == "btn_trip_tremX" ]]; then
@@ -117,7 +116,7 @@ list.search() {
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
 			  ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
-		done < ${_checklist}
+		done < ${TRIP_CHECKLIST_FILE}
 	fi
 	
 }

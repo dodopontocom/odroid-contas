@@ -1,22 +1,21 @@
 #!/bin/bash
 
-bkp_folder=/mnt/sdcard/telegram_bots_bkp
-gp_script=${BASEDIR}/configurations/plot.gp
-test_dat_path=${BASEDIR}/configurations/test.dat
-
 stats.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
-  commands=($(cat ${BASEDIR}/texts/commands_list.txt))
+  commands=($(cat ${BOT_COMMANDS_LIST}))
   
+  # replace vars in plot configuration
+  helper.replace_vars ${GNU_PLOT_ORIGINAL_SCRIPT} ${GNU_PLOT_SCRIPT}
+
   #id_monitor=($2:=${message_chat_id})
-  if [[ -n ${message_chat_id} ]]; then
-	id_monitor=(${message_chat_id})
+  if [[ ${message_chat_id} ]]; then
+	  id_monitor=(${message_chat_id})
   else
-	id_monitor=(${NOTIFICATION_IDS[@]})
+	  id_monitor=(${NOTIFICATION_IDS[@]})
   fi
   
-  message="📊 Estatística semanal dos \`bot_commands\` executados"
+  message="📊 Estatística gerais dos \`comandos\` executados 🔻"
   
   set +f
   
@@ -30,15 +29,15 @@ stats.verify() {
                 --text "$(echo -e ${message})" \
                 --parse_mode markdown
     for s in ${commands[@]} ; do
-      echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${test_dat_path}
+      echo "${s} $(echo ${cmd_executed[@]} | grep ${s} -o | wc -l)" >> ${GNU_PLOT_DAT}
     done
   
-    gnuplot ${gp_script}
+    gnuplot ${GNU_PLOT_SCRIPT}
     if [[ $? -eq 0 ]]; then
-      ShellBot.sendPhoto --chat_id ${i} --photo @/tmp/003.png
+      ShellBot.sendPhoto --chat_id ${i} --photo @${GNU_PLOT_IMAGE_OUTPUT}
     else
       ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
     fi
-    rm -vfr ${test_dat_path}
+    rm -vfr ${GNU_PLOT_DAT} ${GNU_PLOT_SCRIPT} ${GNU_PLOT_IMAGE_OUTPUT}
   done
 }

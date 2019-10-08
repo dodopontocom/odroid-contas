@@ -2,27 +2,26 @@
 #
 
 selfie.shot() {
-  local messages_file message random_file_name error_message user_language system arr1 arr2
+  local message random_file_name error_message user_language system arr1 arr2
   
   system=selfie
   user_language=${message_from_language_code}
-  messages_file=${BASEDIR}/texts/central_of_messages.txt
   message=''
   
   random_file_name=$(random.helper)
   
   if [[ ${user_language} = "en" ]]; then
-    arr1=("$(cat $messages_file | grep ^${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")
+    arr1=("$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")
     for i in ${arr1[@]}; do
       echo $i
-      message+="$(cat $messages_file | grep ^${system} | grep :$user_language: | grep :${i}: | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep ^${system} | grep :err: | cut -d':' -f4-)"
+      message+="$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep :$user_language: | grep :${i}: | cut -d':' -f4-)"
+      error_message="$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep :err: | cut -d':' -f4-)"
     done
   else
-    arr2=("$(cat $messages_file | grep ^${system} | grep -v :err: | grep pt-br | cut -d':' -f3)")
+    arr2=("$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep -v :err: | grep pt-br | cut -d':' -f3)")
     for i in ${arr2[@]}; do
-      message+="$(cat $messages_file | grep ^${system} | grep :${i}: | grep -i pt-br | cut -d':' -f4-)"
-      error_message="$(cat $messages_file | grep ^${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
+      message+="$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep :${i}: | grep -i pt-br | cut -d':' -f4-)"
+      error_message="$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep :err: | grep -i pt-br | cut -d':' -f4-)"
     done
   fi
   
