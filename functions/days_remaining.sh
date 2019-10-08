@@ -13,9 +13,10 @@ days.remaining() {
     if [[ $? -eq 0 ]]; then
     	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     else
-    	message="Use o padrão \`ANO/MES/DIA\`\n"
-	message+="Exemplo, quero saber quantos dias faltam para o Natal:"
-	message="/days \`2019/12/25\` 🦃"
+    	message="Use o padrão \`ANO-MES-DIA\`\n"
+	message+="Exemplo, quero saber quantos dias faltam para o Natal:\n"
+	message="/days \`2019-12-25\` 🦃"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${days[@]})" --parse_mode markdown
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     fi
   else
