@@ -15,7 +15,8 @@ days.remaining() {
     else
     	message="Use o padrão \`ANO-MES-DIA\`\n"
 	message+="Exemplo, quero saber quantos dias faltam para o Natal:\n"
-	message+="/days \`2019-12-25\` 🦃"
+	message+="/days \`2019-12-25\`"
+	message+=" 🦃 "
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     fi
   else
