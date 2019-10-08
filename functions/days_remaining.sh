@@ -1,15 +1,18 @@
 #!/bin/bash
 
 days.remaining() {
-  local days message array
+  local days message array custom_day
   
   days=$1
   array=(${days})
   array[0]="/days"
   days=${array[@]:1}
   
-  if [[ ${days[@]} ]]; then
-    message="✅ $(helper.date_arithimetic days_from_today ${days[@]}) dias"
+  custom_day=${days[0]}
+  
+  if [[ ${custom_day} ]]; then
+    message=$(helper.date_arithimetic "days_from_today" "${custom_day}")
+    message+=" dias ✅"
     if [[ $? -eq 0 ]]; then
     	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     else
