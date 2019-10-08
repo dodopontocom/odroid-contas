@@ -30,7 +30,7 @@ user.register() {
 }
 
 user.add() {
-  local user_id registrados admins_id message
+  local user_id admins_id message
 
   if [[ ${TMP_PEDIDO_TEMP} ]]; then
 
@@ -76,9 +76,12 @@ user.add() {
   fi
 }
 
-user.donot() {
-  local user_id registrados admins_id
-
+user.reject() {
+  local user_id admins_id message
+  
+  admins_id=(${NOTIFICATION_IDS[@]})
+  user_id=$(tail -1 ${TMP_PEDIDO_TEMP})
+  
   rm -rfv ${TMP_PEDIDO_TEMP}
   
   for a in ${admins_id[@]}; do
