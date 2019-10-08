@@ -1,29 +1,6 @@
 #!/bin/bash
 #
 
-linux.cmd() {
-  local cmd array message
-
-  if [[ $(tail -1 ${TMP_PEDIDO_TEMP} | grep ${message_chat_id[$id]}) ]]; then
-    message="Pedido para usar este comando já foi enviado, por favor aguarde."
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
-  
-  elif [[ $(cat ${TMP_PEDIDO} | grep ${message_chat_id[$id]}) ]] || [[ $(echo ${NOTIFICATION_IDS[@]} | grep ${message_chat_id[$id]}) ]]; then
-    cmd=$1
-    array=(${cmd})
-    array[0]="/linux"
-    cmd=${array[@]:1}
-  
-    if [[ ! -z ${cmd} ]]; then
-      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(${cmd})"
-    else
-      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Usage: ${array[0]} <command>"  
-    fi
-  else 
-    user.register "${message_chat_id[$id]}" "${message_from_first_name}" "${message_from_last_name}"
-  fi
-}
-
 linux.ask_register() {
   local user_name user_last_name user_id message admins_id
   
@@ -32,7 +9,7 @@ linux.ask_register() {
   user_last_name=$3
   admins_id=(${NOTIFICATION_IDS})
   
-  echo "${user_id}" > ${TMP_PEDIDO_TEMP}
+  echo "${user_id}" > ${PENDING_PEDIDO}
 
   message="*Pedido de acesso ao comando linux*\n"
   message+="Nome: ${user_name} ${user_last_name}\n"
@@ -55,13 +32,13 @@ linux.ask_register() {
 linux.add() {
   local user_id admins_id message
 
-  if [[ ${TMP_PEDIDO_TEMP} ]]; then
+  if [[ ${PENDING_PEDIDO} ]]; then
 
     admins_id=(${NOTIFICATION_IDS[@]})
     user_id=$(tail -1 ${TMP_PEDIDO_TEMP})
 
-    echo "$user_id" >> $TMP_PEDIDO
-    rm -rfv ${TMP_PEDIDO_TEMP}
+    echo "${user_id}" > ${TMP_PEDIDO}
+    rm -rfv ${PENDING_PEDIDO}
 
     if [[ $(echo ${admins_id} | grep -v $user_id) ]]; then
       for a in ${admins_id[@]}; do
@@ -103,9 +80,9 @@ linux.reject() {
   local user_id admins_id message
   
   admins_id=(${NOTIFICATION_IDS[@]})
-  user_id=$(tail -1 ${TMP_PEDIDO_TEMP})
+  user_id=$(tail -1 ${PENDING_PEDIDO})
   
-  rm -rfv ${TMP_PEDIDO_TEMP}
+  rm -rfv ${PENDING_PEDIDO}
   
   for a in ${admins_id[@]}; do
     message="Pedido rejeitado..."
@@ -117,4 +94,27 @@ linux.reject() {
   ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
     --parse_mode markdown
 
+}
+
+linux.cmd() {
+  local cmd array message
+
+  if [[ $(tail -1 ${PENDING_PEDIDO} | grep ${message_chat_id[$id]}) ]]; then
+    message="Pedido para usar este comando já foi enviado, por favor aguarde."
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+  
+  elif [[ $(cat ${TMP_PEDIDO} | grep ${message_chat_id[$id]}) ]] || [[ $(echo ${NOTIFICATION_IDS[@]} | grep ${message_chat_id[$id]}) ]]; then
+    cmd=$1
+    array=(${cmd})
+    array[0]="/linux"
+    cmd=${array[@]:1}
+  
+    if [[ ! -z ${cmd} ]]; then
+      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(${cmd})"
+    else
+      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Usage: ${array[0]} <command>"  
+    fi
+  else 
+    linux.ask_register "${message_chat_id[$id]}" "${message_from_first_name}" "${message_from_last_name}"
+  fi
 }
