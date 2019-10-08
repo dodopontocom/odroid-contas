@@ -71,7 +71,7 @@ helper.date_arithimetic() {
 
   days_from_today()
   {
-      date_diff $@ "$(date +'%s')"
+      date_diff $1 "$(date +'%s')"
   }
 
   date_plus_days()
@@ -86,6 +86,6 @@ helper.date_arithimetic() {
   
   function=$1
   shift
-  $function "$@"
+  $function "$1"
 }
 
