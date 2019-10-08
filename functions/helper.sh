@@ -86,7 +86,9 @@ helper.date_arithimetic() {
   
   function=$1
   shift
+  set +f
   $function "$@"
+  set -f
 
 }
 
