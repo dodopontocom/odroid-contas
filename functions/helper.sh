@@ -83,6 +83,10 @@ helper.date_arithimetic() {
   {
       date_plus_days "" $1
   }
+  
+  function=$1
+  shift
+  $function "$@"
 
 }
 
