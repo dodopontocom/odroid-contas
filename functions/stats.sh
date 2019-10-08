@@ -12,7 +12,7 @@ stats.verify() {
 	  id_monitor=(${NOTIFICATION_IDS[@]})
   fi
   
-  message="📊 Estatística gerais dos \`comandos\` executados"
+  message="📊 Estatística gerais dos \`comandos\` executados 🔻"
   
   set +f
   
