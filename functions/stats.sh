@@ -34,7 +34,7 @@ stats.verify() {
   
     gnuplot ${GNU_PLOT_SCRIPT}
     if [[ $? -eq 0 ]]; then
-      ShellBot.sendPhoto --chat_id ${i} --photo @/tmp/003.png
+      ShellBot.sendPhoto --chat_id ${i} --photo @${GNU_PLOT_IMAGE_OUTPUT}
     else
       ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
     fi
