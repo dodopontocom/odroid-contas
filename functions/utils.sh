@@ -2,7 +2,6 @@
 
 ################################# START - VARIÁVEIS GLOBAIS #################################
 export TMP_PEDIDO="/tmp/pedido_cadastro.log"
-export TMP_PEDIDO_TEMP="/tmp/temp_pedido_cadastro.log"
 export BOT_BKP_PATH="/mnt/sdcard/telegram_bots_bkp"
 
 export CHAT_SIMPLE_REPLY="${BASEDIR}/texts/words.txt"
