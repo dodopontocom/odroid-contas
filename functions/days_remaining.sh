@@ -9,16 +9,16 @@ days.remaining() {
   days=${array[@]:1}
   
   if [[ ${days[@]} ]]; then
-    message="✅ $(days_from_today ${days[@]}) dias"
+    message="✅ $(helper.date_arithimetic "days_from_today" "${days[@]}") dias"
     if [[ $? -eq 0 ]]; then
     	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
     else
     	message="Use o padrão \`ANO/MES/DIA\`\n"
-	message="Exemplo, quero saber quantos dias faltam para o Natal: \`2019/12/25\` 🦃"
+	message+="Exemplo, quero saber quantos dias faltam para o Natal: /days \`2019/12/25\` 🦃"
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
     fi
   else
-    message="✅ $(days_from_today "2020-01-14") dias"
+    message="✅ $(helper.date_arithimetic "days_from_today" "2020-01-14") dias"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
   fi
 }
