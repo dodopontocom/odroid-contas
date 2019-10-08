@@ -3,8 +3,11 @@
 stats.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
-  commands=($(cat ${BASEDIR}/texts/commands_list.txt))
+  commands=($(cat ${BOT_COMMANDS_LIST}))
   
+  # replace vars in plot configuration
+  helper.replace_vars ${GNU_PLOT_ORIGINAL_SCRIPT} ${GNU_PLOT_SCRIPT}
+
   #id_monitor=($2:=${message_chat_id})
   if [[ ${message_chat_id} ]]; then
 	  id_monitor=(${message_chat_id})
@@ -35,6 +38,6 @@ stats.verify() {
     else
       ShellBot.sendMessage --chat_id ${i} --text "erro ao plotar" --parse_mode markdown
     fi
-    rm -vfr ${GNU_PLOT_DAT}
+    rm -vfr ${GNU_PLOT_DAT} ${GNU_PLOT_SCRIPT} ${GNU_PLOT_IMAGE_OUTPUT}
   done
 }

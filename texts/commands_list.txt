@@ -11,3 +11,4 @@ ping
 stats
 restartbot
 dodrones
+chat
