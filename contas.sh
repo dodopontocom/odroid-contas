@@ -123,8 +123,7 @@ do
 				timezone.place "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/days" )" ]]; then
-				daysRemain="✅ $(days_from_today "2020-01-14") dias"
-				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${daysRemain})"
+				days.remaining "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/megasena" )" ]]; then
 				lotomania.sena				
