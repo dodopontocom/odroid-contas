@@ -10,11 +10,11 @@ user.register() {
   admins_id=(${NOTIFICATION_IDS})
   
   if [[ $(echo ${TMP_PEDIDO_TEMP} | grep "${user_id}") ]]; then
-    message="Um pedido para executar comandos linux foi enviado aos administrados do Bot"
+    message="Pedido já enviado, por favor aguarde."
     ShellBot.sendMessage --chat_id $user_id --text "$(echo -e ${message})" \
         --parse_mode markdown
   else
-    echo "$user_id" > ${TMP_PEDIDO_TEMP}
+    echo "${user_id}" > ${TMP_PEDIDO_TEMP}
 
     message="*Pedido de acesso ao comando linux*\n"
     message+="Nome: ${user_name} ${user_last_name}\n"
