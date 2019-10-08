@@ -40,7 +40,7 @@ linux.add() {
     echo "${user_id}" > ${TMP_PEDIDO}
     rm -rfv ${PENDING_PEDIDO}
 
-    if [[ $(echo ${admins_id} | grep -v $user_id) ]]; then
+    if [[ $(echo ${admins_id[@]} | grep -v ${user_id}) ]]; then
       for a in ${admins_id[@]}; do
         message="Permissão concedida\n"
         message+="id: ${user_id}"
