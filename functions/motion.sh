@@ -92,6 +92,11 @@ motion.switch() {
       array=(${cmd})
       array[0]="/motion"
       cmd=${array[@]:1}
+      
+      if [[ -z ${cmd[@]} ]]; then
+        message="Usage: ${cmd[0]} \`on\` ou \`on\`"
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+      fi
 
       if [[ "${cmd[@]}" == "on" ]]; then
         motion.start
