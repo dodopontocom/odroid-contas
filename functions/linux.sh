@@ -120,7 +120,8 @@ linux.cmd() {
       if [[ ! -z ${cmd[@]} ]]; then
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(${cmd[@]})"
       else
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Usage: ${array[0]} <command>"  
+        message="Usage: ${array[0]} <command>"
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"  
       fi
     fi
   else 
