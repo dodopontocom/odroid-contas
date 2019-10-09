@@ -17,7 +17,7 @@ for i in ${NOTIFICATION_IDS[@]}; do
 done
 
 #######################Enviar estatísticas de comandos
-stats.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${NOTIFICATION_IDS[@]})"
+stats.verify ${STATS_LOG_PATH} "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
 
 #######################Checar recorde de tempo 'vivo'
@@ -131,7 +131,7 @@ do
 				lotomania.sena				
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
-				stats.verify "/home/odroid/telegram_bots_logs/contas_"
+				stats.verify ${STATS_LOG_PATH}
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/restartbot" )" ]]; then
 				restart.bot
