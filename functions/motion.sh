@@ -94,7 +94,7 @@ motion.switch() {
       cmd=${array[@]:1}
       
       if [[ -z ${cmd[@]} ]]; then
-        message="Usage: ${array[0]} \`on\` ou \`on\`"
+        message="Usage: ${array[0]} \`on\` ou \`off\`"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
       fi
 
