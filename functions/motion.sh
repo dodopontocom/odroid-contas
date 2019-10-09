@@ -20,7 +20,8 @@ motion.get() {
     #cat *.jpg | ffmpeg -f image2pipe -r 1 -vcodec mjpeg -i - -vcodec libx264 out.mp4
     #dar um tempinho a mais para o motion seja concluído
     sleep 30
-    message="*Motion Detected!!!*\n"
+    message="⚠️ *Atenção!* ⚠️\n"
+    message+="Movimentação foi detectada\n"
     message+="Enviando o(s) vídeo(s) em instantes..."
     
     ziptmp="$(random.helper)"
@@ -45,7 +46,8 @@ motion.get() {
 
     #dar um tempinho a mais para o vídeo poder ser concluido
     sleep 30
-    message="*Motion Detected!!!*\n"
+    message="⚠️ *Atenção!* ⚠️\n"
+    message+="Movimentação foi detectada\n"
     message+="Enviando o(s) vídeo(s) em instantes..."
 
     for i in ${has_video[@]}; do
@@ -106,7 +108,7 @@ motion.check() {
 motion.switch() {
     local cmd array message
     
-    if [[ $(echo ${NOTIFICATION_IDS[@]} | grep -- "${message_chat_id[$id]}") ]]; then
+    if [[ $(echo ${MOTION_NOTIFICATION_IDS[@]} | grep -- "${message_chat_id[$id]}") ]]; then
       cmd=$1
       array=(${cmd})
       array[0]="/motion"
