@@ -76,11 +76,11 @@ motion.stop() {
   if [[ "$(ps -w | grep motion)" ]]; then
     killall motion
     message="Monitoramento foi desligago."
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   else
-    message="Monitoramento por câmera não foi iniciado"
+    message="Monitoramento por câmera não foi iniciado\n"
     message+="use \`/motion on\` se deseja ligá-lo!"
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fi
 }
 
@@ -94,8 +94,8 @@ motion.switch() {
       cmd=${array[@]:1}
       
       if [[ -z ${cmd[@]} ]]; then
-        message="Usage: ${cmd[0]} \`on\` ou \`on\`"
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+        message="Usage: ${array[0]} \`on\` ou \`on\`"
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
       fi
 
       if [[ "${cmd[@]}" == "on" ]]; then
@@ -105,6 +105,6 @@ motion.switch() {
       fi
     else
       message="Você não tem permissão de executar este comando."
-      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     fi
 }
