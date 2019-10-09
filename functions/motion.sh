@@ -88,6 +88,21 @@ motion.stop() {
   fi
 }
 
+motion.check() {
+  local message
+  
+  ps -w | grep motion
+  if [[ $? -eq 0 ]]; then
+    message="Monitoramento está ligado!\n"
+    message+="Para desligar digite: /motion on"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+  else
+    message="Monitoramento está desligado!\n"
+    message+="Para ligar digite: /motion on"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+  fi
+}
+
 motion.switch() {
     local cmd array message
     
@@ -98,8 +113,7 @@ motion.switch() {
       cmd=${array[@]:1}
       
       if [[ -z ${cmd[@]} ]]; then
-        message="Usage: ${array[0]} \`on\` ou \`off\`"
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+        motion.check
       fi
 
       if [[ "${cmd[@]}" == "on" ]]; then
