@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Função de suporte
+
+# Faz o pull das atualizações do git da branch que estiver e depois mata o bot para ser reiniciado pelo cron
 restart.bot() {
   set +f
   local repo message
