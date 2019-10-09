@@ -4,10 +4,6 @@
 ###### Funciona para bots desenvolvidos com o ShellBot ->
 ########### https://github.com/shellscriptx/ShellBot/wiki
 
-calc_min() {
-	awk "BEGIN { print "$*" }"
-}
-
 offline.checker() {
   local id_monitor limit_seconds tempo_fora tempo_min timestamp log_file logs message message_seg message_min
   
@@ -26,7 +22,7 @@ offline.checker() {
   
   if [[ ${tempo_fora} -gt ${limit_seconds} ]]; then
     
-    tempo_min=$(calc_min ${tempo_fora}/60)
+    tempo_min=$(helper.calc_min ${tempo_fora}/60)
     
     message="📉 \`Internet Status\`"
     message_seg="Fiquei aproximadamente *${tempo_fora}* segundos offline"
