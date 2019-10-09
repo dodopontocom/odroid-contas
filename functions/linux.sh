@@ -78,8 +78,12 @@ linux.reject() {
   
   for a in ${admins_id[@]}; do
     message="Pedido rejeitado..."
-    ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
-      --parse_mode markdown
+    ShellBot.editMessageReplyMarkup --chat_id $a --message_id ${callback_query_data[$id]} \
+      --text "$(echo -e ${message})" \
+      --reply_markup "$keyboard_accept" --parse_mode markdown
+    
+    #ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
+    #  --parse_mode markdown
   done
   
   message="*Seu pedido não foi aceito!*"
