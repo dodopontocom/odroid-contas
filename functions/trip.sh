@@ -4,6 +4,8 @@
 #✅
 #✖
 
+# Função Pessoal para nossa viagem a europa
+
 trip.checklist() {
 	local opt array
 	opt=$1
