@@ -139,6 +139,9 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dodrones" )" ]]; then
 				dodrones.check "${message_chat_id[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dockerbuild" )" ]]; then
+				docker.build
+			fi
 		else
 			chat.hi
 		fi
