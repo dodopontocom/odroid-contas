@@ -9,7 +9,7 @@ selfie.shot() {
   user_language=${message_from_language_code}
   message=''
   
-  random_file_name=$(random.helper)
+  random_file_name=$(helper.random)
   
   if [[ ${user_language} = "en" ]]; then
     arr1=("$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")

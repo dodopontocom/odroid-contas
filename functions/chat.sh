@@ -46,7 +46,7 @@ chat.hi() {
 
 	chat_file="/tmp/${message_chat_id[$id]}_chat.on"
 	
-	random_number=$(random.helper ${CHAT_SIMPLE_REPLY})
+	random_number=$(helper.random ${CHAT_SIMPLE_REPLY})
 	
 	if [[ -f ${chat_file} ]]; then
 		message=$(sed -n "${random_number}p" < ${CHAT_SIMPLE_REPLY})

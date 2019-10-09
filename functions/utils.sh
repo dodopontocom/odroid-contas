@@ -21,7 +21,6 @@ source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
 source ${BASEDIR}/functions/record_alive.sh
 source ${BASEDIR}/functions/stats.sh
-source ${BASEDIR}/functions/random.sh
 source ${BASEDIR}/functions/restart_bot.sh
 source ${BASEDIR}/functions/dodrones.sh
 source ${BASEDIR}/functions/docker.sh

@@ -98,7 +98,7 @@ do
 		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
 		
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
-		[[ ${message_new_chat_member_id[$id]} ]] && welcome.msg
+		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
 
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then

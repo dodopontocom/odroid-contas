@@ -11,7 +11,7 @@ voice.convert() {
   array[0]="/voice"
   message=${array[@]:1}
   
-  random_file_name=$(random.helper)
+  random_file_name=$(helper.random)
 
   if [[ "${message[@]}" ]]; then
     espeak -vpt -g10 "${message}}" --stdout > /tmp/${random_file_name}.ogg

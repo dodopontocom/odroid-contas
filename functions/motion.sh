@@ -1,9 +1,6 @@
 #!/bin/bash
 #
 
-# <TODO> colocar essa var em definitions.sh
-MOTION_NOTIFICATION_IDS=(11504381 449542698)
-
 # Função que trata quando a 'motion detected'
 motion.get() {
   local message tmp ziptmp has_video day detect_folder
@@ -24,7 +21,7 @@ motion.get() {
     message+="Movimentação foi detectada\n"
     message+="Enviando o(s) vídeo(s) em instantes..."
     
-    ziptmp="$(random.helper)"
+    ziptmp="$(helper.random)"
     mkdir /tmp/$ziptmp
     zip /tmp/$ziptmp/$ziptmp.zip $has_jpg 
     
