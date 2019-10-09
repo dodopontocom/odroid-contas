@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 
+# Start command - para os textos aqui usamos a variável CENTRAL_OF_MESSAGES_FILE
+# Nessa variável temos o caminho do arquivo onde temos os textos propriamente
 start.sendGreetings() {
   local message txt user_language system arr1 arr2
   
