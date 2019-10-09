@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Helpers
+
 exitOnError() {
   # usage: exitOnError <output_message> [optional: code (defaul:exit code)]
   code=${2:-$?}
@@ -10,6 +12,7 @@ exitOnError() {
   fi
 }
 
+# Verifica se variáveis necessárias estão exportadas no sistema
 helper.validate_vars() {
   local vars_list=($@)
         
@@ -24,6 +27,7 @@ helper.validate_vars() {
   done
 }
 
+# Faz 'replace' de variáveis pelo seus valores se foram corretamente declarados
 helper.replace_vars() {
   # Lê arquivo.
   conteudo=$(< $1)
@@ -56,6 +60,7 @@ helper.replace_vars() {
   echo "$conteudo" > $2
 }
 
+# Faz cálculos com datas
 helper.date_arithimetic() {
   #credits https://gist.github.com/alvfig/f04130aef28e30f96b6bb63a5b81ba80
 
