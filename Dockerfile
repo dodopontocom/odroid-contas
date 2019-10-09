@@ -3,7 +3,7 @@ FROM alpine
 ENV BOT_HOME "/home/odroid-contas"
 
 RUN apk add --update && \
-	apk add curl \
+	apk add git \
 	pdfgrep \
  	curl \
  	bash \
