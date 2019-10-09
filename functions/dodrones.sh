@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# Função de uso pessoal
+
 #❌
 #✅
 
+# Verifica se o HD de backup está montado no odroid
 dodrones.check() {
   local user_id message ssh_cmd scp_cmd
 
@@ -47,6 +50,8 @@ dodrones.check() {
 
 }
 
+# Faz o back dos arquivos para o HD externo
+# Deve-se colocar os arquivos em uma pasta chamada 'bot' assim: ~/Desktop/bot/<pastas e arquivos com as datas para facilitar>
 dodrones.execute() {
   local user_id DODRONES_MOUNT_PATH message host DODRONES_HOST_PATH ssh_cmd scp_cmd
 
@@ -75,6 +80,7 @@ dodrones.execute() {
   fi
 }
 
+# Função acionada quando é escolhido não fazer o backup
 dodrones.cancel() {
   local message user_id
 
