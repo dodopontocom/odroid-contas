@@ -42,4 +42,5 @@ offline.checker() {
 
 # Função deve ser chamada com 2 parâmetros, sendo:
 # 1 - ID do telegram para grupo ou pessoa que vai receber as notificações, aqui são aceitos múltiplos valores separados por 'espaço'
-# 2 - Tempo em segundos que deseja considerar para monitorar a oscilação da internet
+# 2 - Tempo em segundos que deseja considerar para iniciar o monitoramento da oscilação da internet
+#### Exemplo "90" noventa segundos - se a internet ficar um tempo fora a cima de 90 segundos, então quero notificar os ids passados no primeiro parâmetro
