@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 
+# Tira foto com a webcam e envia
 selfie.shot() {
   local message random_file_name error_message user_language system arr1 arr2
   
