@@ -1,32 +1,5 @@
 #!/bin/bash
 
-################################# START - VARIÁVEIS GLOBAIS #################################
-export PENDING_PEDIDO="/tmp/pedido.pending"
-export TMP_PEDIDO="/tmp/pedido_cadastro.log"
-export BOT_BKP_PATH="/mnt/sdcard/telegram_bots_bkp"
-
-export CHAT_SIMPLE_REPLY="${BASEDIR}/texts/words.txt"
-export CENTRAL_OF_MESSAGES_FILE="${BASEDIR}/texts/central_of_messages.txt"
-export BOT_COMMANDS_LIST="${BASEDIR}/texts/commands_list.txt"
-
-export DODRONES_MOUNT_PATH="/mnt/hd1"
-export DODRONES_HOST="rodolfo@192.168.0.107"
-export DODRONES_HOST_PATH="/home/rodolfo/Desktop/bot"
-
-export API_GIT_URL="https://github.com/shellscriptx/shellbot.git"
-export LOTOMANIA_API_URL="https://www.lotodicas.com.br/api"
-export TIMEZONE_API_URL="http://worldtimeapi.org/api/timezone"
-
-export MOTION_DETECTED_PATH="/mnt/sdcard/motion/detect"
-
-export TRIP_CHECKLIST_FILE="${BASEDIR}/texts/trip_checklist.csv"
-
-export GNU_PLOT_ORIGINAL_SCRIPT="${BASEDIR}/configurations/original_plot.gp"
-export GNU_PLOT_SCRIPT="${BASEDIR}/configurations/plot.gp"
-export GNU_PLOT_IMAGE_OUTPUT="/tmp/temp_plot_image.png"
-export GNU_PLOT_DAT="${BASEDIR}/configurations/test.dat"
-################################# END - VARIÁVEIS GLOBAIS #################################
-
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
