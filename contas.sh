@@ -17,7 +17,7 @@ for i in ${NOTIFICATION_IDS[@]}; do
 done
 
 #######################Enviar estatísticas de comandos
-stats.verify "/home/odroid/telegram_bots_logs/contas_" "$(echo ${NOTIFICATION_IDS[@]})"
+stats.verify ${STATS_LOG_PATH} "$(echo ${NOTIFICATION_IDS[@]})"
 ####################################################
 
 #######################Checar recorde de tempo 'vivo'
@@ -30,11 +30,13 @@ botao1=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'SIM' --callback_data 'btn_s'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'NAO' --callback_data 'btn_n'
 
-ShellBot.regHandleFunction --function user.add --callback_data btn_s
-ShellBot.regHandleFunction --function user.donot --callback_data btn_n
+ShellBot.regHandleFunction --function linux.add --callback_data btn_s
+ShellBot.regHandleFunction --function linux.reject --callback_data btn_n
 
 keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 ##############################################################################################
+# revogar acessos ao comando linux
+[[ -f ${TMP_PEDIDO} ]] && rm -rfv ${TMP_PEDIDO}
 
 ############### keyboard para o comando trip #######################################
 botao2=''
@@ -123,14 +125,13 @@ do
 				timezone.place "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/days" )" ]]; then
-				daysRemain="✅ $(days_from_today "2020-01-14") dias"
-				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${daysRemain})"
+				days.remaining "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/megasena" )" ]]; then
 				lotomania.sena				
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
-				stats.verify "/home/odroid/telegram_bots_logs/contas_"
+				stats.verify ${STATS_LOG_PATH}
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/restartbot" )" ]]; then
 				restart.bot
