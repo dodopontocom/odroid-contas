@@ -33,7 +33,7 @@ helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 # Sempre pegar a última versão do ShellBot API
 # <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
 helper.get_api
-exitOnError "Erro ao tentar baixar API ShellBot"
+exitOnError "Erro ao tentar baixar API ShellBot" -1
 
 # Fazer source da API só depois de baixá-la
 source ${BASEDIR}/ShellBot.sh
