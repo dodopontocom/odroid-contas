@@ -1,24 +1,24 @@
 #!/bin/bash
 #
 
+# <TODO> colocar essa var em definitions.sh
 MOTION_NOTIFICATION_IDS=(11504381 449542698)
 
+# Função que trata quando a 'motion detected'
 motion.get() {
   local message tmp ziptmp has_video day detect_folder
   
   day="$(date +%Y%m%d)"
   detect_folder=${MOTION_DETECTED_PATH}/$day
   
-  #has_video=($(find $detect_folder -name "*.avi"))
+  # Procura por imagens na pasta onde o 'motion' as cria
+  # Se houver imagens entao joga todas elas no array 'has_jpg'
   find $detect_folder -name "*.jpg" > /dev/null 2>&1
   if [[ $? -eq 0 ]]; then
     has_jpg=($(find $detect_folder -name "*.jpg"))
   fi
   
-  if [[ ! -z $has_jpg ]]; then
-
-    #cat *.jpg | ffmpeg -f image2pipe -r 1 -vcodec mjpeg -i - -vcodec libx264 out.mp4
-    #dar um tempinho a mais para o motion seja concluído
+  if [[ "${has_jpg}" ]]; then
     sleep 30
     message="⚠️ *Atenção!* ⚠️\n"
     message+="Movimentação foi detectada\n"
@@ -30,38 +30,22 @@ motion.get() {
     
     cd /tmp/$ziptmp/
     unzip $ziptmp.zip
-    #ffmpeg -start_number n -i *%d.jpg -vcodec mpeg4 /tmp/$ziptmp.avi
+    
+    # Transforma as imagens em um arquivo de vídeo
     cat ${has_jpg[@]} | ffmpeg -f image2pipe -r 1 -vcodec mjpeg -i - -vcodec libx264 /tmp/$ziptmp.mp4
     cd -
     rm -vfr ${has_jpg[@]}
     
+    # Envia o vídeo para os IDS selecionados
     for u in ${MOTION_NOTIFICATION_IDS[@]}; do
       ShellBot.sendMessage --chat_id ${u} --text "$(echo -e ${message})" --parse_mode markdown
       ShellBot.sendVideo --chat_id ${u} --video @/tmp/$ziptmp.mp4
     done
     
   fi
-  
-  if [[ ! -z $has_video ]]; then
-
-    #dar um tempinho a mais para o vídeo poder ser concluido
-    sleep 30
-    message="⚠️ *Atenção!* ⚠️\n"
-    message+="Movimentação foi detectada\n"
-    message+="Enviando o(s) vídeo(s) em instantes..."
-
-    for i in ${has_video[@]}; do
-      for u in ${MOTION_NOTIFICATION_IDS[@]}; do
-        ShellBot.sendMessage --chat_id ${u} --text "$(echo -e ${message})" --parse_mode markdown
-        ShellBot.sendVideo --chat_id ${u} --video @$i
-        tmp="/tmp/$(random.helper).avi"
-        mv $i $tmp
-      done
-    done
-
-  fi
 }
 
+# Inicia o monitoramento
 motion.start() {
   local message
   
@@ -77,7 +61,8 @@ motion.start() {
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
   fi 
 }
-  
+
+# Termina o monitoramento
 motion.stop() {
   local message
   
@@ -94,6 +79,7 @@ motion.stop() {
   fi
 }
 
+# Verifica se monitoramento está on ou off
 motion.check() {
   local message
   
@@ -109,6 +95,7 @@ motion.check() {
   fi
 }
 
+# Trata e chama as funções de liga ou desliga
 motion.switch() {
     local cmd array message
     
