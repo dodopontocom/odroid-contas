@@ -69,7 +69,9 @@ motion.start() {
   motion
   if [[ $? -eq 0 ]]; then
     message="Monitoramento por câmera iniciado"
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+    for u in ${MOTION_NOTIFICATION_IDS[@]}; do
+      ShellBot.sendMessage --chat_id ${u} --text "$(echo -e ${message})"
+    done
   else
     message="Houve um problema ao iniciar o monitoramento"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
@@ -81,8 +83,10 @@ motion.stop() {
   
   if [[ "$(ps -w | grep motion)" ]]; then
     killall motion
-    message="Monitoramento foi desligago."
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+    message="Monitoramento foi desligado."
+    for u in ${MOTION_NOTIFICATION_IDS[@]}; do
+      ShellBot.sendMessage --chat_id ${u} --text "$(echo -e ${message})"
+    done
   else
     message="Monitoramento por câmera não foi iniciado\n"
     message+="use \`/motion on\` se deseja ligá-lo!"
