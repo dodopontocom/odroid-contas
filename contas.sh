@@ -35,6 +35,8 @@ ShellBot.regHandleFunction --function linux.reject --callback_data btn_n
 
 keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 ##############################################################################################
+# revogar acessos ao comando linux
+[[ -f ${TMP_PEDIDO} ]] && rm -rfv ${TMP_PEDIDO}
 
 ############### keyboard para o comando trip #######################################
 botao2=''

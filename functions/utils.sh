@@ -42,7 +42,6 @@ source ${BASEDIR}/functions/trip.sh
 source ${BASEDIR}/functions/motion.sh
 source ${BASEDIR}/functions/welcome.sh
 source ${BASEDIR}/functions/timezone.sh
-source ${BASEDIR}/functions/date_arithmetic.sh
 source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
 source ${BASEDIR}/functions/record_alive.sh
