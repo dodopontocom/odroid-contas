@@ -1,0 +1,28 @@
+
+SHELL=/bin/bash
+TBL=/home/odroid/telegram_bots_logs
+TBLB=/mnt/sdcard/telegram_bots_bkp
+
+TB_BKP_SOURCE=/home/odroid/telegram_bots_logs
+TB_BKP_DEST=/mnt/sdcard/telegram_bots_bkp
+
+##############################fazer backup dos logs dos bots do telegram - todas as sextas as meia noite####################################################
+0 0 * * SAT tar -zcvf ${TB_BKP_DEST}/$(date +\%Y\%m\%d-\%H\%M\%S).tar.gz $TB_BKP_SOURCE 2>&1 | ts "[\%Y-\%m-\%d \%H:\%M:\%S]" >> /tmp/BOTS_BKP.log 2>&1
+#############################################################################################################################################################
+##############################fazer backup dos logs dos bots do telegram - todas as sextas as meia noite####################################################
+#0 0 * * SAT tar -zcvf ${TB_BKP_DEST}/$(date +\%Y\%m\%d-\%H\%M\%S).tar.gz $TB_BKP_SOURCE && rm -fr ${TB_BKP_SOURCE}; mkdir -p ${TB_BKP_SOURCE}; killall bot.sh; killall ponto.sh; killall brot.sh; killall contas.sh 2>&1 | ts "[\%Y-\%m-\%d \%H:\%M:\%S]" >> /tmp/BOTS_BKP.log 2>&1
+#############################################################################################################################################################
+###############################################Reinicializar scripts caso estejam 'down'#####################################################################
+#iniciar ngrok na porta 9000 portainer
+#*/2 * * * * ps -ef | grep -v grep | grep "ngrok http -region=eu -log stdout 9000" || /home/odroid/odroid-brot/ngrok-daemon.sh
+#iniciar bgrok na porta 8083 que eh o bash-rest para utilidades
+#*/3 * * * * ps -ef | grep -v grep | grep "ngrok http -region=au -log stdout 8083" || /home/odroid/odroid-brot/bash-rest-daemon.sh
+#iniciar iniciar o brot bot de suporte
+*/1 * * * * ps -e | grep -E "brot\.sh" || /home/odroid/odroid-brot/brot.sh 2>&1 | ts "[\%Y-\%m-\%d \%H:\%M:\%S]" >> ${TBL}/brot_$(date +\%Y\%m\%d-\%H\%M\%S)-$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1).log 2>&1
+#iniciar o bot de bater ponto
+*/2 * * * * ps -e | grep -E "ponto\.sh" || /home/odroid/odroid-ponto/ponto.sh 2>&1 | ts "[\%Y-\%m-\%d \%H:\%M:\%S]" >> ${TBL}/ponto_$(date +\%Y\%m\%d-\%H\%M\%S)-$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1).log 2>&1
+#iniciar o odroid-feeder
+*/3 * * * * ps -e | grep -E "bot\.sh" || /home/odroid/odroid-feeder/bot/bot.sh 2>&1 | ts "[\%Y-\%m-\%d \%H:\%M:\%S]" >> ${TBL}/feeder_$(date +\%Y\%m\%d-\%H\%M\%S)-$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1).log 2>&1
+#iniciar o bot suporte contas e itatiba-bot
+#*/4 * * * * ps -e | grep -E "contas\.sh" || /home/odroid/odroid-contas/contas.sh 2>&1 | ts "[\%Y-\%m-\%d \%H:\%M:\%S]" >> ${TBL}/contas_$(date +\%Y\%m\%d-\%H\%M\%S)-$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1).log 2>&1
+###############################################END - Reinicializar scripts caso estejam 'down'##############################################################
