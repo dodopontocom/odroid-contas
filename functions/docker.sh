@@ -1,6 +1,8 @@
 #!/bin/bash
 #
+# Função experimental
 
+# Função que builda uma imagem docker dado o caminho correto do Dockerfile
 docker.build() {
   set +f
   local dockerfile_path message
