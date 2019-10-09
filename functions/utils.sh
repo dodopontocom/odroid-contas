@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Script que carrega as configurações iniciais do bot
+
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
