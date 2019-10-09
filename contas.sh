@@ -142,6 +142,9 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dockerbuild" )" ]]; then
 				docker.build
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/motion" )" ]]; then
+				motion.switch "${message_chat_id[$id]}"
+			fi
 		else
 			chat.hi
 		fi
