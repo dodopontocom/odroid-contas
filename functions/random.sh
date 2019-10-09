@@ -1,8 +1,12 @@
 #!/bin/bash
 
+# Função suporte
+
+# <TODO> transferir essa função para o helper.sh
+
 #random.helper "1000"		<---- will return a random between 1 and 1000
 #random.helper "file.txt"	<---- will return a random based on the number of lines from the given file
-#random.helper				<---- without passing parameter, means to return a random file name for any usage
+#random.helper			<---- without passing parameter, means to return a random file name for any usage
 
 random.helper() {
 	local var reg amount random_number
