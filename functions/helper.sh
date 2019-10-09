@@ -94,3 +94,7 @@ helper.date_arithimetic() {
   $function "$@"
 }
 
+helper.calc_min() {
+	awk "BEGIN { print "$*" }"
+}
+
