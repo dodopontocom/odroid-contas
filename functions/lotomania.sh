@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# <TODO> implementar melhor o uso para pegar não apenas da megasena
+
+# Usa a API da lotomania para pegar o último sorteio da megasena
 lotomania.sena() {
   local cmd_api jogo message numeros data_hoje data
   
