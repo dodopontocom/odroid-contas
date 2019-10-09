@@ -56,3 +56,46 @@ motion.get() {
   fi
 }
 
+motion.start() {
+  local message
+  
+  [[ "$(ps -w | grep motion)" ]] && killall motion
+  motion
+  if [[ $? -eq 0 ]]; then
+    message="Monitoramento por câmera iniciado"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+  else
+    message="Houve um problema ao iniciar o monitoramento"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+  fi 
+}
+  
+motion.stop() {
+  if [[ "$(ps -w | grep motion)" ]]; then
+    killall motion
+  else
+    message="Monitoramento por câmera não foi iniciado"
+    message+="use \`/motion on\` se deseja ligá-lo!"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+  fi
+}
+
+motion.switch() {
+    local cmd array message
+    
+    if [[ $(echo ${NOTIFICATION_IDS[@]} | grep -- "${message_chat_id[$id]}") ]]; then
+      cmd=$1
+      array=(${cmd})
+      array[0]="/motion"
+      cmd=${array[@]:1}
+
+      if [[ "${cmd[@]}" == "on" ]]; then
+        motion.start
+      elif [[ "${cmd[@]}" == "off" ]]; then
+        motion.stop
+      fi
+    else
+      message="Você não tem permissão de executar este comando."
+      ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
+    fi
+}
