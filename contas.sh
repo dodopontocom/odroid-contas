@@ -143,7 +143,7 @@ do
 				docker.build
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/motion" )" ]]; then
-				motion.switch "${message_chat_id[$id]}"
+				motion.switch "${message_text[$id]}"
 			fi
 		else
 			chat.hi
