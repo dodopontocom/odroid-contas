@@ -1,19 +1,16 @@
 #!/bin/bash
 
-# Função de uso pessoal
+# Função de uso pessoal e experimental
 
 #❌
 #✅
 
 # Verifica se o HD de backup está montado no odroid
 dodrones.check() {
-  local user_id message ssh_cmd scp_cmd
+  local user_id message dryrun_cmd percentage_alert
 
   user_id=$1
-  ssh_cmd="ssh ${DODRONES_HOST}"
-  DODRONES_HOST_PATH="/home/rodolfo/Desktop/bot"
-  dryrun_cmd="rsync -avn ${DODRONES_HOST}:${DODRONES_HOST_PATH}/ ${DODRONES_MOUNT_PATH}/DJI"
-  scp_cmd="scp -r ${DODRONES_HOST}:${DODRONES_HOST_PATH}/ ${DODRONES_MOUNT_PATH}/DJI"
+  dryrun_cmd="rsync -avn ${DODRONES_HOST}:${DODRONES_HOST_PATH}/ ${DODRONES_DJI_PATH}"
   percentage_alert=$(df -k ${DODRONES_MOUNT_PATH} | awk '{print $5}' | egrep "[7-9][0-9]" | cut -c-2)
 
   df -h | grep "${DODRONES_MOUNT_PATH}"
@@ -33,6 +30,12 @@ dodrones.check() {
       ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
         --parse_mode markdown
       
+      message="*Arquivos:*"
+      ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
+        --parse_mode markdown
+      ShellBot.sendMessage --chat_id ${user_id} --text "$(${dryrun_cmd})" \
+        --parse_mode markdown
+
       message="Deseja Iniciar backup?"
       ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
       --reply_markup "$keyboard_backup" --parse_mode markdown
@@ -53,25 +56,23 @@ dodrones.check() {
 # Faz o back dos arquivos para o HD externo
 # Deve-se colocar os arquivos em uma pasta chamada 'bot' assim: ~/Desktop/bot/<pastas e arquivos com as datas para facilitar>
 dodrones.execute() {
-  local user_id DODRONES_MOUNT_PATH message host DODRONES_HOST_PATH ssh_cmd scp_cmd
+  local user_id message scp_cmd
 
-  user_id=${callback_query_from_id}
   # Enviar para mim apenas, pois é um comando bem exclusivo meu
   user_id=${NOTIFICATION_IDS[0]}
-  
-  ssh_cmd="ssh ${DODRONES_HOST}"
-  dryrun_cmd="rsync -avn ${DODRONES_HOST}:${DODRONES_HOST_PATH}/ ${DODRONES_MOUNT_PATH}/DJI"
-  scp_cmd="scp -r ${DODRONES_HOST}:${DODRONES_HOST_PATH}/ ${DODRONES_MOUNT_PATH}/DJI"
+
+  scp_cmd="scp -r ${DODRONES_HOST}:${DODRONES_HOST_PATH}/ ${DODRONES_DJI_PATH}"
 
   message="Iniciando o backup, isso pode levar alguns minutos."
   ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
     --parse_mode markdown
   
   ${scp_cmd}
-  
   if [[ $? -eq 0 ]]; then
-    message=$(ls -lrt ${DODRONES_MOUNT_PATH}/DJI)
+    message="✅ Arquivos enviados com sucesso, mostrando arquivos:"
     ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
+      --parse_mode markdown
+    ShellBot.sendMessage --chat_id ${user_id} --text "$(ls -lrt ${DODRONES_DJI_DEST_PATH})" \
       --parse_mode markdown
   else
     message="Erro ao tentar fazer backup ❌"
@@ -84,7 +85,6 @@ dodrones.execute() {
 dodrones.cancel() {
   local message user_id
 
-  user_id=${callback_query_from_id}
   # Enviar para mim apenas, pois é um comando bem exclusivo meu
   user_id=${NOTIFICATION_IDS[0]}
   message="Ok, não irei realizar o backup agora."

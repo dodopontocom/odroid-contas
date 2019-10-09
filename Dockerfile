@@ -1,4 +1,4 @@
-FROM aarch64/alpine:edge
+FROM aarch64/alpine
 #FROM alpine
 
 ENV BOT_HOME "/home/odroid-contas"
