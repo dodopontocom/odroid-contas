@@ -78,7 +78,6 @@ linux.reject() {
   
   for a in ${admins_id[@]}; do
     message="Pedido rejeitado..."
-    ShellBot.deleteMessage --chat_id $a --message_id "${message_chat_id[$id]}"
     ShellBot.sendMessage --chat_id $a --text "$(echo -e ${message})" \
       --parse_mode markdown
   done
