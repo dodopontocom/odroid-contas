@@ -98,6 +98,7 @@ helper.calc_min() {
 	awk "BEGIN { print "$*" }"
 }
 
+# Remove acentos
 helper.remove_acento() {
   local str ret_str sed_file
   sed_file=${BASEDIR}/configurations/remove_acentos.sed
