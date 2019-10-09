@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-myId=${NOTIFICATION_IDS[0]}
+MOTION_NOTIFICATION_IDS=(11504381 449542698)
 
 motion.get() {
   local message tmp ziptmp has_video day detect_folder
@@ -34,8 +34,10 @@ motion.get() {
     cd -
     rm -vfr ${has_jpg[@]}
     
-    ShellBot.sendMessage --chat_id $myId --text "$(echo -e ${message})" --parse_mode markdown
-    ShellBot.sendVideo --chat_id $myId --video @/tmp/$ziptmp.mp4
+    for u in ${MOTION_NOTIFICATION_IDS[@]}; do
+      ShellBot.sendMessage --chat_id ${u} --text "$(echo -e ${message})" --parse_mode markdown
+      ShellBot.sendVideo --chat_id ${u} --video @/tmp/$ziptmp.mp4
+    done
     
   fi
   
@@ -47,10 +49,12 @@ motion.get() {
     message+="Enviando o(s) vídeo(s) em instantes..."
 
     for i in ${has_video[@]}; do
-      ShellBot.sendMessage --chat_id $myId --text "$(echo -e ${message})" --parse_mode markdown
-      ShellBot.sendVideo --chat_id $myId --video @$i
-      tmp="/tmp/$(random.helper).avi"
-      mv $i $tmp
+      for u in ${MOTION_NOTIFICATION_IDS[@]}; do
+        ShellBot.sendMessage --chat_id ${u} --text "$(echo -e ${message})" --parse_mode markdown
+        ShellBot.sendVideo --chat_id ${u} --video @$i
+        tmp="/tmp/$(random.helper).avi"
+        mv $i $tmp
+      done
     done
 
   fi
