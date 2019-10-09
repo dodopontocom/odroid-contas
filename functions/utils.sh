@@ -23,6 +23,7 @@ source ${BASEDIR}/functions/random.sh
 source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/restart_bot.sh
 source ${BASEDIR}/functions/dodrones.sh
+source ${BASEDIR}/functions/docker.sh
 source ${BASEDIR}/functions/days_remaining.sh
 ################################# END - Carregando todas as funções #################################
 
