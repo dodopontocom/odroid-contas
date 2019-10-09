@@ -71,8 +71,12 @@ motion.start() {
 }
   
 motion.stop() {
+  local message
+  
   if [[ "$(ps -w | grep motion)" ]]; then
     killall motion
+    message="Monitoramento foi desligago."
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
   else
     message="Monitoramento por câmera não foi iniciado"
     message+="use \`/motion on\` se deseja ligá-lo!"
