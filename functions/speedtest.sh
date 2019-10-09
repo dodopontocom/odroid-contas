@@ -1,6 +1,8 @@
 #!/bin/bash
 #
 
+# Faz verificação da velocidade da internet no momento
+# Usa docker e a ferramenta 'speedtest-cli'
 speedtest.check() {
   local message random_file_name
   
