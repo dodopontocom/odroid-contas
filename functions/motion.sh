@@ -86,7 +86,7 @@ motion.check() {
   ps -w | grep motion
   if [[ $? -eq 0 ]]; then
     message="Monitoramento está ligado!\n"
-    message+="Para desligar digite: /motion on"
+    message+="Para desligar digite: /motion off"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   else
     message="Monitoramento está desligado!\n"
