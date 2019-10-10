@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 
+# Verifica se bot está 'vivo'
 ping.pong() {
   local message
 

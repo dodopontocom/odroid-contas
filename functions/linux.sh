@@ -1,6 +1,9 @@
 #!/bin/bash
-#
 
+# Função administrativa e de suporte
+# Executa comandos shell no odroid
+
+# Envia um pedido para que os adm aprovem ou não requisão de uso desse comando /linux
 linux.ask_register() {
   local user_name user_last_name user_id message admins_id
    
@@ -29,6 +32,8 @@ linux.ask_register() {
         --parse_mode markdown
 }
 
+# Adiciona o usuário temporariamente
+# Tira permissão quando odroid é reiniciado ou o script é reiniciado
 linux.add() {
   local user_id admins_id message
   
@@ -68,6 +73,7 @@ linux.add() {
   fi
 }
 
+# Rejeita pedido
 linux.reject() {
   local user_id admins_id message
   
@@ -88,6 +94,7 @@ linux.reject() {
 
 }
 
+# Executa comandos no odroid, comandos básicos sem o uso de pipe |
 linux.cmd() {
   local cmd array message
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Helpers
+
 exitOnError() {
   # usage: exitOnError <output_message> [optional: code (defaul:exit code)]
   code=${2:-$?}
@@ -10,6 +12,7 @@ exitOnError() {
   fi
 }
 
+# Verifica se variáveis necessárias estão exportadas no sistema
 helper.validate_vars() {
   local vars_list=($@)
         
@@ -24,6 +27,7 @@ helper.validate_vars() {
   done
 }
 
+# Faz 'replace' de variáveis pelo seus valores se foram corretamente declarados
 helper.replace_vars() {
   # Lê arquivo.
   conteudo=$(< $1)
@@ -56,6 +60,7 @@ helper.replace_vars() {
   echo "$conteudo" > $2
 }
 
+# Faz cálculos com datas
 helper.date_arithimetic() {
   #credits https://gist.github.com/alvfig/f04130aef28e30f96b6bb63a5b81ba80
 
@@ -89,3 +94,67 @@ helper.date_arithimetic() {
   $function "$@"
 }
 
+helper.calc_min() {
+	awk "BEGIN { print "$*" }"
+}
+
+# Remove acentos
+helper.remove_acento() {
+  local str ret_str sed_file
+  sed_file=${BASEDIR}/configs/remove_acentos.sed
+  
+  str=$1
+  ret_str=$(echo "$str" | sed -f $sed_file)
+  echo $ret_str
+}
+
+helper.get_api() {
+	
+  local tmp_folder
+
+  tmp_folder=/tmp/$(helper.random)
+
+  echo "Baixando versão mais atual da API ShellBot"
+  git clone ${API_GIT_URL} ${tmp_folder} > /dev/null
+
+  echo "Habilitando a API"
+  cp ${tmp_folder}/ShellBot.sh ${BASEDIR}/
+  rm -fr ${tmp_folder}
+}
+
+helper.random() {
+	#helper.random "1000"		<---- will return a random between 1 and 1000
+  #helper.random "file.txt"	<---- will return a random based on the number of lines from the given file
+  #helper.random			<---- without passing parameter, means to return a random file name for any usage
+  local var reg amount random_number
+	
+	var=$1
+	reg='^[0-9]+$'
+
+	if [[ ! $var =~ $re ]] || [[ -f $var ]]; then
+   	amount=$(cat ${var} | wc -l)
+		random_number=$(shuf -i 1-${amount} -n 1)
+	elif [[ $var =~ $re ]] && [[ ! -z $var ]]; then
+		random_number=$(shuf -i 1-${var} -n 1)
+	fi
+	
+	if [[ -z $var ]]; then
+		random_number=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1)
+	fi
+
+	echo "${random_number}"
+}
+
+helper.welcome_message() {
+	local message
+
+	message="🆔 [@${message_new_chat_member_username[$id]:-null}]\n"
+    	message+="🗣 Olá *${message_new_chat_member_first_name[$id]}*"'!!\n\n'
+    	message+="Seja bem-vindo(a) ao *${message_chat_title[$id]}*.\n\n"
+    	message+='`Se precisar de ajuda ou informações sobre meus comandos, é só me chamar no privado.`'"[@$(ShellBot.username)]"
+
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+		--text "$(echo -e ${message})" --parse_mode markdown
+
+	return 0	
+}

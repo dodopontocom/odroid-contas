@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Envia um gráfico com os comandos executados
 stats.verify() {
   local commands file message cmd_total cmd_executed id_monitor bkp_cmd
   
@@ -19,11 +20,12 @@ stats.verify() {
   
   set +f
   
+  # O file diz para fazer o gráfico a partir do bot que representa o path desse file
   file=$1
   cmd_executed=($(cat ${file}*.log | grep message_text | cut -d' ' -f6 | grep ^\'\/.* | sed "s#['/]##g"))
   set -f
   
-  #quantas vezes foram executados (por comando)
+  # Quantas vezes os comandos foram executados (por comando)
   for i in ${id_monitor[@]}; do
     ShellBot.sendMessage --chat_id ${i} \
                 --text "$(echo -e ${message})" \

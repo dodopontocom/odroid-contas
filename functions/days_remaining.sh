@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Comando para retornar quantos dias faltam para uma data específica
 days.remaining() {
   local days message array custom_day
   
@@ -20,6 +21,7 @@ days.remaining() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     fi
   else
+    # Esse caso é para a nossa viagem marcada para o dia 14 de Jan de 2020
     message="✅ $(helper.date_arithimetic "days_from_today" "2020-01-14") dias"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fi

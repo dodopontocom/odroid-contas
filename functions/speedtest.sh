@@ -1,11 +1,13 @@
 #!/bin/bash
 #
 
+# Faz verificação da velocidade da internet no momento
+# Usa docker e a ferramenta 'speedtest-cli'
 speedtest.check() {
   local message random_file_name
   
   message="Aguarde alguns instantes, estou verificando a velocidade da minha internet..."
-  random_file_name=$(random.helper)
+  random_file_name=$(helper.random)
   
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})"
   

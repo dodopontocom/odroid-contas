@@ -3,28 +3,29 @@
 
 BASEDIR=$(dirname $0)
 
-# Importante utils, script que contem o setup de inicializacao do bot
+# Importante utils, script que contem o setup de inicialização do bot
 source ${BASEDIR}/functions/utils.sh
 
+#<TODO> jogar essa var em definitions
 logs=${BASEDIR}/logs
 
 # Inicializando o bot
 ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
-message="Fui reiniciado"
+# Envia notificação de que o bot foi reiniciado
 for i in ${NOTIFICATION_IDS[@]}; do
-	ShellBot.sendMessage --chat_id ${i} --text "$(echo -e ${message})"
+	ShellBot.sendMessage --chat_id ${i} --text "🤖 Fui reiniciado ☝️"
 done
 
-#######################Enviar estatísticas de comandos
+################## Enviar estatísticas de comandos ##################
 stats.verify ${STATS_LOG_PATH} "$(echo ${NOTIFICATION_IDS[@]})"
-####################################################
+#####################################################################
 
-#######################Checar recorde de tempo 'vivo'
+####### Verificar recorde de tempo 'vivo' #######
 record.check "$(echo ${NOTIFICATION_IDS[@]})"
-####################################################
+#################################################
 
-############Botao para admins aceitarem usuários executarem comandos linux###################
+############ Botão para admins aceitarem usuários executarem comandos linux ###################
 botao1=''
 
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'SIM' --callback_data 'btn_s'
@@ -34,11 +35,13 @@ ShellBot.regHandleFunction --function linux.add --callback_data btn_s
 ShellBot.regHandleFunction --function linux.reject --callback_data btn_n
 
 keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
-##############################################################################################
-# revogar acessos ao comando linux
-[[ -f ${TMP_PEDIDO} ]] && rm -rfv ${TMP_PEDIDO}
+###############################################################################################
 
-############### keyboard para o comando trip #######################################
+######## revogar acessos ao comando linux ########
+[[ -f ${TMP_PEDIDO} ]] && rm -rfv ${TMP_PEDIDO}
+##################################################
+
+################################################ keyboard para o comando trip ################################################
 botao2=''
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'Listar Todos' --callback_data 'btn_trip_list'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'Listar ✅' --callback_data 'btn_trip_done'
@@ -63,9 +66,9 @@ ShellBot.regHandleFunction --function list.search --callback_data btn_trip_compr
 ShellBot.regHandleFunction --function list.search --callback_data btn_trip_outrosV
 ShellBot.regHandleFunction --function list.search --callback_data btn_trip_outrosX
 keyboard_trip_checklist="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
-#######################################################################################
+################################################################################################################################
 
-############Botao para fazer backup dos arquivos dodrones###################
+############################## Botao para fazer backup dos arquivos dodrones ##############################
 botao3=''
 
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text 'SIM' --callback_data 'btn_dodrones_yes'
@@ -75,26 +78,28 @@ ShellBot.regHandleFunction --function dodrones.execute --callback_data btn_dodro
 ShellBot.regHandleFunction --function dodrones.cancel --callback_data btn_dodrones_no
 
 keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
-##############################################################################################
+##########################################################################################################
 
 while :
-do
-	
+do	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
-	############### verifica se ficou offline ########################################################################
+	############### Verifica se o bot ficou offline #############################
 	offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
-	##################################################################################################################
+	#############################################################################
 	
-	#verifica se há arquivos avi do software motion e envia para mim
+	### verifica se há arquivos avi do software motion e envia para os admins ###
 	motion.get
+	#############################################################################
 
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
 		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
-
-		[[ ${message_new_chat_member_id[$id]} ]] && welcome.msg
+		
+		### Envia mensagem de boas vindas para novos usuários de grupo ###
+		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
+		##################################################################
 
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
@@ -139,8 +144,16 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dodrones" )" ]]; then
 				dodrones.check "${message_chat_id[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dockerbuild" )" ]]; then
+				docker.build
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/motion" )" ]]; then
+				motion.switch "${message_text[$id]}"
+			fi
 		else
+			# Conversa aleatória com o bot #
 			chat.hi
+			################################
 		fi
 	) & 
 	done

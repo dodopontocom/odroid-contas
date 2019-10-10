@@ -1,6 +1,8 @@
 #!/bin/bash
-#
 
+# Função experimental
+
+# Verifica se diretório ou arquivo foi criado, caso negativo cria
 iscreated.helper() {
 	local type var
 	

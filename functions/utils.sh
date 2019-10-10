@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Script que carrega as configurações iniciais do bot
+
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
@@ -19,10 +21,9 @@ source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
 source ${BASEDIR}/functions/record_alive.sh
 source ${BASEDIR}/functions/stats.sh
-source ${BASEDIR}/functions/random.sh
-source ${BASEDIR}/functions/shell_api.sh
 source ${BASEDIR}/functions/restart_bot.sh
 source ${BASEDIR}/functions/dodrones.sh
+source ${BASEDIR}/functions/docker.sh
 source ${BASEDIR}/functions/days_remaining.sh
 ################################# END - Carregando todas as funções #################################
 
@@ -32,8 +33,8 @@ helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
 # Sempre pegar a última versão do ShellBot API
 # <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
-dinamic.api
-exitOnError "Erro ao tentar baixar API ShellBot"
+helper.get_api
+exitOnError "Erro ao tentar baixar API ShellBot" $?
 
 # Fazer source da API só depois de baixá-la
 source ${BASEDIR}/ShellBot.sh

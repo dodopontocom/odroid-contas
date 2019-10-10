@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 
+# Tira foto com a webcam e envia
 selfie.shot() {
   local message random_file_name error_message user_language system arr1 arr2
   
@@ -8,7 +9,7 @@ selfie.shot() {
   user_language=${message_from_language_code}
   message=''
   
-  random_file_name=$(random.helper)
+  random_file_name=$(helper.random)
   
   if [[ ${user_language} = "en" ]]; then
     arr1=("$(cat ${CENTRAL_OF_MESSAGES_FILE} | grep ^${system} | grep -v :err: | grep :$user_language: | cut -d':' -f3)")
