@@ -44,7 +44,8 @@ Aqui é um exemplo do retorno do comando stats, que envia um gráfico com os com
 
 **Comando** `motion`
 
-Esse comando envolve monitoramente residencial. Quando meus donos estão fora de casa eu posso enviar movimentos suspeitos!!!
+Esse comando envolve monitoramente residencial.  
+Quando meus donos estão fora de casa eu posso alertá-los sobre movimentos suspeitos!!!
 
 ![Motion](img/motion.png)
 
