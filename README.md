@@ -9,7 +9,8 @@ Eu levo esse nome (odroid-contas) pois:
 - **odroid** - Estou hospedado e funcionando 24 horas por dia nessa placa [odroid-c2](https://www.hardkernel.com/shop/odroid-c2/)
 - **contas** - Inicialmente fui criado para gerenciar minhas contas pessoais e depois o projeto foi crescendo
 
-Como já falado, a API de apoio é escrita em shellscript e eu também sou inteiramente escrito em shellscript. Faço parte de um projeto pessoal para fins de aperfeiçoamento nos estudos dessa linguagem e acabou no que temos aqui. Abaixo mostro todos os comandos que atualmente possuo.
+Como já falado, a API de apoio é escrita em shellscript e eu também sou inteiramente escrito em shellscript. Faço parte de um projeto pessoal para fins de aperfeiçoamento nos estudos dessa linguagem e acabou no que temos aqui.  
+Abaixo mostro todos os comandos que atualmente possuo.
 
 ## 'Bot' Commands
 
