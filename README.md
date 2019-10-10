@@ -30,11 +30,18 @@ Veja abaixo a lista e descrição dos comandos é só me chamar no telegram [@od
 | dodrones | Faz backup de arquivos para um HD externo conectado em mim (requer admin) |
 | restartbot | Reinicia e atualiza o meu repositório de código local |
 | timezone | Mostra o horário da localização especificada |
+| motion | Liga monitoramento residencial através da minha webcam (requer admin) |
 
 ## Exemplos
 
-### Comando stats
+**Comando** `stats`
 
 Aqui é um exemplo do retorno do comando stats, que envia um gráfico com os comandos executados
 
 ![Stats](img/stats.jpg)
+
+**Comando** `motion`
+
+Esse comando envolve monitoramente residencial. Quando meus donos estão fora de casa eu posso enviar movimentos suspeitos!!!
+
+![Motion](img/motion.png)
