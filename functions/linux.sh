@@ -104,7 +104,7 @@ linux.cmd() {
     array[0]="/linux"
     cmd=${array[@]:1}
 
-    if [[ ! -z ${cmd} ]]; then
+    if [[ "${cmd}" ]]; then
       ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(${cmd[@]})" --parse_mode markdown
     else
       message="Usage: ${array[0]} <command>"
@@ -125,7 +125,7 @@ linux.cmd() {
       array[0]="/linux"
       cmd=${array[@]:1}
   
-      if [[ ! -z ${cmd[@]} ]]; then
+      if [[ "${cmd[@]}" ]]; then
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(${cmd[@]})" --parse_mode markdown
       else
         message="Usage: ${array[0]} <command>"
