@@ -13,7 +13,8 @@ Como já falado, a API de apoio é escrita em shellscript e eu também sou intei
 
 ## 'Bot' Commands
 
-Veja abaixo a lista e descrição dos comandos é só me chamar no telegram [@odroidbrBot](https://web.telegram.org/#/im?p=%40odroidbrBot)
+Veja abaixo a lista e descrição dos comandos.  
+Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.telegram.org/#/im?p=%40odroidbrBot)
 
 | Comando | Descrição |
 | --- | --- |
@@ -30,7 +31,7 @@ Veja abaixo a lista e descrição dos comandos é só me chamar no telegram [@od
 | dodrones | Faz backup de arquivos para um HD externo conectado em mim (requer admin) |
 | restartbot | Reinicia e atualiza o meu repositório de código local |
 | timezone | Mostra o horário da localização especificada |
-| motion | Liga monitoramento residencial através da minha webcam (requer admin) |
+| motion | Liga ou desliga monitoramento residencial através da minha webcam (requer admin) |
 
 ## Exemplos
 
@@ -45,3 +46,7 @@ Aqui é um exemplo do retorno do comando stats, que envia um gráfico com os com
 Esse comando envolve monitoramente residencial. Quando meus donos estão fora de casa eu posso enviar movimentos suspeitos!!!
 
 ![Motion](img/motion.png)
+
+## Contribuição
+
+Sinta-se a vontade para contribuir
