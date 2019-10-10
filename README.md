@@ -24,9 +24,17 @@ Veja abaixo a lista e descrição dos comandos é só me chamar no telegram [@od
 | stats | Mostra estatísticas dos comandos mais usados |
 | voice | Transforma o seu texto em mensagem de áudio |
 | speedtest | Envia verificação da velocidade da minha internet |
-| linux | Para testar comandos shell (requer admin) |
+| linux | Para testar comandos básicos em shell (requer admin) |
 | days | Retorna o número de dias restantes para a data especificada |
 | chat | Liga ou desliga modo falante do bot |
 | dodrones | Faz backup de arquivos para um HD externo conectado em mim (requer admin) |
 | restartbot | Reinicia e atualiza o meu repositório de código local |
 | timezone | Mostra o horário da localização especificada |
+
+## Exemplos
+
+### Comando stats
+
+Aqui é um exemplo do retorno do comando stats, que envia um gráfico com os comandos executados
+
+![Stats](img/stats.jpg)
