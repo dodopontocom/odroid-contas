@@ -12,6 +12,10 @@ logs=${BASEDIR}/logs
 # Inicializando o bot
 ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
+#################################### TRIP ####################################
+message_base="*🗺️🌴 === EURO 💑 TRIP === ☃️🛩️*"
+#################################### TRIP ####################################
+
 # Envia notificação de que o bot foi reiniciado
 for i in ${NOTIFICATION_IDS[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "🤖 Fui reiniciado ☝️"
@@ -152,49 +156,56 @@ do
 			fi
 			#### Comandos apenas para nossa viagem de Janeiro
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/madri" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dublin" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/liverpool" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/londres" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/berlim" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/amsterdam" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/bruxelas" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f4)"
@@ -208,14 +219,16 @@ do
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/veneza" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/roma" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f1)\n"
+				message="$(echo -e ${message_base})"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f4)"
