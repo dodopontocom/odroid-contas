@@ -143,8 +143,8 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
 				stats.verify ${STATS_LOG_PATH}
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/restartbot" )" ]]; then
-				restart.bot
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/botreset" )" ]]; then
+				bot_reset.bot
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dodrones" )" ]]; then
 				dodrones.check "${message_chat_id[$id]}"
