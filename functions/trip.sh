@@ -171,6 +171,7 @@ trip.cities() {
 		;;
 		"Roma") days.remaining "1 2020/01/28"
 		;;
-		
+		*)
+      ;;
 	esac
 }
