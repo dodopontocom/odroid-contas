@@ -14,6 +14,7 @@ ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
 #################################### TRIP ####################################
 message_base="*🗺️🌴 === EURO 💑 TRIP === ☃️🛩️*\n\n"
+cidades="/madrid\n\n/dublin\n\n/liverpool\n\n/londres\n\n/berlim\n\n/amsterdam\n\n/bruxelas\n\n/paris\n\n/veneza\n\n/roma"
 #################################### TRIP ####################################
 
 # Envia notificação de que o bot foi reiniciado
@@ -155,6 +156,9 @@ do
 				motion.switch "${message_text[$id]}"
 			fi
 			#### Comandos apenas para nossa viagem de Janeiro
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${cidades})" --parse_mode markdown
+			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/madri" )" ]]; then
 				message="$(echo -e ${message_base})\n\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f1)\n"
