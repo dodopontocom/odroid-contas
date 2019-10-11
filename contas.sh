@@ -207,7 +207,7 @@ do
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Paris | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/venesa" )" ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/veneza" )" ]]; then
 				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f1)\n"
 				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f2)*\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f3)\n"
