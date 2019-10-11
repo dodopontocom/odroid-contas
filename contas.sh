@@ -13,7 +13,7 @@ logs=${BASEDIR}/logs
 ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
 #################################### TRIP ####################################
-message_base="*🗺️🌴 === EURO 💑 TRIP === ☃️🛩️*"
+message_base="*🗺️🌴 === EURO 💑 TRIP === ☃️🛩️*\n\n"
 #################################### TRIP ####################################
 
 # Envia notificação de que o bot foi reiniciado
