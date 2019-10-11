@@ -139,10 +139,15 @@ trip.cities() {
 	city=$1
 	
 	message="$(echo -e ${message_base})\n\n"
-	message+="$(cat ${city_file} | grep ${city} | cut -d',' -f1)\n"
-	message+="*$(cat ${city_file} | grep ${city} | cut -d',' -f2)*\n"
-	message+="$(cat ${city_file} | grep ${city} | cut -d',' -f3)\n"
-	message+="$(cat ${city_file} | grep ${city} | cut -d',' -f4)\n\n"
+	message+="A viagem para ${city} vai ser no dia\n*$(cat ${city_file} | grep ${city} | cut -d',' -f2)*\n"
+	message+="Vocês irão deixar ${city} no dia\n*$(cat ${city_file} | grep ${city} | cut -d',' -f3)*\n"
+	if [[ ${city} == "Bruxelas" ]]; then
+		message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
+	elif [[ ${city} == "Roma" ]]; then
+		message+="Esse trecho é a volta para casa!!!"
+	else
+		message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)\n"
+	fi
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	
 	case $city in
