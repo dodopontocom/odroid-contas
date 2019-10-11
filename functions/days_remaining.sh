@@ -15,6 +15,7 @@ days.remaining() {
 		message="✅📅 Faltam ${result} dias"	
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	elif [[ ! ${result} -gt 0 ]]; then
+		result=${result//-/}
 		message="✅📅 Já se passaram ${result} dias"	
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	else
