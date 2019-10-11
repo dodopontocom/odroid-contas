@@ -12,6 +12,11 @@ logs=${BASEDIR}/logs
 # Inicializando o bot
 ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
 
+#################################### TRIP ####################################
+message_base="*🗺️🌴 === EURO 💑 TRIP === ☃️🛩️*\n\n"
+cidades="/madrid\n\n/dublin\n\n/liverpool\n\n/londres\n\n/berlim\n\n/amsterdam\n\n/bruxelas\n\n/paris\n\n/veneza\n\n/roma"
+#################################### TRIP ####################################
+
 # Envia notificação de que o bot foi reiniciado
 for i in ${NOTIFICATION_IDS[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "🤖 Fui reiniciado ☝️"
@@ -149,6 +154,100 @@ do
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/motion" )" ]]; then
 				motion.switch "${message_text[$id]}"
+			fi
+			#### Comandos apenas para nossa viagem de Janeiro
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${cidades})" --parse_mode markdown
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/madri" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f4)\n\n"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/14"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dublin" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Dublin | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/16"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/liverpool" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Liverpool | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/18"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/londres" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Londres | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/18"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/berlim" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Berlim | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/21"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/amsterdam" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Amsterdam | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/22"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/bruxelas" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Bruxelas | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/23"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/paris" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Paris | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Paris | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Paris | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Paris | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/25"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/veneza" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/27"
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/roma" )" ]]; then
+				message="$(echo -e ${message_base})\n\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Roma | cut -d',' -f4)"
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+				days.remaining "1 2020/01/28"
 			fi
 		else
 			# Conversa aleatória com o bot #
