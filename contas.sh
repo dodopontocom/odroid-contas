@@ -208,10 +208,10 @@ do
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/veneza" )" ]]; then
-				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f1)\n"
-				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f2)*\n"
-				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f3)\n"
-				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Venesa | cut -d',' -f4)"
+				message="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f1)\n"
+				message+="*$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f2)*\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f3)\n"
+				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Veneza | cut -d',' -f4)"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/roma" )" ]]; then
