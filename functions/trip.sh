@@ -151,25 +151,25 @@ trip.cities() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	
 	case ${city} in
-		Madri) days.remaining "1 2020/01/14"
+		"Madri") days.remaining "1 2020/01/14"
 		;;
-		Dublin) days.remaining "1 2020/01/16"
+		"Dublin") days.remaining "1 2020/01/16"
 		;;
-		Liverpool) days.remaining "1 2020/01/18"
+		"Liverpool") days.remaining "1 2020/01/18"
 		;;
-		Londres) days.remaining "1 2020/01/18"
+		"Londres") days.remaining "1 2020/01/18"
 		;;
-		Berlim) days.remaining "1 2020/01/21"
+		"Berlim") days.remaining "1 2020/01/21"
 		;;
-		Amsterdam) days.remaining "1 2020/01/22"
+		"Amsterdam") days.remaining "1 2020/01/22"
 		;;
-		Bruxelas) days.remaining "1 2020/01/23"
+		"Bruxelas") days.remaining "1 2020/01/23"
 		;;
-		Paris) days.remaining "1 2020/01/25"
+		"Paris") days.remaining "1 2020/01/25"
 		;;
-		Veneza) days.remaining "1 2020/01/27"
+		"Veneza") days.remaining "1 2020/01/27"
 		;;
-		Roma) days.remaining "1 2020/01/28"
+		"Roma") days.remaining "1 2020/01/28"
 		;;
 		
 	esac
