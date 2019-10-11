@@ -9,12 +9,12 @@ days.remaining() {
   array[0]="/days"
   days=${array[@]:1}
   
-  if [[ ${days} ]]; then
-	result=$(helper.date_arithimetic "days_from_today" "${days}")
-	if [[ $? -eq 0 ]] && [[ ${result} -ge 0 ]]; then
+  if [[ ${days[@]} ]]; then
+	result=$(helper.date_arithimetic "days_from_today" "${days[@]}")
+	if [[ $? -eq 0 ]] && [[ ${result} -gt 0 ]]; then
 		message="✅📅 Faltam ${result} dias"	
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-	elif [[ ! ${result} -ge 0 ]]; then
+	elif [[ ! ${result} -gt 0 ]]; then
 		message="✅📅 Já se passaram ${result} dias"	
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	else
