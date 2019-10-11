@@ -166,7 +166,7 @@ do
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f3)\n"
 				message+="$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madri | cut -d',' -f4)\n\n"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-				message="⚠️ Atenção! Faltam $(days.remaining 2020/01/14) dias 📅 para essa viagem!"
+				message="⚠️ Atenção! Faltam $(days.remaining "/days 2020/01/14") dias 📅 para essa viagem!"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/dublin" )" ]]; then
