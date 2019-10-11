@@ -150,6 +150,11 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/motion" )" ]]; then
 				motion.switch "${message_text[$id]}"
 			fi
+			#### Comandos apenas para nossa viagem de Janeiro
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/madrid" )" ]]; then
+				message=$(cat ${BASEDIR}/texts/trip_cities.csv | grep Madrid)
+				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message/,/ - })" --parse_mode markdown
+			fi
 		else
 			# Conversa aleatória com o bot #
 			chat.hi
