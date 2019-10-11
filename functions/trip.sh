@@ -150,7 +150,7 @@ trip.cities() {
 	fi
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	
-	case $city in
+	case ${city} in
 		Madri) days.remaining "1 2020/01/14"
 		;;
 		Dublin) days.remaining "1 2020/01/16"
