@@ -10,7 +10,7 @@ days.remaining() {
   days=${array[@]:1}
   
   if [[ ${days[@]} ]]; then
-    message+="✅ $(helper.date_arithimetic "days_from_today" "${days[@]}") dias"
+    message+="✅📅 Faltam $(helper.date_arithimetic "days_from_today" "${days[@]}") dias"
     if [[ $? -eq 0 ]]; then
     	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
     else
@@ -22,7 +22,7 @@ days.remaining() {
     fi
   else
     # Esse caso é para a nossa viagem marcada para o dia 14 de Jan de 2020
-    message="✅ $(helper.date_arithimetic "days_from_today" "2020-01-14") dias"
+    message="✅📅 Faltam $(helper.date_arithimetic "days_from_today" "2020-01-14") dias"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fi
 }
