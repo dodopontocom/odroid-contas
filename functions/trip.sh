@@ -122,3 +122,50 @@ list.search() {
 	fi
 	
 }
+
+trip.all_cities() {
+	local cidades
+	
+	cidades="/madrid\n\n/dublin\n\n/liverpool\n\n/londres\n\n/berlim\n\n/amsterdam\n\n/bruxelas\n\n/paris\n\n/veneza\n\n/roma"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${cidades})" --parse_mode markdown
+}
+
+trip.cities() {
+	local city city_file message message_base
+	
+	message_base="*🗺️🌴 === EURO 💑 TRIP === ☃️🛩️*\n\n"
+	
+	city_file="${BASEDIR}/texts/trip_cities.csv"
+	city=$1
+	
+	message="$(echo -e ${message_base})\n\n"
+	message+="$(cat ${city_file} | grep ${city} | cut -d',' -f1)\n"
+	message+="*$(cat ${city_file} | grep ${city} | cut -d',' -f2)*\n"
+	message+="$(cat ${city_file} | grep ${city} | cut -d',' -f3)\n"
+	message+="$(cat ${city_file} | grep ${city} | cut -d',' -f4)\n\n"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+	
+	case $city in
+		Madri) days.remaining "1 2020/01/14"
+		;;
+		Dublin) days.remaining "1 2020/01/16"
+		;;
+		Liverpool) days.remaining "1 2020/01/18"
+		;;
+		Londres) days.remaining "1 2020/01/18"
+		;;
+		Berlim) days.remaining "1 2020/01/21"
+		;;
+		Amsterdam) days.remaining "1 2020/01/22"
+		;;
+		Bruxelas) days.remaining "1 2020/01/23"
+		;;
+		Paris) days.remaining "1 2020/01/25"
+		;;
+		Veneza) days.remaining "1 2020/01/27"
+		;;
+		Roma) days.remaining "1 2020/01/28"
+		;;
+		
+	esac
+}
