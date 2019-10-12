@@ -9,6 +9,6 @@ speedtest
 voice
 ping
 stats
-restartbot
+botreset
 dodrones
 chat

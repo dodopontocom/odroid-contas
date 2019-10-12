@@ -1,11 +1,11 @@
 cidade,dataSaida,dataPartida,tipoTransporte
-A viagem para Madri vai ser no dia,14/Jan às 01:10,Vocês irão deixar Madri no dia 16/Jan às 10:35,Esse trecho vai ser de avião (TAP Air)
-A viagem para Dublin vai ser no dia,16/Jan às 10:35,Vocês irão deixar Dublin no dia 18/Jan às 07:05,Esse trecho vai ser de avião (ryanair/omio)
-A viagem para Liverpool vai ser no dia,18/Jan às 07:05,Vocês irão deixar Liverpool no dia 18/Jan às 16:20,Esse trecho vai ser de avião/ônibus (omio/National Express)
-A viagem para Londres vai ser no dia,18/Jan às 16:20,Vocês irão deixar Londres no dia 21/Jan às 08:00,Esse trecho vai ser de ônibus/avião (National Express/momondo)
-A viagem para Berlim vai ser no dia,21/Jan às 08:00,Vocês irão deixar Berlim no dia 22/Jan hora a <CONFRIMAR>,Esse trecho vai ser de avião/trem (momondo/<CONFIRMAR>)
-A viagem para Amsterdam vai ser no dia,22/Jan hora a <CONFRIMAR>,Vocês irão deixar Amsterdam no dia <CONFRIMAR>,Esse trecho vai ser de trem (<CONFRIMAR>)
-A viagem para Bruxelas vai ser no dia,<CONFRIMAR>,Vocês irão deixar Bruxelas no dia <CONFRIMAR>,Esse trecho é especial pois irão para Duvel e Bruges
-A viagem para Paris vai ser no dia,<CONFRIMAR>,Vocês irão deixar Paris no dia <CONFRIMAR> às 07:20,Esse trecho vai ser de trem/avião (<CONFRIMAR>/omio)
-A viagem para Veneza vai ser no dia,<CONFRIMAR> às 07:20,Vocês irão deixar Veneza no dia 28/Jan às <CONFRIMAR>,Esse trecho vai ser de avião/trem (omio/<CONFRIMAR>)
-A viagem para Roma vai ser no dia,28/Jan às <CONFRIMAR>,Vocês irão deixar Roma no dia 29/Jan às 06:10,Esse trecho é a volta pra 🏠
+Madri,14/Jan às 01:10,16/Jan às 10:35,avião (TAP Air)
+Dublin,16/Jan às 10:35,18/Jan às 07:05,avião (ryanair/omio)
+Liverpool,18/Jan às 07:05,18/Jan às 16:20,avião/ônibus (omio/National Express)
+Londres,18/Jan às 16:20,21/Jan às 08:00,ônibus/avião (National Express/momondo)
+Berlim,21/Jan às 08:00,22/Jan hora a <CONFRIMAR>,avião/trem (momondo/<CONFIRMAR>)
+Amsterdam,22/Jan hora a <CONFRIMAR>,<CONFRIMAR>,trem (<CONFRIMAR>)
+Bruxelas,<CONFRIMAR>,<CONFRIMAR>,trem
+Paris,<CONFRIMAR>,<CONFRIMAR> às 07:20,trem/avião (<CONFRIMAR>/omio)
+Veneza,<CONFRIMAR> às 07:20,28/Jan às <CONFRIMAR>,avião/trem (omio/<CONFRIMAR>)
+Roma,28/Jan às <CONFRIMAR>,29/Jan às 06:10,aviao
