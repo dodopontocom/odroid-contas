@@ -148,38 +148,57 @@ trip.cities() {
 	else
 		message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)\n"
 	fi
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 	
 	case "${city}" in
 		Madri)
 			days.remaining "1 2020/01/14"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Dublin)
 			days.remaining "1 2020/01/16"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Liverpool)
 			days.remaining "1 2020/01/18"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Londres)
 			days.remaining "1 2020/01/18"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Berlim)
 			days.remaining "1 2020/01/21"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Amsterdam)
 			days.remaining "1 2020/01/22"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Bruxelas)
 			days.remaining "1 2020/01/23"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Paris)
 			days.remaining "1 2020/01/25"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Veneza)
 			days.remaining "1 2020/01/27"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		Roma)
 			days.remaining "1 2020/01/28"
+			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+
 		;;
 		*)
 			echo ops
