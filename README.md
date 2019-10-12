@@ -36,6 +36,8 @@ Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.
 | /timezone | Mostra o horário da localização especificada |
 | /motion | Liga ou desliga monitoramento residencial através da minha webcam (requer admin) |
 
+</details>
+
 ## Exemplos
 
 **Comando** `/stats`
