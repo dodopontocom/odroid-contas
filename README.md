@@ -17,6 +17,8 @@ Abaixo mostro todos os comandos que atualmente possuo.
 Veja abaixo a lista e descrição dos comandos.  
 Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.telegram.org/#/im?p=%40odroidbrBot)
 
+<details>
+  <summary>Mostrar Comandos</summary>
 | Comando | Descrição |
 | --- | --- |
 | /start | Informações iniciais |
@@ -30,7 +32,7 @@ Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.
 | /days | Retorna o número de dias restantes para a data especificada |
 | /chat | Liga ou desliga modo falante do bot |
 | /dodrones | Faz backup de arquivos para um HD externo conectado em mim (requer admin) |
-| /restartbot | Reinicia e atualiza o meu repositório de código local |
+| /botreset | Atualiza o meu repositório de código local, depois reinicia o bot para refletir as modificações |
 | /timezone | Mostra o horário da localização especificada |
 | /motion | Liga ou desliga monitoramento residencial através da minha webcam (requer admin) |
 
