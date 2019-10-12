@@ -142,68 +142,54 @@ trip.cities() {
 	message+="A viagem para ${city} vai ser no dia\n*$(cat ${city_file} | grep ${city} | cut -d',' -f2)*\n"
 	message+="Vocês irão deixar ${city} no dia\n*$(cat ${city_file} | grep ${city} | cut -d',' -f3)*\n"
 	
-	case "${city}" in
-		Madri)
+	if [[ ${city} == "Madri" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/14"
 
-		;;
-		Dublin)
+	elif [[ ${city} == "Dublin" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/16"
 
-		;;
-		Liverpool)
+		elif [[ ${city} == "Liverpool" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
 
-		;;
-		Londres)
+		elif [[ ${city} == "Londres" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
 
-		;;
-		Berlim)
+		elif [[ ${city} == "Liverpool" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/21"
 
-		;;
-		Amsterdam)
+		elif [[ ${city} == "Amsterdam" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/22"
 
-		;;
-		Bruxelas)
+		elif [[ ${city} == "Berlim" ]]; then
 			message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/23"
 
-		;;
-		Paris)
+		elif [[ ${city} == "Paris" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/25"
 
-		;;
-		Veneza)
+		elif [[ ${city} == "Veneza" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/27"
 
-		;;
-		Roma)			
+		elif [[ ${city} == "Roma" ]]; then			
 			message+="Esse trecho é a volta para casa!!!"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/28"
-
-		;;
-		*)
-			echo ops
-	esac
+	fi
 }
