@@ -162,7 +162,7 @@ fi
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
 fi
-		if [[ ${city} == "Liverpool" ]]; then
+		if [[ ${city} == "Berlim" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/21"
@@ -172,7 +172,7 @@ fi
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/22"
 fi
-		if [[ ${city} == "Berlim" ]]; then
+		if [[ ${city} == "Bruxelas" ]]; then
 			message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/23"
