@@ -17,8 +17,6 @@ Abaixo mostro todos os comandos que atualmente possuo.
 Veja abaixo a lista e descrição dos comandos.  
 Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.telegram.org/#/im?p=%40odroidbrBot)
 
-<details>
-  <summary>Mostrar Comandos</summary>
 | Comando | Descrição |
 | --- | --- |
 | /start | Informações iniciais |
@@ -35,8 +33,6 @@ Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.
 | /botreset | Atualiza o meu repositório de código local, depois reinicia o bot para refletir as modificações |
 | /timezone | Mostra o horário da localização especificada |
 | /motion | Liga ou desliga monitoramento residencial através da minha webcam (requer admin) |
-
-</details>
 
 ## Exemplos
 
