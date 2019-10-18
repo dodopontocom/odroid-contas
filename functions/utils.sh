@@ -15,7 +15,6 @@ source ${BASEDIR}/functions/ping.sh
 source ${BASEDIR}/functions/chat.sh
 source ${BASEDIR}/functions/trip.sh
 source ${BASEDIR}/functions/motion.sh
-source ${BASEDIR}/functions/welcome.sh
 source ${BASEDIR}/functions/timezone.sh
 source ${BASEDIR}/functions/offline.sh
 source ${BASEDIR}/functions/lotomania.sh
@@ -25,6 +24,7 @@ source ${BASEDIR}/functions/bot_reset.sh
 source ${BASEDIR}/functions/dodrones.sh
 source ${BASEDIR}/functions/docker.sh
 source ${BASEDIR}/functions/days_remaining.sh
+source ${BASEDIR}/functions/servo_play.sh
 ################################# END - Carregando todas as funções #################################
 
 # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
