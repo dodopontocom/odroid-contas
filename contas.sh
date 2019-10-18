@@ -150,6 +150,9 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/motion" )" ]]; then
 				motion.switch "${message_text[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/servo" )" ]]; then
+				servo.play "${message_text[$id]}"
+			fi
 			#### Comandos apenas para nossa viagem de Janeiro
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
 				trip.all_cities

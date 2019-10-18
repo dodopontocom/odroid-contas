@@ -12,3 +12,4 @@ stats
 botreset
 dodrones
 chat
+servo
