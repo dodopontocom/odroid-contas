@@ -28,6 +28,7 @@ disk.warn() {
     dir=$1
     minimum=$2
     final_not_id=${notifications_to}
+    dont_notify=true
   else
     disk=$1
     array=(${disk})
@@ -51,6 +52,8 @@ disk.warn() {
   else
     message="Diretório está Ok!\n"
     message="Espaço livre está abaixo de *${minimum}%*"
-    ShellBot.sendMessage --chat_id ${final_not_id} --text "$(echo -e ${message})" --parse_mode markdown
+    if [[ -z ${dont_notify} ]]; then
+      ShellBot.sendMessage --chat_id ${final_not_id} --text "$(echo -e ${message})" --parse_mode markdown
+    fi
   fi
 }
