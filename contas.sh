@@ -84,6 +84,10 @@ while :
 do	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
+	################## verificar espaço em disco ( / ) ##################
+	disk.warn "/" "90" ${NOTIFICATION_IDS[0]}
+	#####################################################################
+
 	############### Verifica se o bot ficou offline #############################
 	offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
 	#############################################################################
@@ -153,6 +157,10 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/servo" )" ]]; then
 				servo.play "${message_text[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/disk" )" ]]; then
+				disk.warn "${message_text[$id]}"
+			fi
+			
 			#### Comandos apenas para nossa viagem de Janeiro
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
 				trip.all_cities
