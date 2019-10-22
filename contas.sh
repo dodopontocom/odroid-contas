@@ -87,7 +87,7 @@ ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'MADRI HOSTEL �
 ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_GRU
 ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_MAD_HOST
 keyboard_GRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_GRU')"
-##########################################################################################################
+
 btn_DUB=''
 ShellBot.InlineKeyboardButton --button 'btn_DUB' --line 1 --text 'MADRI Airport 📍' --callback_data 'btn_DUB_MAD' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.InlineKeyboardButton --button 'btn_DUB' --line 1 --text 'DUBLIN HOSTEL 📍' --callback_data 'btn_DUB_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
