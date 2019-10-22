@@ -85,7 +85,7 @@ botao4=''
 
 ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'COMO CHEGAR 📍' --callback_data 'btn_loc'
 ShellBot.regHandleFunction --function trip.btn_loc --callback_data btn_loc
-keyboard_loc="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
+keyboard_loc="$(ShellBot.InlineKeyboardMarkup -b 'botao4')"
 ##########################################################################################################
 
 while :
