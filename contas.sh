@@ -83,9 +83,9 @@ keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 ############################## Botao de enviar localização da estação/aeroporto ##############################
 btn_GRU=''
 ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'GRU Airport 📍' --callback_data 'btn_GRU' --url 'https://goo.gl/maps/guwt9pCUUmrGGCKRA'
-ShellBot.InlineKeyboardButton --button 'btn_MAD' --line 1 --text 'MAD Airport 📍' --callback_data 'btn_MAD' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'MAD Airport 📍' --callback_data 'btn_MAD' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_GRU
-ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_MAD
+ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_GRU
 keyboard_GRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_GRU')"
 ##########################################################################################################
 
