@@ -139,7 +139,7 @@ trip.cities() {
 	message="$(echo -e ${message_base})\n\n"
 	message+="A viagem para ${city} vai ser no dia\n*$(cat ${city_file} | grep ${city} | cut -d',' -f2)*\n"
 	message+="Vocês irão deixar ${city} no dia\n*$(cat ${city_file} | grep ${city} | cut -d',' -f3)*\n"
-    message+="As passagens estão $(cat ${city_file} | grep ${city} | cut -d',' -f5)*\n"
+    message+="As passagens estão *$(cat ${city_file} | grep ${city} | cut -d',' -f5)*\n\n"
 
 	if [[ ${city} == "Madri" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
