@@ -7,8 +7,12 @@ dryrun=0
 num_str=
 time_str=
 
-OPTS=$(getopt -o "hn:t:v" --long "help,num:,time:,verbose,dry-run" -n "$progname" -- "$@")
-if [ $? != 0 ] ; then echo "Error in command line arguments." >&2 ; exit 1 ; fi
+OPTS=$(getopt -o "hn:t:v" --long "help,num:,time:,verbose,dry-run" -n "$(basename $0)" -- "$@")
+if [[ $? != 0 ]]; then
+  echo "Error in command line arguments." >&2
+  exit 1
+fi
+
 eval set -- "$OPTS"
 
 while true; do

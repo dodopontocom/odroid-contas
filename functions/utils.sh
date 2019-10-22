@@ -2,6 +2,10 @@
 
 # Script que carrega as configurações iniciais do bot
 
+#[[ ${BASH_SOURCE[0]} != $0 ]] && \
+#      echo " ${BASH_SOURCE[0]} Script is being sourced" || \
+#      echo "${BASH_SOURCE[0]} Script is a subshell"
+
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
