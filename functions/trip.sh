@@ -117,13 +117,17 @@ list.search() {
 	fi
 
 }
-
+################################################################################################################################################################
 trip.btn_GRU() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_GRU"
 }
 trip.btn_DUB() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_DUB"
 }
+trip.btn_LIV() {
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_LIV"
+}
+################################################################################################################################################################
 trip.all_cities() {
 	local cidades
 

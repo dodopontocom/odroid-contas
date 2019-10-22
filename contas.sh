@@ -94,6 +94,11 @@ ShellBot.InlineKeyboardButton --button 'btn_DUB' --line 1 --text 'DUBLIN HOSTEL 
 ShellBot.regHandleFunction --function trip.btn_DUB --callback_data btn_DUB
 ShellBot.regHandleFunction --function trip.btn_DUB --callback_data btn_DUB_HOST
 keyboard_DUB="$(ShellBot.InlineKeyboardMarkup -b 'btn_DUB')"
+
+btn_LIV=''
+ShellBot.InlineKeyboardButton --button 'btn_LIV' --line 1 --text 'DUBLIN Airport 📍' --callback_data 'btn_LIV_DUB' --url 'https://goo.gl/maps/Yh8bqZuCiT8Z6tGD9'
+ShellBot.regHandleFunction --function trip.btn_LIV --callback_data btn_LIV
+keyboard_LIV="$(ShellBot.InlineKeyboardMarkup -b 'btn_LIV')"
 ##########################################################################################################
 
 while :
