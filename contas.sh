@@ -83,7 +83,7 @@ keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 ############################## Botao de enviar localização da estação/aeroporto ##############################
 botao4=''
 
-ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'COMO CHEGAR 📍' --callback_data 'btn_loc'
+ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'COMO CHEGAR 📍' --callback_data 'btn_loc' --url 'https://goo.gl/maps/guwt9pCUUmrGGCKRA'
 ShellBot.regHandleFunction --function trip.btn_loc --callback_data btn_loc
 keyboard_loc="$(ShellBot.InlineKeyboardMarkup -b 'botao4')"
 ##########################################################################################################
