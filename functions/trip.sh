@@ -42,9 +42,6 @@ list.pending() {
 		if [[ $(echo $line | grep -E '❌') ]]; then
 			ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
 	  		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${line})" --parse_mode markdown
-		else
-			message="Good News!!! Não há item pendente da opção selecionada"
-			ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 		fi
 	done < ${TRIP_CHECKLIST_FILE}
 }
@@ -52,7 +49,7 @@ list.done() {
 	while read line; do
 		if [[ $(echo $line | grep -E '✅') ]]; then
 			ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-	  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+	  	    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 		fi
 	done < ${TRIP_CHECKLIST_FILE}
 }
@@ -69,7 +66,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E -v '^Comprar' | grep -E -v '^Passagens' | grep -E -v '^Trem'| grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+		  	    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${TRIP_CHECKLIST_FILE}
 	fi
@@ -84,7 +81,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E '^Comprar' | grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+		  	    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${TRIP_CHECKLIST_FILE}
 	fi
@@ -99,7 +96,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E '^Passagens' | grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-		  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+		  	    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${TRIP_CHECKLIST_FILE}
 	fi
@@ -114,7 +111,7 @@ list.search() {
 		while read line; do
 			if [[ $(echo $line | grep -E '^Trem' | grep -E "${regex}") ]]; then
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "$(echo -e ${_message})"
-			  ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
+			    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $line)" --parse_mode markdown
 			fi
 		done < ${TRIP_CHECKLIST_FILE}
 	fi
@@ -145,47 +142,47 @@ trip.cities() {
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/14"
-fi
+    fi
 	if [[ ${city} == "Dublin" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/16"
-fi
+    fi
 		if [[ ${city} == "Liverpool" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
-fi
+    fi
 		if [[ ${city} == "Londres" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
-fi
+    fi
 		if [[ ${city} == "Berlim" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/21"
-fi
+    fi
 		if [[ ${city} == "Amsterdam" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/22"
-fi
+    fi
 		if [[ ${city} == "Bruxelas" ]]; then
 			message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/23"
-fi
+    fi
 		if [[ ${city} == "Paris" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/25"
-fi
+    fi
 		if [[ ${city} == "Veneza" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/27"
-fi
+    fi
 		if [[ ${city} == "Roma" ]]; then
 			message+="Esse trecho é a volta para casa!!!"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
