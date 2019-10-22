@@ -136,7 +136,7 @@ helper.get_api() {
 
   if [[ "${current_version}" != "${check_new_version}" ]]; then
 
-    echo "Baixando versão mais atual da API ShellBot"
+    echo "[INFO] ShellBot API - Getting the newest version '${check_new_version}'"
     git clone ${API_GIT_URL} ${tmp_folder} > /dev/null
 
     echo "Habilitando a API"
@@ -144,7 +144,7 @@ helper.get_api() {
     rm -fr ${tmp_folder}
 
   else
-    echo "[INFO] ShellBot API version is the current one '${current_version}'"
+    echo "[INFO] ShellBot API version is the same as in the local repository (version: '${current_version}')"
   fi
 }
 
