@@ -203,7 +203,7 @@ do
 				trip.cities Roma
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/test" )" ]]; then
-				trip.btn_loc keyboard_GRU "GRU Internacional"
+				trip.btn_GRU
 			fi
 		else
 			# Conversa aleatória com o bot #
