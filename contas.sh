@@ -124,10 +124,14 @@ keyboard_AMS="$(ShellBot.InlineKeyboardMarkup -b 'btn_AMS')"
 btn_BRU=''
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 1 --text 'AMSTERDAM STATION 📍' --callback_data 'btn_BRU_AMS' --url 'https://goo.gl/maps/4gqNYBJuUJeCFLcS8'
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 1 --text 'BRUXELAS HOSTEL 📍' --callback_data 'btn_BRU_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 2 --text 'BRUXELAS STATION 📍' --callback_data 'btn_BRU_STAT' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 2 --text 'BRUGES HOSTEL 📍' --callback_data 'btn_BRUG_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 3 --text 'ERIC HOUSE 📍' --callback_data 'btn_ERIC' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_AMS
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_HOST
+ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_STAT
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRUG_HOST
+ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_ERIC
 keyboard_BRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_BRU')"
 
 btn_PAR=''
