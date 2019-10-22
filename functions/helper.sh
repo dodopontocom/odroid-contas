@@ -2,6 +2,24 @@
 
 # Helpers
 
+#!/bin/bash
+
+# usage function
+helper.usage() {
+   cat << USAGE
+
+   Usage: $(basename $0) [--num NUM] [--time TIME_STR] [--verbose] [--dry-run]
+
+   optional arguments:
+     -h, --help           show this help message and exit
+     -n, --num NUM        pass in a number
+     -t, --time T IME_STR  pass in a time string
+     -v, --verbose        increase the verbosity of the bash script
+     --dry-run            do a dry run, dont change any files
+
+USAGE
+}
+
 exitOnError() {
   # usage: exitOnError <output_message> [optional: code (defaul:exit code)]
   code=${2:-$?}
@@ -110,16 +128,24 @@ helper.remove_acento() {
 
 helper.get_api() {
 	
-  local tmp_folder
+  local tmp_folder current_version check_new_version
 
   tmp_folder=/tmp/$(helper.random)
+  check_new_version=$(curl -sS ${API_VERSION_RAW_URL} | grep VERSÃO | grep -o [0-9].*)
+  current_version=$(cat ${BASEDIR}/ShellBot.sh | grep VERSÃO | grep -o [0-9].*)
 
-  echo "Baixando versão mais atual da API ShellBot"
-  git clone ${API_GIT_URL} ${tmp_folder} > /dev/null
+  if [[ "${current_version}" != "${check_new_version}" ]]; then
 
-  echo "Habilitando a API"
-  cp ${tmp_folder}/ShellBot.sh ${BASEDIR}/
-  rm -fr ${tmp_folder}
+    echo "Baixando versão mais atual da API ShellBot"
+    git clone ${API_GIT_URL} ${tmp_folder} > /dev/null
+
+    echo "Habilitando a API"
+    cp ${tmp_folder}/ShellBot.sh ${BASEDIR}/
+    rm -fr ${tmp_folder}
+
+  else
+    echo "[INFO] ShellBot API version is the current one '${current_version}'"
+  fi
 }
 
 helper.random() {

@@ -26,6 +26,7 @@ source ${BASEDIR}/functions/docker.sh
 source ${BASEDIR}/functions/days_remaining.sh
 source ${BASEDIR}/functions/servo_play.sh
 source ${BASEDIR}/functions/disk.sh
+source ${BASEDIR}/functions/options.sh
 ################################# END - Carregando todas as funções #################################
 
 # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
