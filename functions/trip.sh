@@ -181,7 +181,7 @@ trip.cities() {
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_DUB
-            message="*Pagamento do hostel falta metade*"
+            message="*Pagamento do hostel está ok*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/16"
     fi
@@ -189,15 +189,13 @@ trip.cities() {
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_LIV
-            message="*Pagamento do hostel está ok*"
-			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
     fi
 		if [[ ${city} == "Londres" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_LON
-            message="*Pagamento do hostel ainda não foi feito*"
+            message="*Pagamento do hostel está ok*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/18"
     fi
@@ -205,7 +203,7 @@ trip.cities() {
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_BER
-            message="*Pagamento do hostel ainda não foi feito*"
+            message="*Pagamento no local: 💶 42.18*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/21"
     fi
@@ -221,7 +219,7 @@ trip.cities() {
 			message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_BRU
-            message="*Pagamento do hostel está ok*"
+						message="*Pagamento no local (Bruges): 💶 39.80*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/23"
     fi
@@ -245,7 +243,7 @@ trip.cities() {
 			message+="Esse trecho é a volta para casa!!!"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_ROM
-            message="*Pagamento do hostel falta metade*"
+            message="*Pagamento do hostel está ok*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/28"
 	fi
