@@ -80,6 +80,14 @@ ShellBot.regHandleFunction --function dodrones.cancel --callback_data btn_dodron
 keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 ##########################################################################################################
 
+############################## Botao de enviar localização da estação/aeroporto ##############################
+botao4=''
+
+ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'COMO CHEGAR 📍' --callback_data 'btn_loc'
+ShellBot.regHandleFunction --function trip.btn_loc --callback_data btn_loc
+keyboard_loc="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
+##########################################################################################################
+
 while :
 do	
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
