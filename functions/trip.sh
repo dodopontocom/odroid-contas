@@ -127,6 +127,9 @@ trip.btn_DUB() {
 trip.btn_LIV() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_LIV"
 }
+trip.btn_LON() {
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_LON"
+}
 ################################################################################################################################################################
 trip.all_cities() {
 	local cidades

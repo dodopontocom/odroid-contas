@@ -99,6 +99,13 @@ btn_LIV=''
 ShellBot.InlineKeyboardButton --button 'btn_LIV' --line 1 --text 'DUBLIN Airport 📍' --callback_data 'btn_LIV_DUB' --url 'https://goo.gl/maps/Yh8bqZuCiT8Z6tGD9'
 ShellBot.regHandleFunction --function trip.btn_LIV --callback_data btn_LIV
 keyboard_LIV="$(ShellBot.InlineKeyboardMarkup -b 'btn_LIV')"
+
+btn_LON=''
+ShellBot.InlineKeyboardButton --button 'btn_LON' --line 1 --text 'Liverpool bus station 📍' --callback_data 'btn_LON_LIV' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_LON' --line 1 --text 'LONDON HOSTEL 📍' --callback_data 'btn_LON_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_LON --callback_data btn_LON_LIV
+ShellBot.regHandleFunction --function trip.btn_LON --callback_data btn_LON_HOST
+keyboard_LON="$(ShellBot.InlineKeyboardMarkup -b 'btn_LON')"
 ##########################################################################################################
 
 while :
