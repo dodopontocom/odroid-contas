@@ -119,7 +119,12 @@ list.search() {
 }
 
 trip.btn_loc() {
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "--->" --reply_markup "$keyboard_loc"
+    local keyboard_name place
+
+    keyboard_name=$1
+    place=$2
+
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "${place}" --reply_markup "${keyboard_name}"
 }
 
 trip.all_cities() {
@@ -145,6 +150,7 @@ trip.cities() {
 	if [[ ${city} == "Madri" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+            trip.btn_loc "keyboard_GRU" "GRU Internacional"
 			days.remaining "1 2020/01/14"
     fi
 	if [[ ${city} == "Dublin" ]]; then

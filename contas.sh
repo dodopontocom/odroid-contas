@@ -81,17 +81,16 @@ keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 ##########################################################################################################
 
 ############################## Botao de enviar localização da estação/aeroporto ##############################
-botao4=''
-
-ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'COMO CHEGAR 📍' --callback_data 'btn_loc' --url 'https://goo.gl/maps/guwt9pCUUmrGGCKRA'
-ShellBot.regHandleFunction --function trip.btn_loc --callback_data btn_loc
-keyboard_loc="$(ShellBot.InlineKeyboardMarkup -b 'botao4')"
+btn_GRU=''
+ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'COMO CHEGAR 📍' --callback_data 'btn_GRU' --url 'https://goo.gl/maps/guwt9pCUUmrGGCKRA'
+ShellBot.regHandleFunction --function trip.btn_loc --callback_data btn_GRU
+keyboard_GRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_GRU')"
 ##########################################################################################################
 
 while :
-do	
+do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
-	
+
 	################## verificar espaço em disco ( / ) ##################
 	disk.warn "/" "90" ${NOTIFICATION_IDS[0]}
 	#####################################################################
@@ -99,7 +98,7 @@ do
 	############### Verifica se o bot ficou offline #############################
 	offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
 	#############################################################################
-	
+
 	### verifica se há arquivos avi do software motion e envia para os admins ###
 	motion.get
 	#############################################################################
@@ -108,7 +107,7 @@ do
 	do
 	(
 		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
-		
+
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
@@ -145,7 +144,7 @@ do
 				days.remaining "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/megasena" )" ]]; then
-				lotomania.sena				
+				lotomania.sena
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/stats" )" ]]; then
 				stats.verify ${STATS_LOG_PATH}
@@ -168,7 +167,7 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/disk" )" ]]; then
 				disk.warn "${message_text[$id]}"
 			fi
-			
+
 			#### Comandos apenas para nossa viagem de Janeiro
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
 				trip.all_cities
@@ -211,6 +210,6 @@ do
 			chat.hi
 			################################
 		fi
-	) & 
+	) &
 	done
 done
