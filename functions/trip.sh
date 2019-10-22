@@ -119,7 +119,7 @@ list.search() {
 }
 
 trip.btn_GRU() {
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "GRU Internacional - BR" --reply_markup "$keyboard_GRU"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_GRU"
 }
 
 trip.all_cities() {
