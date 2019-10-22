@@ -124,7 +124,7 @@ trip.btn_loc() {
     keyboard_name=$1
     place=$2
 
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${place})" --reply_markup "$keyboard_GRU"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${place})" --reply_markup "$keyboard_name"
 }
 
 trip.all_cities() {
