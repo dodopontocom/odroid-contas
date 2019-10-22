@@ -106,6 +106,50 @@ ShellBot.InlineKeyboardButton --button 'btn_LON' --line 1 --text 'LONDON HOSTEL 
 ShellBot.regHandleFunction --function trip.btn_LON --callback_data btn_LON_LIV
 ShellBot.regHandleFunction --function trip.btn_LON --callback_data btn_LON_HOST
 keyboard_LON="$(ShellBot.InlineKeyboardMarkup -b 'btn_LON')"
+
+btn_BER=''
+ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'LONDON AIRPORT 📍' --callback_data 'btn_BER_LON' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'BERLIN HOSTEL 📍' --callback_data 'btn_BER_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_LON
+ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_HOST
+keyboard_BER="$(ShellBot.InlineKeyboardMarkup -b 'btn_BER')"
+
+btn_AMS=''
+ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'BERLIN TRAIN STATION 📍' --callback_data 'btn_AMS_BER' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'AMSTERDAM HOSTEL 📍' --callback_data 'btn_AMS_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_AMS --callback_data btn_AMS_BER
+ShellBot.regHandleFunction --function trip.btn_AMS --callback_data btn_AMS_HOST
+keyboard_AMS="$(ShellBot.InlineKeyboardMarkup -b 'btn_AMS')"
+
+btn_BRU=''
+ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 1 --text 'AMSTERDAM STATION 📍' --callback_data 'btn_BRU_AMS' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 1 --text 'BRU HOSTEL 📍' --callback_data 'btn_BRU_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_AMS
+ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_HOST
+keyboard_BRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_BRU')"
+
+btn_PAR=''
+ShellBot.InlineKeyboardButton --button 'btn_PAR' --line 1 --text 'BRUXELAS STATION 📍' --callback_data 'btn_PAR_BRU' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_PAR' --line 1 --text 'PARIS HOSTEL 📍' --callback_data 'btn_PAR_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_PAR --callback_data btn_PAR_BRU
+ShellBot.regHandleFunction --function trip.btn_PAR --callback_data btn_PAR_HOST
+keyboard_PAR="$(ShellBot.InlineKeyboardMarkup -b 'btn_PAR')"
+
+btn_VEN=''
+ShellBot.InlineKeyboardButton --button 'btn_VEN' --line 1 --text 'PARIS AIRPORT 📍' --callback_data 'btn_VEN_PAR' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_VEN' --line 1 --text 'VENEZA HOSTEL 📍' --callback_data 'btn_VEN_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_VEN --callback_data btn_VEN_PAR
+ShellBot.regHandleFunction --function trip.btn_VEN --callback_data btn_VEN_HOST
+keyboard_VEN="$(ShellBot.InlineKeyboardMarkup -b 'btn_VEN')"
+
+btn_ROM=''
+ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 1 --text 'VENEZA STATION 📍' --callback_data 'btn_ROM_VEN' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 1 --text 'ROME HOSTEL 📍' --callback_data 'btn_ROM_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 2 --text 'ROME AIRPORT 📍' --callback_data 'btn_ROM_AIRPORT' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_VEN
+ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_HOST
+ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_AIRPORT
+keyboard_ROM="$(ShellBot.InlineKeyboardMarkup -b 'btn_ROM')"
 ##########################################################################################################
 
 while :
