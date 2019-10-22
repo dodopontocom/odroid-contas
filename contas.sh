@@ -152,9 +152,11 @@ btn_ROM=''
 ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 1 --text 'VENEZA STATION 📍' --callback_data 'btn_ROM_VEN' --url 'https://goo.gl/maps/bz95S8tgnj1V1UnY6'
 ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 1 --text 'ROME HOSTEL 📍' --callback_data 'btn_ROM_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 2 --text 'ROME AIRPORT 📍' --callback_data 'btn_ROM_AIRPORT' --url 'https://goo.gl/maps/sDMKrFNZHeobuUTc8'
+ShellBot.InlineKeyboardButton --button 'btn_ROM' --line 2 --text 'CASA!!! 📍' --callback_data 'btn_DALIAS' --url 'https://goo.gl/maps/iJxa8Y6Mzd69pufU9'
 ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_VEN
 ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_HOST
 ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_AIRPORT
+ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_DALIAS
 keyboard_ROM="$(ShellBot.InlineKeyboardMarkup -b 'btn_ROM')"
 ##########################################################################################################
 
