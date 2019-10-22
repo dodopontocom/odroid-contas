@@ -83,10 +83,17 @@ keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 ############################## Botao de enviar localização da estação/aeroporto ##############################
 btn_GRU=''
 ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'GRU Airport 📍' --callback_data 'btn_GRU' --url 'https://goo.gl/maps/guwt9pCUUmrGGCKRA'
-ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'MAD Airport 📍' --callback_data 'btn_MAD' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'MADRI HOSTEL 📍' --callback_data 'btn_MAD_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_GRU
-ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_MAD
+ShellBot.regHandleFunction --function trip.btn_GRU --callback_data btn_MAD_HOST
 keyboard_GRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_GRU')"
+##########################################################################################################
+btn_DUB=''
+ShellBot.InlineKeyboardButton --button 'btn_DUB' --line 1 --text 'MADRI Airport 📍' --callback_data 'btn_DUB_MAD' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_DUB' --line 1 --text 'DUBLIN HOSTEL 📍' --callback_data 'btn_DUB_HOST' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.regHandleFunction --function trip.btn_DUB --callback_data btn_DUB
+ShellBot.regHandleFunction --function trip.btn_DUB --callback_data btn_DUB_HOST
+keyboard_GRU="$(ShellBot.InlineKeyboardMarkup -b 'btn_DUB')"
 ##########################################################################################################
 
 while :

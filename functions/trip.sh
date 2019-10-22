@@ -121,7 +121,9 @@ list.search() {
 trip.btn_GRU() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_GRU"
 }
-
+trip.btn_DUB() {
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "Como Chegar:" --reply_markup "$keyboard_DUB"
+}
 trip.all_cities() {
 	local cidades
 
@@ -151,6 +153,7 @@ trip.cities() {
 	if [[ ${city} == "Dublin" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
+            trip.btn_DUB
 			days.remaining "1 2020/01/16"
     fi
 		if [[ ${city} == "Liverpool" ]]; then
