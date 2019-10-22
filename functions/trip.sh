@@ -118,6 +118,10 @@ list.search() {
 
 }
 
+trip.btn_loc() {
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "--->" --reply_markup "$keyboard_loc"
+}
+
 trip.all_cities() {
 	local cidades
 
