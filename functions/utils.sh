@@ -9,6 +9,7 @@
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
+source ${BASEDIR}/configs/buttons.sh
 
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
@@ -31,7 +32,6 @@ source ${BASEDIR}/functions/days_remaining.sh
 source ${BASEDIR}/functions/servo_play.sh
 source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
-source ${BASEDIR}/functions/buttons.sh
 ################################# END - Carregando todas as funções #################################
 
 # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
