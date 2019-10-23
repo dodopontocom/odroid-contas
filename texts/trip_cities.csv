@@ -2,8 +2,8 @@ cidade,dataSaida,dataPartida,tipoTransporte,compras
 Madri,14/Jan às 01:10,16/Jan às 10:35,avião (TAP Air),ok ✅
 Dublin,16/Jan às 10:35,18/Jan às 07:05,avião (ryanair/omio),ok ✅
 Liverpool,18/Jan às 07:05,18/Jan às 16:20,avião/ônibus (omio/National Express),ok ✅
-Londres,18/Jan às 16:20,21/Jan às 08:00,ônibus/avião (National Express/momondo),ok ✅
-Berlim,21/Jan às 08:00,22/Jan hora a <CONFRIMAR>,avião/trem (momondo/<CONFIRMAR>),parcialmente ok ❌
+Londres,18/Jan às 16:20,21/Jan às 07:50,ônibus/avião (National Express/ryanair),ok ✅
+Berlim,21/Jan às 07:50,22/Jan hora a <CONFRIMAR>,avião/trem (ryanair/<CONFIRMAR>),parcialmente ok ❌
 Amsterdam,22/Jan às <CONFIRMAR>,23/jan às <CONFIRMAR>,trem/trem (<CONFRIMAR>/NS International),parcialmente ok ❌
 Bruxelas,23/Jan às <CONFIRMAR>,<CONFRIMAR>,trem/trem (NS International/<CONFIRMAR>),parcialmente ok ❌
 Paris,<CONFRIMAR>,27/Jan às 07:20,trem/avião (<CONFRIMAR>/easyJet),parcialmente ok ❌
