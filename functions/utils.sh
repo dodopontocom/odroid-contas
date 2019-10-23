@@ -31,14 +31,14 @@ source ${BASEDIR}/functions/days_remaining.sh
 source ${BASEDIR}/functions/servo_play.sh
 source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
+source ${BASEDIR}/functions/buttons.sh
 ################################# END - Carregando todas as funções #################################
 
 # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
 # Essas variáveis devem ser setadas no arquivo .definitions.sh
 helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
-# Sempre pegar a última versão do ShellBot API
-# <TODO> Avisar que houve nova versao e deixar o usuário baixar por ele mesmo , evita possíveis erros em ter a api atualizada dinamicamente
+# Verificar se a nova versão da API e atualizar caso haja
 helper.get_api
 exitOnError "Erro ao tentar baixar API ShellBot" $?
 
