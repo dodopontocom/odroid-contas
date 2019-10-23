@@ -9,7 +9,6 @@
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
-source ${BASEDIR}/configs/buttons.sh
 
 source ${BASEDIR}/functions/start.sh
 source ${BASEDIR}/functions/speedtest.sh
@@ -44,3 +43,4 @@ exitOnError "Erro ao tentar baixar API ShellBot" $?
 
 # Fazer source da API só depois de baixá-la
 source ${BASEDIR}/ShellBot.sh
+source ${BASEDIR}/configs/buttons.sh
