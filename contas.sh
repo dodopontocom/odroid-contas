@@ -273,9 +273,6 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/roma" )" ]]; then
 				trip.cities Roma
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/test" )" ]]; then
-				trip.btn_GRU
-			fi
 		else
 			# Conversa aleatória com o bot #
 			chat.hi
