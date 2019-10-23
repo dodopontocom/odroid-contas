@@ -43,7 +43,7 @@ do
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
-		#ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
+		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
 
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
