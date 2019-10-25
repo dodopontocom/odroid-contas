@@ -9,7 +9,7 @@ jobs:
           name: "Shell Lint"
           command: |
               ls -lrt
-  filters:
-    branches:
-      only:
-        - dev-v3   
+    filters:
+      branches:
+        only:
+          - dev-v3   
