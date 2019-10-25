@@ -8,7 +8,7 @@ jobs:
       - run:
           name: "Shell Lint"
           command: |
-              ls -lrt
+              echo "[$(cat functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) functions]"
 workflows:
   version: 2.1
   
