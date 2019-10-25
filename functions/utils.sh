@@ -2,9 +2,12 @@
 
 # Script que carrega as configurações iniciais do bot
 
-#[[ ${BASH_SOURCE[0]} != $0 ]] && \
-#      echo " ${BASH_SOURCE[0]} Script is being sourced" || \
-#      echo "${BASH_SOURCE[0]} Script is a subshell"
+# When calling the script directly (for testing) do not considere enabling ShellBot API #
+if [ $(basename $0) == $(basename ${BASH_SOURCE[0]}) ]; then
+  BASEDIR=$(dirname $0)
+  ShellBotAPI=false
+fi
+#########################################################################################
 
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
@@ -42,10 +45,4 @@ helper.get_api
 exitOnError "Erro ao tentar baixar API ShellBot" $?
 
 # Fazer source da API só depois de baixá-la
-source ${BASEDIR}/ShellBot.sh
-
-if [ $(basename $0) == $(basename ${BASH_SOURCE[0]}) ]; then
-  function=$1
-  shift
-  ${function} "$@"
-fi
+[[ "${ShellBotAPI}" ]] || source ${BASEDIR}/ShellBot.sh
