@@ -12,6 +12,7 @@ jobs:
               echo "Trying to test example function 'helper.random'..."
               helper_random=$(cat functions/*.sh | grep -E "helper\.random")
               awk '/"${helper_random}"/,/^\}/' functions/helper.sh
+              echo "random number between 0 and 999: $(helper.random 999)"
 workflows:
   version: 2.1
   
