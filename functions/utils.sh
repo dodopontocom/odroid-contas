@@ -5,6 +5,7 @@
 # When calling the script directly (for testing) do not considere enabling ShellBot API #
 if [ $(basename $0) == $(basename ${BASH_SOURCE[0]}) ]; then
   BASEDIR=$(dirname $0)
+  echo "Basedir: ${BASEDIR}"
   ShellBotAPI=false
 fi
 #########################################################################################
