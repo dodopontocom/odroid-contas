@@ -11,7 +11,7 @@ fi
 #########################################################################################
 echo "checking basename variable value: ${BASEDIR}"
 ################################# START - Carregando todas as funções #################################
-source ${BASEDIR}/.definitions.sh
+test -f ${BASEDIR}/.definitions.sh && source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
 
 source ${BASEDIR}/functions/start.sh
