@@ -5,8 +5,8 @@
 # When calling the script directly (for testing) do not considere enabling ShellBot API #
 if [ $(basename $0) == $(basename ${BASH_SOURCE[0]}) ]; then
   BASEDIR="$(dirname $0)/.."
-  echo "Basedir: ${BASEDIR}"
   ShellBotAPI=false
+  echo "Loading functions in the current shell..."
 fi
 #########################################################################################
 
@@ -37,13 +37,15 @@ source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
 ################################# END - Carregando todas as funções #################################
 
-# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
-# Essas variáveis devem ser setadas no arquivo .definitions.sh
-helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
+if [[ ! "${ShellBotAPI}" ]]; then
+  # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+  # Essas variáveis devem ser setadas no arquivo .definitions.sh
+  helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
-# Verificar se a nova versão da API e atualizar caso haja
-helper.get_api
-exitOnError "Erro ao tentar baixar API ShellBot" $?
+  # Verificar se a nova versão da API e atualizar caso haja
+  helper.get_api
+  exitOnError "Erro ao tentar baixar API ShellBot" $?
 
-# Fazer source da API só depois de baixá-la
-[[ "${ShellBotAPI}" ]] || source ${BASEDIR}/ShellBot.sh
+  # Fazer source da API só depois de baixá-la
+  source ${BASEDIR}/ShellBot.sh
+fi
