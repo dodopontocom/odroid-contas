@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  shell-lint:
+  build:
     machine: true
     steps:
       - checkout
