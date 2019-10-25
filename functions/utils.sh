@@ -48,4 +48,8 @@ if [[ ! "${ShellBotAPI}" ]]; then
 
   # Fazer source da API só depois de baixá-la
   source ${BASEDIR}/ShellBot.sh
+else
+  function=$1
+  shift
+  ${function} "$@"
 fi
