@@ -1,7 +1,8 @@
-version 2.0
+version: 2.1
 
 jobs:
-  botlint:
+  shell-lint:
+    machine: true
     steps:
       - checkout
       - run:
