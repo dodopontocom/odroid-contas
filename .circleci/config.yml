@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  blint:
     machine: true
     steps:
       - checkout
@@ -9,3 +9,12 @@ jobs:
           name: "Shell Lint"
           command: |
               ls -lrt
+workflows:
+  version: 2.1
+  
+  Bot-shell-lint:
+    jobs:
+      - blint:
+          filters:
+            changes:
+              only: 'functions'
