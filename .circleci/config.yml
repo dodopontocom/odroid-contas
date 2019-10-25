@@ -1,0 +1,12 @@
+version 2.1
+
+jobs:
+  shell-lint:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: "Shell Lint"
+          command: |
+            ls -lrt
+    
