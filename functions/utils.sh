@@ -43,3 +43,9 @@ exitOnError "Erro ao tentar baixar API ShellBot" $?
 
 # Fazer source da API só depois de baixá-la
 source ${BASEDIR}/ShellBot.sh
+
+if [ $(basename $0) == $(basename ${BASH_SOURCE[0]}) ]; then
+  function=$1
+  shift
+  ${function} "$@"
+fi
