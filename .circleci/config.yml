@@ -2,7 +2,6 @@ version 2.1
 
 jobs:
   botlint:
-    machine: true
     steps:
       - checkout
       - run:
@@ -13,10 +12,3 @@ jobs:
       branches:
         only:
           - dev-v3   
-
-workflows:
-  version: 2.1
-  
-  bot-workflow:
-    jobs:
-      - botlint
