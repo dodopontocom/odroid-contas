@@ -1,15 +1,14 @@
 version 2.1
 
-jobs:
-  shell-lint:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: "Shell Lint"
-          command: |
-            ls -lrt
-  filters:
-    branches:
-      only:
-        - dev-v3   
+shell-lint:
+  machine: true
+  steps:
+    - checkout
+    - run:
+        name: "Shell Lint"
+        command: |
+          ls -lrt
+filters:
+  branches:
+    only:
+      - dev-v3   
