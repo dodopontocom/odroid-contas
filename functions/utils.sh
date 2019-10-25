@@ -3,8 +3,8 @@
 # Script que carrega as configurações iniciais do bot
 
 # When calling the script directly (for testing) do not considere enabling ShellBot API #
-if [ $(basename $0) == $(basename ${BASH_SOURCE[0]}) ]; then
-  BASEDIR="$(dirname $0)/.."
+if [[ ${CI} ]]; then
+  BASEDIR='.'
   ShellBotAPI=false
   echo "Loading functions in the current shell..."
 fi
