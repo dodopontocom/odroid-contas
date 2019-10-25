@@ -9,5 +9,3 @@ jobs:
           name: "Shell Lint"
           command: |
               ls -lrt
-    only:
-      - dev-v3   
