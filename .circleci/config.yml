@@ -8,10 +8,10 @@ jobs:
       - run:
           name: "Shell Lint"
           command: |
-              echo "[$(cat ${CIRCLE_WORKING_DIRECTORY}/functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
+              echo "[$(cat functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
               echo "Trying to test example function 'helper.random'..."
-              helper_random=$(cat ${CIRCLE_WORKING_DIRECTORY}/functions/*.sh | grep -E "helper\.random"
-              awk '/"${helper_random}"/,/^\}/' ${CIRCLE_WORKING_DIRECTORY}/functions/helper.sh
+              helper_random=$(cat functions/*.sh | grep -E "helper\.random"
+              awk '/"${helper_random}"/,/^\}/' functions/helper.sh
 workflows:
   version: 2.1
   
