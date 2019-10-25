@@ -16,5 +16,5 @@ workflows:
     jobs:
       - blint:
           filters:
-            changes:
-              only: 'functions'
+            branches:
+              only: dev-v3
