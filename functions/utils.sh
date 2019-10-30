@@ -2,9 +2,7 @@
 
 # Script que carrega as configurações iniciais do bot
 
-#[[ ${BASH_SOURCE[0]} != $0 ]] && \
-#      echo " ${BASH_SOURCE[0]} Script is being sourced" || \
-#      echo "${BASH_SOURCE[0]} Script is a subshell"
+[[ "$1" -eq "test" ]] && BASEDIR="$(dirname $0)"
 
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh
@@ -38,8 +36,10 @@ source ${BASEDIR}/functions/options.sh
 helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
 # Verificar se a nova versão da API e atualizar caso haja
-helper.get_api
-exitOnError "Erro ao tentar baixar API ShellBot" $?
+if [[ -z "$1" ]]; then
+  helper.get_api
+  exitOnError "Erro ao tentar baixar API ShellBot" $?
 
-# Fazer source da API só depois de baixá-la
-source ${BASEDIR}/ShellBot.sh
+  # Fazer source da API só depois de baixá-la
+  source ${BASEDIR}/ShellBot.sh
+fi
