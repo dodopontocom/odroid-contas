@@ -216,7 +216,7 @@ trip.cities() {
 			days.remaining "1 2020/01/22"
     fi
 		if [[ ${city} =~ Bruxelas$ ]]; then
-			message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
+			message+="Esse trecho vai ser especial pois irão para Leuven e Bruges"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_BRU
 						message="*Pagamento no local (Bruges): 💶 39.80*"
