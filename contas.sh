@@ -125,7 +125,7 @@ btn_BRU=''
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 1 --text 'AMSTERDAM STATION 📍' --callback_data 'btn_BRU_AMS' --url 'https://goo.gl/maps/4gqNYBJuUJeCFLcS8'
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 2 --text 'BRUXELAS STATION 📍' --callback_data 'btn_BRU_STAT' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 2 --text 'BRUGES HOSTEL 📍' --callback_data 'btn_BRUG_HOST' --url 'https://goo.gl/maps/ixKdV72SpJUczpDW9'
-ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 3 --text 'ERIC HOUSE 📍' --callback_data 'btn_ERIC' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 3 --text 'ERICs HOUSE 📍' --callback_data 'btn_ERIC' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_AMS
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_STAT
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRUG_HOST
