@@ -2,10 +2,8 @@
 
 # Script que carrega as configurações iniciais do bot
 
-[[ "$1" -eq "test" ]] && BASEDIR="$(dirname $0)"
-
 ################################# START - Carregando todas as funções #################################
-source ${BASEDIR}/.definitions.sh
+test -f ${BASEDIR}/.definitions.sh && source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
 
 source ${BASEDIR}/functions/start.sh
@@ -31,15 +29,13 @@ source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
 ################################# END - Carregando todas as funções #################################
 
-# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
-# Essas variáveis devem ser setadas no arquivo .definitions.sh
-helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
+if [[ ! "${ShellBotAPI}" ]]; then
+  # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+  # Essas variáveis devem ser setadas no arquivo .definitions.sh
+  helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
-# Verificar se a nova versão da API e atualizar caso haja
-if [[ -z "$1" ]]; then
   helper.get_api
   exitOnError "Erro ao tentar baixar API ShellBot" $?
 
   # Fazer source da API só depois de baixá-la
   source ${BASEDIR}/ShellBot.sh
-fi
