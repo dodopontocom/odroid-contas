@@ -29,13 +29,12 @@ source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
 ################################# END - Carregando todas as funções #################################
 
-if [[ ! "${ShellBotAPI}" ]]; then
-  # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
-  # Essas variáveis devem ser setadas no arquivo .definitions.sh
-  helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
+# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+# Essas variáveis devem ser setadas no arquivo .definitions.sh
+helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
-  helper.get_api
-  exitOnError "Erro ao tentar baixar API ShellBot" $?
+helper.get_api
+exitOnError "Erro ao tentar baixar API ShellBot" $?
 
-  # Fazer source da API só depois de baixá-la
-  source ${BASEDIR}/ShellBot.sh
+# Fazer source da API só depois de baixá-la
+source ${BASEDIR}/ShellBot.sh
