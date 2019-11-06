@@ -1,25 +1,24 @@
 tipo,detalhes,data,horario,okNotOk
 Passaportes,Polícia Federal,28/jun,15:45,✅
+Passagens SP - Madrid,tapair,14/jan,01:10,✅
 Passagens Madrid - Dublin,ryanair,16/jan,10:35,✅
-Passagens Dublin - Liverpool,omio,18/jan,07:05,✅
+Passagens Dublin - Liverpool,ryanair,18/jan,07:05,✅
 Ônibus Liverpool - Londres,National Express,18/jan,16:20,✅
 Passagens Londres - Berlim,ryanair,21/jan,07:50,✅
-Trem Berlim - Amsterdã,eurostar,22/out,,❌
-Trem Amsterdã - Bruxelas,NS-International,05/out,10:22,✅
-Trem Duvel - Bruges,eurostar,24/out,,❌
-Trem Bruges - Duvel,eurostar,25/out,,❌
-Trem Duvel - Bruxelas,eurostar,26/out,,❌
-Trem Bruxelas - Paris,eurostar,26/out,,❌
-Passagens Paris - Veneza,easyJet,27/out,07:20,✅
-Trem Veneza - Roma,Frecciarossa,28/out,07:26,✅
+Trem Berlim - Amsterdã,eurostar,22/jan,,❌
+Trem Amsterdã - Bruxelas,NS-International,23/jan,10:22,✅
+Trem Bruxelas - Bruges,eurostar,24/jan,,❌
+Trem Bruxelas - Paris,eurostar,26/jan,,❌
+Passagens Paris - Veneza,easyJet,27/jan,07:20,✅
+Trem Veneza - Roma,Frecciarossa,28/jan,07:26,✅
 Comprar euros/libras (987.44 reais),CotacaoExtra,02/jul,,✅
-Comprar euros/libras (949.33 reais),CotacaoExtra,31/jul,,✅
-Comprar euros (966.00 reais),CotacaoExtra,01/out,,✅
+Comprar euros/libras (949.33 reais),CotacaoExtra,23/jul,,✅
+Comprar euros (966.00 reais),CotacaoExtra,30/set,,✅
 Comprar libras (559.57 reais),CotacaoExtra,01/out,,✅
-Comprar euros (966 reais),CotacaoExtra,31/out,,❌
+Comprar euros/libras (1043.59 reais),CotacaoExtra,30/out,,✅
 Comprar euros (966 reais),CotacaoExtra,31/out,,❌
 Comprar euros (966 reais),CotacaoExtra,01/dez,,❌
-Comprar euros/libras (1525.57 reais),CotacaoExtra,01/dez,,❌
+Comprar euros (1525.57 reais),CotacaoExtra,01/dez,,❌
 Comprar euros (1405 reais),CotacaoExtra,05/jan,,❌
 Comprar euros (1405 reais),CotacaoExtra,05/jan,,❌
 Comprar Seguro Viagem,TravelAce,23/Jul,,✅

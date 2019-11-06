@@ -215,8 +215,8 @@ trip.cities() {
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/22"
     fi
-		if [[ ${city} == "Bruxelas" ]]; then
-			message+="Esse trecho vai ser especial pois irão para Duvel e Bruges"
+		if [[ ${city} =~ Bruxelas$ ]]; then
+			message+="Esse trecho vai ser especial pois irão para Leuven e Bruges"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_BRU
 						message="*Pagamento no local (Bruges): 💶 39.80*"
@@ -229,7 +229,7 @@ trip.cities() {
             trip.btn_PAR
             message="*Pagamento do hostel está ok*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-			days.remaining "1 2020/01/25"
+			days.remaining "1 2020/01/26"
     fi
 		if [[ ${city} == "Veneza" ]]; then
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"

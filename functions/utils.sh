@@ -2,14 +2,6 @@
 
 # Script que carrega as configurações iniciais do bot
 
-# When calling the script directly (for testing) do not considere enabling ShellBot API #
-if [[ ${CI} ]]; then
-  BASEDIR='.'
-  ShellBotAPI=false
-  echo "Loading functions in the current shell..."
-fi
-#########################################################################################
-echo "checking basename variable value: ${BASEDIR}"
 ################################# START - Carregando todas as funções #################################
 test -f ${BASEDIR}/.definitions.sh && source ${BASEDIR}/.definitions.sh
 source ${BASEDIR}/functions/helper.sh
@@ -42,14 +34,8 @@ if [[ ! "${ShellBotAPI}" ]]; then
   # Essas variáveis devem ser setadas no arquivo .definitions.sh
   helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
-  # Verificar se a nova versão da API e atualizar caso haja
   helper.get_api
   exitOnError "Erro ao tentar baixar API ShellBot" $?
 
   # Fazer source da API só depois de baixá-la
   source ${BASEDIR}/ShellBot.sh
-else
-  function=$1
-  shift
-  ${function} "$@"
-fi
