@@ -203,7 +203,7 @@ trip.cities() {
 			message+="Esse trecho vai ser de $(cat ${city_file} | grep ${city} | cut -d',' -f4)"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
             trip.btn_BER
-            message="*Pagamento no local: 💶 42.18*"
+            message="*Devemos Cancelar o Hostel!!!*"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
 			days.remaining "1 2020/01/21"
     fi
