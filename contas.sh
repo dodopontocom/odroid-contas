@@ -109,7 +109,7 @@ keyboard_LON="$(ShellBot.InlineKeyboardMarkup -b 'btn_LON')"
 
 btn_BER=''
 ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'LONDON AIRPORT 📍' --callback_data 'btn_BER_LON' --url 'https://goo.gl/maps/G6XZe7AaDZ8b3txC8'
-ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'BERLIN HOSTEL 📍' --callback_data 'btn_BER_HOST' --url 'https://goo.gl/maps/RmQpsF3ZiuT29sUeA'
+#ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'BERLIN HOSTEL 📍' --callback_data 'btn_BER_HOST' --url 'https://goo.gl/maps/RmQpsF3ZiuT29sUeA'
 ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_LON
 ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_HOST
 keyboard_BER="$(ShellBot.InlineKeyboardMarkup -b 'btn_BER')"
