@@ -115,7 +115,7 @@ ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_HOST
 keyboard_BER="$(ShellBot.InlineKeyboardMarkup -b 'btn_BER')"
 
 btn_AMS=''
-ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'BERLIN TRAIN STATION 📍' --callback_data 'btn_AMS_BER' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'BERLIN TRAIN STATION 📍' --callback_data 'btn_AMS_BER' --url 'https://goo.gl/maps/AbqQTgnkLHrpYVNV7'
 ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'AMSTERDAM HOSTEL 📍' --callback_data 'btn_AMS_HOST' --url 'https://goo.gl/maps/2ou2Xa4HRq5WAcEw7'
 ShellBot.regHandleFunction --function trip.btn_AMS --callback_data btn_AMS_BER
 ShellBot.regHandleFunction --function trip.btn_AMS --callback_data btn_AMS_HOST
