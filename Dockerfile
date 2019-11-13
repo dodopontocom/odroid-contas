@@ -1,5 +1,11 @@
-FROM aarch64/alpine
-#FROM alpine
+#FROM aarch64/alpine
+FROM alpine
+
+ARG TELEGRAM_TOKEN
+ARG IDS
+
+ENV TELEGRAM_TOKEN=$TELEGRAM_TOKEN
+ENV IDS=$IDS
 
 ENV BOT_HOME "/home/odroid-contas"
 
