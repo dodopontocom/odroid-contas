@@ -17,11 +17,11 @@ for i in ${NOTIFICATION_IDS[@]}; do
 done
 
 ################## Enviar estatísticas de comandos ##################
-stats.verify ${STATS_LOG_PATH} "$(echo ${NOTIFICATION_IDS[@]})"
+#stats.verify ${STATS_LOG_PATH} "$(echo ${NOTIFICATION_IDS[@]})"
 #####################################################################
 
 ####### Verificar recorde de tempo 'vivo' #######
-record.check "$(echo ${NOTIFICATION_IDS[@]})"
+#record.check "$(echo ${NOTIFICATION_IDS[@]})"
 #################################################
 
 ############ Botão para admins aceitarem usuários executarem comandos linux ###################
@@ -162,15 +162,15 @@ do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 
 	################## verificar espaço em disco ( / ) ##################
-	disk.warn "/" "90" ${NOTIFICATION_IDS[0]}
+	#disk.warn "/" "90" ${NOTIFICATION_IDS[0]}
 	#####################################################################
 
 	############### Verifica se o bot ficou offline #############################
-	offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
+	#offline.checker "$(echo ${NOTIFICATION_IDS[@]})" "90"
 	#############################################################################
 
 	### verifica se há arquivos avi do software motion e envia para os admins ###
-	motion.get
+	#motion.get
 	#############################################################################
 
 	for id in $(ShellBot.ListUpdates)
