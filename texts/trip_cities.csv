@@ -1,13 +1,13 @@
-cidade,dataChegada,dataPartida,tipoTransporte,compras
-Madri,14/Jan às 01:10,16/Jan às 10:35,avião (TAP Air),ok ✅
-Dublin,16/Jan às 10:35,18/Jan às 07:05,avião (ryanair/omio),ok ✅
-Liverpool,18/Jan às 07:05,18/Jan às 16:20,avião/ônibus (omio/National Express),ok ✅
-Londres,18/Jan às 16:20,21/Jan às 07:50,ônibus/avião (National Express/ryanair),ok ✅
-Berlim,21/Jan às 07:50,22/Jan às 00:16,avião/trem (ryanair/DB),ok ✅
-Amsterdam,22/Jan às 09:28,23/jan às <CONFIRMAR>,trem/trem (DB/NS International),parcialmente ok ❌
-Bruxelas,23/Jan às <CONFIRMAR>,26/jan às <CONFIRMAR>,trem/trem (NS International/<CONFIRMAR>),parcialmente ok ❌
+cidade,dataChegadaPrevista,dataPartida,tipoTransporte,compras
+Madri,14/Jan às 18:05,16/Jan às 10:35,avião (TAP Air),ok ✅
+Dublin,16/Jan às 12:20,18/Jan às 07:05,avião (ryanair/ryanair),ok ✅
+Liverpool,18/Jan às 08:00,18/Jan às 16:20,avião/ônibus (ryanair/National Express),ok ✅
+Londres,18/Jan às 18:50,21/Jan às 07:50,ônibus/avião (National Express/ryanair),ok ✅
+Berlim,21/Jan às 10:40,22/Jan às 00:16,avião/trem (ryanair/DB),ok ✅
+Amsterdam,22/Jan às 09:28,23/jan às <Passagens Sem Horários>,trem/trem (DB/NS International),ok ✅
+Bruxelas,23/Jan às <Passagens Sem Horários>,26/jan às <CONFIRMAR>,trem/trem (NS International/<CONFIRMAR>),parcialmente ok ❌
 Bruges,24/Jan às <CONFIRMAR>,26/jan às <CONFIRMAR>, trem/trem (NS International/<CONFIRMAR>), parcialmente ok ❌
 Bru-xelas,25/Jan às <CONFIRMAR>,26/jan às <CONFIRMAR>, trem/trem (NS International/<CONFIRMAR>), parcialmente ok ❌
 Paris,26/Jan às <CONFIRMAR>,27/Jan às 07:20,trem/avião (<CONFIRMAR>/easyJet),parcialmente ok ❌
-Veneza,27/Jan às 07:20,28/Jan às 07:26,avião/trem (easyJet/Frecciarossa),ok ✅
-Roma,28/Jan às 07:26,29/Jan às 06:10,aviao (TapAir),ok ✅
+Veneza,27/Jan às 08:55,28/Jan às 07:26,avião/trem (easyJet/Frecciarossa),ok ✅
+Roma,28/Jan às 11:25,29/Jan às 06:10,aviao (TapAir),ok ✅
