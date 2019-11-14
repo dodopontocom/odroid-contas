@@ -1,4 +1,4 @@
-cidade,dataChegadaPrevista,dataPartida,tipoTransporte,compras
+cidade,dataChegada,dataPartida,tipoTransporte,compras
 Madri,14/Jan às 18:05,16/Jan às 10:35,avião (TAP Air),ok ✅
 Dublin,16/Jan às 12:20,18/Jan às 07:05,avião (ryanair/ryanair),ok ✅
 Liverpool,18/Jan às 08:00,18/Jan às 16:20,avião/ônibus (ryanair/National Express),ok ✅
