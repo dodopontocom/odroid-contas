@@ -248,3 +248,7 @@ trip.cities() {
 			days.remaining "1 2020-01-28"
 	fi
 }
+
+trip.baggage() {
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "test" --parse_mode markdown
+}
