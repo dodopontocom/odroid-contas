@@ -46,7 +46,7 @@ dodrones.check() {
         --parse_mode markdown  
     fi
   else
-    message="❌ HD de backup não está montado"
+    message="❌ HD de backup não está montado ❌"
     ShellBot.sendMessage --chat_id ${user_id} --text "$(echo -e ${message})" \
         --parse_mode markdown
   fi
