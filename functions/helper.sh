@@ -131,10 +131,37 @@ helper.calc_min() {
 # Remove acentos
 helper.remove_acento() {
   local str ret_str sed_file
-  sed_file=${BASEDIR}/configs/remove_acentos.sed
+  sed_acentos=$(cat << EOF
+s/ã/a/g
+s/Ã/A/g
+s/à/a/g
+s/À/A/g
+s/ô/o/g
+s/ô/o/g
+s/Õ/O/g
+s/é/e/g
+s/É/E/g
+s/á/a/g
+s/ó/o/g
+s/Á/A/g
+s/Ó/O/g
+s/ç/c/g
+s/Ç/C/g
+s/ê/e/g
+s/Ê/E/g
+s/ú/u/g
+s/Ú/U/g
+s/â/a/g
+s/Â/A/g
+s/í/i/g
+s/Í/I/g
+s/Ü/U/g
+s/ü/u/g
+EOF
+)
   
   str=$1
-  ret_str=$(echo "$str" | sed -f $sed_file)
+  ret_str=$(echo "$str" | sed "${sed_acentos}")
   echo $ret_str
 }
 
