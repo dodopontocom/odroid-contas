@@ -13,3 +13,4 @@ botreset
 dodrones
 chat
 servo
+botip
