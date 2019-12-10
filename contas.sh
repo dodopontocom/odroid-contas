@@ -10,7 +10,7 @@ logs=${BASEDIR}/logs
 
 # Envia notificação de que o bot foi reiniciado
 for i in ${NOTIFICATION_IDS[@]}; do
-	ShellBot.sendMessage --chat_id ${i} --text "🤖 Fui reiniciado ☝️"
+	ShellBot.sendMessage --chat_id ${i} --text "🤖 Bot reiniciado ☝️"
 done
 
 ################## Enviar estatísticas de comandos ##################
