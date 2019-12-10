@@ -8,9 +8,6 @@ source ${BASEDIR}/functions/utils.sh
 #<TODO> jogar essa var em definitions
 logs=${BASEDIR}/logs
 
-# Inicializando o bot
-#ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
-
 # Envia notificação de que o bot foi reiniciado
 for i in ${NOTIFICATION_IDS[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "🤖 Fui reiniciado ☝️"
