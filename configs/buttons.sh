@@ -1,6 +1,9 @@
 #!/bin/bash
 
-############ Botões para admins aceitarem usuários executarem comandos linux ###################
+source ${BASEDIR}/ShellBot.sh
+ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
+
+############ Botão para admins aceitarem usuários executarem comandos linux ###################
 botao1=''
 
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'SIM' --callback_data 'btn_s'
@@ -12,7 +15,11 @@ ShellBot.regHandleFunction --function linux.reject --callback_data btn_n
 keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 ###############################################################################################
 
-################################################ Botões para o comando trip ################################################
+######## revogar acessos ao comando linux ########
+[[ -f ${TMP_PEDIDO} ]] && rm -rfv ${TMP_PEDIDO}
+##################################################
+
+################################################ keyboard para o comando trip ################################################
 botao2=''
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'Listar Todos' --callback_data 'btn_trip_list'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'Listar ✅' --callback_data 'btn_trip_done'
@@ -37,9 +44,9 @@ ShellBot.regHandleFunction --function list.search --callback_data btn_trip_compr
 ShellBot.regHandleFunction --function list.search --callback_data btn_trip_outrosV
 ShellBot.regHandleFunction --function list.search --callback_data btn_trip_outrosX
 keyboard_trip_checklist="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
-#############################################################################################################################
+################################################################################################################################
 
-############################## Botões para fazer backup dos arquivos dodrones ############################
+############################## Botao para fazer backup dos arquivos dodrones ##############################
 botao3=''
 
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text 'SIM' --callback_data 'btn_dodrones_yes'
@@ -49,9 +56,9 @@ ShellBot.regHandleFunction --function dodrones.execute --callback_data btn_dodro
 ShellBot.regHandleFunction --function dodrones.cancel --callback_data btn_dodrones_no
 
 keyboard_backup="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
-#########################################################################################################
+##########################################################################################################
 
-############################## Botões de enviar localização da estação/aeroporto ##########################################################################################
+############################## Botao de enviar localização da estação/aeroporto ##############################
 btn_GRU=''
 ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'GRU AIRPORT 📍' --callback_data 'btn_GRU' --url 'https://goo.gl/maps/goUycSPdkwYHPupq5'
 ShellBot.InlineKeyboardButton --button 'btn_GRU' --line 1 --text 'MADRI HOSTEL 📍' --callback_data 'btn_MAD_HOST' --url 'https://goo.gl/maps/QpFB36uCSKnSbrD7A'
@@ -80,13 +87,13 @@ keyboard_LON="$(ShellBot.InlineKeyboardMarkup -b 'btn_LON')"
 
 btn_BER=''
 ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'LONDON AIRPORT 📍' --callback_data 'btn_BER_LON' --url 'https://goo.gl/maps/G6XZe7AaDZ8b3txC8'
-ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'BERLIN HOSTEL 📍' --callback_data 'btn_BER_HOST' --url 'https://goo.gl/maps/RmQpsF3ZiuT29sUeA'
+#ShellBot.InlineKeyboardButton --button 'btn_BER' --line 1 --text 'BERLIN HOSTEL 📍' --callback_data 'btn_BER_HOST' --url 'https://goo.gl/maps/RmQpsF3ZiuT29sUeA'
 ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_LON
 ShellBot.regHandleFunction --function trip.btn_BER --callback_data btn_BER_HOST
 keyboard_BER="$(ShellBot.InlineKeyboardMarkup -b 'btn_BER')"
 
 btn_AMS=''
-ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'BERLIN TRAIN STATION 📍' --callback_data 'btn_AMS_BER' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'BERLIN TRAIN STATION 📍' --callback_data 'btn_AMS_BER' --url 'https://goo.gl/maps/AbqQTgnkLHrpYVNV7'
 ShellBot.InlineKeyboardButton --button 'btn_AMS' --line 1 --text 'AMSTERDAM HOSTEL 📍' --callback_data 'btn_AMS_HOST' --url 'https://goo.gl/maps/2ou2Xa4HRq5WAcEw7'
 ShellBot.regHandleFunction --function trip.btn_AMS --callback_data btn_AMS_BER
 ShellBot.regHandleFunction --function trip.btn_AMS --callback_data btn_AMS_HOST
@@ -96,7 +103,7 @@ btn_BRU=''
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 1 --text 'AMSTERDAM STATION 📍' --callback_data 'btn_BRU_AMS' --url 'https://goo.gl/maps/4gqNYBJuUJeCFLcS8'
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 2 --text 'BRUXELAS STATION 📍' --callback_data 'btn_BRU_STAT' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 2 --text 'BRUGES HOSTEL 📍' --callback_data 'btn_BRUG_HOST' --url 'https://goo.gl/maps/ixKdV72SpJUczpDW9'
-ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 3 --text 'ERIC HOUSE 📍' --callback_data 'btn_ERIC' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
+ShellBot.InlineKeyboardButton --button 'btn_BRU' --line 3 --text 'ERICs HOUSE 📍' --callback_data 'btn_ERIC' --url 'https://goo.gl/maps/iB6SeNpfm3yTuJ6L6'
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_AMS
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRU_STAT
 ShellBot.regHandleFunction --function trip.btn_BRU --callback_data btn_BRUG_HOST
@@ -127,4 +134,4 @@ ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_HOST
 ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_AIRPORT
 ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_DALIAS
 keyboard_ROM="$(ShellBot.InlineKeyboardMarkup -b 'btn_ROM')"
-###########################################################################################################################################################################
+##########################################################################################################
