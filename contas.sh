@@ -101,6 +101,9 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/disk" )" ]]; then
 				disk.warn "${message_text[$id]}"
 			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/botip" )" ]]; then
+                               my_ip.get
+                        fi
 
 			#### Comandos apenas para nossa viagem de Janeiro
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
