@@ -7,7 +7,6 @@ Passagens Dublin - Liverpool,ryanair,18/jan,07:05,✅
 Passagens Londres - Berlim,ryanair,21/jan,07:50,✅
 Trem Berlim - Amsterdã,DB,22/jan,00:16,✅
 Trem Amsterdã - Bruxelas,NS-International,23/jan,10:22,✅
-Trem Bruxelas - Bruges,eurostar,24/jan,,❌
 Trem Bruxelas - Paris,Thalys,26/jan,8:43,✅
 Passagens Paris - Veneza,easyJet,27/jan,07:20,✅
 Trem Veneza - Roma,Frecciarossa,28/jan,07:26,✅
@@ -19,7 +18,9 @@ Comprar euros/libras (1043.59 reais),CotacaoExtra,30/out,,✅
 Comprar euros (980.94 reais),CotacaoExtra,28/nov,,✅
 Comprar euros (980.20 reais),CotacaoExtra,02/dez,,✅
 Comprar euros (975.68 reais),CotacaoExtra,09/dez,,✅
-Comprar euros (500 reais),CotacaoExtra,20/dez,,❌
+Comprar euros (957 reais),CotacaoExtra,27/dez,,✅
+Comprar libras (50),CotacaoExtra,05/jan,,❌
+Comprar euros (150),CotacaoExtra,05/jan,,❌
 Comprar Seguro Viagem,TravelAce,23/Jul,,✅
 Ingresso London Eye,Londres,15/Nov,,❌
 Ingresso Anne Frank,Amsterdam,26/01,12:00,✅
