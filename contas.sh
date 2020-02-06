@@ -145,7 +145,10 @@ do
 			
 		else
 			# Conversa aleatória com o bot #
-			chat.hi
+			#chat.hi
+			if [[ ${message_chat_id} == "-323421307" ]]; then
+				product.search
+			fi
 			################################
 		fi
 	) &

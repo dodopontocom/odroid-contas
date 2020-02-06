@@ -28,6 +28,7 @@ source ${BASEDIR}/functions/servo_play.sh
 source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
 source ${BASEDIR}/functions/my_ip.sh
+source ${BASEDIR}/functions/precos.sh
 
 ################################# END - Carregando todas as funções #################################
 
