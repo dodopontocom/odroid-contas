@@ -14,7 +14,7 @@ product.search() {
 
   if [[ ${first_found} ]] && [[ ${product_price} ]]; then
           message="Voce pode encontrar ${message_text} no *\`TENDA ATACADISTA\`*\n\n"
-          message+="*Produto/Marca:* ${first_found//[&#0-9]/}\n\n"
+          message+="*Produto/Marca:* ${first_found//[&#]/}\n\n"
           message+="*Preco:* ---> ${product_price}"
 
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
