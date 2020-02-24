@@ -146,8 +146,10 @@ do
 		else
 			# Conversa aleatória com o bot #
 			#chat.hi
-			if [[ ${message_chat_id} == "-323421307" ]]; then
+			if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]]; then
 				product.search
+			else
+				chat.hi
 			fi
 			################################
 		fi
