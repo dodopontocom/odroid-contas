@@ -45,7 +45,29 @@ do
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
-
+		if [[ ${message_entities_type[$id]} != bot_command ]]; then
+                        echo ${message_text} >> list.txt
+                        cat list.txt
+                        # Edita a query substituindo pelo menu de ajuda.
+                        if [[ -z ${callback_query_data} ]]; then
+                                ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+                                exibir_lista
+                        fi
+                        #ShellBot.sendMessage   --chat_id ${message_chat_id[$id]} \
+                        #                       --text "$(tail -1 list.txt)" \
+                        #                       --parse_mode markdown
+                        case ${callback_query_data[$id]} in
+                                item_comprado)
+                             # Envia uma notificação a query.
+                             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+                             # Edita a query substituindo pelo menu de ajuda.
+                             ShellBot.deleteMessage        --chat_id ${callback_query_message_chat_id[$id]} \
+                                    --message_id ${callback_query_message_message_id[$id]} \
+                                    #--text "" \
+                                    #--parse_mode markdown
+                            ;;
+                        esac
+                fi
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
@@ -143,16 +165,16 @@ do
 				trip.baggage
 			fi
 			
-		else
-			# Conversa aleatória com o bot #
-			#chat.hi
-			if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]]; then
-				product.search
-			else
-				chat.hi
-			fi
-			################################
-		fi
+		#else
+		#	# Conversa aleatória com o bot #
+		#	#chat.hi
+		#	if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]]; then
+		#		product.search
+		#	else
+		#		chat.hi
+		#	fi
+		#	################################
+		#fi
 	) &
 	done
 done
