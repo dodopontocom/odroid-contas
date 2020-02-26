@@ -53,7 +53,8 @@ do
                                 	exibir_lista "${ITEM_NA_LISTA}"
                         	fi
 	                fi
-			case ${callback_query_data[$id]} in
+		fi
+		case ${callback_query_data[$id]} in
                 		item_comprado)
 					ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
                         		ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
@@ -61,8 +62,7 @@ do
 					#ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 					#			--text "Item excluído"
                 		;;
-                	esac
-		fi
+                esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
