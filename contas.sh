@@ -65,7 +65,7 @@ do
 				item_valor)
 					ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
                         		ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
-	                        				--message "Opção em construção..."
+	                        				--text "Opção em construção..."
                 		;;
                 esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
