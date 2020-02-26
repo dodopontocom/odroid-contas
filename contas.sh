@@ -45,22 +45,24 @@ do
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
-		if [[ ${message_entities_type[$id]} != bot_command ]]; then
-                        ITEM_NA_LISTA="${message_text}"
-                        if [[ -z ${callback_query_data} ]]; then
-                                ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-                                exibir_lista "${ITEM_NA_LISTA}"
-                        fi
-                fi
-		case ${callback_query_data[$id]} in
-                	item_comprado)
-				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-                        	ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
-                        				--message_id ${callback_query_message_message_id[$id]}
-				#ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-				#			--text "Item excluído"
-                	;;
-                esac
+		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]]; then
+			if [[ ${message_entities_type[$id]} != bot_command ]]; then
+                        	ITEM_NA_LISTA="${message_text}"
+                        	if [[ -z ${callback_query_data} ]]; then
+                                	ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+                                	exibir_lista "${ITEM_NA_LISTA}"
+                        	fi
+	                fi
+			case ${callback_query_data[$id]} in
+                		item_comprado)
+					ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+                        		ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
+	                        				--message_id ${callback_query_message_message_id[$id]}
+					#ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+					#			--text "Item excluído"
+                		;;
+                	esac
+		fi
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
 				start.sendGreetings
