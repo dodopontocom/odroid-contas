@@ -61,6 +61,7 @@ do
 	                        				--message_id ${callback_query_message_message_id[$id]}
 					#ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 					#			--text "Item excluído"
+				;;
 				item_valor)
 					ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
                         		ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
