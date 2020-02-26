@@ -56,7 +56,9 @@ do
                 	item_comprado)
 				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
                         	ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
-                        				--message_id ${callback_query_message_message_id[$id]} \
+                        				--message_id ${callback_query_message_message_id[$id]}
+				ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "Item excluído"
                 	;;
                 esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
