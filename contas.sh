@@ -50,7 +50,7 @@ do
                         	ITEM_NA_LISTA="${message_text}"
                         	if [[ -z ${callback_query_data} ]]; then
                                 	ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-                                	exibir_lista "${ITEM_NA_LISTA}"
+                                	listar.compras "${ITEM_NA_LISTA}"
                         	fi
 	                fi
 		fi
