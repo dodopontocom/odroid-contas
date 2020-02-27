@@ -29,7 +29,7 @@ source ${BASEDIR}/functions/disk.sh
 source ${BASEDIR}/functions/options.sh
 source ${BASEDIR}/functions/my_ip.sh
 source ${BASEDIR}/functions/precos.sh
-source ${BASEDIR}/functions/lista_compras.sh
+source ${BASEDIR}/functions/listar_compras.sh
 
 ################################# END - Carregando todas as funções #################################
 
