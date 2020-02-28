@@ -23,11 +23,8 @@ listar.apagar(){
                                 --message_id ${callback_query_message_message_id[$id]}
 }
 
-listar.precos(){
-        local item
-        item=$1
-        
-        product.search "${item}"
+listar.precos(){   
+        product.search
         #ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
         #ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
         #		--text "Opção em construção..."
