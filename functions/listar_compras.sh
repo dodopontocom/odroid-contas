@@ -16,7 +16,7 @@ listar.compras(){
 
         ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
         ShellBot.sendMessage    --chat_id ${message_chat_id[$id]} \
-                                --text " " \
+                                --text "." \
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
                                 #--reply_markup "$keyboard_compras"
