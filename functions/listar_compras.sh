@@ -18,8 +18,8 @@ listar.compras(){
         ShellBot.sendMessage    --chat_id ${message_chat_id[$id]} \
                                 --text "*${item}*" \
                                 --parse_mode markdown \
-                                #--reply_markup "$keyboard_compras"
                                 --reply_markup "$keyboard_itens"
+                                #--reply_markup "$keyboard_compras"
 }
 
 listar.apagar(){
