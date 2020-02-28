@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#botao_itens=''
-#ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${item} ✅" --callback_data 'item_comprado' --line 1
-#ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços 🔍" --callback_data 'item_valor' --line 1
-#keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_itens')"
-
 listar.compras(){
         local item
         item=$1
@@ -19,7 +14,6 @@ listar.compras(){
                                 --text "." \
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
-                                #--reply_markup "$keyboard_compras"
 }
 
 listar.apagar(){
