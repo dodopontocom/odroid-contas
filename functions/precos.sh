@@ -6,8 +6,11 @@
 product.search() {
   local product_name first_found product_price message
 
-  product_name=${message_text/ /%20}
+  #product_name=${message_text/ /%20}
+  product_name=${1/ /%20}
+  
   echo ${product_name}
+  
   first_found="$(curl -sSS ${TENDA_SUP_URL}/${product_name} | grep "escaped-name" | cut -d'>' -f2 | cut -d'<' -f1 | head -1)"
   echo ${first_found}
   product_price="$(curl -sSS ${TENDA_SUP_URL}/${product_name} | grep -A11 "${first_found}" | tail -1 | sed "s:[\t ]::g")"
