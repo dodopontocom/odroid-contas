@@ -24,7 +24,10 @@ listar.apagar(){
 }
 
 listar.precos(){
-        product.search
+        local item
+        item=$1
+        
+        product.search "${item}"
         #ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
         #ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
         #		--text "Opção em construção..."
