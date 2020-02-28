@@ -55,16 +55,10 @@ do
 		fi
 		case ${callback_query_data[$id]} in
                 		item_comprado)
-					ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-                        		ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
-	                        				--message_id ${callback_query_message_message_id[$id]}
-					#ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-					#			--text "Item excluído"
-				;;
+					listar.apagar
+					;;
 				item_valor)
-					ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-                        		ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
-	                        				--text "Opção em construção..."
+					listar.precos
                 		;;
                 esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
