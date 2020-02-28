@@ -23,13 +23,13 @@ product.search() {
           message+="*Preço:* ---> ${product_price}"
 
           ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-          ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} 
-                              --text "ok" --parse_mode markdown
+          ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                              --text "$(echo -e ${message})" --parse_mode markdown
   else
           message="Produto não encontrado..."
           ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-          ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} 
-                              --text "nao encontrado" --parse_mode markdown
+          ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                              --text "$(echo -e ${message})" --parse_mode markdown
   fi
 
 }
