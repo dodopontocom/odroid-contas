@@ -7,7 +7,7 @@ product.search() {
   local product_name first_found product_price message
 
   #product_name=${message_text/ /%20}
-  product_name=${1/ /%20}
+  product_name=${callback_query_message_text/ /%20}
   echo "site ---> ${TENDA_SUP_URL}/${product_name}"
   echo ${product_name}
   
