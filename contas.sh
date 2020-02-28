@@ -45,13 +45,10 @@ do
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
-		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]]; then
-			if [[ ${message_entities_type[$id]} != bot_command ]]; then
-                        	ITEM_NA_LISTA="${message_text}"
-                        	if [[ -z ${callback_query_data} ]]; then
-                                	listar.compras "${ITEM_NA_LISTA}"
-                        	fi
-	                fi
+		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && [[ ${message_entities_type[$id]} != bot_command ]] && [[ -z ${callback_query_data} ]]; then
+			listar.compras "${message_text}"
+		else
+			chat.hi
 		fi
 		case ${callback_query_data[$id]} in
                 		item_comprado)
@@ -59,7 +56,7 @@ do
 					;;
 				item_valor)
 					listar.precos
-                		;;
+                			;;
                 esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/start" )" ]]; then
