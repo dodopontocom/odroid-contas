@@ -49,7 +49,6 @@ do
 			if [[ ${message_entities_type[$id]} != bot_command ]]; then
                         	ITEM_NA_LISTA="${message_text}"
                         	if [[ -z ${callback_query_data} ]]; then
-                                	ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
                                 	listar.compras "${ITEM_NA_LISTA}"
                         	fi
 	                fi
