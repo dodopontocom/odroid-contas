@@ -15,14 +15,18 @@ product.search() {
   echo ${first_found}
   product_price="$(curl -sSS ${TENDA_SUP_URL}/${product_name} | grep -A11 "${first_found}" | tail -1 | sed "s:[\t ]::g")"
 
+  echo ${product_price}
+
   if [[ ${first_found} ]] && [[ ${product_price} ]]; then
-          message="Você pode encontrar ${message_text} no *\`TENDA ATACADISTA\`*\n\n"
+          message="Você pode encontrar ${product_name} no *\`TENDA ATACADISTA\`*\n\n"
           message+="*Produto/Marca:* ${first_found//[&#]/}\n\n"
           message+="*Preço:* ---> ${product_price}"
 
+          ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   else
           message="Produto não encontrado..."
+          ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
           ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fi
 
