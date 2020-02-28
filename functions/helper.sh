@@ -178,7 +178,7 @@ helper.get_api() {
     echo "[INFO] ShellBot API - Getting the newest version '${check_new_version}'"
     git clone ${API_GIT_URL} ${tmp_folder} > /dev/null
 
-    echo "Habilitando a API"
+    echo "[INFO] Providing the API for the bot's project folder"
     cp ${tmp_folder}/ShellBot.sh ${BASEDIR}/
     rm -fr ${tmp_folder}
 
