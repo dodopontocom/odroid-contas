@@ -24,8 +24,8 @@ listar.apagar(){
 }
 
 listar.precos(){
-
-        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-        ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
-      				--text "Opção em construção..."
+        product.search
+        #ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+        #ShellBot.sendMessage  --chat_id ${callback_query_message_chat_id[$id]} \
+        #		--text "Opção em construção..."
 }
