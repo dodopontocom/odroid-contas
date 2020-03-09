@@ -4,6 +4,9 @@ listar.compras(){
         local item
         item=$1
         
+        #salvar item em lista para consulta posterior
+        listar.salvar "${item}" "$(date +%s)"
+        
         botao_itens=''
         ShellBot.InlineKeyboardButton --button 'botao_itens' --text "✅" --callback_data 'item_comprado' --line 1
         ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços 🔍" --callback_data 'item_valor' --line 1
@@ -54,12 +57,26 @@ listar.preco() {
 
 }
 
-#secs_message=$(date +%s)
-#expire_message_time=172800
-#secs_now=$(date +%s)
-#
-#if [[ $(bc <<< ${secs_now}-${secs_message}) -gt ${expire_message_time} ]]; then
-#        echo "fazer troca"
-#else
-#        echo "ok"
-#fi
+listar.salvar() {
+        local logs item secs_message expire_message_time secs_now
+        
+        logs=/tmp/itens.csv
+        item=$1
+        secs_message=$2
+        expire_message_time=172800
+        secs_now=$(date +%s)
+        
+        echo "${item},${secs_message}" >> ${logs}
+        
+        while read line ; do
+        _secs_message=$(echo $line|cut -d',' -f2)
+                if [[ $(bc <<< ${secs_now}-$_secs_message) -gt 172800 ]]; then
+                        echo "${line}"
+                        echo "passou de 48 horas que a mensagem foi enviada"
+                else
+                        echo "${line}"
+                        echo "ainda não passou de 48 horas que a mensagem foi enviada"
+                fi
+        done < ${logs}
+}
+
