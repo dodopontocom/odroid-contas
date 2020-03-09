@@ -17,6 +17,8 @@ listar.compras(){
                                 --text "*${item}*" \
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
+         
+        echo "---------------------- ${callback_query_id}"
 }
 
 listar.apagar(){
@@ -67,7 +69,7 @@ listar.salvar() {
         secs_now=$(date +%s)
         
         echo "${item},${secs_message}" >> ${logs}
-        
+                
         while read line ; do
         _secs_message=$(echo $line|cut -d',' -f2)
                 if [[ $(bc <<< ${secs_now}-$_secs_message) -gt 172800 ]]; then
