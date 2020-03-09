@@ -55,7 +55,7 @@ do
 					listar.apagar
 					;;
 				item_valor)
-					listar.precos
+					listar.preco
                 			;;
                 esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
