@@ -53,3 +53,13 @@ listar.preco() {
   fi
 
 }
+
+#secs_message=$(date +%s)
+#expire_message_time=172800
+#secs_now=$(date +%s)
+#
+#if [[ $(bc <<< ${secs_now}-${secs_message}) -gt ${expire_message_time} ]]; then
+#        echo "fazer troca"
+#else
+#        echo "ok"
+#fi
