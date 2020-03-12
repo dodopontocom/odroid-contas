@@ -135,10 +135,3 @@ ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_ROM_AIRPO
 ShellBot.regHandleFunction --function trip.btn_ROM --callback_data btn_DALIAS
 keyboard_ROM="$(ShellBot.InlineKeyboardMarkup -b 'btn_ROM')"
 ##########################################################################################################
-
-btn_compras=''
-ShellBot.InlineKeyboardButton --button 'btn_compras' --text '✅' --callback_data 'item_comprado' --line 1
-ShellBot.InlineKeyboardButton --button 'btn_compras' --text 'preços 🔍' --callback_data 'item_valor' --line 1
-keyboard_compras="$(ShellBot.InlineKeyboardMarkup -b 'btn_compras')"
-
-
