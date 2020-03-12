@@ -19,4 +19,4 @@ helper.get_api
 exitOnError "Erro ao tentar baixar API ShellBot" $?
 
 # Fazer source da API só depois de baixá-la
-source ${BASEDIR}/configs/buttons.sh
+source ${BASEDIR}/configs/keyboards.sh
