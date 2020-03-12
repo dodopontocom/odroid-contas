@@ -7,7 +7,7 @@ lotomania.sena() {
   local jogo message numeros
   
   jogo=mega_sena
-  numeros="$(curl -s ${LOTOMANIA_API_URL}/${jogo}/results/last?token=${LOTODICAS_TOKEN} | jq '.data.drawing.draw')"
+  numeros="$(curl -s ${LOTOMANIA_API_URL}/${jogo}/results/last?token=${LOTODICAS_TOKEN} | jq '.data.drawing.draw' | grep -v "\[\|\]")"
   
   if [[ -n ${numeros} ]]; then
     message="✅ Números do último sorteio:"
