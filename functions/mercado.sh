@@ -1,7 +1,7 @@
 #!/bin/bash
 
 listar.compras(){
-        local item
+        local item botao_itens
         item=$1
         
         #salvar item em lista para consulta posterior
@@ -17,8 +17,6 @@ listar.compras(){
                                 --text "*${item}*" \
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
-         
-        echo "---------------------- ${callback_query_id}"
 }
 
 listar.apagar(){
@@ -71,13 +69,13 @@ listar.salvar() {
         echo "${item},${secs_message}" >> ${logs}
                 
         while read line ; do
-        _secs_message=$(echo $line|cut -d',' -f2)
+        _secs_message=$(echo $line | cut -d',' -f2)
                 if [[ $(bc <<< ${secs_now}-$_secs_message) -gt 172800 ]]; then
                         echo "${line}"
-                        echo "passou de 48 horas que a mensagem foi enviada"
+                        echo "Passou de 48 horas que a mensagem foi enviada"
                 else
                         echo "${line}"
-                        echo "ainda não passou de 48 horas que a mensagem foi enviada"
+                        echo "Ainda não passou de 48 horas que a mensagem foi enviada"
                 fi
         done < ${logs}
 }
