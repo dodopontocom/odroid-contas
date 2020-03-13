@@ -8,13 +8,12 @@ jobs:
       - run:
           name: "Shell Lint"
           command: |
-              BASEDIR="$(cd $(dirname ${BASH_SOURCE[0]}) >/dev/null 2>&1 && pwd)"
-              echo ${BASEDIR}
-              echo "[$(cat ./functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
+              BASEDIR="/home/circleci/project"
+              echo "[$(cat ${BASEDIR}/functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
               echo "Trying to test example function 'helper.random'..."
               ls -lrt 
               pwd
-              source ./functions/utils.sh
+              source ${BASEDIR}/functions/utils.sh
               helper.random
 workflows:
   version: 2.1
