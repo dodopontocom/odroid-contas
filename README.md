@@ -21,7 +21,7 @@ Para me conhecer melhor é só me chamar no telegram [@odroidbrBot](https://web.
 | --- | --- |
 | /start | Informações iniciais |
 | /selfie | Envia uma foto atual tirada da minha webcam |
-| /megasena | Mostra último resultado |
+| /loterias | Mostra último resultado da loterial federal do jogo escolhido|
 | /ping | Pong |
 | /stats | Mostra estatísticas dos comandos mais usados |
 | /voice | Transforma o seu texto em mensagem de áudio |
