@@ -14,7 +14,18 @@ ShellBot.regHandleFunction --function linux.reject --callback_data btn_n
 
 keyboard_accept="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 ###############################################################################################
+############ LOTERIAS ##############
+loto=''
 
+ShellBot.InlineKeyboardButton --button 'loto' --line 1 --text 'MEGASENA' --callback_data 'lotodicas.sena'
+ShellBot.InlineKeyboardButton --button 'loto' --line 1 --text 'LOTOFACIL' --callback_data 'lotodicas.lotofacil'
+ShellBot.InlineKeyboardButton --button 'loto' --line 2 --text 'QUINA' --callback_data 'lotodicas.quina'
+ShellBot.InlineKeyboardButton --button 'loto' --line 2 --text 'DUPLASENA' --callback_data 'lotodicas.duplasena'
+ShellBot.InlineKeyboardButton --button 'loto' --line 3 --text 'LOTOMANIA' --callback_data 'lotodicas.lotomania'
+ShellBot.InlineKeyboardButton --button 'loto' --line 3 --text 'TIMEMANIA' --callback_data 'lotodicas.timemania'
+ShellBot.InlineKeyboardButton --button 'loto' --line 4 --text 'DIA DE SORTE' --callback_data 'lotodicas.diasorte'
+keyboard_loto="$(ShellBot.InlineKeyboardMarkup -b 'loto')"
+###############################################################################################
 ######## revogar acessos ao comando linux ########
 [[ -f ${TMP_PEDIDO} ]] && rm -rfv ${TMP_PEDIDO}
 ##################################################
