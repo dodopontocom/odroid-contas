@@ -11,7 +11,7 @@ start:en:5:*->* /speedtest `check my home internet speed`\n\n
 start:en:6:*->* /voice `<text>`\n\n
 start:en:7:*->* /ping\n\n
 start:en:8:*->* /restartbot\n\n
-start:en:9:*->* /megasena\n\n
+start:en:9:*->* /loterias\n\n
 start:en:10:*->* /stats\n\n
 start:pt-br:0:*Olá, Eu sou o 🤖 `odroidbrBot`.* Posso fazer algumas coisas legais\n
 start:pt-br:1:Eu estou rodando direto da placa odroid-c2 hospedado em Votorantim - Brasil\n
@@ -22,5 +22,5 @@ start:pt-br:5:*->* /speedtest `verificar internet da minha casa`\n\n
 start:pt-br:6:*->* /voice `<texto>`\n\n
 start:pt-br:7:*->* /ping\n\n
 start:pt-br:8:*->* /restartbot\n\n
-start:pt-br:9:*->* /megasena\n\n
+start:pt-br:9:*->* /loterias\n\n
 start:pt-br:10:*->* /stats\n\n
