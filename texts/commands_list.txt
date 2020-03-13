@@ -1,6 +1,6 @@
 selfie
 linux
-megasena
+loterias
 days
 trip
 start
