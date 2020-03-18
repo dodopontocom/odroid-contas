@@ -9,8 +9,8 @@ pdfgrep.itatiba() {
     pattern=${array[@]:1}
 	
     cidade="Itatiba"
-	if [[ ${callback_query_message_message_id[$id]} ]]; then
-		_chat_id=${callback_query_message_message_id[$id]}
+	if [[ ${callback_query_message_chat_id[$id]} ]]; then
+		_chat_id=${callback_query_message_chat_id[$id]}
 	else
 		_chat_id=${message_chat_id[$id]}
 	fi
