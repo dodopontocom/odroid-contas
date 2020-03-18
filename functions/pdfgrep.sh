@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pdfgrep.itatiba() {
-	local cidade message pattern
+	local cidade message pattern _chat_id
 	
     pattern=$1
     array=(${pattern})
@@ -9,8 +9,12 @@ pdfgrep.itatiba() {
     pattern=${array[@]:1}
 	
     cidade="Itatiba"
-
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+	if [[ ${callback_query_message_message_id[$id]} ]]; then
+		_chat_id=${callback_query_message_message_id[$id]}
+	else
+		_chat_id=${message_chat_id[$id]}
+	fi
+    ShellBot.sendMessage --chat_id ${_chat_id} \
 					--text "*Cidades disponíveis para consulta*" \
 					--parse_mode markdown \
 					--reply_markup "$keyboard_cidades"
