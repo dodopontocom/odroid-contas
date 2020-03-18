@@ -9,7 +9,12 @@ pdfgrep.itatiba() {
     pattern=${array[@]:1}
 	
     cidade="Itatiba"
-	
+
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+					--text "*Cidades disponíveis para consulta*" \
+					--parse_mode markdown \
+					--reply_markup "$keyboard_cidades"
+
 	pasta_pdf="/tmp/$(helper.random)/${cidade}"
 	if [[ ! -d "${pasta_pdf}" ]]; then
 		mkdir -p ${pasta_pdf}
