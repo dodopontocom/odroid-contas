@@ -51,12 +51,15 @@ do
 			chat.hi
 		fi
 		case ${callback_query_data[$id]} in
-                		item_comprado) listar.apagar ;;
-				item_valor) listar.preco ;;
-				'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
+			item_comprado) listar.apagar ;;
+			item_valor) listar.preco ;;
+			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
-                esac
+        esac
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/itatiba" )" ]]; then
+				pdfgrep.itatiba "${message_text[$id]}"
+			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/loterias" )" ]]; then
 				lotodicas.keyboards
 			fi
