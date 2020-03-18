@@ -16,7 +16,6 @@ pdfgrep.itatiba() {
 	fi
 	
 	pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
-	echo "-----------=-=- ${itatiba_url}"
 	wget -q --spider ${itatiba_url}
 	if [[ "$?" -ne "0" ]]; then
         message="AVISO ${cidade} - hoje não houve registro para '${pattern}' no diário oficial"
