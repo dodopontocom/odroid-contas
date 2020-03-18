@@ -19,7 +19,7 @@ pdfgrep.itatiba() {
 	echo "-----------=-=- ${itatiba_url}"
 	wget -q --spider ${itatiba_url}
 	if [[ "$?" -ne "0" ]]; then
-        message="AVISO ${cidade} - hoje não houve registro para ${pattern} no diário oficial"
+        message="AVISO ${cidade} - hoje não houve registro para '${pattern}' no diário oficial"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "$(echo -e ${message})" --parse_mode markdown
 		
@@ -28,7 +28,7 @@ pdfgrep.itatiba() {
 		chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 		exc=$(echo $?)
 		if [[ "${exc}" -eq "0" ]]; then
-			message="AVISO ${cidade} - Corra ver no site, '{pattern}' foi citado no edital de hoje!!!"
+			message="AVISO ${cidade} - Corra ver no site, '${pattern}' foi citado no edital de hoje!!!"
 			message+="Estou enviando o PDF para você poder confirmar..."
             ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "$(echo -e ${message})" --parse_mode markdown
