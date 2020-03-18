@@ -41,8 +41,8 @@ pdfgrep.itatiba() {
 
 		fi	
 	else
-			message="Insira um padrão a ser pesquisado:"
-			message+="/itatiba `<termo a ser pesquisado>`"
+			message="Insira um padrão a ser pesquisado:\n"
+			message+="/itatiba \`<termo a ser pesquisado>\`"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 								--text "$(echo -e ${message})" --parse_mode markdown
 	fi
