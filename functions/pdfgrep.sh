@@ -19,7 +19,7 @@ pdfgrep.itatiba() {
 		pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
 		wget -q --spider ${itatiba_url}
 		if [[ "$?" -ne "0" ]]; then
-			message="AVISO ${cidade} - hoje não houve registro para '${pattern}' no diário oficial"
+			message="AVISO ${cidade} - hoje não houve edital no diário oficial!"
 			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 								--text "$(echo -e ${message})" --parse_mode markdown
 			
@@ -32,7 +32,8 @@ pdfgrep.itatiba() {
 				message+="Estou enviando o PDF para você poder confirmar..."
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 								--text "$(echo -e ${message})" --parse_mode markdown
-				#sendDocumentBot "${pdf_save}"
+				ShellBot.sendDocument --chat_id ${message_chat_id[$id]} \
+								--document @${pdf_save}
 			else
 				message="AVISO ${cidade} - O padrão '${pattern}' não foi citado no edital de hoje"
 				ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -41,10 +42,10 @@ pdfgrep.itatiba() {
 
 		fi	
 	else
-			message="Insira um padrão a ser pesquisado:\n"
-			message+="/itatiba \`<termo a ser pesquisado>\`"
-			ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-								--text "$(echo -e ${message})" --parse_mode markdown
+		message="Insira um padrão a ser pesquisado:\n"
+		message+="/itatiba \`<termo a ser pesquisado>\`"
+		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+							--text "$(echo -e ${message})" --parse_mode markdown
 	fi
 	rm -vfr ${pasta_pdf}
 }
