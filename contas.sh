@@ -51,6 +51,7 @@ do
 			chat.hi
 		fi
 		case ${callback_query_data[$id]} in
+			pdfgrep.itatiba) pdfgrep.itatiba ;;
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
