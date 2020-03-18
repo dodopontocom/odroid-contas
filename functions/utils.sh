@@ -18,5 +18,8 @@ helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 helper.get_api
 exitOnError "Erro ao tentar baixar API ShellBot" $?
 
+# Fazer source das urls para uso da função de busca nos editais
+source ${BASEDIR}/configs/pdfgrep_urls.sh
+
 # Fazer source da API só depois de baixá-la
 source ${BASEDIR}/configs/keyboards.sh
