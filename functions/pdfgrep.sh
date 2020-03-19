@@ -1,5 +1,19 @@
 #!/bin/bash
 
+pdfgrep.keyboard() {
+	ShellBot.sendMessage --chat_id ${_chat_id} \
+					--text "*Cidades disponíveis para consulta*" \
+					--parse_mode markdown \
+					--reply_markup "$keyboard_cidades"
+}
+
+pdfgrep.reply_itatiba() {
+	local message
+	message="Nome:"
+  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
+        --reply_markup "$(ShellBot.ForceReply)"
+}
+
 pdfgrep.itatiba() {
 	local cidade message pattern _chat_id
 	
@@ -14,11 +28,7 @@ pdfgrep.itatiba() {
 	else
 		_chat_id=${message_chat_id[$id]}
 	fi
-    ShellBot.sendMessage --chat_id ${_chat_id} \
-					--text "*Cidades disponíveis para consulta*" \
-					--parse_mode markdown \
-					--reply_markup "$keyboard_cidades"
-
+    
 	pasta_pdf="/tmp/$(helper.random)/${cidade}"
 	if [[ ! -d "${pasta_pdf}" ]]; then
 		mkdir -p ${pasta_pdf}

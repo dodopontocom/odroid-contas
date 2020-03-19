@@ -51,15 +51,25 @@ do
 			chat.hi
 		fi
 		case ${callback_query_data[$id]} in
-			pdfgrep.itatiba) pdfgrep.itatiba ;;
+			pdfgrep.reply_itatiba) pdfgrep.reply_itatiba ;;
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
         esac
+		if [[ ${message_reply_to_message_message_id[$id]} ]]; then
+			case ${message_reply_to_message_text[$id]} in
+				'Pesquisa:')
+					pdfgrep.itatiba "${message_text[$id]}"
+				;;
+				'Data:')
+					pdfgrep.itatiba "${message_text[$id]}"
+				;;
+			esac
+		fi
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/itatiba" )" ]]; then
-				pdfgrep.itatiba "${message_text[$id]}"
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/concursos" )" ]]; then
+				pdfgrep.keyboard
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/loterias" )" ]]; then
 				lotodicas.keyboards

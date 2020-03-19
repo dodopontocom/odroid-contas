@@ -149,7 +149,7 @@ keyboard_ROM="$(ShellBot.InlineKeyboardMarkup -b 'btn_ROM')"
 
 ###########################DIÁRIO DE ITATIBA BOT#######################################
 btn_cidades=''
-ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Itatiba" --callback_data 'pdfgrep.itatiba' --line 1
+ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Itatiba" --callback_data 'pdfgrep.reply_itatiba' --line 1
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Jundiaí" --callback_data 'pdfgrep.jundiai' --line 1
 keyboard_cidades="$(ShellBot.InlineKeyboardMarkup -b 'btn_cidades')"
 ################################################################################################
