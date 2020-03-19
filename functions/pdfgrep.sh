@@ -29,7 +29,7 @@ pdfgrep.keyboard() {
 
 pdfgrep.reply_itatiba() {
 	local message
-	message="*Agora você deve informar a pesquisa que deseja realizar no edital*"
+	message="*Informe a pesquisa que deseja realizar no edital*"
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 						--text "$(echo -e ${message})" --parse_mode markdown
 	message="Pesquisa:"
