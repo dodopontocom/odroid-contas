@@ -9,6 +9,7 @@ pdfgrep.keyboard() {
 
 pdfgrep.reply_itatiba() {
 	local message
+	message="Agora você deve informar a pesquisa que deseja realizar no edital"
 	message="Pesquisa:"
   	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
         --reply_markup "$(ShellBot.ForceReply)"
@@ -19,7 +20,7 @@ pdfgrep.itatiba() {
 	
     pattern=$1	
     cidade="Itatiba"
-	
+
 	if [[ ${callback_query_message_chat_id[$id]} ]]; then
 		_chat_id=${callback_query_message_chat_id[$id]}
 	else
@@ -35,7 +36,7 @@ pdfgrep.itatiba() {
 		pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
 		wget -q --spider ${itatiba_url}
 		if [[ "$?" -ne "0" ]]; then
-			message="AVISO ${cidade} - hoje não houve edital no diário oficial!"
+			message="\`AVISO ${cidade} \`- hoje não houve edital no diário oficial!"
 			ShellBot.sendMessage --chat_id ${_chat_id} \
 								--text "$(echo -e ${message})" --parse_mode markdown
 			
@@ -44,22 +45,21 @@ pdfgrep.itatiba() {
 			chmod 777 ${pdf_save}; /usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
 			exc=$(echo $?)
 			if [[ "${exc}" -eq "0" ]]; then
-				message="AVISO ${cidade} - Corra ver no site, '${pattern}' foi citado no edital de hoje!!!"
+				message="\`AVISO ${cidade} \`- Corra ver no site, '${pattern}' foi citado no edital de hoje!!!\n"
 				message+="Estou enviando o PDF para você poder confirmar..."
 				ShellBot.sendMessage --chat_id ${_chat_id} \
 								--text "$(echo -e ${message})" --parse_mode markdown
 				ShellBot.sendDocument --chat_id ${_chat_id} \
 								--document @${pdf_save}
 			else
-				message="AVISO ${cidade} - O padrão '${pattern}' não foi citado no edital de hoje"
+				message="\`AVISO ${cidade} \`- O padrão '${pattern}' não foi citado no edital de hoje"
 				ShellBot.sendMessage --chat_id ${_chat_id} \
 								--text "$(echo -e ${message})" --parse_mode markdown
 			fi
 
 		fi	
 	else
-		message="Insira um padrão a ser pesquisado:\n"
-		message+="/itatiba \`<termo a ser pesquisado>\`"
+		message="Informe um padrão a ser pesquisado:\n"
 		ShellBot.sendMessage --chat_id ${_chat_id} \
 							--text "$(echo -e ${message})" --parse_mode markdown
 	fi
