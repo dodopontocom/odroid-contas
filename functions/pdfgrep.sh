@@ -12,9 +12,12 @@ pdfgrep.informativo() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 						--text "$(echo -e ${message})" --parse_mode markdown
 	
-	message="Então para começar, use o comando '\`/cidades\`' para receber a lista das cidades disponíveis "
+	message="Então para começar, use o comando abaixo para receber a lista das cidades disponíveis."
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-						--text "$(echo -e ${message})" --parse_mode markdown
+						--text "$(echo -e ${message})" --parse_mode markdown	
+	message="/cidades"
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+						--text "$(echo -e ${message})" --parse_mode markdown	
 }
 
 pdfgrep.keyboard() {
