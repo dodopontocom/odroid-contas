@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pdfgrep.keyboard() {
-	ShellBot.sendMessage --chat_id ${_chat_id} \
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 					--text "*Cidades disponíveis para consulta*" \
 					--parse_mode markdown \
 					--reply_markup "$keyboard_cidades"
