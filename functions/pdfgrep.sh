@@ -17,12 +17,9 @@ pdfgrep.reply_itatiba() {
 pdfgrep.itatiba() {
 	local cidade message pattern _chat_id
 	
-    pattern=$1
-    array=(${pattern})
-    array[0]="/itatiba"
-    pattern=${array[@]:1}
-	
+    pattern=$1	
     cidade="Itatiba"
+	
 	if [[ ${callback_query_message_chat_id[$id]} ]]; then
 		_chat_id=${callback_query_message_chat_id[$id]}
 	else
