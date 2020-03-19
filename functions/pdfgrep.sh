@@ -1,5 +1,22 @@
 #!/bin/bash
 
+pdfgrep.informativo() {
+	local message
+
+	message="*Bem vindos*\n"
+	message+="Aqui você pode pesquisar seu nome (ou outros textos) nos editais das cidades disponíveis."
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+						--text "$(echo -e ${message})" --parse_mode markdown
+	
+	message="Exemplo, você pode pesquisar para saber se seu nome foi chamado após ter realizado um concurso."
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+						--text "$(echo -e ${message})" --parse_mode markdown
+	
+	message="Então para começar, use o comando '\`/cidades\`' para receber a lista das cidades disponíveis "
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+						--text "$(echo -e ${message})" --parse_mode markdown
+}
+
 pdfgrep.keyboard() {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 					--text "*Cidades disponíveis para consulta*" \

@@ -68,8 +68,11 @@ do
 			esac
 		fi
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/concursos" )" ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
 				pdfgrep.keyboard
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/concursos" )" ]]; then
+				pdfgrep.informativo
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/loterias" )" ]]; then
 				lotodicas.keyboards
@@ -133,9 +136,9 @@ do
                         fi
 
 			#### Comandos apenas para nossa viagem de Janeiro
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
-				trip.all_cities
-			fi
+			#if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
+			#	trip.all_cities
+			#fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/madri" )" ]]; then
 				trip.cities Madri
 			fi
