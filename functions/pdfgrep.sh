@@ -9,7 +9,7 @@ pdfgrep.keyboard() {
 
 pdfgrep.reply_itatiba() {
 	local message
-	message="Nome:"
+	message="Pesquisa:"
   	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
         --reply_markup "$(ShellBot.ForceReply)"
 }
