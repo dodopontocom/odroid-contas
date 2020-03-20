@@ -44,7 +44,7 @@ pdfgrep.reply_itatiba() {
 	message="*Informe a pesquisa que deseja realizar no edital*"
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 						--text "$(echo -e ${message})" --parse_mode markdown
-	ShellBot.sendChatAction --chat_id ${message_chat_id[$id]} --action 'typing'
+	ShellBot.sendChatAction --chat_id ${callback_query_message_chat_id[$id]} --action 'typing'
 	message="Pesquisa Itatiba:"
   	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
         				--reply_markup "$(ShellBot.ForceReply)"
