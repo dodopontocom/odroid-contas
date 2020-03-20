@@ -38,7 +38,7 @@ pdfgrep.reply_itatiba() {
         				--reply_markup "$(ShellBot.ForceReply)"
 }
 
-pdfgrep.reply_cerquilho() {
+pdfgrep.reply_cerq() {
 	local message
 	message="*Informe a pesquisa que deseja realizar no edital*"
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \

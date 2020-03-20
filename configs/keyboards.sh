@@ -157,6 +157,6 @@ ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Barueri" --callback
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Barueri FIEB" --callback_data 'pdfgrep.reply_barueri_fieb' --line 2
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Araçoiaba" --callback_data 'pdfgrep.reply_aracoiaba' --line 3
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Campinas" --callback_data 'pdfgrep.reply_campinas' --line 3
-ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Cerquilho" --callback_data 'pdfgrep.reply_cerquilho' --line 3
+ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Cerquilho" --callback_data 'pdfgrep.reply_cerq' --line 3
 keyboard_cidades="$(ShellBot.InlineKeyboardMarkup -b 'btn_cidades')"
 ################################################################################################
