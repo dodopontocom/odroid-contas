@@ -149,7 +149,7 @@ keyboard_ROM="$(ShellBot.InlineKeyboardMarkup -b 'btn_ROM')"
 
 ###########################DIÁRIO DE ITATIBA BOT#######################################
 btn_cidades=''
-ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Itatiba" --callback_data 'pdfgrep.reply_itatiba' --line 1
+ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Cerquilho" --callback_data 'pdfgrep.reply_cerq' --line 1
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Boituva" --callback_data 'pdfgrep.reply_boituva' --line 1
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Jundiaí" --callback_data 'pdfgrep.reply_jundiai' --line 1
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Jandira" --callback_data 'pdfgrep.reply_jandira' --line 2
@@ -157,6 +157,6 @@ ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Barueri" --callback
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Barueri FIEB" --callback_data 'pdfgrep.reply_barueri_fieb' --line 2
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Araçoiaba" --callback_data 'pdfgrep.reply_aracoiaba' --line 3
 ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Campinas" --callback_data 'pdfgrep.reply_campinas' --line 3
-ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Cerquilho" --callback_data 'pdfgrep.reply_cerq' --line 3
+ShellBot.InlineKeyboardButton --button 'btn_cidades' --text "Itatiba" --callback_data 'pdfgrep.reply_itatiba' --line 3
 keyboard_cidades="$(ShellBot.InlineKeyboardMarkup -b 'btn_cidades')"
 ################################################################################################
