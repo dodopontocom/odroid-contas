@@ -27,17 +27,6 @@ pdfgrep.keyboard() {
 					--reply_markup "$keyboard_cidades"
 }
 
-pdfgrep.reply_itatiba() {
-	local message
-	message="*Informe a pesquisa que deseja realizar no edital*"
-	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-						--text "$(echo -e ${message})" --parse_mode markdown
-
-	message="Pesquisa Itatiba:"
-  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
-        				--reply_markup "$(ShellBot.ForceReply)"
-}
-
 pdfgrep.reply_cerq() {
 	local message
 	message="*Informe a pesquisa que deseja realizar no edital*"
@@ -45,6 +34,17 @@ pdfgrep.reply_cerq() {
 						--text "$(echo -e ${message})" --parse_mode markdown
 	
 	message="Pesquisa Cerquilho:"
+  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
+        				--reply_markup "$(ShellBot.ForceReply)"
+}
+
+pdfgrep.reply_itatiba() {
+	local message
+	message="*Informe a pesquisa que deseja realizar no edital*"
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+						--text "$(echo -e ${message})" --parse_mode markdown
+
+	message="Pesquisa Itatiba:"
   	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
         				--reply_markup "$(ShellBot.ForceReply)"
 }
