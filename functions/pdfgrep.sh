@@ -396,7 +396,7 @@ pdfgrep.campinas() {
 
 }
 
-pdfgrep.reply_cerquilho() {
+pdfgrep.cerquilho() {
 	local cidade message pattern _chat_id pdf_save
 	
     pattern=$1	
