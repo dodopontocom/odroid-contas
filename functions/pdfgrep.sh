@@ -397,35 +397,46 @@ pdfgrep.campinas() {
 }
 
 pdfgrep.cerquilho() {
-	local cidade url_base check_not_found send_ids
+	local cidade message pattern _chat_id pdf_save
 	
-	url_base=$1
-	cidade=$2
-	send_ids=(${3})
-	check_not_found=false
+    pattern=$1	
+    cidade="Cerquilho"
+
+	if [[ ${callback_query_message_chat_id[$id]} ]]; then
+		_chat_id=${callback_query_message_chat_id[$id]}
+	else
+		_chat_id=${message_chat_id[$id]}
+	fi
+    
+	pasta_pdf="/tmp/$(helper.random)/${cidade}"
+	if [[ ! -d "${pasta_pdf}" ]]; then
+		mkdir -p ${pasta_pdf}
+	fi
 	
 	for i in $(seq 74 99); do
-		url="${url_base}${i}/"
-		pdf_file="/tmp/$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 16).pdf"
+		url="${cerquilho_url}${i}/"
+		pdf_save=${pasta_pdf}/${cidade}_$(date +%Y%m%d).pdf
 		
-		wget --quiet -O ${pdf_file} ${url}
-		chmod 777 ${pdf_file}
-		/usr/bin/pdfgrep -i "${pattern}" ${pdf_file}
-		if [[ "$?" -eq "0" ]]; then	
-			sendMessageBot "AVISO ${cidade} - Corra ver no site, seu nome foi citado no edital de hoje!!!" "$3"
-			sendMessageBot "estou enviando o PDF para você poder confirmar..." "${send_ids[@]}"
-			sendDocumentBot "${pdf_file}" "${send_ids[@]}"
-			check_not_found=false
+		wget --quiet -O ${pdf_save} ${url}
+		chmod 777 ${pdf_save}
+		/usr/bin/pdfgrep -i "${pattern}" ${pdf_save}
+		if [[ "$?" -eq "0" ]]; then
+			message="\`AVISO ${cidade} \`- Corra ver no site, '${pattern}' foi citado no edital de hoje!!!\n"
+			message+="Estou enviando o PDF para você poder confirmar..."
+			ShellBot.sendMessage --chat_id ${_chat_id} \
+							--text "$(echo -e ${message})" --parse_mode markdown
+			ShellBot.sendDocument --chat_id ${_chat_id} \
+							--document @${pdf_save}
+
 			break
 		else
 			check_not_found=true
 		fi
-		
-		pdf_file=''
-		url=''
 	
 	done
 	if [[ "${check_not_found}" == "true" ]]; then
-		sendMessageBot "AVISO ${cidade} - Hoje não houve edital de Nomeação" "${send_ids[@]}"
+		message="\`AVISO ${cidade} \`- Hoje não houve edital de Nomeação"
+		ShellBot.sendMessage --chat_id ${_chat_id} \
+							--text "$(echo -e ${message})" --parse_mode markdown
 	fi
 }
