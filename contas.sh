@@ -59,11 +59,11 @@ do
         esac
 		if [[ ${message_reply_to_message_message_id[$id]} ]]; then
 			case ${message_reply_to_message_text[$id]} in
-				'Pesquisa:')
+				'Pesquisa Itatiba:')
 					pdfgrep.itatiba "${message_text[$id]}"
 				;;
-				'Data:')
-					pdfgrep.itatiba "${message_text[$id]}"
+				'Pesquisa Cerquilho:')
+					pdfgrep.cerquilho "${message_text[$id]}"
 				;;
 			esac
 		fi
