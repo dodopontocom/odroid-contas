@@ -13,7 +13,8 @@ jobs:
               echo "Trying to test example function 'helper.random'..."
               ls -lrt 
               pwd
-              source ${BASEDIR}/functions/utils.sh
+              source ${BASEDIR}/functions/helper.sh
+              echo "===== $?"
               helper.random
 workflows:
   version: 2.1
