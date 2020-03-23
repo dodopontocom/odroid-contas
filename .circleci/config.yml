@@ -14,8 +14,7 @@ jobs:
               ls -lrt 
               pwd
               source ${BASEDIR}/functions/helper.sh
-              echo "===== $?"
-              helper.random
+              helper.random 10
 workflows:
   version: 2.1
   
