@@ -11,9 +11,7 @@ jobs:
               BASEDIR="/home/circleci/project"
               echo "[$(cat ${BASEDIR}/functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
               echo "Trying to test example function 'helper.random'..."
-              ls -lrt 
-              pwd
-              source ${BASEDIR}/functions/helper.sh
+              source ${BASEDIR}/functions/utils.sh
               helper.random 10
 workflows:
   version: 2.1
