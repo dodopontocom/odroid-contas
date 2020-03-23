@@ -8,6 +8,8 @@ jobs:
       - run:
           name: "Shell Lint"
           command: |
+              TELEGRAM_TOKEN="none"
+              NOTIFICATION_IDS="none"
               BASEDIR="/home/circleci/project"
               echo "[$(cat ${BASEDIR}/functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
               echo "Trying to test example function 'helper.random'..."
