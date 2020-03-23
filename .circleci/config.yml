@@ -8,12 +8,10 @@ jobs:
       - run:
           name: "Shell Lint"
           command: |
-              echo 'export TELEGRAM_TOKEN="none"'
-              echo 'export NOTIFICATION_IDS="none"'
               BASEDIR="/home/circleci/project"
               echo "[$(cat ${BASEDIR}/functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
               echo "Trying to test example function 'helper.random'..."
-              source ${BASEDIR}/functions/utils.sh
+              source ${BASEDIR}/functions/helper.sh
               echo "$(helper.random 10)"
 workflows:
   version: 2.1
