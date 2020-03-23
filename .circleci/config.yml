@@ -14,7 +14,7 @@ jobs:
               echo "[$(cat ${BASEDIR}/functions/*.sh | grep -E "^[a-z].*\(\)" | cut -d'(' -f1 | wc -l) function(s) found]"
               echo "Trying to test example function 'helper.random'..."
               source ${BASEDIR}/functions/utils.sh
-              helper.random 10
+              echo "$(helper.random 10)"
 workflows:
   version: 2.1
   
