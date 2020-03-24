@@ -6,10 +6,32 @@ contas.show_keyboard() {
     botao_contas=''
 
     cada_conta=($(while read line; do echo "${line}" | cut -d',' -f2; done < ${BOT_CONTAS_LIST}))
-    for c in ${cada_conta[@]}; do    
-        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 1
+    cada_linha=()
+    quant_contas=$(cat ${BOT_CONTAS_LIST} | wc -l)
+    for i in $(seq 1 ${quant_contas}); do
+        if [[ ${i} -le 3 ]]; then
+            for c in ${cada_conta[@]}; do    
+                ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 1
+            done       
+        elif [[ ${i} -le 6 ]]; then
+            for c in ${cada_conta[@]}; do    
+                ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 2
+            done
+        elif [[ ${i} -le 9 ]]; then
+            for c in ${cada_conta[@]}; do    
+                ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 3
+            done
+        elif [[ ${i} -le 12 ]]; then
+            for c in ${cada_conta[@]}; do    
+                ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 4
+            done
+        elif [[ ${i} -le 15 ]]; then
+            for c in ${cada_conta[@]}; do    
+                ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 5
+            done
+        fi
     done
-
+    
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
 
     message="Contas do Mês"
