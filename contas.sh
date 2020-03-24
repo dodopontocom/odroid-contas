@@ -67,9 +67,13 @@ do
 				;;
 			esac
 		fi
+		
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
 				pdfgrep.keyboard
+			fi
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/contas" )" ]]; then
+				contas.show_keyboard
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/concursos" )" ]]; then
 				pdfgrep.informativo
