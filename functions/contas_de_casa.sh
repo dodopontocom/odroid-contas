@@ -21,11 +21,9 @@ contas.show_keyboard() {
             cada_linha+=(3)
         fi
     done
-    
+    echo "------------ ${cada_linha[@]}"
     for c in ${cada_conta[@]}; do
-        for i in $(seq 1 ${quant_contas}); do  
-            ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line ${i+1}
-        done
+        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 1
     done
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
