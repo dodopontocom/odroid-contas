@@ -12,7 +12,7 @@ contas.show_keyboard() {
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
 
-    message="*Contas do Mês*"
+    message="Contas do Mês"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "*${message}*" \
                             --parse_mode markdown \
