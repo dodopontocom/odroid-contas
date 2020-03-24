@@ -23,7 +23,7 @@ contas.show_keyboard() {
     done
     echo "------------ ${cada_linha[@]}"
     for c in ${cada_conta[@]}; do
-        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line ${cada_linha["${c}"]}
+        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line ${cada_linha[${cada_conta[$c]}]}
     done
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
