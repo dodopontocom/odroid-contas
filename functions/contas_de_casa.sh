@@ -16,7 +16,7 @@ contas.show_keyboard() {
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "*${message}*" \
                             --parse_mode markdown \
-                            --reply_markup "$keyboard_itens"
+                            --reply_markup "$keyboard_contas"
 
         
 }
