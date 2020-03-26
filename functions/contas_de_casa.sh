@@ -16,7 +16,7 @@ contas.show_keyboard() {
     for c in ${!name_conta[@]}; do
         days=$(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep $(echo ${name_conta[$c]}| cut -d',' -f2) | cut -d',' -f1)")
         is_payed="$(echo ${name_conta[$c]}| cut -d',' -f3)"
-        if [[ "${is_payed}" != "-" ]]; then
+        if [[ "${is_payed}" != "0" ]]; then
             status_conta="👌"
         elif [[ ${days} -ge 0 ]] && [[ ${days} -le 10 ]]; then
             status_conta=${COUNT[$days]}
@@ -50,7 +50,7 @@ contas.text_return() {
     _days=$(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f1)")
     type_pay="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f4)"
     _is_payed="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f3)"
-    if [[ "${_is_payed}" != "-" ]]; then
+    if [[ "${_is_payed}" != "0" ]]; then
         pay_message="Foi Paga em ${_is_payed}.\nVencimento: ${vencimento}"
     else
         pay_message="Conta ainda não foi paga, vence em ${vencimento}\nFaltam ${_days} para o vencimento"
@@ -75,7 +75,7 @@ contas.start() {
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
             is_payed="$(cat ${BOT_CONTAS_LIST} | grep CARRO | cut -d',' -f3)"
-            if [[ ${is_payed} == "-" ]]; then
+            if [[ ${is_payed} == "0" ]]; then
                 botao_CARRO=''
                 ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
                                         --text "SIM" \
