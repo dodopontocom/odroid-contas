@@ -56,6 +56,7 @@ do
 			item_valor) listar.preco ;;
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
+			'contas.Moto'|'contas.Carro'|'IPTU_APTO'|'IPTU_DALIAS'|'POXNET'|'LUZ') contas.get ;;
         esac
 		if [[ ${message_reply_to_message_message_id[$id]} ]]; then
 			case ${message_reply_to_message_text[$id]} in

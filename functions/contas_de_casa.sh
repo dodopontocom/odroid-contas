@@ -13,9 +13,9 @@ contas.show_keyboard() {
     for c in ${!name_conta[@]}; do
         ShellBot.InlineKeyboardButton --button 'botao_contas' \
                                     --text "${name_conta[$c]} ${status_conta[$c]}" \
-                                    --callback_data "${name_conta[$c]}" \
+                                    --callback_data "contas.${name_conta[$c]}" \
                                     --line ${keyborad_line[$c]}
-        ShellBot.regHandleFunction --function "contas.${name_conta[$c]}" --callback_data "${name_conta[$c]}"
+        #ShellBot.regHandleFunction --function "contas.${name_conta[$c]}" --callback_data "${name_conta[$c]}"
     done
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
@@ -29,6 +29,11 @@ contas.show_keyboard() {
         
 }
 
-contas.Moto() {
-    echo moto
+contas.get() {
+    case ${callback_query_data} in
+      contas.Moto)
+            echo Moto
+            ;;
+        *) echo Outro
+            ;;
 }
