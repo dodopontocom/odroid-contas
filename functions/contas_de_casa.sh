@@ -15,7 +15,7 @@ contas.show_keyboard() {
                                     --text "${name_conta[$c]} ${status_conta[$c]}" \
                                     --callback_data "${name_conta[$c]}" \
                                     --line ${keyborad_line[$c]}
-        ShellBot.regHandleFunction --function contas.${name_conta[$c]} --callback_data ${name_conta[$c]}
+        ShellBot.regHandleFunction --function "contas.${name_conta[$c]}" --callback_data "${name_conta[$c]}"
     done
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
