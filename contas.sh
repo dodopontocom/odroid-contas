@@ -55,7 +55,7 @@ do
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
 			
-			'contas.Moto'|'contas.Carro'|'contas.IPTU_APTO'|'contas.IPTU_DALIAS'|'contas.POXNET'|'contas.LUZ') contas.start ;;
+			'contas.Moto'|'contas.CARRO'|'contas.IPTU_APTO'|'contas.IPTU_DALIAS'|'contas.POXNET'|'contas.LUZ') contas.start ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
