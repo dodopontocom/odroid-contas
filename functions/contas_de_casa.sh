@@ -21,7 +21,7 @@ contas.show_keyboard() {
             status_conta="🕐"
         fi
         ShellBot.InlineKeyboardButton --button 'botao_contas' \
-                                    --text "$(echo ${name_conta[$c]}| cut -d',' -f2) $(echo ${status_conta[$c]} | cut -d',' -f3)" \
+                                    --text "$(echo ${name_conta[$c]}| cut -d',' -f2) ${status_conta}" \
                                     --callback_data "contas.$(echo ${name_conta[$c]} | cut -d',' -f2)" \
                                     --line ${keyborad_line[$c]}
     done
