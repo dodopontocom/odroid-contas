@@ -35,7 +35,7 @@ contas.show_keyboard() {
 contas.start() {
     case ${callback_query_data} in
         contas.Moto)
-            days=$(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep Moto | cut -d',' -f1)")
+            days=$(($(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep Moto | cut -d',' -f1)")+1))
             if [[ ${days} -lt 0 ]]; then
                 echo "🕐"
             else
