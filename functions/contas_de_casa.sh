@@ -57,7 +57,8 @@ contas.text_return() {
     fi
         
     _message="Conta: ${conta} \n"
-    _message+="${pay_message}"
+    _message+="${pay_message} \n"
+    _message+="Tipo de pagamento: ${type_pay}"
     echo ${_message}
 
 }
