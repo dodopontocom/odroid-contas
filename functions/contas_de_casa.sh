@@ -96,7 +96,9 @@ contas.start() {
         contas.CARRO)
             
             message="$(contas.text_return CARRO)"
-            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+
+            #ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
@@ -108,7 +110,9 @@ contas.start() {
         contas.IPTU_APTO)
             
             message="$(contas.text_return IPTU_APTO)"
-            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+            
+            #ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
