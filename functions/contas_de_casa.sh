@@ -65,8 +65,8 @@ contas.start() {
     local days
 
     case ${callback_query_data} in
-        contas.Moto)
-            message="$(contas.text_return Moto)"
+        contas.CARRO)
+            message="$(contas.text_return CARRO)"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
