@@ -35,10 +35,19 @@ contas.show_keyboard() {
 
 contas.start() {
     case ${callback_query_data} in
-      contas.Moto)
+        contas.Moto)
             echo Moto
             ;;
-        *) echo Outro
+        contas.Carro) echo Carro
+            ;;
+        contas.IPTU_APTO) echo IPTU_APTO
+            ;;
+        contas.IPTU_DALIAS)
+            echo IPTU_DALIAS
+            ;;
+        contas.POXNET) echo POXNET
+            ;;
+        contas.LUZ) echo LUZ
             ;;
     esac
 }
