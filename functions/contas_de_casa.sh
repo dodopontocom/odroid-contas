@@ -74,23 +74,25 @@ contas.start() {
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
-            botao_CARRO=''
-            ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
-                                    --text "SIM" \
-                                    --callback_data "contas.CARRO_SIM" \
-                                    --line 1
-            ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
-                                    --text "NAO" \
-                                    --callback_data "contas.CARRO_NAO" \
-                                    --line 1
-            keyboard_CARRO="$(ShellBot.InlineKeyboardMarkup -b 'botao_CARRO')"
+            is_payed="$(cat ${BOT_CONTAS_LIST} | grep CARRO | cut -d',' -f3)"
+            if [[ ${is_payed} == "-" ]]; then
+                botao_CARRO=''
+                ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
+                                        --text "SIM" \
+                                        --callback_data "contas.CARRO_SIM" \
+                                        --line 1
+                ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
+                                        --text "NAO" \
+                                        --callback_data "contas.CARRO_NAO" \
+                                        --line 1
+                keyboard_CARRO="$(ShellBot.InlineKeyboardMarkup -b 'botao_CARRO')"
 
-            message="DAR BAIXA NA CONTA (CARRO) ?"
-            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                            --text "*${message}*" \
-                            --parse_mode markdown \
-                            --reply_markup "$keyboard_CARRO"
-
+                message="DAR BAIXA NA CONTA (CARRO) ?"
+                ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "*${message}*" \
+                                --parse_mode markdown \
+                                --reply_markup "$keyboard_CARRO"
+            fi
             ;;
         contas.Carro) echo Carro
             ;;
