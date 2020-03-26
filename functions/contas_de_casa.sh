@@ -20,6 +20,8 @@ contas.show_keyboard() {
             status_conta="👌"
         elif [[ ${days} -ge 0 ]] && [[ ${days} -le 10 ]]; then
             status_conta=${COUNT[$days]}
+        elif [[ ${days} -ge 11 ]]; then
+            status_conta="🕐"
         else
             status_conta="🕐❗"
         fi
