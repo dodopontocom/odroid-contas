@@ -18,7 +18,7 @@ contas.show_keyboard() {
         if [[ ${days} -gt 0 ]]; then
             status_conta=${COUNT[$days]}
         else
-            status_conta="🕐"
+            status_conta="🕐❗"
         fi
         ShellBot.InlineKeyboardButton --button 'botao_contas' \
                                     --text "$(echo ${name_conta[$c]}| cut -d',' -f2) ${status_conta}" \
