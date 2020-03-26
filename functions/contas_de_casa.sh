@@ -18,7 +18,7 @@ contas.show_keyboard() {
         is_payed="$(echo ${name_conta[$c]}| cut -d',' -f3)"
         if [[ "${is_payed}" != "-" ]]; then
             status_conta="👌"
-        elif [[ ${days} -ge 0 ]]; then
+        elif [[ ${days} -ge 0 ]] && [[ ${days} -le 10 ]]; then
             status_conta=${COUNT[$days]}
         else
             status_conta="🕐❗"
