@@ -29,7 +29,7 @@ contas.show_keyboard() {
         
 }
 
-contas.get() {
+contas.start() {
     case ${callback_query_data} in
       contas.Moto)
             echo Moto
