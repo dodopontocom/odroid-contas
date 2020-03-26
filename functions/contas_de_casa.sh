@@ -15,7 +15,7 @@ contas.show_keyboard() {
     
     for c in ${!name_conta[@]}; do
         days=$(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep $(echo ${name_conta[$c]}| cut -d',' -f2) | cut -d',' -f1)")
-        if [[ ${days} -gt 0 ]]; then
+        if [[ ${days} -ge 0 ]]; then
             status_conta=${COUNT[$days]}
         else
             status_conta="🕐❗"
