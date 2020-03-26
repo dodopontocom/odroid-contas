@@ -12,7 +12,7 @@ contas.show_keyboard() {
     
     for c in ${!name_conta[@]}; do
         #ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${name_conta[$c]}" --callback_data 'item_conta' --line $((${c}+1))
-        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${name_conta[$c]} ${status_conta[$c]}" --callback_data 'item_conta' --line ${keyborad_line[$c]}
+        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${name_conta[$c]} ${status_conta[$c]}" --callback_data "contas.${${status_conta[$c]}}" --line ${keyborad_line[$c]}
     done
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
