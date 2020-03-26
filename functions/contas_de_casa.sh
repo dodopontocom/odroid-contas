@@ -63,6 +63,31 @@ contas.text_return() {
 
 }
 
+contas.yesno_button() {
+    local conta _keyboard
+
+    conta=$1
+    _is_payed="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f3)"
+    if [[ ${_is_payed} == "0" ]]; then
+        eval ${conta}=''
+        ShellBot.InlineKeyboardButton --button "${conta}" \
+                                --text "SIM" \
+                                --callback_data "contas.${conta}_SIM" \
+                                --line 1
+        ShellBot.InlineKeyboardButton --button "${conta}" \
+                                --text "NAO" \
+                                --callback_data "contas.${conta}_NAO" \
+                                --line 1
+        _keyboard="$(ShellBot.InlineKeyboardMarkup -b ${conta})"
+
+        message="DAR BAIXA NA CONTA (${conta}) ?"
+        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                        --text "*${message}*" \
+                        --parse_mode markdown \
+                        --reply_markup "$_keyboard"
+    fi
+}
+
 contas.start() {
 
     local days
@@ -74,25 +99,26 @@ contas.start() {
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
-            is_payed="$(cat ${BOT_CONTAS_LIST} | grep CARRO | cut -d',' -f3)"
-            if [[ ${is_payed} == "0" ]]; then
-                botao_CARRO=''
-                ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
-                                        --text "SIM" \
-                                        --callback_data "contas.CARRO_SIM" \
-                                        --line 1
-                ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
-                                        --text "NAO" \
-                                        --callback_data "contas.CARRO_NAO" \
-                                        --line 1
-                keyboard_CARRO="$(ShellBot.InlineKeyboardMarkup -b 'botao_CARRO')"
+            contas.yesno_button "CARRO"
+            # is_payed="$(cat ${BOT_CONTAS_LIST} | grep CARRO | cut -d',' -f3)"
+            # if [[ ${is_payed} == "0" ]]; then
+            #     botao_CARRO=''
+            #     ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
+            #                             --text "SIM" \
+            #                             --callback_data "contas.CARRO_SIM" \
+            #                             --line 1
+            #     ShellBot.InlineKeyboardButton --button 'botao_CARRO' \
+            #                             --text "NAO" \
+            #                             --callback_data "contas.CARRO_NAO" \
+            #                             --line 1
+            #     keyboard_CARRO="$(ShellBot.InlineKeyboardMarkup -b 'botao_CARRO')"
 
-                message="DAR BAIXA NA CONTA (CARRO) ?"
-                ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                                --text "*${message}*" \
-                                --parse_mode markdown \
-                                --reply_markup "$keyboard_CARRO"
-            fi
+            #     message="DAR BAIXA NA CONTA (CARRO) ?"
+            #     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+            #                     --text "*${message}*" \
+            #                     --parse_mode markdown \
+            #                     --reply_markup "$keyboard_CARRO"
+            # fi
             ;;
         contas.Carro) echo Carro
             ;;
