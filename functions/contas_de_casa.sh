@@ -83,7 +83,7 @@ contas.start() {
                                     --text "NAO" \
                                     --callback_data "contas.CARRO_NAO" \
                                     --line 1
-            keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_CARRO')"
+            keyboard_CARRO="$(ShellBot.InlineKeyboardMarkup -b 'botao_CARRO')"
 
             message="DAR BAIXA NA CONTA (CARRO) ?"
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
