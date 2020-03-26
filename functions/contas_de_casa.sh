@@ -36,4 +36,5 @@ contas.start() {
             ;;
         *) echo Outro
             ;;
+    esac
 }

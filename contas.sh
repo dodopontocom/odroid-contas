@@ -54,9 +54,12 @@ do
 			pdfgrep.reply_itatiba) pdfgrep.reply_itatiba ;;
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
+			
+			'contas.Moto'|'contas.Carro'|'IPTU_APTO'|'IPTU_DALIAS'|'POXNET'|'LUZ') contas.start ;;
+
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
-			'contas.Moto'|'contas.Carro'|'IPTU_APTO'|'IPTU_DALIAS'|'POXNET'|'LUZ') contas.start ;;
+
         esac
 		if [[ ${message_reply_to_message_message_id[$id]} ]]; then
 			case ${message_reply_to_message_text[$id]} in
