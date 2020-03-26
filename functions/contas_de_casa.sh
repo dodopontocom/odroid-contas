@@ -56,7 +56,8 @@ contas.text_return() {
         pay_message="Conta ainda não foi paga, vence em ${vencimento}\nFaltam ${_days} para o vencimento"
     fi
         
-    _message="Conta: ${conta}\n${pay_message}"
+    _message="Conta: ${conta}\n"
+    _message+="${pay_message}"
     echo -e ${_message}
 
 }
