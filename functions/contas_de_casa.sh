@@ -14,7 +14,7 @@ contas.show_keyboard() {
     keyborad_line=(1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20)
     
     for c in ${!name_conta[@]}; do
-        days=$(($(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep $(echo ${name_conta[$c]}| cut -d',' -f2) | cut -d',' -f1)")+1))
+        days=$(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep $(echo ${name_conta[$c]}| cut -d',' -f2) | cut -d',' -f1)")
         if [[ ${days} -gt 0 ]]; then
             status_conta=${COUNT[$days]}
         else
