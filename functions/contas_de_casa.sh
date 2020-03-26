@@ -9,8 +9,8 @@ contas.show_keyboard() {
     cada_linha=()
     quant_contas=$(cat ${BOT_CONTAS_LIST} | wc -l)
     
-    for c in ${cada_conta[@]}; do
-        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${c}" --callback_data 'item_conta' --line 1
+    for c in ${!cada_conta[@]}; do
+        ShellBot.InlineKeyboardButton --button 'botao_contas' --text "${cada_conta[$c]}" --callback_data 'item_conta' --line $((${c+}+1))
     done
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
