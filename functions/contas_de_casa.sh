@@ -94,22 +94,26 @@ contas.start() {
 
     case ${callback_query_data} in
         contas.CARRO)
-            message="$(contas.text_return CARRO)"
+            
+            message_carro="$(contas.text_return CARRO)"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                                --text "$(echo -e ${message})" --parse_mode markdown
+                                --text "$(echo -e ${message_carro})" --parse_mode markdown
 
             contas.yesno_button "CARRO"
+            
             ;;
         contas.Carro) echo Carro
             ;;
         contas.IPTU_APTO)
-            message="$(contas.text_return IPTU_APTO)"
+            
+            message_apto="$(contas.text_return IPTU_APTO)"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                                --text "$(echo -e ${message})" --parse_mode markdown
+                                --text "$(echo -e ${message_apto})" --parse_mode markdown
 
             contas.yesno_button "IPTU_APTO"
+            
             ;;
         contas.IPTU_DALIAS)
             echo IPTU_DALIAS
