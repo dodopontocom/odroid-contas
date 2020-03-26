@@ -42,18 +42,34 @@ contas.show_keyboard() {
         
 }
 
+contas.text_return() {
+    local conta
+
+    conta=$1
+    vencimento="$(cat ${BOT_CONTAS_LIST} | cut -d',' -f1)"
+    days=$(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f1)")
+    type_pay="$(cat ${BOT_CONTAS_LIST} | cut -d',' -f4)"
+    _is_payed="$(cat ${BOT_CONTAS_LIST} | cut -d',' -f3)"
+    if [[ "${_is_payed}" != "-" ]]; then
+        pay_message="Foi Paga em ${_is_payed}.\nVencimento: ${vencimento}"
+    else
+        pay_message="Conta ainda não foi paga, vence em ${vencimento}\nFaltam ${days} para o vencimento"
+    fi
+        
+    echo -e "Conta: ${conta}\n${pay_message}"
+
+}
+
 contas.start() {
 
     local days
 
     case ${callback_query_data} in
         contas.Moto)
-            days=$(($(helper.date_arithimetic "days_from_today" "$(cat ${BOT_CONTAS_LIST} | grep Moto | cut -d',' -f1)")+1))
-            if [[ ${days} -lt 0 ]]; then
-                echo "🕐"
-            else
-                echo "${COUNT[$days]}"
-            fi
+            message="$(contas.text_return Moto)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
             ;;
         contas.Carro) echo Carro
             ;;
