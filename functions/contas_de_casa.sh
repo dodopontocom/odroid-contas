@@ -95,7 +95,7 @@ contas.start() {
     case ${callback_query_data} in
         contas.VIVOTSIM)
             today=$(date "+%Y-%m-%d")
-            sed -i  "s/,0,/,${today},/" ${BOT_CONTAS_LIST}
+            sed -i "s/VIVOT,0,/VIVOT,${today},/" ${BOT_CONTAS_LIST}
             message="*Registro efetuado com sucesso*\n"
             message+="Clique em contas novamente\n"
             message+="/contas"
