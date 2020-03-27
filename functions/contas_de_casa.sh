@@ -52,7 +52,7 @@ contas.text_return() {
     _is_payed="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f3)"
     if [[ "${_is_payed}" != "0" ]]; then
         pay_message="Pago em ${_is_payed}.\n*Vencimento:* ${vencimento}"
-    elif [[ ${days} -lt 0 ]]; then
+    elif [[ "${days}" -lt "0" ]]; then
         pay_message="*ATRASADO*, venceu em *${vencimento}*\n*${_days//-/}* dia(s) em atraso!"
     else
         pay_message="*A PAGAR*, vence em *${vencimento}*\nFaltam *${_days}* para o vencimento"
