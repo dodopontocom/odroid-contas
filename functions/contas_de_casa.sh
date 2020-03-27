@@ -52,10 +52,8 @@ contas.text_return() {
     _is_payed="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f3)"
     if [[ "${_is_payed}" != "0" ]]; then
         pay_message="Pago em ${_is_payed}.\n*Vencimento:* ${vencimento}"
-    elif [[ "${days}" -lt "0" ]]; then
-        pay_message="*ATRASADO*, venceu em *${vencimento}*\n*${_days//-/}* dia(s) em atraso!"
     else
-        pay_message="*A PAGAR*, vence em *${vencimento}*\nFaltam *${_days}* para o vencimento"
+        pay_message="*A PAGAR*, venceu em *${vencimento}*\nFalta(m) *${_days}* para o vencimento"
     fi
         
     _message="*Conta:* ${conta} \n"
@@ -74,11 +72,11 @@ contas.yesno_button() {
         eval ${conta}=''
         ShellBot.InlineKeyboardButton --button "${conta}" \
                                 --text "SIM" \
-                                --callback_data "contas.${conta}_SIM" \
+                                --callback_data "contas.${conta}SIM" \
                                 --line 1
         ShellBot.InlineKeyboardButton --button "${conta}" \
                                 --text "NAO" \
-                                --callback_data "contas.${conta}_NAO" \
+                                --callback_data "contas.${conta}NAO" \
                                 --line 1
         _keyboard="$(ShellBot.InlineKeyboardMarkup -b ${conta})"
 
@@ -95,6 +93,17 @@ contas.start() {
     local days
 
     case ${callback_query_data} in
+        contas.VIVOTSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i  "s/,0,/,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.CARRO)
             
             message="$(contas.text_return CARRO)"
