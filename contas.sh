@@ -55,7 +55,10 @@ do
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
 			
-			'contas.Moto'|'contas.CARRO'|'contas.IPTUV'|'contas.IPTU_DALIAS'|'contas.POXNET'|'contas.CPFL'|'contas.SAAE') contas.start ;;
+			'contas.NATURGY'|'contas.CARRO'|'contas.IPTUV'|'contas.IPTUD'|'contas.POXNET' \
+					|'contas.CPFL'|'contas.SAAE'|'contas.CONDOMINIOD'|'contas.CONDOMINIOV' \
+					|'contas.NUBANKR'|'contas.NUBANKT'|'contas.RENNER'|'contas.CARREFOUR'|'contas.VIVOR' \
+					|'contas.VIVOT'|'contas.IGTI'|'contas.ITAUR'|'contas.ITAUT'|'contas.IPVA') contas.start ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;

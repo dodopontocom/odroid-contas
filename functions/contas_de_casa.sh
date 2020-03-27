@@ -51,14 +51,14 @@ contas.text_return() {
     type_pay="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f4)"
     _is_payed="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f3)"
     if [[ "${_is_payed}" != "0" ]]; then
-        pay_message="Foi Paga em ${_is_payed}.\nVencimento: ${vencimento}"
+        pay_message="Pago em ${_is_payed}.\n*Vencimento:* ${vencimento}"
     else
-        pay_message="Conta ainda não foi paga, vence em ${vencimento}\nFaltam ${_days} para o vencimento"
+        pay_message="*A PAGAR*, vence em *${vencimento}*\nFaltam *${_days}* para o vencimento"
     fi
         
-    _message="Conta: ${conta} \n"
+    _message="*Conta:* ${conta} \n"
     _message+="${pay_message} \n"
-    _message+="Tipo de pagamento: ${type_pay}"
+    _message+="*Tipo de pagamento:* ${type_pay}"
     echo ${_message}
 
 }
@@ -123,14 +123,14 @@ contas.start() {
             contas.yesno_button "IPTUV"
             
             ;;
-        contas.IPTU_DALIAS)
+        contas.IPTUD)
             
-            message="$(contas.text_return IPTU_DALIAS)"
+            message="$(contas.text_return IPTUD)"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
-            contas.yesno_button "IPTU_DALIAS"
+            contas.yesno_button "IPTUD"
             ;;
         contas.POXNET)
             
@@ -150,6 +150,136 @@ contas.start() {
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
             contas.yesno_button "CPFL"
+
+            ;;
+        contas.NUBANKR)
+    
+            message="$(contas.text_return NUBANKR)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "NUBANKR"
+
+            ;;
+        contas.NUBANKT)
+    
+            message="$(contas.text_return NUBANKT)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "NUBANKT"
+
+            ;;
+        contas.RENNER)
+    
+            message="$(contas.text_return RENNER)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "RENNER"
+
+            ;;
+        contas.VIVOT)
+    
+            message="$(contas.text_return VIVOT)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "VIVOT"
+
+            ;;
+        contas.VIVOR)
+    
+            message="$(contas.text_return VIVOR)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "VIVOR"
+
+            ;;
+        contas.CARREFOUR)
+    
+            message="$(contas.text_return CARREFOUR)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "CARREFOUR"
+
+            ;;
+        contas.IGTI)
+    
+            message="$(contas.text_return IGTI)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "IGTI"
+
+            ;;
+        contas.ITAUR)
+    
+            message="$(contas.text_return ITAUR)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "ITAUR"
+
+            ;;
+        contas.ITAUT)
+    
+            message="$(contas.text_return ITAUT)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "ITAUT"
+
+            ;;
+        contas.NATURGY)
+    
+            message="$(contas.text_return NATURGY)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "NATURGY"
+
+            ;;
+        contas.CONDOMINIOD)
+    
+            message="$(contas.text_return CONDOMINIOD)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "CONDOMINIOD"
+
+            ;;
+        contas.CONDOMINIOR)
+    
+            message="$(contas.text_return CONDOMINIOR)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "CONDOMINIOR"
+
+            ;;
+        contas.IPVA)
+    
+            message="$(contas.text_return IPVA)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "IPVA"
 
             ;;
     esac
