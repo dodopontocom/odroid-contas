@@ -96,9 +96,7 @@ contas.start() {
         contas.CARRO)
             
             message="$(contas.text_return CARRO)"
-
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-            
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
@@ -108,34 +106,51 @@ contas.start() {
     contas.SAAE)
 
             message="$(contas.text_return SAAE)"
-            
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-            
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
             contas.yesno_button "SAAE"
             
-
             ;;
-        contas.IPTU_V)
+        contas.IPTUV)
             
-            message="$(contas.text_return VILA)"
-            
+            message="$(contas.text_return IPTUV)"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
-            
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
-            contas.yesno_button "VILA"
+            contas.yesno_button "IPTUV"
             
             ;;
         contas.IPTU_DALIAS)
-            echo IPTU_DALIAS
+            
+            message="$(contas.text_return IPTU_DALIAS)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "IPTU_DALIAS"
             ;;
-        contas.POXNET) echo POXNET
+        contas.POXNET)
+            
+            message="$(contas.text_return POXNET)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "POXNET"
+
             ;;
-        contas.LUZ) echo LUZ
+        contas.CPFL)
+    
+            message="$(contas.text_return CPFL)"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+
+            contas.yesno_button "CPFL"
+
             ;;
     esac
 }
