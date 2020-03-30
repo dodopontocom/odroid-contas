@@ -21,9 +21,17 @@ listar.compras(){
 
 listar.apagar(){
         
+        local file_list item_to_save
+        
+        file_list=${BOT_PRECOS_FILE}_$(date "+%Y%m%d").csv
+        item_to_save="${callback_query_message_text[$id]}"
+        echo "${item_to_save}" >> ${file_list}
         ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
         ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
                                 --message_id ${callback_query_message_message_id[$id]}
+        
+        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                              --text "$(echo -e ${item_to_save} ✅)" --parse_mode markdown
 }
 
 # procura no site do tenda atacado e retorna o primeiro resultado do produto e preço
