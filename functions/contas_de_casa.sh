@@ -8,10 +8,11 @@ contas.verifica_mes() {
     local mes_agora mes_contas is_payed
     
     mes_agora=$1
-    mes_contas=$(head -1 ${BOT_CONTAS_LIST} | cut -d'-' -f2)
     
     while read line; do
+        mes_contas=$(echo ${line} | cut -d'-' -f2)
         if [[ "${mes_agora}" != "${mes_contas}" ]] && [[ "$(echo ${line} | cut -d',' -f3)" != "0" ]]; then
+        #se mes mudou e conta foi paga, entao mudar o vencimento para mes atual
             _date=$(echo ${line} | cut -d',' -f1)
             _day=$(echo ${line} | cut -d'-' -f3 | cut -d',' -f1)
             _new_date="$(date +%Y)-${mes_agora}-${_day}"
