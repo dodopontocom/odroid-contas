@@ -3,6 +3,24 @@
 
 COUNT=(0⃣🆘 1⃣‼ 2⃣❗ 3⃣ 4⃣ 5⃣ 6⃣ 7⃣ 8⃣ 9⃣ 🔟)
 
+contas.verifica_mes() {
+    local mes_agora mes_contas is_payed
+    
+    mes_agora=$1
+    mes_contas=$(head -1 ${BOT_CONTAS_LIST} | cut -d'-' -f2)
+    
+    while read line; do
+        if [[ "${mes_agora}" != "${mes_contas}" ]] && [[ "$(echo ${line} | cut -d',' -f3)" != "0" ]]; then
+            _date=$(echo ${line} | cut -d',' -f1)
+            _day=$(echo ${line} | cut -d'-' -f3 | cut -d',' -f1)
+            _new_date="$(date +%Y)-${mes_agora}-${_day}"
+            _conta=$(echo ${line} | cut -d',' -f2)
+            _zero=$(echo ${line} | cut -d',' -f3)
+            sed -i "s/${_date},${_conta},${_zero},/${_new_date},${_conta},0,/" ${BOT_CONTAS_LIST}
+        fi
+    done < ${BOT_CONTAS_LIST}
+}
+
 contas.show_keyboard() {
     local message cada_conta days
     
@@ -97,8 +115,15 @@ contas.start() {
             today=$(date "+%Y-%m-%d")
             sed -i "s/VIVOT,0,/VIVOT,${today},/" ${BOT_CONTAS_LIST}
             message="*Registro efetuado com sucesso*\n"
-            message+="Clique em contas novamente\n"
+            message+="Clique em contas novamente para conferir\n\n"
             message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.VIVOTNAO)
+            message="*Pagar mais tarde então* 😁\n"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
