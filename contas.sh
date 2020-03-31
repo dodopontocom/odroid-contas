@@ -64,7 +64,7 @@ do
 					|'contas.CPFL'|'contas.SAAE'|'contas.CONDOMINIOD'|'contas.CONDOMINIOV' \
 					|'contas.NUBANKR'|'contas.NUBANKT'|'contas.RENNER'|'contas.CARREFOUR'|'contas.VIVOR' \
 					|'contas.VIVOT'|'contas.IGTI'|'contas.ITAUR'|'contas.ITAUT'|'contas.IPVA' \
-					|'contas.VIVOTSIM') contas.start ;;
+					|'contas.VIVOTSIM'|'contas.VIVOTNAO') contas.start ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
