@@ -129,6 +129,24 @@ contas.start() {
                                 --text "$(echo -e ${message})" --parse_mode markdown
                         
             ;;
+        contas.CARROSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/CARRO,0,/CARRO,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.CARRONAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.CARRO)
             
             message="$(contas.text_return CARRO)"
@@ -149,6 +167,24 @@ contas.start() {
             contas.yesno_button "SAAE"
             
             ;;
+        contas.SAAESIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/SAAE,0,/SAAE,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.SAAENAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.IPTUV)
             
             message="$(contas.text_return IPTUV)"
@@ -159,6 +195,24 @@ contas.start() {
             contas.yesno_button "IPTUV"
             
             ;;
+            contas.IPTUVSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/IPTUV,0,/IPTUV,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.IPTUVNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.IPTUD)
             
             message="$(contas.text_return IPTUD)"
@@ -167,6 +221,24 @@ contas.start() {
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
             contas.yesno_button "IPTUD"
+            ;;
+            contas.IPTUDSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/IPTUD,0,/IPTUD,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.IPTUDNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.POXNET)
             
@@ -178,6 +250,24 @@ contas.start() {
             contas.yesno_button "POXNET"
 
             ;;
+            contas.POXNETSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/POXNET,0,/POXNET,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.POXNETNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.CPFL)
     
             message="$(contas.text_return CPFL)"
@@ -187,6 +277,24 @@ contas.start() {
 
             contas.yesno_button "CPFL"
 
+            ;;
+            contas.CPFLSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/CPFL,0,/CPFL,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.CPFLNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.NUBANKR)
     
@@ -198,6 +306,24 @@ contas.start() {
             contas.yesno_button "NUBANKR"
 
             ;;
+            contas.NUBANKRSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/NUBANKR,0,/NUBANKR,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.NUBANKRNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.NUBANKT)
     
             message="$(contas.text_return NUBANKT)"
@@ -207,6 +333,24 @@ contas.start() {
 
             contas.yesno_button "NUBANKT"
 
+            ;;
+            contas.NUBANKTSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/NUBANKT,0,/NUBANKT,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.NUBANKTNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.RENNER)
     
@@ -218,6 +362,24 @@ contas.start() {
             contas.yesno_button "RENNER"
 
             ;;
+            contas.RENNERSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/RENNER,0,/RENNER,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.RENNERNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.VIVOT)
     
             message="$(contas.text_return VIVOT)"
@@ -228,6 +390,7 @@ contas.start() {
             contas.yesno_button "VIVOT"
 
             ;;
+            
         contas.VIVOR)
     
             message="$(contas.text_return VIVOR)"
@@ -237,6 +400,24 @@ contas.start() {
 
             contas.yesno_button "VIVOR"
 
+            ;;
+            contas.VIVORSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/VIVOR,0,/VIVOR,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.VIVORNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.CARREFOUR)
     
@@ -248,6 +429,24 @@ contas.start() {
             contas.yesno_button "CARREFOUR"
 
             ;;
+            contas.CARREFOURSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/CARREFOUR,0,/CARREFOUR,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.CARREFOURNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.IGTI)
     
             message="$(contas.text_return IGTI)"
@@ -257,6 +456,24 @@ contas.start() {
 
             contas.yesno_button "IGTI"
 
+            ;;
+            contas.IGTISIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/IGTI,0,/IGTI,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.IGTINAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.ITAUR)
     
@@ -268,6 +485,24 @@ contas.start() {
             contas.yesno_button "ITAUR"
 
             ;;
+            contas.ITAURSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/ITAUR,0,/ITAUR,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.ITAURNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.ITAUT)
     
             message="$(contas.text_return ITAUT)"
@@ -277,6 +512,24 @@ contas.start() {
 
             contas.yesno_button "ITAUT"
 
+            ;;
+            contas.ITAUTSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/ITAUT,0,/ITAUT,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.ITAUTNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.NATURGY)
     
@@ -288,6 +541,24 @@ contas.start() {
             contas.yesno_button "NATURGY"
 
             ;;
+            contas.NATURGYSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/NATURGY,0,/NATURGY,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.NATURGYNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
         contas.CONDOMINIOD)
     
             message="$(contas.text_return CONDOMINIOD)"
@@ -298,15 +569,51 @@ contas.start() {
             contas.yesno_button "CONDOMINIOD"
 
             ;;
-        contas.CONDOMINIOR)
+            contas.CONDOMINIODSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/CONDOMINIOD,0,/CONDOMINIOD,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.CONDOMINIODNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.CONDOMINIOV)
     
-            message="$(contas.text_return CONDOMINIOR)"
+            message="$(contas.text_return CONDOMINIOV)"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
 
-            contas.yesno_button "CONDOMINIOR"
+            contas.yesno_button "CONDOMINIOV"
 
+            ;;
+            contas.CONDOMINIOVSIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/CONDOMINIOV,0,/CONDOMINIOV,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.CONDOMINIOVNAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
         contas.IPVA)
     
@@ -317,6 +624,24 @@ contas.start() {
 
             contas.yesno_button "IPVA"
 
+            ;;
+            contas.IPVASIM)
+            today=$(date "+%Y-%m-%d")
+            sed -i "s/IPVA,0,/IPVA,${today},/" ${BOT_CONTAS_LIST}
+            message="*Registro efetuado com sucesso*\n"
+            message+="Clique em contas novamente para conferir\n\n"
+            message+="/contas"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
+            ;;
+        contas.IPVANAO)
+            message="*Pagar mais tarde então* 😁"
+            ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                                --text "$(echo -e ${message})" --parse_mode markdown
+                        
             ;;
     esac
 }
