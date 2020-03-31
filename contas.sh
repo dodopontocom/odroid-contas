@@ -24,7 +24,12 @@ done
 while :
 do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
-
+	
+	
+	################## verificar se virou o mes para atualizar contas ##################
+	contas.verifica_mes $(date "+%m")
+	#####################################################################
+	
 	################## verificar espaço em disco ( / ) ##################
 	#disk.warn "/" "90" ${NOTIFICATION_IDS[0]}
 	#####################################################################
