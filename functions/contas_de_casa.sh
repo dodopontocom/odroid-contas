@@ -2,6 +2,7 @@
 # 🔟 0⃣ 9⃣ 8⃣ 7⃣ 6⃣ 5⃣ 4⃣ 3⃣ 2⃣ 1⃣ 🆘 ‼ ❗ 😁  👌 🕐
 
 COUNT=(0⃣🆘 1⃣‼ 2⃣❗ 3⃣ 4⃣ 5⃣ 6⃣ 7⃣ 8⃣ 9⃣ 🔟)
+MESES=(0 Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro)
 
 contas.verifica_mes() {
     local mes_agora mes_contas is_payed
@@ -51,7 +52,8 @@ contas.show_keyboard() {
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
 
-    message="Contas do Mês"
+    mes=$(date +%m | sed 's/0//')
+    message="Contas do Mês de ${MESES[$mes]}"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "*${message}*" \
                             --parse_mode markdown \
