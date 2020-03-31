@@ -1,3 +1,4 @@
+vencimento,conta,pago_em,tipo_pagamento
 2020-03-05,NUBANKR,0,Aplicativo
 2020-03-09,NUBANKT,0,Aplicativo
 2020-03-05,RENNER,0,Aplicativo
@@ -5,7 +6,7 @@
 2020-03-30,VIVOR,0,Aplicativo
 2020-03-05,CARREFOUR,0,Aplicativo
 2020-04-16,IGTI,0,Boleto
-2020-03-16,ITAUR,Aplicativo
+2020-03-16,ITAUR,0,Aplicativo
 2020-03-16,ITAUT,0,Aplicativo
 2020-03-16,NATURGY,0,Boleto
 2020-03-16,CONDOMINIOV,0,Boleto
