@@ -123,7 +123,7 @@ contas.start() {
                         
             ;;
         contas.VIVOTNAO)
-            message="*Pagar mais tarde então* 😁\n"
+            message="*Pagar mais tarde então* 😁"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                                 --text "$(echo -e ${message})" --parse_mode markdown
