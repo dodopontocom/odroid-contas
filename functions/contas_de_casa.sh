@@ -74,7 +74,7 @@ contas.text_return() {
     if [[ "${_is_payed}" != "0" ]]; then
         pay_message="*Pago em:* ${_is_payed}.\n*Vencimento:* ${vencimento}"
     else
-        pay_message="*A PAGAR*! Vence em: *${vencimento}*\nFalta(m) *${_days}* dias para o vencimento"
+        pay_message="*A PAGAR*! Vence em: *${vencimento}*\nFalta(m) *${_days}* dia(s) para o vencimento"
     fi
         
     _message="*Conta:* ${conta} \n"
