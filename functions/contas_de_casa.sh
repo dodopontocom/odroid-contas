@@ -116,7 +116,7 @@ contas.show_contas() {
 
     local days
     for c in ${CONTAS_ARR[@]}; do
-        case ${callback_query_data[$id][$id]} in
+        case ${callback_query_data[$id]} in
             ${c})
             message="$(contas.text_return ${c/*./})"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
@@ -132,7 +132,7 @@ contas.show_contas() {
 contas.yesno_buttons() {    
     for s in ${CONTAS_SIM_ARR[@]}; do
     set +f
-        case ${callback_query_data[$id][$id]} in
+        case ${callback_query_data[$id]} in
             ${s})
                 today=$(date "+%Y-%m-%d")
                 sed -i "s/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),0,/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),${today},/" ${BOT_CONTAS_LIST}
@@ -150,7 +150,7 @@ contas.yesno_buttons() {
     done
     
     for n in ${CONTAS_NAO_ARR[@]}; do
-        case ${callback_query_data[$id][$id]} in
+        case ${callback_query_data[$id]} in
             ${n})
                 message="*Pagar mais tarde então* 😁"
                 ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
