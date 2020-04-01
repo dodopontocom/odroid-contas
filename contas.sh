@@ -78,8 +78,7 @@ do
 				|'contas.IGTI' \
 				|'contas.ITAUR' \
 				|'contas.ITAUT' \
-				|'contas.IPVA' \
-					) contas.show_contas ;;
+				|'contas.IPVA') contas.show_contas ;;
 
 				'contas.NATURGYSIM'|'contas.NATURGYNAO' \
 				|'contas.CARROSIM'|'contas.CARRONAO' \
@@ -99,9 +98,7 @@ do
 					|'contas.IGTISIM'|'contas.IGTINAO' \
 					|'contas.ITAURSIM'|'contas.ITAURNAO' \
 					|'contas.ITAUTSIM'|'contas.ITAUTNAO' \
-					|'contas.IPVASIM'|'contas.IPVANAO' \
-
-				 ) contas.yesno_buttons ;;
+					|'contas.IPVASIM'|'contas.IPVANAO') contas.yesno_buttons ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
