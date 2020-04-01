@@ -3,9 +3,9 @@
 
 COUNT=(0⃣🆘 1⃣‼ 2⃣❗ 3⃣ 4⃣ 5⃣ 6⃣ 7⃣ 8⃣ 9⃣ 🔟)
 MESES=(0 Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro)
-CONTAS_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f2))
-CONTAS_SIM_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f3))
-CONTAS_NAO_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f4))
+CONTAS_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f5))
+CONTAS_SIM_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f6))
+CONTAS_NAO_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f7))
 
 contas.verifica_mes() {
     local mes_agora mes_contas is_payed
@@ -116,6 +116,8 @@ contas.start() {
 
     local days
     for c in ${CONTAS_ARR[@]}; do
+		echo "---conta ${c}"
+		echo "cbcd ---- ${callback_query_data}"
         case ${callback_query_data} in
             ${c})
             message="$(contas.text_return ${c/*./})"
@@ -130,6 +132,8 @@ contas.start() {
     done
     
     for s in ${CONTAS_SIM_ARR[@]}; do
+		echo "---conta ${s}"
+		echo "cbcd ---- ${callback_query_data}"
         case ${callback_query_data} in
             ${s})
                 today=$(date "+%Y-%m-%d")
