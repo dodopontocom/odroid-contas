@@ -131,6 +131,7 @@ contas.show_contas() {
 }
 contas.yesno_buttons() {    
     for s in ${CONTAS_SIM_ARR[@]}; do
+    set +f
         case ${callback_query_data} in
             ${s})
                 today=$(date "+%Y-%m-%d")
@@ -144,6 +145,7 @@ contas.yesno_buttons() {
                         
             ;;
         esac
+    set -f
     done
     
     for n in ${CONTAS_NAO_ARR[@]}; do
