@@ -51,17 +51,17 @@ do
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
-		ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
+		ShellBot.watchHandle --callback_data ${callback_query_data[$id][$id]}
 
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
-		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && [[ ${message_entities_type[$id]} != bot_command ]] && [[ -z ${callback_query_data} ]]; then
+		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && [[ ${message_entities_type[$id]} != bot_command ]] && [[ -z ${callback_query_data[$id]} ]]; then
 			listar.compras "${message_text}"
 		else
 			chat.hi
 		fi
-		case ${callback_query_data[$id]} in
+		case ${callback_query_data[$id][$id]} in
 			pdfgrep.reply_itatiba) pdfgrep.reply_itatiba ;;
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
@@ -71,17 +71,17 @@ do
 
 		esac
 		for c in ${_CONTAS_ARR[@]}; do
-			case ${callback_query_data[$id]} in
+			case ${callback_query_data[$id][$id]} in
 				${c}) contas.show_contas ;;
 			esac
 		done
 		for s in ${_CONTAS_SIM_ARR[@]}; do
-			case ${callback_query_data[$id]} in
+			case ${callback_query_data[$id][$id]} in
 				${s}) contas.yesno_buttons ;;
 			esac
 		done
 		for n in ${_CONTAS_NAO_ARR[@]}; do
-			case ${callback_query_data[$id]} in
+			case ${callback_query_data[$id][$id]} in
 				${n}) contas.yesno_buttons ;;
 			esac
 		done
