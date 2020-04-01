@@ -3,6 +3,7 @@
 
 COUNT=(0⃣🆘 1⃣‼ 2⃣❗ 3⃣ 4⃣ 5⃣ 6⃣ 7⃣ 8⃣ 9⃣ 🔟)
 MESES=(0 Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro)
+
 CONTAS_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f5))
 CONTAS_SIM_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f6))
 CONTAS_NAO_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f7))
@@ -136,7 +137,6 @@ contas.yesno_buttons() {
             ${s})
                 today=$(date "+%Y-%m-%d")
                 sed -i "s/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),0,/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),${today},/" ${BOT_CONTAS_LIST}
-		echo ${s/*./}
                 message="*Registro efetuado com sucesso*\n"
                 message+="Clique em contas novamente para conferir\n\n"
                 message+="/contas"
