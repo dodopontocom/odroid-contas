@@ -135,7 +135,8 @@ contas.yesno_buttons() {
         case ${callback_query_data} in
             ${s})
                 today=$(date "+%Y-%m-%d")
-                sed -i "s/${s/*./},0,/${s/*./},${today},/" ${BOT_CONTAS_LIST}
+                sed -i "s/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),0,/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),${today},/" ${BOT_CONTAS_LIST}
+		echo ${s/*./}
                 message="*Registro efetuado com sucesso*\n"
                 message+="Clique em contas novamente para conferir\n\n"
                 message+="/contas"
