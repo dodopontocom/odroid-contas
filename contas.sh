@@ -13,6 +13,12 @@ for i in ${NOTIFICATION_IDS[@]}; do
 	ShellBot.sendMessage --chat_id ${i} --text "🤖 Bot reiniciado ☝️"
 done
 
+#### contas: Criar os itens dos cases dinamicamente
+_CONTAS_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f5))
+_CONTAS_SIM_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f6))
+_CONTAS_NAO_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f7))
+#####################################################################
+
 ################## Enviar estatísticas de comandos ##################
 #stats.verify ${STATS_LOG_PATH} "$(echo ${NOTIFICATION_IDS[@]})"
 #####################################################################
@@ -59,51 +65,27 @@ do
 			pdfgrep.reply_itatiba) pdfgrep.reply_itatiba ;;
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
-			
-			'contas.NATURGY' \
-				|'contas.CARRO' \
-				|'contas.IPTUV' \
-				|'contas.IPTUD' \
-				|'contas.POXNET' \
-				|'contas.CPFL' \
-				|'contas.SAAE' \
-				|'contas.CONDOMINIOD' \
-				|'contas.CONDOMINIOV' \
-				|'contas.NUBANKR' \
-				|'contas.NUBANKT' \
-				|'contas.RENNER' \
-				|'contas.CARREFOUR' \
-				|'contas.VIVOR' \
-				|'contas.VIVOT' \
-				|'contas.IGTI' \
-				|'contas.ITAUR' \
-				|'contas.ITAUT' \
-				|'contas.IPVA') contas.show_contas ;;
-
-				'contas.NATURGYSIM'|'contas.NATURGYNAO' \
-				|'contas.CARROSIM'|'contas.CARRONAO' \
-				|'contas.IPTUVSIM'|'contas.IPTUVNAO' \
-				|'contas.IPTUDSIM'|'contas.IPTUDNAO' \
-				|'contas.POXNETSIM'|'contas.POXNETNAO' \
-				|'contas.CPFLSIM'|'contas.CPFLNAO' \
-				|'contas.SAAESIM'|'contas.SAAENAO' \
-				|'contas.CONDOMINIODSIM'|'contas.CONDOMINIODNAO' \
-					|'contas.CONDOMINIOVSIM'|'contas.CONDOMINIOVNAO' \
-					|'contas.NUBANKRSIM'|'contas.NUBANKRNAO' \
-					|'contas.NUBANKTSIM'|'contas.NUBANKTNAO' \
-					|'contas.RENNERSIM'|'contas.RENNERNAO' \
-					|'contas.CARREFOURSIM'|'contas.CARREFOURNAO' \
-					|'contas.VIVORSIM'|'contas.VIVORNAO' \
-					|'contas.VIVOTSIM'|'contas.VIVOTNAO' \
-					|'contas.IGTISIM'|'contas.IGTINAO' \
-					|'contas.ITAURSIM'|'contas.ITAURNAO' \
-					|'contas.ITAUTSIM'|'contas.ITAUTNAO' \
-					|'contas.IPVASIM'|'contas.IPVANAO') contas.yesno_buttons ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
 
-        esac
+		esac
+		for c in ${_CONTAS_ARR[@]}; do
+			case ${callback_query_data[$id]} in
+				${c}) contas.show_contas ;;
+			esac
+		done
+		for s in ${_CONTAS_SIM_ARR[@]}; do
+			case ${callback_query_data[$id]} in
+				${s}) contas.yesno_buttons ;;
+			esac
+		done
+		for n in ${_CONTAS_NAO_ARR[@]}; do
+			case ${callback_query_data[$id]} in
+				${n}) contas.yesno_buttons ;;
+			esac
+		done
+		
 		if [[ ${message_reply_to_message_message_id[$id]} ]]; then
 			case ${message_reply_to_message_text[$id]} in
 				'Pesquisa Itatiba:')
