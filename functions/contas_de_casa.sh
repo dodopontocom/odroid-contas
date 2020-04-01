@@ -72,9 +72,9 @@ contas.text_return() {
     type_pay="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f4)"
     _is_payed="$(cat ${BOT_CONTAS_LIST} | grep ${conta} | cut -d',' -f3)"
     if [[ "${_is_payed}" != "0" ]]; then
-        pay_message="Pago em ${_is_payed}.\n*Vencimento:* ${vencimento}"
+        pay_message="*Pago em:* ${_is_payed}.\n*Vencimento:* ${vencimento}"
     else
-        pay_message="*A PAGAR*, vence em *${vencimento}*\nFalta(m) *${_days}* dias para o vencimento"
+        pay_message="*A PAGAR*! Vence em: *${vencimento}*\nFalta(m) *${_days}* dias para o vencimento"
     fi
         
     _message="*Conta:* ${conta} \n"
