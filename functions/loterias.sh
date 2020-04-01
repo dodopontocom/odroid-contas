@@ -17,7 +17,7 @@ lotodicas.get() {
   
   close_message="*===================================*"
   
-  case ${callback_query_data[$i]} in
+  case ${callback_query_data} in
       lotodicas.sena)
             jogo=mega_sena
             message="*==========MEGASENA==========*"
