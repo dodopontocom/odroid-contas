@@ -112,12 +112,10 @@ contas.yesno_button() {
     fi
 }
 
-contas.start() {
+contas.show_contas() {
 
     local days
     for c in ${CONTAS_ARR[@]}; do
-		echo "---conta ${c}"
-		echo "cbcd ---- ${callback_query_data}"
         case ${callback_query_data} in
             ${c})
             message="$(contas.text_return ${c/*./})"
@@ -130,10 +128,9 @@ contas.start() {
             ;;
         esac
     done
-    
+}
+contas.yesno_buttons() {    
     for s in ${CONTAS_SIM_ARR[@]}; do
-		echo "---conta ${s}"
-		echo "cbcd ---- ${callback_query_data}"
         case ${callback_query_data} in
             ${s})
                 today=$(date "+%Y-%m-%d")

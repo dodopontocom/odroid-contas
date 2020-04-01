@@ -60,26 +60,48 @@ do
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
 			
-			'contas.NATURGY'|'contas.NATURGYSIM'|'contas.NATURGYNAO' \
-				|'contas.CARRO'|'contas.CARROSIM'|'contas.CARRONAO' \
-				|'contas.IPTUV'|'contas.IPTUVSIM'|'contas.IPTUVNAO' \
-				|'contas.IPTUD'|'contas.IPTUDSIM'|'contas.IPTUDNAO' \
-				|'contas.POXNET'|'contas.POXNETSIM'|'contas.POXNETNAO' \
-				|'contas.CPFL'|'contas.CPFLSIM'|'contas.CPFLNAO' \
-				|'contas.SAAE'|'contas.SAAESIM'|'contas.SAAENAO' \
-				|'contas.CONDOMINIOD'|'contas.CONDOMINIODSIM'|'contas.CONDOMINIODNAO' \
-				|'contas.CONDOMINIOV'|'contas.CONDOMINIOVSIM'|'contas.CONDOMINIOVNAO' \
-				|'contas.NUBANKR'|'contas.NUBANKRSIM'|'contas.NUBANKRNAO' \
-				|'contas.NUBANKT'|'contas.NUBANKTSIM'|'contas.NUBANKTNAO' \
-				|'contas.RENNER'|'contas.RENNERSIM'|'contas.RENNERNAO' \
-				|'contas.CARREFOUR'|'contas.CARREFOURSIM'|'contas.CARREFOURNAO' \
-				|'contas.VIVOR'|'contas.VIVORSIM'|'contas.VIVORNAO' \
-				|'contas.VIVOT'|'contas.VIVOTSIM'|'contas.VIVOTNAO' \
-				|'contas.IGTI'|'contas.IGTISIM'|'contas.IGTINAO' \
-				|'contas.ITAUR'|'contas.ITAURSIM'|'contas.ITAURNAO' \
-				|'contas.ITAUT'|'contas.ITAUTSIM'|'contas.ITAUTNAO' \
-				|'contas.IPVA'|'contas.IPVASIM'|'contas.IPVANAO' \
-					) contas.start ;;
+			'contas.NATURGY' \
+				|'contas.CARRO' \
+				|'contas.IPTUV' \
+				|'contas.IPTUD' \
+				|'contas.POXNET' \
+				|'contas.CPFL' \
+				|'contas.SAAE' \
+				|'contas.CONDOMINIOD' \
+				|'contas.CONDOMINIOV' \
+				|'contas.NUBANKR' \
+				|'contas.NUBANKT' \
+				|'contas.RENNER' \
+				|'contas.CARREFOUR' \
+				|'contas.VIVOR' \
+				|'contas.VIVOT' \
+				|'contas.IGTI' \
+				|'contas.ITAUR' \
+				|'contas.ITAUT' \
+				|'contas.IPVA' \
+					) contas.show_contas ;;
+
+				'contas.NATURGYSIM'|'contas.NATURGYNAO' \
+				|'contas.CARROSIM'|'contas.CARRONAO' \
+				|'contas.IPTUVSIM'|'contas.IPTUVNAO' \
+				|'contas.IPTUDSIM'|'contas.IPTUDNAO' \
+				|'contas.POXNETSIM'|'contas.POXNETNAO' \
+				|'contas.CPFLSIM'|'contas.CPFLNAO' \
+				|'contas.SAAESIM'|'contas.SAAENAO' \
+				|'contas.CONDOMINIODSIM'|'contas.CONDOMINIODNAO' \
+					|'contas.CONDOMINIOVSIM'|'contas.CONDOMINIOVNAO' \
+					|'contas.NUBANKRSIM'|'contas.NUBANKRNAO' \
+					|'contas.NUBANKTSIM'|'contas.NUBANKTNAO' \
+					|'contas.RENNERSIM'|'contas.RENNERNAO' \
+					|'contas.CARREFOURSIM'|'contas.CARREFOURNAO' \
+					|'contas.VIVORSIM'|'contas.VIVORNAO' \
+					|'contas.VIVOTSIM'|'contas.VIVOTNAO' \
+					|'contas.IGTISIM'|'contas.IGTINAO' \
+					|'contas.ITAURSIM'|'contas.ITAURNAO' \
+					|'contas.ITAUTSIM'|'contas.ITAUTNAO' \
+					|'contas.IPVASIM'|'contas.IPVANAO' \
+
+				 ) contas.yesno_buttons ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
