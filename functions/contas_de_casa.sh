@@ -3,7 +3,6 @@
 
 COUNT=(0⃣🆘 1⃣‼ 2⃣❗ 3⃣ 4⃣ 5⃣ 6⃣ 7⃣ 8⃣ 9⃣ 🔟)
 MESES=(0 Janeiro Fevereiro Março Abril Maio Junho Julho Agosto Setembro Outubro Novembro Dezembro)
-
 CONTAS_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f5))
 CONTAS_SIM_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f6))
 CONTAS_NAO_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f7))
@@ -117,7 +116,7 @@ contas.show_contas() {
 
     local days
     for c in ${CONTAS_ARR[@]}; do
-        case ${callback_query_data} in
+        case ${callback_query_data[$id]} in
             ${c})
             message="$(contas.text_return ${c/*./})"
             ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
@@ -133,10 +132,11 @@ contas.show_contas() {
 contas.yesno_buttons() {    
     for s in ${CONTAS_SIM_ARR[@]}; do
     set +f
-        case ${callback_query_data} in
+        case ${callback_query_data[$id]} in
             ${s})
                 today=$(date "+%Y-%m-%d")
                 sed -i "s/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),0,/$(echo ${s/*./} | sed 's/SIM//g' | sed 's/NAO//g'),${today},/" ${BOT_CONTAS_LIST}
+		echo ${s/*./}
                 message="*Registro efetuado com sucesso*\n"
                 message+="Clique em contas novamente para conferir\n\n"
                 message+="/contas"
@@ -150,7 +150,7 @@ contas.yesno_buttons() {
     done
     
     for n in ${CONTAS_NAO_ARR[@]}; do
-        case ${callback_query_data} in
+        case ${callback_query_data[$id]} in
             ${n})
                 message="*Pagar mais tarde então* 😁"
                 ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
