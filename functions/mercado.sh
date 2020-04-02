@@ -5,7 +5,7 @@ listar.compras(){
         item=$1
         
         #salvar item em lista para consulta posterior
-        listar.salvar "${item}" "$(date +%s)"
+        #listar.salvar "${item}" "$(date +%s)"
         
         botao_itens=''
         ShellBot.InlineKeyboardButton --button 'botao_itens' --text "✅" --callback_data 'item_comprado' --line 1
