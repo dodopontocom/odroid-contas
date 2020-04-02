@@ -23,7 +23,7 @@ listar.apagar(){
         
         local file_list item_to_save
         
-        file_list=${BOT_PRECOS_FILE}_$(date "+%Y%m%d").csv
+        file_list="${BOT_PRECOS_FILE}_$(date +%Y%m%d).csv"
         item_to_save="${callback_query_message_text[$id]}"
         echo "${item_to_save}" >> ${file_list}
         ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
