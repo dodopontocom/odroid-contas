@@ -4,7 +4,7 @@
 # Função para fazer commit em repositório que faz provisionamento de recursos na cloud do google
 
 REPO_URL="https://github.com/dodopontocom/web-site.git"
-TMP_REPO_PATH="/tmp"
+TMP_REPO_PATH="/tmp/web-site"
 
 circle.ci() {
   set +f
