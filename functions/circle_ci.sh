@@ -4,7 +4,7 @@
 # Função para fazer commit em repositório que faz provisionamento de recursos na cloud do google
 
 REPO_URL="https://github.com/dodopontocom/web-site.git"
-TMP_REPO_PATH="/tmp/web-site"
+TMP_REPO_PATH="/tmp/$(helper.random)"
 
 circle.ci() {
   set +f
@@ -25,7 +25,7 @@ circle.ci() {
   git add --all
   git commit -m "[${cmd}] - commit from odroid telegram bot"
   git push -u origin develop
-  if [[ $? -ne 0 ]]; then
+  if [[ $? -e 0 ]]; then
     message="Commit realizado.\n"
     message+="https://app.circleci.com/pipelines/github/dodopontocom/web-site?branch=develop"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
