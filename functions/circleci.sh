@@ -4,7 +4,6 @@
 # Função para fazer commit em repositório que faz provisionamento de recursos na cloud do google
 
 circleci() {
-  set +f
   local message cmd
 
   REPO_URL="https://github.com/dodopontocom/web-site.git"
@@ -33,9 +32,6 @@ circleci() {
     message="Não consegui atualizar o repositório..."
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   fi
-  
-  set -f
-
 }
 
 #git --work-tree=${repo}/ \
