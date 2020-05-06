@@ -103,7 +103,7 @@ do
 				site.upload
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/circleci" )" ]]; then
-				circleci "${message_text[$id]}"
+				circleci.commit "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
 				pdfgrep.keyboard

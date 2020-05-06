@@ -3,7 +3,7 @@
 # Função de suporte
 # Função para fazer commit em repositório que faz provisionamento de recursos na cloud do google
 
-circleci() {
+circleci.commit() {
   local message cmd
 
   REPO_URL="https://github.com/dodopontocom/web-site.git"
