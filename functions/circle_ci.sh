@@ -6,7 +6,7 @@
 REPO_URL="https://github.com/dodopontocom/web-site.git"
 TMP_REPO_PATH="/tmp/$(helper.random)"
 
-circle.ci() {
+circleci() {
   set +f
   local message cmd
 
