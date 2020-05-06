@@ -3,12 +3,12 @@
 # Função de suporte
 # Função para fazer commit em repositório que faz provisionamento de recursos na cloud do google
 
-REPO_URL="https://github.com/dodopontocom/web-site.git"
-TMP_REPO_PATH="/tmp/$(helper.random)"
-
 circleci() {
   set +f
   local message cmd
+
+  REPO_URL="https://github.com/dodopontocom/web-site.git"
+  TMP_REPO_PATH="/tmp/$(helper.random)"
 
   cmd=$1
   array=(${cmd})
