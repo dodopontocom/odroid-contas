@@ -7,7 +7,7 @@ circleci.commit() {
   local message cmd
 
   REPO_URL="https://github.com/dodopontocom/web-site.git"
-  TMP_REPO_PATH="/tmp/repo"
+  TMP_REPO_PATH="/tmp/$(helper.random)"
 
   mkdir ${TMP_REPO_PATH}
 
