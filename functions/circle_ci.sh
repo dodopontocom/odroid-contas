@@ -12,9 +12,11 @@ circle.ci() {
 
   cmd=$1
   array=(${cmd})
-  array[0]="/circle-ci"
+  array[0]="/circleci"
   cmd=${array[@]:1}
-
+  
+  message="Fazendo o clone do repo..."
+  ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   git clone ${REPO_URL} ${TMP_REPO_PATH}
   
   echo "$(date)" >> ${TMP_REPO_PATH}/web-site/cloud/.telegram.bot
@@ -33,7 +35,7 @@ circle.ci() {
   fi
   
   set -f
-  
+
 }
 
 #git --work-tree=${repo}/ \

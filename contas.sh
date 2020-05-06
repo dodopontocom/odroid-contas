@@ -102,7 +102,7 @@ do
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/construtora" )" ]]; then
 				site.upload
 			fi
-			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/circle-ci" )" ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/circleci" )" ]]; then
 				circle.ci "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
