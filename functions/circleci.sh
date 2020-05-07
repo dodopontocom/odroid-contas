@@ -20,7 +20,7 @@ circleci.commit() {
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   git clone ${REPO_URL} ${TMP_REPO_PATH}
   
-  echo "$(date)" >> ${TMP_REPO_PATH}/cloud/.telegram.bot
+  echo "$(date) - ${cmd}" >> ${TMP_REPO_PATH}/cloud/.telegram.bot
   cd ${TMP_REPO_PATH}
   
   git add --all
