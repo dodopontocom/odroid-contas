@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-##
+#
 export BASEDIR="$(cd $(dirname ${BASH_SOURCE[0]}) >/dev/null 2>&1 && pwd)"
 # Importante utils, script que contem o setup de inicialização do bot
 source ${BASEDIR}/functions/utils.sh
