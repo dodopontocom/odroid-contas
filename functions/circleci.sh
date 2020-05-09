@@ -15,20 +15,20 @@ circleci.commit() {
   array=(${cmd})
   array[0]="/circleci"
   cmd=${array[@]:1}
-  
+
   message="Fazendo o clone do repo..."
   ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
-  git clone ${REPO_URL} ${TMP_REPO_PATH}
+  git clone -b circleci ${REPO_URL} ${TMP_REPO_PATH}
   
-  echo "$(date) - ${cmd}" >> ${TMP_REPO_PATH}/cloud/.telegram.bot
   cd ${TMP_REPO_PATH}
+  echo "$(date) - ${cmd}" >> ${TMP_REPO_PATH}/cloud/.telegram.bot
   
   git add --all
   git commit -m "[${cmd}] - commit from odroid telegram bot"
-  git push -u origin develop
+  git push -u origin circleci
   if [[ "$?" -eq "0" ]]; then
     message="Commit realizado.\n"
-    message+="https://app.circleci.com/pipelines/github/dodopontocom/web-site?branch=develop"
+    message+="https://app.circleci.com/pipelines/github/dodopontocom/web-site?branch=circleci"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e ${message})" --parse_mode markdown
   else
     message="Não consegui atualizar o repositório..."
