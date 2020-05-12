@@ -3,7 +3,7 @@
 # Script que carrega as configurações iniciais do bot
 
 ################################# START - Carregando todas as funções #################################
-test -f ${BASEDIR}/.definitions.sh && source ${BASEDIR}/.definitions.sh
+source ${BASEDIR}/.definitions.sh || exit -1
 
 function_list=($(find ${BASEDIR}/functions -name "*.sh" | grep -v "utils"))
 for f in ${function_list[@]}; do
