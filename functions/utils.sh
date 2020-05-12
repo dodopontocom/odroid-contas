@@ -5,10 +5,12 @@
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh || exit -1
 
+echo ok
 function_list=($(find ${BASEDIR}/functions -name "*.sh" | grep -v "utils"))
 for f in ${function_list[@]}; do
     source ${f}
 done
+echo ok
 ################################# END - Carregando todas as funções #################################
 
 # Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
