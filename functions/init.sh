@@ -6,7 +6,7 @@
 source ${BASEDIR}/.definitions.sh || exit -1
 
 echo ok
-function_list=($(find ${BASEDIR}/functions -name "*.sh" | grep -v "utils"))
+function_list=($(find ${BASEDIR}/functions -name "*.sh" | grep -v "init"))
 for f in ${function_list[@]}; do
     source ${f}
 done
