@@ -156,7 +156,8 @@ listar.go_botoes() {
     local file_list
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
-    cat ${file_list} | sed "s/${_WARN}"/${_OK}/
+    cat ${file_list}_lock | sed "s/${_WARN}"/${_OK}/
+    cat ${file_list}_fly | sed "s/${_WARN}"/${_OK}/
 
     edit_go=''
 
