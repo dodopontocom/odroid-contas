@@ -97,7 +97,9 @@ listar.salvar() {
 }
 
 listar.go() {
-    local file_list
+    local file_list on
+
+    on="✅"
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     if [[ -f ${file_list} ]]; then
@@ -112,11 +114,11 @@ listar.go() {
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line} ${on}" --callback_data 'ir_compras' --line ${count}
                 count=$((count+1))
             else
                 count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}                
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line} ${on}" --callback_data 'ir_compras' --line ${count}                
             fi
         done < ${file_list}_lock
 
@@ -149,6 +151,11 @@ listar.go() {
 }
 
 listar.go_botoes() {
+
+    local on off
+
+    on="✅"
+    off="❌"
 
     _s=''
     ShellBot.InlineKeyboardButton --button '_s' --text "✅" --callback_data 'item_comprado' --line 1
