@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# ⚠️
+
+_WARN="⚠️"
+_OK="✅"
+_LUPA="🔍"
+
 listar.compras(){
         local item botao_itens file_list
         item=$1
@@ -10,8 +16,8 @@ listar.compras(){
         #listar.salvar "${item}" "$(date +%s)"
         
         botao_itens=''
-        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "✅" --callback_data 'item_comprado' --line 1
-        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços 🔍" --callback_data 'item_valor' --line 1
+        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${_OK}" --callback_data 'item_comprado' --line 1
+        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
         keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_itens')"
 
         ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
@@ -21,9 +27,9 @@ listar.compras(){
                                 --reply_markup "$keyboard_itens"
 
         if [[ ! -f "${file_list}_lock" ]]; then
-            echo "${item}" >> ${file_list}
+            echo "${item} ${_WARN}" >> ${file_list}
         else
-            echo "${item}" >> ${file_list}_fly
+            echo "${item} ${_WARN}" >> ${file_list}_fly
         fi
 }
 
@@ -97,9 +103,7 @@ listar.salvar() {
 }
 
 listar.go() {
-    local file_list on
-
-    on="✅"
+    local file_list
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     if [[ -f ${file_list} ]]; then
@@ -154,12 +158,9 @@ listar.go_botoes() {
 
     local on off
 
-    on="✅"
-    off="❌"
-
     _s=''
-    ShellBot.InlineKeyboardButton --button '_s' --text "✅" --callback_data 'item_comprado' --line 1
-    ShellBot.InlineKeyboardButton --button '_s' --text "preços 🔍" --callback_data 'item_valor' --line 1
+    ShellBot.InlineKeyboardButton --button '_s' --text "${_OK}" --callback_data 'item_comprado' --line 1
+    ShellBot.InlineKeyboardButton --button '_s' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
     __s="$(ShellBot.InlineKeyboardMarkup -b '_s')"
 
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
