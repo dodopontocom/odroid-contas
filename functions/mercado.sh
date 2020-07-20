@@ -123,8 +123,14 @@ listar.go() {
         if [[ -f "${file_list}_fly" ]]; then
             count=0
             while read line; do
-                count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                rem=$(( ${count} % 3))
+                if [[ ${rem} -eq 0 ]]; then
+                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                    count=$((count+1))
+                else
+                    count=$((count+1))
+                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}                
+                fi
             done < ${file_list}_fly
         fi
 
@@ -143,6 +149,6 @@ listar.go() {
 }
 
 listar.go_botoes() {
-    echo "------"
+    echo "-------- ${callback_query_message_text[$id]}"
 }
 
