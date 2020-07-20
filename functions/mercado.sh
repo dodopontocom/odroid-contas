@@ -110,13 +110,13 @@ listar.go() {
     if [[ -f "${file_list}_lock" ]]; then
         count=0
         while read line; do
-            count=((count+1))
+            count=$((count+1))
             ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
         done < ${file_list}_lock
         if [[ -f "${file_list}_fly" ]]; then
             count=0
             while read line; do
-                count=((count+1))
+                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
             done < ${file_list}_fly
         fi
