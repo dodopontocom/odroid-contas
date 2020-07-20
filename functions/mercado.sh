@@ -108,7 +108,7 @@ listar.go() {
     botao_gogogo=''
     
     if [[ -f "${file_list}_lock" ]]; then
-        count=1
+        count=0
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
