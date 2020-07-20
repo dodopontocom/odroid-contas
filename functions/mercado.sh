@@ -115,11 +115,11 @@ listar.go() {
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}
                 count=$((count+1))
             else
                 count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}                
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}                
             fi
         done < ${file_list}_lock
 
@@ -128,11 +128,11 @@ listar.go() {
             while read line; do
                 rem=$(( ${count} % 3))
                 if [[ ${rem} -eq 0 ]]; then
-                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}
                     count=$((count+1))
                 else
                     count=$((count+1))
-                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}                
+                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}                
                 fi
             done < ${file_list}_fly
         fi
@@ -164,11 +164,11 @@ listar.go_botoes() {
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
-                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data 'ir_compras' --line ${count}
+                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data "${line}" --line ${count}
                 count=$((count+1))
             else
                 count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data 'ir_compras' --line ${count}                
+                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data "${line}" --line ${count}                
             fi
         done < ${file_list}_lock
 
@@ -177,11 +177,11 @@ listar.go_botoes() {
             while read line; do
                 rem=$(( ${count} % 3))
                 if [[ ${rem} -eq 0 ]]; then
-                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data 'ir_compras' --line ${count}
+                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data "${line}" --line ${count}
                     count=$((count+1))
                 else
                     count=$((count+1))
-                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data 'ir_compras' --line ${count}                
+                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} oi" --callback_data "${line}" --line ${count}                
                 fi
             done < ${file_list}_fly
         fi
