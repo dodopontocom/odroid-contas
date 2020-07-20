@@ -65,6 +65,7 @@ do
 		case ${callback_query_data[$id]} in
 			pdfgrep.reply_itatiba) pdfgrep.reply_itatiba ;;
 			item_comprado) listar.apagar ;;
+            ir_compras) listar.go_botoes ;;
 			item_valor) listar.preco ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
