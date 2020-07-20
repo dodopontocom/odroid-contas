@@ -112,9 +112,11 @@ listar.go() {
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+            else
                 count=$((count+1))
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}                
             fi
-            ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
         done < ${file_list}_lock
 
         if [[ -f "${file_list}_fly" ]]; then
