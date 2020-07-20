@@ -36,7 +36,7 @@ listar.apagar(){
         file_list="${BOT_PRECOS_FILE}_$(date +%Y%m%d).csv"
         item_to_save="${callback_query_message_text[$id]}"
         echo "${item_to_save}" >> ${file_list}
-        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "agora vai"
         ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
                                 --message_id ${callback_query_message_message_id[$id]}
         
@@ -159,7 +159,7 @@ listar.go_botoes() {
     ShellBot.InlineKeyboardButton --button '_s' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
     __s="$(ShellBot.InlineKeyboardMarkup -b '_s')"
 
-    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "agora vai"
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
                         --reply_markup "$__s"
