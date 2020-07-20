@@ -186,17 +186,14 @@ listar.go_botoes() {
             done < ${file_list}_fly
         fi
 
-        _go="$(ShellBot.InlineKeyboardMarkup -b 'edit_go')"
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                         --text "*LISTA COMPLETA*" \
-                         --parse_mode markdown \
-                         --reply_markup "$keyboard_gogogo"
+        keyboard_go="$(ShellBot.InlineKeyboardMarkup -b 'edit_go')"
+
     fi
 
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "Item registrado"
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
-                        --reply_markup "$_go"
+                        --reply_markup "$keyboard_go"
     
     echo "-------- ${callback_query_message_text[$id]}"
 }
