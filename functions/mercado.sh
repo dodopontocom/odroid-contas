@@ -100,7 +100,9 @@ listar.go() {
     local file_list
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
-    mv ${file_list} ${file_list}_lock
+    if [[ -f ${file_list} ]]; then
+        mv ${file_list} ${file_list}_lock
+    fi
 
     botao_gogogo=''
     ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "IR AS COMPRAS" --callback_data 'listar.go_botoes' --line 1
