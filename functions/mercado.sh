@@ -207,7 +207,7 @@ listar.go_botoes() {
 
     fi
 
-    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "Item registrado"
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "${float_message}"
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
                         --reply_markup "$keyboard_go"
