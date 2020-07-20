@@ -111,7 +111,7 @@ listar.go() {
     botao_gogogo=''
     
     if [[ -f "${file_list}_lock" ]]; then
-        count=0
+        count=1
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
@@ -124,7 +124,7 @@ listar.go() {
         done < ${file_list}_lock
 
         if [[ -f "${file_list}_fly" ]]; then
-            count=0
+            count=1
             while read line; do
                 rem=$(( ${count} % 3))
                 if [[ ${rem} -eq 0 ]]; then
@@ -160,7 +160,7 @@ listar.go_botoes() {
     edit_go=''
 
     if [[ -f "${file_list}_lock" ]]; then
-        count=0
+        count=1
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
@@ -173,7 +173,7 @@ listar.go_botoes() {
         done < ${file_list}_lock
 
         if [[ -f "${file_list}_fly" ]]; then
-            count=0
+            count=1
             while read line; do
                 rem=$(( ${count} % 3))
                 if [[ ${rem} -eq 0 ]]; then
