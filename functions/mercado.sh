@@ -13,9 +13,9 @@ listar.compras(){
         file_list="${BOT_PRECOS_FILE}_ultima.log"
 
         if [[ ! -f "${file_list}_lock" ]]; then
-            echo "${item} ${_WARN}" >> ${file_list}
+            echo "${item},${_WARN}" >> ${file_list}
         else
-            echo "${item} ${_WARN}" >> ${file_list}_fly
+            echo "${item},${_WARN}" >> ${file_list}_fly
         fi
                 
         botao_itens=''
@@ -156,6 +156,7 @@ listar.go_botoes() {
     local file_list
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
+    cat ${file_list} | sed "s/${_WARN}"/${_OK}/
 
     edit_go=''
 
