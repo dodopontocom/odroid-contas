@@ -62,7 +62,7 @@ do
 		else
 			chat.hi
 		fi
-        if [[ "${callback_query_data[$id]}" =~ "*${_WARN}*" ]]; then
+        if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
             listar.go_botoes
         fi
 		case ${callback_query_data[$id]} in
