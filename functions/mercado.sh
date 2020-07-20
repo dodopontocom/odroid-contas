@@ -115,11 +115,11 @@ listar.go() {
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
                 count=$((count+1))
             else
                 count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}                
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
             fi
         done < ${file_list}_lock
 
@@ -128,11 +128,11 @@ listar.go() {
             while read line; do
                 rem=$(( ${count} % 3))
                 if [[ ${rem} -eq 0 ]]; then
-                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}
+                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
                     count=$((count+1))
                 else
                     count=$((count+1))
-                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data "${line}" --line ${count}                
+                    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
                 fi
             done < ${file_list}_fly
         fi
@@ -156,34 +156,34 @@ listar.go_botoes() {
     local file_list
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
-    sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_lock
-    sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_fly
-
+    
     edit_go=''
 
     if [[ -f "${file_list}_lock" ]]; then
+        sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_lock
         count=0
         while read line; do
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
-                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line}" --callback_data "${line}" --line ${count}
+                ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
                 count=$((count+1))
             else
                 count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line}" --callback_data "${line}" --line ${count}                
+                ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
             fi
         done < ${file_list}_lock
 
         if [[ -f "${file_list}_fly" ]]; then
+            sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_fly
             count=0
             while read line; do
                 rem=$(( ${count} % 3))
                 if [[ ${rem} -eq 0 ]]; then
-                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line}" --callback_data "${line}" --line ${count}
+                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
                     count=$((count+1))
                 else
                     count=$((count+1))
-                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line}" --callback_data "${line}" --line ${count}                
+                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
                 fi
             done < ${file_list}_fly
         fi
