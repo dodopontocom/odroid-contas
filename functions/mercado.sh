@@ -104,8 +104,19 @@ listar.go() {
         mv ${file_list} ${file_list}_lock
     fi
 
+
     botao_gogogo=''
-    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "IR AS COMPRAS" --callback_data 'ir_compras' --line 1
+    
+    if [[ -f "${file_list}_lock" ]]; then
+        while read line; done
+            ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
+        done < ${file_list}_lock
+    fi
+    if [[ -f "${file_list}_fly" ]]; then
+        while read line; done
+            ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
+        done < ${file_list}_fly
+    fi
     keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
 
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
