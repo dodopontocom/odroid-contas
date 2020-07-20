@@ -182,6 +182,7 @@ listar.go_botoes() {
             fi
         done < ${file_list}_lock
     fi
+    count=0
     if [[ -f "${file_list}_fly" ]]; then
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
             sed -i "s/${callback_query_data}/${_OK},${callback_query_data##*,}/" ${file_list}_lock
@@ -213,4 +214,3 @@ listar.go_botoes() {
                         --message_id ${callback_query_message_message_id[$id]} \
                         --reply_markup "$keyboard_go"
 }
-
