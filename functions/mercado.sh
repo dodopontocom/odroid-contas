@@ -11,24 +11,23 @@ listar.compras(){
         item=$1
         
         file_list="${BOT_PRECOS_FILE}_ultima.log"
+                
+        botao_itens=''
+        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${_OK}" --callback_data 'item_comprado' --line 1
+        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
+        keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_itens')"
+
+        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+        ShellBot.sendMessage    --chat_id ${message_chat_id[$id]} \
+                                --text "*${item}*" \
+                                --parse_mode markdown \
+                                --reply_markup "$keyboard_itens"
+
         if [[ ! -f "${file_list}_lock" ]]; then
             echo "${item} ${_WARN}" >> ${file_list}
         else
             echo "${item} ${_WARN}" >> ${file_list}_fly
         fi
-                
-        botao_itens=''
-        ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${_OK}" --callback_data 'item_comprado' --line 1
-        keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_itens')"
-
-        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "${item} adicionado!"
-
-        # ShellBot.sendMessage    --chat_id ${message_chat_id[$id]} \
-        #                         --text "*Ver Lista Completa?*" \
-        #                         --parse_mode markdown \
-        #                         --reply_markup "$keyboard_itens"
-
 }
 
 listar.apagar(){
@@ -38,7 +37,7 @@ listar.apagar(){
         file_list="${BOT_PRECOS_FILE}_$(date +%Y%m%d).csv"
         item_to_save="${callback_query_message_text[$id]}"
         echo "${item_to_save}" >> ${file_list}
-        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "agora vai"
+        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
         ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
                                 --message_id ${callback_query_message_message_id[$id]}
         
@@ -161,7 +160,7 @@ listar.go_botoes() {
     ShellBot.InlineKeyboardButton --button '_s' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
     __s="$(ShellBot.InlineKeyboardMarkup -b '_s')"
 
-    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "agora vai"
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
                         --reply_markup "$__s"
