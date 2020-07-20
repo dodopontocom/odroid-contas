@@ -149,6 +149,12 @@ listar.go() {
 }
 
 listar.go_botoes() {
+
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                        --message_id ${callback_query_message_from_id[$id]} \
+                        --text "$(echo -e ${message})" --parse_mode markdown
+    
     echo "-------- ${callback_query_message_text[$id]}"
 }
 
