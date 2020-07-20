@@ -11,6 +11,12 @@ listar.compras(){
         item=$1
         
         file_list="${BOT_PRECOS_FILE}_ultima.log"
+
+        if [[ ! -f "${file_list}_lock" ]]; then
+            echo "${item} ${_WARN}" >> ${file_list}
+        else
+            echo "${item} ${_WARN}" >> ${file_list}_fly
+        fi
                 
         botao_itens=''
         ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${_OK}" --callback_data 'item_comprado' --line 1
@@ -22,12 +28,6 @@ listar.compras(){
                                 --text "*${item}*" \
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
-
-        if [[ ! -f "${file_list}_lock" ]]; then
-            echo "${item} ${_WARN}" >> ${file_list}
-        else
-            echo "${item} ${_WARN}" >> ${file_list}_fly
-        fi
 }
 
 listar.apagar(){
@@ -153,17 +153,50 @@ listar.go() {
 
 listar.go_botoes() {
 
-    local on off
+    local file_list
 
-    _s=''
-    ShellBot.InlineKeyboardButton --button '_s' --text "${_OK}" --callback_data 'item_comprado' --line 1
-    ShellBot.InlineKeyboardButton --button '_s' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
-    __s="$(ShellBot.InlineKeyboardMarkup -b '_s')"
+    file_list="${BOT_PRECOS_FILE}_ultima.log"
 
-    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+    edit_go=''
+
+    if [[ -f "${file_list}_lock" ]]; then
+        count=0
+        while read line; do
+            rem=$(( ${count} % 3))
+            if [[ ${rem} -eq 0 ]]; then
+                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} ${on}" --callback_data 'ir_compras' --line ${count}
+                count=$((count+1))
+            else
+                count=$((count+1))
+                ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line} ${on}" --callback_data 'ir_compras' --line ${count}                
+            fi
+        done < ${file_list}_lock
+
+        if [[ -f "${file_list}_fly" ]]; then
+            count=0
+            while read line; do
+                rem=$(( ${count} % 3))
+                if [[ ${rem} -eq 0 ]]; then
+                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                    count=$((count+1))
+                else
+                    count=$((count+1))
+                    ShellBot.InlineKeyboardButton --button 'edit_go' --text "${line}" --callback_data 'ir_compras' --line ${count}                
+                fi
+            done < ${file_list}_fly
+        fi
+
+        _go="$(ShellBot.InlineKeyboardMarkup -b 'edit_go')"
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+                         --text "*LISTA COMPLETA*" \
+                         --parse_mode markdown \
+                         --reply_markup "$keyboard_gogogo"
+    fi
+
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "Item registrado"
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
-                        --reply_markup "$__s"
+                        --reply_markup "$_go"
     
     echo "-------- ${callback_query_message_text[$id]}"
 }
