@@ -150,10 +150,15 @@ listar.go() {
 
 listar.go_botoes() {
 
+    _s=''
+    ShellBot.InlineKeyboardButton --button '_s' --text "✅" --callback_data 'item_comprado' --line 1
+    ShellBot.InlineKeyboardButton --button '_s' --text "preços 🔍" --callback_data 'item_valor' --line 1
+    __s="$(ShellBot.InlineKeyboardMarkup -b '_s')"
+
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
-                        --reply_markup "$keyboard_gogogo"
+                        --reply_markup "$__s"
     
     echo "-------- ${callback_query_message_text[$id]}"
 }
