@@ -160,7 +160,13 @@ listar.go_botoes() {
     edit_go=''
 
     if [[ -f "${file_list}_lock" ]]; then
-        sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_lock
+        if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
+            sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_lock
+        fi
+        if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
+            sed -i "s/${callback_query_data}/${callback_query_data%,*},${_WARN}/" ${file_list}_lock
+        fi
+        
         count=0
         while read line; do
             rem=$(( ${count} % 3))
@@ -174,7 +180,12 @@ listar.go_botoes() {
         done < ${file_list}_lock
 
         if [[ -f "${file_list}_fly" ]]; then
-            sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_fly
+            if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
+                sed -i "s/${callback_query_data}/${callback_query_data%,*},${_OK}/" ${file_list}_lock
+            fi
+            if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
+                sed -i "s/${callback_query_data}/${callback_query_data%,*},${_WARN}/" ${file_list}_lock
+            fi
             count=0
             while read line; do
                 rem=$(( ${count} % 3))
@@ -196,7 +207,5 @@ listar.go_botoes() {
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
                         --reply_markup "$keyboard_go"
-    
-    echo "-------- ${callback_query_message_text[$id]}"
 }
 

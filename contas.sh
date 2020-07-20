@@ -62,10 +62,15 @@ do
 		else
 			chat.hi
 		fi
+
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
             listar.go_botoes
         fi
-		case ${callback_query_data[$id]} in
+        if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
+            listar.go_botoes
+        fi
+		
+        case ${callback_query_data[$id]} in
 			pdfgrep.reply_itatiba) pdfgrep.reply_itatiba ;;
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
