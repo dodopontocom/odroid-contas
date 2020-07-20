@@ -150,7 +150,9 @@ listar.go() {
 
 listar.go_botoes() {
 
-    local file_list float_message
+    local file_list float_message count
+
+    count=0
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     
