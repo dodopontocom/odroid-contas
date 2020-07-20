@@ -1,8 +1,10 @@
 #!/bin/bash
 
 listar.compras(){
-        local item botao_itens
+        local item botao_itens file_list
         item=$1
+        
+        file_list="${BOT_PRECOS_FILE}_ultima.log"
         
         #salvar item em lista para consulta posterior
         #listar.salvar "${item}" "$(date +%s)"
@@ -17,6 +19,8 @@ listar.compras(){
                                 --text "*${item}*" \
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
+
+        echo "${item}" >> ${file_list}
 }
 
 listar.apagar(){
