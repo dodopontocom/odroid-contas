@@ -111,18 +111,24 @@ listar.go() {
         while read line; do
             ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
         done < ${file_list}_lock
-    fi
-    if [[ -f "${file_list}_fly" ]]; then
-        while read line; do
-            ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
-        done < ${file_list}_fly
-    fi
-    keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
+        if [[ -f "${file_list}_fly" ]]; then
+            while read line; do
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
+            done < ${file_list}_fly
+        fi
 
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+        keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                          --text "*LISTA COMPLETA*" \
                          --parse_mode markdown \
                          --reply_markup "$keyboard_gogogo"
+    fi
+    
+
+    if [[ ! -f  "${file_list}_lock" ]] || [[ ! -f  "${file_list}" ]] || [[ ! -f  "${file_list}_fly" ]]; then
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+                              --text "*Sem itens na lista!!!*" --parse_mode markdown
+    fi
 }
 
 listar.go_botoes() {
