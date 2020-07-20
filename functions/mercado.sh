@@ -20,7 +20,11 @@ listar.compras(){
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
 
-        echo "${item}" >> ${file_list}
+        if [[ -f "${file_list}_lock" ]]; then
+            echo "${item}" >> ${file_list}
+        else
+            echo "${item}" >> ${file_list}_fly
+        fi
 }
 
 listar.apagar(){
@@ -93,7 +97,10 @@ listar.salvar() {
 }
 
 listar.go() {
-    echo "---------------- go go go"
+    local file_list
+    
+    file_list="${BOT_PRECOS_FILE}_ultima.log"
+    mv ${file_list} ${file_list}_lock
 
 }
 
