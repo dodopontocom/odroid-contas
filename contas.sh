@@ -99,6 +99,9 @@ do
 		fi
 		
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
+            if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/gogogo" )" ]]; then
+				listar.go
+			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/construtora" )" ]]; then
 				site.upload
 			fi

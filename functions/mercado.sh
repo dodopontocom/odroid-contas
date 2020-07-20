@@ -88,3 +88,8 @@ listar.salvar() {
         done < ${logs}
 }
 
+listar.go() {
+    echo "---------------- go go go"
+
+}
+
