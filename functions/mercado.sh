@@ -113,6 +113,7 @@ listar.go() {
             rem=$(( ${count} % 3))
             if [[ ${count} -ne 0 ]] && [[ ${rem} -eq 0 ]]; then
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+                count=$((count+1))
             else
                 count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}                
