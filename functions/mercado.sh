@@ -20,7 +20,7 @@ listar.compras(){
                                 --parse_mode markdown \
                                 --reply_markup "$keyboard_itens"
 
-        if [[ -f "${file_list}_lock" ]]; then
+        if [[ ! -f "${file_list}_lock" ]]; then
             echo "${item}" >> ${file_list}
         else
             echo "${item}" >> ${file_list}_fly
