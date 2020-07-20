@@ -108,12 +108,12 @@ listar.go() {
     botao_gogogo=''
     
     if [[ -f "${file_list}_lock" ]]; then
-        while read line; done
+        while read line; do
             ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
         done < ${file_list}_lock
     fi
     if [[ -f "${file_list}_fly" ]]; then
-        while read line; done
+        while read line; do
             ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line 1
         done < ${file_list}_fly
     fi
