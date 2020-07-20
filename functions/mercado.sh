@@ -153,7 +153,7 @@ listar.go_botoes() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
-                        --text "$(echo -e ${message})" --parse_mode markdown
+                        --text "asd" --parse_mode markdown
     
     echo "-------- ${callback_query_message_text[$id]}"
 }
