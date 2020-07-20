@@ -110,8 +110,17 @@ listar.go() {
     if [[ -f "${file_list}_lock" ]]; then
         count=0
         while read line; do
+            b_line=''
             count=$((count+1))
-            ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+            rem=$(( ${count} % 3))
+            if [[ ${rem} -eq 0 ]]; then
+                b_line=${count}
+            fi
+            if [[ -n ${b_line} ]]; then
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${b_line}
+            else
+                ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "${line}" --callback_data 'ir_compras' --line ${count}
+            fi
         done < ${file_list}_lock
         if [[ -f "${file_list}_fly" ]]; then
             count=0
@@ -129,10 +138,10 @@ listar.go() {
     fi
     
 
-    if [[ ! -f  "${file_list}_lock" ]] || [[ ! -f  "${file_list}" ]] || [[ ! -f  "${file_list}_fly" ]]; then
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                              --text "*Sem itens na lista!!!*" --parse_mode markdown
-    fi
+    # if [[ ! -f  "${file_list}_lock" ]] || [[ ! -f  "${file_list}" ]] || [[ ! -f  "${file_list}_fly" ]]; then
+    #     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+    #                           --text "*Sem itens na lista!!!*" --parse_mode markdown
+    # fi
 }
 
 listar.go_botoes() {
