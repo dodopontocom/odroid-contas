@@ -106,8 +106,12 @@ listar.go() {
 
     botao_gogogo=''
     ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "IR AS COMPRAS" --callback_data 'ir_compras' --line 1
-    keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
+    keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
 
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+                         --text "*LISTA COMPLETA*" \
+                         --parse_mode markdown \
+                         --reply_markup "$keyboard_gogogo"
 }
 
 listar.go_botoes() {
