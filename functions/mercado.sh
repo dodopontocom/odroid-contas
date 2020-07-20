@@ -105,7 +105,7 @@ listar.go() {
     fi
 
     botao_gogogo=''
-    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "IR AS COMPRAS" --callback_data 'listar.go_botoes' --line 1
+    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "IR AS COMPRAS" --callback_data 'ir_compras' --line 1
     keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
 
 }
