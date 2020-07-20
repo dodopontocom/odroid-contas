@@ -103,7 +103,7 @@ listar.go() {
     mv ${file_list} ${file_list}_lock
 
     botao_gogogo=''
-    ShellBot.InlineKeyboardButton --button 'botao_itens' --text "IR AS COMPRAS" --callback_data 'listar.go_botoes' --line 1
+    ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "IR AS COMPRAS" --callback_data 'listar.go_botoes' --line 1
     keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
 
 }
