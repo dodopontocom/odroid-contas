@@ -139,6 +139,8 @@ listar.go() {
         done < ${file_list}_fly
     fi
 
+    ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+
     ShellBot.InlineKeyboardButton --button 'botao_gogogo'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
