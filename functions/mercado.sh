@@ -16,19 +16,9 @@ listar.compras(){
         else
             echo "${_WARN},${item}" >> ${file_list}_lock
         fi
-
-        listar.go_shopping
                 
-        # botao_itens=''
-        # ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${_OK}" --callback_data 'item_comprado' --line 1
-        # ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
-        # keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_itens')"
-
-        # ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-        # ShellBot.sendMessage    --chat_id ${message_chat_id[$id]} \
-        #                         --text "*${item}*" \
-        #                         --parse_mode markdown \
-        #                         --reply_markup "$keyboard_itens"
+        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "/goshopping para ver lista!"
 }
 
 listar.apagar(){
@@ -38,7 +28,7 @@ listar.apagar(){
         file_list="${BOT_PRECOS_FILE}_$(date +%Y%m%d).csv"
         item_to_save="${callback_query_message_text[$id]}"
         echo "${item_to_save}" >> ${file_list}
-        ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
+
         ShellBot.deleteMessage  --chat_id ${callback_query_message_chat_id[$id]} \
                                 --message_id ${callback_query_message_message_id[$id]}
         
@@ -65,12 +55,10 @@ listar.preco() {
           message+="*Produto/Marca:* ${first_found//[&#]/}\n\n"
           message+="*Preço:* ---> ${product_price}"
 
-          ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
           ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                               --text "$(echo -e ${message})" --parse_mode markdown
   else
           message="Produto não encontrado..."
-          ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]}
           ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                               --text "$(echo -e ${message})" --parse_mode markdown
   fi
