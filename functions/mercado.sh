@@ -88,13 +88,15 @@ listar.salvar() {
 }
 
 listar.go_shopping() {
-    local file_list
+    local file_list title
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     if [[ -f ${file_list} ]]; then
         mv ${file_list} ${file_list}_lock
+        title="LISTA COMPLETA"
     else
         echo "Comece Escrevendo os itens da lista!" > ${file_list}_lock
+        title="LISTA VAZIA"
     fi
 
     botao_go_shopping=''
@@ -127,13 +129,13 @@ listar.go_shopping() {
     if [[ ${message_chat_id[$id]} ]]; then
         ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                        --text "*LISTA COMPLETA*" \
+                        --text "*$(echo -e ${title})*" \
                         --parse_mode markdown \
                         --reply_markup "$keyboard_go_shopping"
     else
         ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
         ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                        --text "*LISTA COMPLETA*" \
+                        --text "*$(echo -e ${title})*" \
                         --parse_mode markdown \
                         --reply_markup "$keyboard_go_shopping"
     fi
