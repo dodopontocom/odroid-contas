@@ -109,28 +109,32 @@ listar.go() {
     botao_gogogo=''
     
     if [[ -f "${file_list}_lock" ]]; then
-        count=1
+        count=0
         while read line; do
-            rem=$(( ${count} % 5))
+            rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
+                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
-                count=$((count+1))
+                
             else
-                count=$((count+1))
+                
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
+                count=$((count+1))
             fi
         done < ${file_list}_lock
     fi
     if [[ -f "${file_list}_fly" ]]; then
-        count=1
+        count=0
         while read line; do
-            rem=$(( ${count} % 5))
+            rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
+                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
-                count=$((count+1))
+                
             else
-                count=$((count+1))
+                
                 ShellBot.InlineKeyboardButton --button 'botao_gogogo' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
+                count=$((count+1))
             fi
         done < ${file_list}_fly
     fi
@@ -156,7 +160,7 @@ listar.go_botoes() {
 
     local file_list float_message count
 
-    count=1
+    count=0
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     
@@ -174,19 +178,20 @@ listar.go_botoes() {
             float_message="Ops..."
         fi
         
-        count=1
+        count=0
         while read line; do
-            rem=$(( ${count} % 5))
+            rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
+                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
-                count=$((count+1))
+                
             else
-                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
+                count=$((count+1))
             fi
         done < ${file_list}_lock
     fi
-    count=1
+    count=0
     if [[ -f "${file_list}_fly" ]]; then
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
             sed -i "s/${callback_query_data}/${_OK},${callback_query_data##*,}/" ${file_list}_lock
@@ -198,15 +203,16 @@ listar.go_botoes() {
             sed -i "s/${callback_query_data}/${_WARN},${callback_query_data##*,}/" ${file_list}_fly
             float_message="Ops..."
         fi
-        count=1
+        count=0
         while read line; do
-            rem=$(( ${count} % 5))
+            rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
+                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
-                count=$((count+1))
+                
             else
-                count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'edit_go' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
+                count=$((count+1))
             fi
         done < ${file_list}_fly
     fi
