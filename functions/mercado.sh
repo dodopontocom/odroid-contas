@@ -246,7 +246,7 @@ listar.valor_total() {
     ShellBot.deleteMessage --chat_id ${message_reply_to_message_chat_id[$id]} \
                         --message_id ${message_reply_to_message_message_id[$id]}
 
-    echo "Total,${total}" >> ${doc}
+    echo "Total,${total//,/.}" >> ${doc}
 
     ShellBot.sendMessage --chat_id ${message_reply_to_message_chat_id[$id]} \
                         --text "*Resumo da compra realizado em $(date +%d) do $(date +%m)*" \
