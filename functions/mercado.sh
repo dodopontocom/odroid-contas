@@ -178,12 +178,10 @@ listar.go_botoes() {
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
         --line 998
-    if [[ "$(echo ${callback_query_data[$id]} | grep Refresh)" ]]; then
-        ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
-            --text "=- Refresh -=" \
-            --callback_data "Refresh" \
-            --line 999
-    fi
+    ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
+        --text "=- Refresh -=" \
+        --callback_data "Refresh" \
+        --line 999
 
     keyboard_edit_shopping="$(ShellBot.InlineKeyboardMarkup -b 'botao_edit_shopping')"
 
