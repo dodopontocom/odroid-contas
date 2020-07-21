@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# ⚠️
-
 _WARN="⚠️"
 _OK="✅"
 _LUPA="🔍"
@@ -135,6 +133,11 @@ listar.go() {
             fi
         done < ${file_list}_fly
     fi
+
+    ShellBot.InlineKeyboardButton --button 'botao_gogogo'\
+        --text "-=== Finalizar ===-" \
+        --callback_data "listar.concluir" \
+        --line 1
 
     keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
