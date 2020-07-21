@@ -88,58 +88,61 @@ listar.salvar() {
 }
 
 listar.go_shopping() {
-    local file_list title
+    local file_list
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     if [[ -f ${file_list} ]]; then
         mv ${file_list} ${file_list}_lock
-        title="LISTA COMPLETA"
-    else
-        echo "Comece Escrevendo os itens da lista!" > ${file_list}_lock
-        title="LISTA VAZIA"
-    fi
-
-    botao_go_shopping=''
-    
-    if [[ -f "${file_list}_lock" ]]; then
-        count=1
-        while read line; do
-            rem=$(( ${count} % 3))
-            if [[ ${rem} -eq 0 ]]; then
-                count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'botao_go_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
-            else
-                ShellBot.InlineKeyboardButton --button 'botao_go_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
-                count=$((count+1))
-            fi
-        done < ${file_list}_lock
-    fi
-    
-    ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
-        --text "${_CART} - Finalizar" \
-        --callback_data "_concluir" \
-        --line 999
-    ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
-        --text "-= Refresh =-" \
-        --callback_data "Refresh" \
-        --line 999
-
-    keyboard_go_shopping="$(ShellBot.InlineKeyboardMarkup -b 'botao_go_shopping')"
-    
-    if [[ ${message_chat_id[$id]} ]]; then
-        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-                        --text "*$(echo -e ${title})*" \
-                        --parse_mode markdown \
-                        --reply_markup "$keyboard_go_shopping"
-    else
-        ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                        --text "*$(echo -e ${title})*" \
-                        --parse_mode markdown \
-                        --reply_markup "$keyboard_go_shopping"
-    fi
         
+        botao_go_shopping=''
+    
+        if [[ -f "${file_list}_lock" ]]; then
+            count=1
+            while read line; do
+                rem=$(( ${count} % 3))
+                if [[ ${rem} -eq 0 ]]; then
+                    count=$((count+1))
+                    ShellBot.InlineKeyboardButton --button 'botao_go_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
+                else
+                    ShellBot.InlineKeyboardButton --button 'botao_go_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
+                    count=$((count+1))
+                fi
+            done < ${file_list}_lock
+        fi
+        
+        ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
+            --text "${_CART} - Finalizar" \
+            --callback_data "_concluir" \
+            --line 999
+        ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
+            --text "-= Refresh =-" \
+            --callback_data "Refresh" \
+            --line 999
+
+        keyboard_go_shopping="$(ShellBot.InlineKeyboardMarkup -b 'botao_go_shopping')"
+        
+        if [[ ${message_chat_id[$id]} ]]; then
+            ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+            ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+                            --text "*LISTA COMPLETA*" \
+                            --parse_mode markdown \
+                            --reply_markup "$keyboard_go_shopping"
+        else
+            ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                            --text "*LISTA COMPLETA*" \
+                            --parse_mode markdown \
+                            --reply_markup "$keyboard_go_shopping"
+        fi
+    else
+        message="Lista Vazia!"
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+                            --text "$(echo -e ${message})" \
+                            -- parse_mode markdown
+        sleep 4
+        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+        
+    fi      
 }
 
 listar.go_botoes() {
