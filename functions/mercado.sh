@@ -199,8 +199,8 @@ listar.concluir() {
         --callback_data "_concluir_nao" \
         --line 1
     
-    ShellBot.regHandleFunction --function listar.sim --callback_data _concluir_sim
-    ShellBot.regHandleFunction --function listar.nao --callback_data _concluir_nao
+    # ShellBot.regHandleFunction --function listar.sim --callback_data _concluir_sim
+    # ShellBot.regHandleFunction --function listar.nao --callback_data _concluir_nao
     
     keyboard_confirmar="$(ShellBot.InlineKeyboardMarkup -b 'botao_confirmar')"
     
