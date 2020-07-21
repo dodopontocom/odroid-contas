@@ -122,20 +122,27 @@ listar.go_shopping() {
         done < ${file_list}_lock
     fi
     
-    if [[ ${message_chat_id[$id]} ]]; then
-        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-    fi
-    
     ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
         --line 999
 
     keyboard_go_shopping="$(ShellBot.InlineKeyboardMarkup -b 'botao_go_shopping')"
-    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+    
+    if [[ ${message_chat_id[$id]} ]]; then
+        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                         --text "*LISTA COMPLETA*" \
                         --parse_mode markdown \
-                        --reply_markup "$keyboard_go_shopping"    
+                        --reply_markup "$keyboard_go_shopping"
+    else
+        ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_chat_id[$id]}
+        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                        --text "*LISTA COMPLETA*" \
+                        --parse_mode markdown \
+                        --reply_markup "$keyboard_go_shopping"
+    fi
+        
 }
 
 listar.go_botoes() {
