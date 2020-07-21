@@ -136,7 +136,7 @@ listar.go_shopping() {
                         --parse_mode markdown \
                         --reply_markup "$keyboard_go_shopping"
     else
-        ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_chat_id[$id]}
+        ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
         ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
                         --text "*LISTA COMPLETA*" \
                         --parse_mode markdown \
