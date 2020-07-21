@@ -115,7 +115,7 @@ listar.go_shopping() {
     ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
-        --line 998
+        --line 999
     ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
         --text "-= Refresh =-" \
         --callback_data "Refresh" \
@@ -177,9 +177,9 @@ listar.go_botoes() {
     ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
-        --line 998
+        --line 999
     ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
-        --text "=- Refresh -=" \
+        --text "-= Refresh =-" \
         --callback_data "Refresh" \
         --line 999
 
