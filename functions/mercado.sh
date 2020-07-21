@@ -142,7 +142,7 @@ listar.go() {
     ShellBot.InlineKeyboardButton --button 'botao_gogogo'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "listar.concluir" \
-        --line 100
+        --line 999
 
     keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -217,10 +217,19 @@ listar.go_botoes() {
         done < ${file_list}_fly
     fi
 
+    ShellBot.InlineKeyboardButton --button 'edit_go'\
+        --text "${_CART} -=== Finalizar ===- ${_CART}" \
+        --callback_data "listar.concluir" \
+        --line 999
+
     keyboard_go="$(ShellBot.InlineKeyboardMarkup -b 'edit_go')"
 
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} --text "${float_message}"
     ShellBot.editMessageReplyMarkup --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]} \
                         --reply_markup "$keyboard_go"
+}
+
+listar.concluir() {
+    echo concluir
 }
