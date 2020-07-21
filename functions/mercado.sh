@@ -137,7 +137,7 @@ listar.go() {
     ShellBot.InlineKeyboardButton --button 'botao_gogogo'\
         --text "-=== Finalizar ===-" \
         --callback_data "listar.concluir" \
-        --line 1
+        --line 100
 
     keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
