@@ -136,12 +136,10 @@ listar.go_shopping() {
         fi
     else
         message="Lista Vazia!"
+        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "$(echo -e ${message})" \
                             -- parse_mode markdown
-        sleep 4
-        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-        
     fi      
 }
 
