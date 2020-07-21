@@ -109,7 +109,7 @@ listar.go() {
     botao_gogogo=''
     
     if [[ -f "${file_list}_lock" ]]; then
-        count=0
+        count=1
         while read line; do
             rem=$(( ${count} % 5))
             if [[ ${rem} -eq 0 ]]; then
@@ -122,7 +122,7 @@ listar.go() {
         done < ${file_list}_lock
     fi
     if [[ -f "${file_list}_fly" ]]; then
-        count=0
+        count=1
         while read line; do
             rem=$(( ${count} % 5))
             if [[ ${rem} -eq 0 ]]; then
@@ -156,7 +156,7 @@ listar.go_botoes() {
 
     local file_list float_message count
 
-    count=0
+    count=1
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     
@@ -174,7 +174,7 @@ listar.go_botoes() {
             float_message="Ops..."
         fi
         
-        count=0
+        count=1
         while read line; do
             rem=$(( ${count} % 5))
             if [[ ${rem} -eq 0 ]]; then
@@ -186,7 +186,7 @@ listar.go_botoes() {
             fi
         done < ${file_list}_lock
     fi
-    count=0
+    count=1
     if [[ -f "${file_list}_fly" ]]; then
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
             sed -i "s/${callback_query_data}/${_OK},${callback_query_data##*,}/" ${file_list}_lock
@@ -198,7 +198,7 @@ listar.go_botoes() {
             sed -i "s/${callback_query_data}/${_WARN},${callback_query_data##*,}/" ${file_list}_fly
             float_message="Ops..."
         fi
-        count=0
+        count=1
         while read line; do
             rem=$(( ${count} % 5))
             if [[ ${rem} -eq 0 ]]; then
