@@ -3,6 +3,7 @@
 _WARN="⚠️"
 _OK="✅"
 _LUPA="🔍"
+_CART="🛒"
 
 listar.compras(){
         local item botao_itens file_list
@@ -135,7 +136,7 @@ listar.go() {
     fi
 
     ShellBot.InlineKeyboardButton --button 'botao_gogogo'\
-        --text "-=== Finalizar ===-" \
+        --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "listar.concluir" \
         --line 100
 
