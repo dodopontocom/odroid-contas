@@ -191,26 +191,29 @@ listar.concluir() {
 
     ShellBot.InlineKeyboardButton --button 'botao_confirmar' \
         --text "SIM" \
-        --callback_data "_concluir" \
+        --callback_data "_concluir_sim" \
         --line 1
 
     ShellBot.InlineKeyboardButton --button 'botao_confirmar' \
         --text "NÃO" \
-        --callback_data "_concluir" \
+        --callback_data "_concluir_nao" \
         --line 1
-
+    
+    ShellBot.regHandleFunction --function listar.sim --callback_data _concluir_sim
+    ShellBot.regHandleFunction --function listar.nao --callback_data _concluir_nao
+    
     keyboard_confirmar="$(ShellBot.InlineKeyboardMarkup -b 'botao_confirmar')"
     
     mv ${file_list}_lock ${file_list}_$(date +%Y%m%d_%H%M%S).csv
 
-    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-            --text "Compra finalizada..."
+    # ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+    #         --text "Compra finalizada..."
     
     ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]}
     
     ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                        --text "*Deseja mesmo finalizar compra?*" \
+                        --text "*Deseja mesmo finalizar a compra?*" \
                         --parse_mode markdown \
                         --reply_markup "$keyboard_confirmar"
     
@@ -218,4 +221,8 @@ listar.concluir() {
     #                         --text "*Chega por hoje!*" \
     #                         --parse_mode markdown
 
+}
+
+listar.sim() {
+    echo sim
 }
