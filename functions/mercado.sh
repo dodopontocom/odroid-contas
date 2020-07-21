@@ -231,5 +231,25 @@ listar.go_botoes() {
 }
 
 listar.concluir() {
-    echo concluir
+    local file_list
+    
+    file_list="${BOT_PRECOS_FILE}_ultima.log"
+    
+    if [[ -f ${file_list}_fly ]]; then
+        echo -e "$(cat ${file_list}_fly)" >> ${file_list}_lock
+    fi
+
+    mv ${file_list}_lock ${file_list}_$(date +%Y%m%d_%H%M%S).csv
+
+    keyboard_done="$(ShellBot.InlineKeyboardMarkup -b 'edit_done')"
+
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+            --text "Compra finalizada..."
+    
+    ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                        --message_id ${callback_query_message_message_id[$id]}
+    
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+                            --text "*Chega por hoje!*" \
+                            --parse_mode markdown
 }
