@@ -73,7 +73,7 @@ do
 			item_valor) listar.preco ;;
             _concluir) listar.concluir ;;
             _concluir_sim) listar.sim ;;
-            _concluir_nao) listar.go_botoes ;;
+            _concluir_nao) listar.go_shopping ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
