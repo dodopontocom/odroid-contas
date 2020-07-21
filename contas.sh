@@ -113,7 +113,7 @@ do
 		fi
 		
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
-            if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/goshopping" )" ]]; then
+            if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/goshopping\|\/verlista" )" ]]; then
 				listar.go_shopping
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/construtora" )" ]]; then
