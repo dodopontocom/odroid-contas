@@ -75,6 +75,8 @@ do
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
             _concluir) listar.concluir ;;
+            _concluir_sim) listar.sim ;;
+            _concluir_nao) listar.nao ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;

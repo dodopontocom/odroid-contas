@@ -198,14 +198,9 @@ listar.concluir() {
         --text "NÃO" \
         --callback_data "_concluir_nao" \
         --line 1
-    
-    # ShellBot.regHandleFunction --function listar.sim --callback_data _concluir_sim
-    # ShellBot.regHandleFunction --function listar.nao --callback_data _concluir_nao
-    
+        
     keyboard_confirmar="$(ShellBot.InlineKeyboardMarkup -b 'botao_confirmar')"
     
-    mv ${file_list}_lock ${file_list}_$(date +%Y%m%d_%H%M%S).csv
-
     # ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
     #         --text "Compra finalizada..."
     
@@ -224,5 +219,13 @@ listar.concluir() {
 }
 
 listar.sim() {
-    echo sim
+    local file_list doc
+
+    file_list="${BOT_PRECOS_FILE}_ultima.log"
+    doc=${file_list}_$(date +%Y%m%d_%H%M%S).csv
+    
+    mv ${file_list}_lock ${doc}
+
+    ShellBot.sendDocument --chat_id ${callback_query_message_chat_id[$id]} \
+							--document @${doc}
 }
