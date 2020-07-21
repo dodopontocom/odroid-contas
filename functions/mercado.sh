@@ -93,6 +93,8 @@ listar.go_shopping() {
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     if [[ -f ${file_list} ]]; then
         mv ${file_list} ${file_list}_lock
+    else
+        echo "Comece Escrevendo os itens da lista!" > ${file_list}
     fi
 
     botao_go_shopping=''
