@@ -122,8 +122,10 @@ listar.go_shopping() {
         done < ${file_list}_lock
     fi
     
-    ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-
+    if [[ ${message_chat_id[$id]} ]]; then
+        ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
+    fi
+    
     ShellBot.InlineKeyboardButton --button 'botao_go_shopping'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
