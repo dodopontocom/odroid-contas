@@ -17,7 +17,7 @@ listar.compras(){
             echo "${_WARN},${item}" >> ${file_list}_lock
         fi
                 
-        botao_itens=""
+        botao_itens=''
         ShellBot.InlineKeyboardButton --button 'botao_itens' --text "${_OK}" --callback_data 'item_comprado' --line 1
         ShellBot.InlineKeyboardButton --button 'botao_itens' --text "preços ${_LUPA}" --callback_data 'item_valor' --line 1
         keyboard_itens="$(ShellBot.InlineKeyboardMarkup -b 'botao_itens')"
@@ -106,7 +106,7 @@ listar.go_shopping() {
         mv ${file_list} ${file_list}_lock
     fi
 
-    botao_go_shopping=""
+    botao_go_shopping=''
     
     if [[ -f "${file_list}_lock" ]]; then
         count=1
@@ -134,6 +134,7 @@ listar.go_shopping() {
                         --text "*LISTA COMPLETA*" \
                         --parse_mode markdown \
                         --reply_markup "$keyboard_go_shopping"    
+}
 
 listar.go_botoes() {
     local file_list float_message count
@@ -141,7 +142,7 @@ listar.go_botoes() {
     count=1
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     
-    botao_edit_shopping=""
+    botao_edit_shopping=''
 
     if [[ -f "${file_list}_lock" ]]; then
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
@@ -186,13 +187,14 @@ listar.concluir() {
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
 
-    botao_confirmar=""
+    botao_confirmar=''
 
-    ShellBot.InlineKeyboardButton --button 'botao_confirmar'\
+    ShellBot.InlineKeyboardButton --button 'botao_confirmar' \
         --text "SIM" \
         --callback_data "_concluir" \
         --line 1
-    ShellBot.InlineKeyboardButton --button 'botao_confirmar'\
+
+    ShellBot.InlineKeyboardButton --button 'botao_confirmar' \
         --text "NÃO" \
         --callback_data "_concluir" \
         --line 1
@@ -217,6 +219,3 @@ listar.concluir() {
     #                         --parse_mode markdown
 
 }
-
-
-
