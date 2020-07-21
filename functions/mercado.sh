@@ -161,7 +161,6 @@ listar.go_botoes() {
             if [[ ${rem} -eq 0 ]]; then
                 count=$((count+1))
                 ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
-                
             else
                 ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
                 count=$((count+1))
@@ -169,7 +168,7 @@ listar.go_botoes() {
         done < ${file_list}_lock
     fi
     
-    ShellBot.InlineKeyboardButton --button 'botao_edit_shopping'\
+    ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
         --callback_data "_concluir" \
         --line 999
@@ -216,4 +215,8 @@ listar.concluir() {
     # ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
     #                         --text "*Chega por hoje!*" \
     #                         --parse_mode markdown
+
 }
+
+
+
