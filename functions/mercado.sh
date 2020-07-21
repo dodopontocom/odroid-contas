@@ -249,13 +249,14 @@ listar.valor_total() {
 		_chat_id=${message_chat_id[$id]}
 	fi
 
-    ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} \
-                        --message_id ${callback_query_message_message_id[$id]}
+    ShellBot.deleteMessage --chat_id ${message_reply_to_message_chat_id[$id]} \
+                        --message_id ${message_reply_to_message_message_id[$id]}
 
-    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+    echo "-------------${total}"
+    ShellBot.sendMessage --chat_id ${message_reply_to_message_chat_id[$id]} \
                         --text "*Resumo da compra realizado em $(date +%d) do $(date +%m)*" \
                         --parse_mode markdown
-    ShellBot.sendDocument --chat_id ${callback_query_message_chat_id[$id]} \
+    ShellBot.sendDocument --chat_id ${message_reply_to_message_chat_id[$id]} \
 							--document @${doc}
 }
 
