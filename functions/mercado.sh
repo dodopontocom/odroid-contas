@@ -147,12 +147,10 @@ listar.go_botoes() {
     if [[ -f "${file_list}_lock" ]]; then
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
             sed -i "s/${callback_query_data}/${_OK},${callback_query_data##*,}/" ${file_list}_lock
-            sed -i "s/${callback_query_data}/${_OK},${callback_query_data##*,}/" ${file_list}_fly
             float_message="item comprado"
         fi
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
             sed -i "s/${callback_query_data}/${_WARN},${callback_query_data##*,}/" ${file_list}_lock
-            sed -i "s/${callback_query_data}/${_WARN},${callback_query_data##*,}/" ${file_list}_fly
             float_message="Ops..."
         fi
         
@@ -161,9 +159,13 @@ listar.go_botoes() {
             rem=$(( ${count} % 3))
             if [[ ${rem} -eq 0 ]]; then
                 count=$((count+1))
-                ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}
+                ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
+                    --text "$(echo ${line} | tr ',' ' ')" \
+                    --callback_data "${line}" --line ${count}
             else
-                ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' --text "$(echo ${line} | tr ',' ' ')" --callback_data "${line}" --line ${count}                
+                ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
+                    --text "$(echo ${line} | tr ',' ' ')" \
+                    --callback_data "${line}" --line ${count}                
                 count=$((count+1))
             fi
         done < ${file_list}_lock
