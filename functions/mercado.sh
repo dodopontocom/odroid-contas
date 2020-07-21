@@ -18,7 +18,6 @@ listar.compras(){
         fi
                 
         ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
-        ShellBot.answerCallbackQuery --callback_query_id ${message_chat_id[$id]} --text "/goshopping para ver lista!"
 }
 
 listar.apagar(){
