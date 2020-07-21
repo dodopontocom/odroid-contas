@@ -57,16 +57,16 @@ do
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
-		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && [[ ${message_entities_type[$id]} != bot_command ]] && [[ -z ${callback_query_data[$id]} ]]; then
+		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && \
+                [[ ${message_entities_type[$id]} != bot_command ]] && \
+                [[ -z ${callback_query_data[$id]} ]] && \
+                [[ -z ${message_reply_to_message_message_id} ]]; then
 			listar.compras "${message_text}"
 		else
 			chat.hi
 		fi
 
-        if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
-            listar.go_botoes
-        fi
-        if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
+        if [[ "$(echo ${callback_query_data[$id]} | grep "${_WARN}\|${_OK}\|Refresh")" ]]; then
             listar.go_botoes
         fi
 		
@@ -75,6 +75,8 @@ do
 			item_comprado) listar.apagar ;;
 			item_valor) listar.preco ;;
             _concluir) listar.concluir ;;
+            _concluir_sim) listar.sim ;;
+            _concluir_nao) listar.go_shopping ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
@@ -104,12 +106,15 @@ do
 				'Pesquisa Cerquilho:')
 					pdfgrep.cerquilho "${message_text[$id]}"
 				;;
+                'Valor Total da Compra:')
+                    listar.valor_total "${message_text[$id]}"
+                ;;
 			esac
 		fi
 		
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
-            if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/gogogo" )" ]]; then
-				listar.go
+            if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/goshopping\|\/verlista" )" ]]; then
+				listar.go_shopping
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/construtora" )" ]]; then
 				site.upload
@@ -184,8 +189,8 @@ do
 				disk.warn "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/botip" )" ]]; then
-                               my_ip.get
-                        fi
+                my_ip.get
+            fi
 
 			#### Comandos apenas para nossa viagem de Janeiro
 			#if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
