@@ -141,7 +141,7 @@ listar.go() {
 
     ShellBot.InlineKeyboardButton --button 'botao_gogogo'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
-        --callback_data "listar.concluir" \
+        --callback_data "_concluir" \
         --line 999
 
     keyboard_gogogo="$(ShellBot.InlineKeyboardMarkup -b 'botao_gogogo')"
@@ -219,7 +219,7 @@ listar.go_botoes() {
 
     ShellBot.InlineKeyboardButton --button 'edit_go'\
         --text "${_CART} -=== Finalizar ===- ${_CART}" \
-        --callback_data "listar.concluir" \
+        --callback_data "_concluir" \
         --line 999
 
     keyboard_go="$(ShellBot.InlineKeyboardMarkup -b 'edit_go')"
