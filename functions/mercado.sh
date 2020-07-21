@@ -228,7 +228,8 @@ listar.concluir() {
 }
 
 listar.sim() {
-    
+
+    ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}    
     message="Valor Total da Compra:"
   	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
         				--reply_markup "$(ShellBot.ForceReply)"
@@ -243,16 +244,11 @@ listar.valor_total() {
 
     mv ${file_list}_lock ${doc}
 
-    if [[ ${callback_query_message_chat_id[$id]} ]]; then
-		_chat_id=${callback_query_message_chat_id[$id]}
-	else
-		_chat_id=${message_chat_id[$id]}
-	fi
-
     ShellBot.deleteMessage --chat_id ${message_reply_to_message_chat_id[$id]} \
                         --message_id ${message_reply_to_message_message_id[$id]}
 
-    echo "-------------${total}"
+    echo "Total,${total}" >> ${doc}
+
     ShellBot.sendMessage --chat_id ${message_reply_to_message_chat_id[$id]} \
                         --text "*Resumo da compra realizado em $(date +%d) do $(date +%m)*" \
                         --parse_mode markdown
