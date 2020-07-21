@@ -94,7 +94,7 @@ listar.go_shopping() {
     if [[ -f ${file_list} ]]; then
         mv ${file_list} ${file_list}_lock
     else
-        echo "Comece Escrevendo os itens da lista!" > ${file_list}
+        echo "Comece Escrevendo os itens da lista!" > ${file_list}_lock
     fi
 
     botao_go_shopping=''
