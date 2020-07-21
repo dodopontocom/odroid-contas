@@ -222,10 +222,16 @@ listar.sim() {
     local file_list doc
 
     file_list="${BOT_PRECOS_FILE}_ultima.log"
-    doc=${file_list}_$(date +%Y%m%d_%H%M%S).csv
+    doc=${BOT_PRECOS_FILE}compras_$(date +%Y%m%d_%H%M%S).csv
     
     mv ${file_list}_lock ${doc}
 
+    ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                        --message_id ${callback_query_message_message_id[$id]}
+
+    ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+                        --text "*Resumo da compra realizado em $(date +%d) do $(date +%m)*" \
+                        --parse_mode markdown
     ShellBot.sendDocument --chat_id ${callback_query_message_chat_id[$id]} \
 							--document @${doc}
 }
