@@ -57,7 +57,10 @@ do
 		### Envia mensagem de boas vindas para novos usuários de grupo ###
 		[[ ${message_new_chat_member_id[$id]} ]] && helper.welcome_message
 		##################################################################
-		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && [[ ${message_entities_type[$id]} != bot_command ]] && [[ -z ${callback_query_data[$id]} ]]; then
+		if [[ ${message_chat_id} == "${PRECOS_GROUP_ID}" ]] && \
+                [[ ${message_entities_type[$id]} != bot_command ]] && \
+                [[ -z ${callback_query_data[$id]} ]] && \
+                [[ -z ${message_reply_to_message_message_id} ]]; then
 			listar.compras "${message_text}"
 		else
 			chat.hi
