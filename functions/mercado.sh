@@ -180,7 +180,7 @@ listar.go_botoes() {
         --line 998
     if [[ "$(echo ${callback_query_data[$id]} | grep Refresh)" ]]; then
         ShellBot.InlineKeyboardButton --button 'botao_edit_shopping' \
-            --text "${_CART} =- Refresh -= ${_CART}" \
+            --text "=- Refresh -=" \
             --callback_data "Refresh" \
             --line 999
     fi
