@@ -103,6 +103,9 @@ do
 				'Pesquisa Cerquilho:')
 					pdfgrep.cerquilho "${message_text[$id]}"
 				;;
+                'Valor Total da Compra:')
+                    listar.valor_total "${message_text[$id]}"
+                ;;
 			esac
 		fi
 		

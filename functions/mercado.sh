@@ -228,12 +228,26 @@ listar.concluir() {
 }
 
 listar.sim() {
-    local file_list doc
+    
+    message="Valor Total da Compra:"
+  	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e ${message})" \
+        				--reply_markup "$(ShellBot.ForceReply)"
+}
 
+listar.valor_total() {
+    local file_list doc total _chat_id
+
+    total=$1
     file_list="${BOT_PRECOS_FILE}_ultima.log"
     doc=${BOT_PRECOS_FILE}compras_$(date +%Y%m%d_%H%M%S).csv
-    
+
     mv ${file_list}_lock ${doc}
+
+    if [[ ${callback_query_message_chat_id[$id]} ]]; then
+		_chat_id=${callback_query_message_chat_id[$id]}
+	else
+		_chat_id=${message_chat_id[$id]}
+	fi
 
     ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} \
                         --message_id ${callback_query_message_message_id[$id]}
