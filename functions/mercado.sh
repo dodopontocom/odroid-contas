@@ -237,6 +237,7 @@ listar.concluir() {
     
     if [[ -f ${file_list}_fly ]]; then
         echo -e "$(cat ${file_list}_fly)" >> ${file_list}_lock
+        rm -vfr ${file_list}_fly
     fi
 
     mv ${file_list}_lock ${file_list}_$(date +%Y%m%d_%H%M%S).csv
