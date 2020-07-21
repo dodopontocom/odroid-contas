@@ -63,10 +63,7 @@ do
 			chat.hi
 		fi
 
-        if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
-            listar.go_botoes
-        fi
-        if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
+        if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN}\|${_OK})" ]]; then
             listar.go_botoes
         fi
 		
@@ -186,8 +183,8 @@ do
 				disk.warn "${message_text[$id]}"
 			fi
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/botip" )" ]]; then
-                               my_ip.get
-                        fi
+                my_ip.get
+            fi
 
 			#### Comandos apenas para nossa viagem de Janeiro
 			#if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/cidades" )" ]]; then
