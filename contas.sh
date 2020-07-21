@@ -63,7 +63,7 @@ do
 			chat.hi
 		fi
 
-        if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN}\|${_OK})" ]]; then
+        if [[ "$(echo ${callback_query_data[$id]} | grep "${_WARN}\|${_OK}")" ]]; then
             listar.go_botoes
         fi
 		
