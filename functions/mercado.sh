@@ -91,8 +91,8 @@ listar.go_shopping() {
     local file_list
     
     file_list="${BOT_PRECOS_FILE}_ultima.log"
-    if [[ -f ${file_list} ]]; then
-        mv ${file_list} ${file_list}_lock
+    if [[ -f ${file_list} ]] || [[ -f ${file_list}_lock ]]; then
+        if [[ -f ${file_list} ]]; then mv ${file_list} ${file_list}_lock; fi
         
         botao_go_shopping=''
     
@@ -135,7 +135,7 @@ listar.go_shopping() {
                             --reply_markup "$keyboard_go_shopping"
         fi
     else
-        message="Lista Vazia!"
+        message="*Lista Vazia!*"
         ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_message_id[$id]}
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "$(echo -e ${message})" \
