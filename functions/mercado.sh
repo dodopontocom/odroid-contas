@@ -153,11 +153,11 @@ listar.go_botoes() {
 
     if [[ -f "${file_list}_lock" ]]; then
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_WARN})" ]]; then
-            sed -i "s/${callback_query_data}/${_OK},${callback_query_data##*,}/" ${file_list}_lock
+            sed -i "s/${callback_query_data}/${_OK}\,${callback_query_data##*,}/" ${file_list}_lock
             float_message="item comprado"
         fi
         if [[ "$(echo ${callback_query_data[$id]} | grep ${_OK})" ]]; then
-            sed -i "s/${callback_query_data}/${_WARN},${callback_query_data##*,}/" ${file_list}_lock
+            sed -i "s/${callback_query_data}/${_WARN}\,${callback_query_data##*,}/" ${file_list}_lock
             float_message="Ops..."
         fi
         
