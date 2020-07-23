@@ -4,8 +4,8 @@ _FALSE="⛔"
 _TRUE="✅"
 
 #======================== Comment one or another to see the diferrence ================
-#_BOOL_BOOL_OPTIONS=(${_FALSE} ${_TRUE})
-_BOOL_BOOL_OPTIONS=(OFF ON)
+#_BOOL_OPTIONS=(${_FALSE} ${_TRUE})
+_BOOL_OPTIONS=(OFF ON)
 #======================================================================================
 
 _COMMAND="${1:-test}"
