@@ -78,6 +78,9 @@ do
             _concluir_sim) listar.sim ;;
             _concluir_nao) listar.go_shopping ;;
 
+			tick_to_true) tick_to_true.button ;;
+ 			tick_to_false) tick_to_false.button ;;
+
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
 
@@ -113,6 +116,9 @@ do
 		fi
 		
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
+			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/switch" )" ]]; then
+				button.bool_init
+			fi
             if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/goshopping\|\/verlista" )" ]]; then
 				listar.go_shopping
 			fi
