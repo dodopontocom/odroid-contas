@@ -4,8 +4,8 @@ _FALSE="⛔"
 _TRUE="✅"
 
 #======================== Comment one or another to see the diferrence ================
-#_OPTIONS=(${_FALSE} ${_TRUE})
-_OPTIONS=(OFF ON)
+#_BOOL_BOOL_OPTIONS=(${_FALSE} ${_TRUE})
+_BOOL_BOOL_OPTIONS=(OFF ON)
 #======================================================================================
 
 _COMMAND="${1:-test}"
@@ -17,7 +17,7 @@ button.bool_init() {
 	button1=''
 
 	ShellBot.InlineKeyboardButton --button 'button1' \
-		--text "${_OPTIONS[0]}" \
+		--text "${_BOOL_OPTIONS[0]}" \
 		--callback_data "tick_to_false" \
 		--line 1
 	
@@ -36,7 +36,7 @@ button.tick_to_false() {
 	button2=''
 	
 	ShellBot.InlineKeyboardButton --button 'button2' \
-		--text "${_OPTIONS[1]}" \
+		--text "${_BOOL_OPTIONS[1]}" \
 		--callback_data "tick_to_true" \
 		--line 1
 
@@ -55,7 +55,7 @@ button.tick_to_true() {
     button3=''
 
 	ShellBot.InlineKeyboardButton --button 'button3' \
-		--text "${_OPTIONS[0]}" \
+		--text "${_BOOL_OPTIONS[0]}" \
 		--callback_data "tick_to_false" \
 		--line 1
 

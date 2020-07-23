@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-_UNTICKED="⚪"
-_TICKED="🔘"
+_RADIO_UNTICKED="⚪"
+_RADIO_TICKED="🔘"
 
-_OPTIONS=(green red yellow none)
+_RADIO_OPTIONS=(green red yellow none)
 
 _COMMAND="${1:-test}"
 
@@ -14,8 +14,8 @@ button.radio_init() {
 
 	button1=''
 
-	for i in $(echo ${_OPTIONS[@]}); do
-		ShellBot.InlineKeyboardButton --button 'button1' --text "${_UNTICKED} ${i}" --callback_data "tick_${i%%/*}" --line ${count}
+	for i in $(echo ${_RADIO_OPTIONS[@]}); do
+		ShellBot.InlineKeyboardButton --button 'button1' --text "${_RADIO_UNTICKED} ${i}" --callback_data "tick_${i%%/*}" --line ${count}
 		count=$((count+1))
 	done
 
@@ -34,11 +34,11 @@ button.radio_tick() {
 
 	button2=''
 	
-	for i in $(echo ${_OPTIONS[@]}); do
+	for i in $(echo ${_RADIO_OPTIONS[@]}); do
 		if [[ "${callback_query_data[$id]}" == "tick_${i%%/*}" ]]; then
-			ShellBot.InlineKeyboardButton --button 'button2' --text "${_TICKED} ${i}" --callback_data "untick_${i%%/*}" --line ${count}
+			ShellBot.InlineKeyboardButton --button 'button2' --text "${_RADIO_TICKED} ${i}" --callback_data "untick_${i%%/*}" --line ${count}
 		else
-			ShellBot.InlineKeyboardButton --button 'button2' --text "${_UNTICKED} ${i}" --callback_data "tick_${i%%/*}" --line ${count}
+			ShellBot.InlineKeyboardButton --button 'button2' --text "${_RADIO_UNTICKED} ${i}" --callback_data "tick_${i%%/*}" --line ${count}
 		fi
 		count=$((count+1))
 	done
@@ -58,8 +58,8 @@ button.radio_untick() {
 
         button3=''
 
-	for i in $(echo ${_OPTIONS[@]}); do
-		ShellBot.InlineKeyboardButton --button 'button3' --text "${_UNTICKED} ${i}" --callback_data "tick_${i%%/*}" --line ${count}
+	for i in $(echo ${_RADIO_OPTIONS[@]}); do
+		ShellBot.InlineKeyboardButton --button 'button3' --text "${_RADIO_UNTICKED} ${i}" --callback_data "tick_${i%%/*}" --line ${count}
 		count=$((count+1))
 	done
 
@@ -92,7 +92,7 @@ button.radio_untick() {
 # 			esac
 # 		fi
 
-# 		for i in $(echo ${_OPTIONS[@]}); do
+# 		for i in $(echo ${_RADIO_OPTIONS[@]}); do
 # 			case ${callback_query_data[$id]} in
 # 				"tick_${i%%/*}")
 # 					tick.button

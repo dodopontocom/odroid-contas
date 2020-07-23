@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-_UNTICKED="◻"
-_TICKED="☑"
+_MULTI_UNTICKED="◻"
+_MULTI_TICKED="☑"
 
-_OPTIONS=(jpg png svg pdf jpeg)
+_MULT_OPTIONS=(jpg png svg pdf jpeg)
 
 _COMMAND="${1:-test}"
 
@@ -14,8 +14,8 @@ button.multi_init() {
 
         button1=''
 
-        for i in $(echo ${_OPTIONS[@]}); do
-                ShellBot.InlineKeyboardButton --button 'button1' --text "${_UNTICKED} ${i}" --callback_data "tick_${i}" --line ${count}
+        for i in $(echo ${_MULT_OPTIONS[@]}); do
+                ShellBot.InlineKeyboardButton --button 'button1' --text "${_MULTI_UNTICKED} ${i}" --callback_data "tick_${i}" --line ${count}
                 count=$((count+1))
         done
 
@@ -38,11 +38,11 @@ button.multi_tick() {
 
         for ((i=0; i < ${#arr[@]}; i++)); do
                 if [[ "${callback_query_data[$id]}" == "${arr[$i]}" ]]; then
-                        ShellBot.InlineKeyboardButton --button 'button2' --text "${_TICKED} ${arr[$i]##*_}" --callback_data "untick_${arr[$i]##*_}" --line ${count}
+                        ShellBot.InlineKeyboardButton --button 'button2' --text "${_MULTI_TICKED} ${arr[$i]##*_}" --callback_data "untick_${arr[$i]##*_}" --line ${count}
                 elif [[ "${arr[$i]}" =~ ^tick_ ]]; then
-                        ShellBot.InlineKeyboardButton --button 'button2' --text "${_UNTICKED} ${arr[$i]##*_}" --callback_data "tick_${arr[$i]##*_}" --line ${count}
+                        ShellBot.InlineKeyboardButton --button 'button2' --text "${_MULTI_UNTICKED} ${arr[$i]##*_}" --callback_data "tick_${arr[$i]##*_}" --line ${count}
                 else
-                        ShellBot.InlineKeyboardButton --button 'button2' --text "${_TICKED} ${arr[$i]##*_}" --callback_data "untick_${arr[$i]##*_}" --line ${count}
+                        ShellBot.InlineKeyboardButton --button 'button2' --text "${_MULTI_TICKED} ${arr[$i]##*_}" --callback_data "untick_${arr[$i]##*_}" --line ${count}
                 fi
                 count=$((count+1))
         done
@@ -66,11 +66,11 @@ button.multi_untick() {
 
         for ((i=0; i < ${#arr[@]}; i++)); do
                 if [[ "${callback_query_data[$id]}" == "${arr[$i]}" ]]; then
-                        ShellBot.InlineKeyboardButton --button 'button3' --text "${_UNTICKED} ${arr[$i]##*_}" --callback_data "tick_${arr[$i]##*_}" --line ${count}
+                        ShellBot.InlineKeyboardButton --button 'button3' --text "${_MULTI_UNTICKED} ${arr[$i]##*_}" --callback_data "tick_${arr[$i]##*_}" --line ${count}
                 elif [[ "${arr[$i]}" =~ ^untick_ ]]; then
-                        ShellBot.InlineKeyboardButton --button 'button3' --text "${_TICKED} ${arr[$i]##*_}" --callback_data "untick_${arr[$i]##*_}" --line ${count}
+                        ShellBot.InlineKeyboardButton --button 'button3' --text "${_MULTI_TICKED} ${arr[$i]##*_}" --callback_data "untick_${arr[$i]##*_}" --line ${count}
                 else
-                        ShellBot.InlineKeyboardButton --button 'button3' --text "${_UNTICKED} ${arr[$i]##*_}" --callback_data "tick_${arr[$i]##*_}" --line ${count}
+                        ShellBot.InlineKeyboardButton --button 'button3' --text "${_MULTI_UNTICKED} ${arr[$i]##*_}" --callback_data "tick_${arr[$i]##*_}" --line ${count}
                 fi
                 count=$((count+1))
         done
@@ -104,7 +104,7 @@ button.multi_untick() {
 #                         esac
 #                 fi
 
-#                 for i in $(echo ${_OPTIONS[@]}); do
+#                 for i in $(echo ${_MULT_OPTIONS[@]}); do
 #                         case ${callback_query_data[$id]} in
 #                                 "tick_${i%%/*}")
 #                                         tick.button
