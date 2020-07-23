@@ -78,8 +78,8 @@ do
             _concluir_sim) listar.sim ;;
             _concluir_nao) listar.go_shopping ;;
 
-			tick_to_true) tick_to_true.button ;;
- 			tick_to_false) tick_to_false.button ;;
+			tick_to_true) button.tick_to_true ;;
+ 			tick_to_false) button.tick_to_false ;;
 
 			'lotodicas.sena'|'lotodicas.lotofacil'|'lotodicas.quina'|'lotodicas.duplasena' \
 					|'lotodicas.lotomania'|'lotodicas.timemania'|'lotodicas.diasorte') lotodicas.get ;;
