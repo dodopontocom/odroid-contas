@@ -1,10 +1,17 @@
 #!/bin/bash
 #
-#
-#
 export BASEDIR="$(cd $(dirname ${BASH_SOURCE[0]}) >/dev/null 2>&1 && pwd)"
-# Importante init, script que contem o setup de inicialização do bot
-source ${BASEDIR}/functions/init.sh
+
+source ${BASEDIR}/.definitions.sh
+#source ${BASEDIR}/functions/init.sh
+
+#TBOTLIB
+source ${BASEDIR}/tbotlib.sh
+
+# Fazer source das urls para uso da função de busca nos editais
+#source ${BASEDIR}/configs/pdfgrep_urls.sh
+# Fazer source da API só depois de baixá-la
+#source ${BASEDIR}/configs/keyboards.sh
 
 #<TODO> jogar essa var em definitions
 logs=${BASEDIR}/logs
@@ -28,10 +35,17 @@ _CONTAS_NAO_ARR=($(cat ${BOT_CONTAS_LIST} | cut -d',' -f7))
 #record.check "$(echo ${NOTIFICATION_IDS[@]})"
 #################################################
 
+motion_button="motion_camera_switch"
+
 while :
 do
 	ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
 	
+    if [[ "${callback_query_message_reply_markup_inline_keyboard_callback_data[$id]}" == "tick_to_one.${motion_button}" ]]; then
+        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "vou ligar o motion..."
+    elif [[ "${callback_query_message_reply_markup_inline_keyboard_callback_data[$id]}" == "tick_to_zero.${motion_button}" ]]; then
+        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "vou desligar o motion..."
+    fi
 	
 	################## verificar se virou o mes para atualizar contas ##################
 	contas.verifica_mes $(date "+%m")
@@ -48,7 +62,7 @@ do
 	### verifica se há arquivos avi do software motion e envia para os admins ###
 	#motion.get
 	#############################################################################
-
+    
 	for id in $(ShellBot.ListUpdates)
 	do
 	(
@@ -77,6 +91,8 @@ do
             _concluir) listar.concluir ;;
             _concluir_sim) listar.sim ;;
             _concluir_nao) listar.go_shopping ;;
+            tick_to_one.${motion_button}) tick_to_one.bool_button "${motion_button}" ;;
+            tick_to_zero.${motion_button}) tick_to_zero.bool_button "${motion_button}" ;;
 
 			tick_to_true) button.tick_to_true ;;
  			tick_to_false) button.tick_to_false ;;
@@ -117,7 +133,14 @@ do
 		
 		if [[ ${message_entities_type[$id]} == bot_command ]]; then
 			if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/switch" )" ]]; then
-				button.bool_init
+				if [[ "${callback_query_message_reply_markup_inline_keyboard_callback_data[$id]}" == "tick_to_one.${motion_button}" ]]; then
+                    tick_to_one.bool_button "${motion_button}"
+                elif [[ "${callback_query_message_reply_markup_inline_keyboard_callback_data[$id]}" == "tick_to_zero.${motion_button}" ]]; then
+                    tick_to_zero.bool_button "${motion_button}"
+                else
+                    init.bool_button "${motion_button}"
+                fi
+                echo "=-=-=- from bot command ${callback_query_message_reply_markup_inline_keyboard_callback_data[$id]}"
 			fi
             if [[ "$(echo ${message_text[$id]%%@*} | grep "^\/goshopping\|\/verlista" )" ]]; then
 				listar.go_shopping

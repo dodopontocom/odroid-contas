@@ -1,8 +1,5 @@
 #!/bin/bash
 
-source ${BASEDIR}/ShellBot.sh
-ShellBot.init --token "${TELEGRAM_TOKEN}" --monitor --flush
-
 ############ Botão para admins aceitarem usuários executarem comandos linux ###################
 botao1=''
 

@@ -2,3 +2,7 @@ ShellBot.sh
 logs/
 .definitions.sh
 .contas.csv
+
+#Telegram bot Libs
+tbotlibs
+-
