@@ -56,7 +56,8 @@ contas.show_keyboard() {
 
     keyboard_contas="$(ShellBot.InlineKeyboardMarkup -b 'botao_contas')"
 
-    mes=$(date +%m | sed 's/0//')
+    #mes=$(date +%m | sed 's/0//')
+    mes=$(date +%m)
     message="Contas do Mês de ${MESES[$mes]}"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
                             --text "*${message}*" \
