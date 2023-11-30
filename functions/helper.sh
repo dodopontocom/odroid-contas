@@ -170,6 +170,7 @@ helper.get_api() {
   local tmp_folder current_version check_new_version
 
   tmp_folder=/tmp/$(helper.random)
+  mkdir ${tmp_folder}
   check_new_version=$(curl -sS ${API_VERSION_RAW_URL} | grep VERSÃO | grep -o [0-9].*)
   current_version=$(cat ${BASEDIR}/ShellBot.sh | grep VERSÃO | grep -o [0-9].*)
 

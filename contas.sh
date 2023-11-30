@@ -4,6 +4,7 @@
 #
 export BASEDIR="$(cd $(dirname ${BASH_SOURCE[0]}) >/dev/null 2>&1 && pwd)"
 # Importante init, script que contem o setup de inicialização do bot
+source ${BASEDIR}/functions/helper.sh
 source ${BASEDIR}/functions/init.sh
 
 #<TODO> jogar essa var em definitions

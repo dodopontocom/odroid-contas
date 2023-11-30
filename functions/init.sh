@@ -5,17 +5,17 @@
 ################################# START - Carregando todas as funções #################################
 source ${BASEDIR}/.definitions.sh || exit -1
 
+# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
+# Essas variáveis devem ser setadas no arquivo .definitions.sh
+helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS BOT_CONTAS_LIST
+
 echo ok
-function_list=($(find ${BASEDIR}/functions -name "*.sh" | grep -v "init"))
+function_list=($(find ${BASEDIR}/functions -name "*.sh" | grep -v "init\|helper"))
 for f in ${function_list[@]}; do
     source ${f}
 done
 echo ok
 ################################# END - Carregando todas as funções #################################
-
-# Saber se tem o telegram token e ao menos um id de adminitrador exportado como variável de ambiente do sistema
-# Essas variáveis devem ser setadas no arquivo .definitions.sh
-helper.validate_vars TELEGRAM_TOKEN NOTIFICATION_IDS
 
 helper.get_api
 exitOnError "Erro ao tentar baixar API ShellBot" $?
